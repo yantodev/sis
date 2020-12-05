@@ -997,17 +997,6 @@ class Admin extends CI_Controller
         }
     }
 
-    public function inputpendamping()
-    {
-        $data = [
-            'guru_pendamping'  => htmlspecialchars($this->input->post('guru_pendamping', true)),
-        ];
-        $this->db->where('nis', $this->input->post('nis'));
-        $this->db->update('master', $data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!!!</div>');
-    }
-
-
     public function resetpassword()
     {
         $data['title'] = 'Reset Password';

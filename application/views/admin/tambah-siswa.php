@@ -35,6 +35,7 @@
                             <th>Name</th>
                             <th>Lokasi PKL</th>
                             <th>Guru Pendamping</th>
+                            <th>No. HP</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,7 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
+                                <td><?= $d['hp_pendamping']; ?></td>
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>
