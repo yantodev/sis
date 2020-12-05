@@ -867,7 +867,7 @@ class Admin extends CI_Controller
     }
     public function listIduka()
     {
-        // Ambil data ID Provinsi yang dikirim via ajax post
+        // Ambil data yang dikirim via ajax post
         $singkatan_jurusan = $this->input->get('jurusan');
 
         $iduka = $this->Home_model->Iduka($singkatan_jurusan);
@@ -882,6 +882,17 @@ class Admin extends CI_Controller
 
         $callback = array('list_iduka' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
+    }
+    public function hpGuru()
+    {
+        $guru_pendamping = $this->input->get('guru_pendamping');
+        $iduka = $this->Home_model->hpPendamping($guru_pendamping);
+
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->hp . "'>" . $data->hp . "</option>";
+        }
+        $callback = array('list_hp' => $lists);
+        echo json_encode($callback);
     }
 
     public function suratPKL($id)
@@ -989,6 +1000,7 @@ class Admin extends CI_Controller
                 $result[] = array(
                     "nis" => $nis[$key],
                     "guru_pendamping"  => $_POST['guru_pendamping'][$key],
+                    "hp_pendamping"  => $_POST['hp_pendamping'][$key],
                 );
             }
             $this->db->update_batch('master', $result, 'nis');

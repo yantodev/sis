@@ -21,12 +21,10 @@ class Home_model extends CI_Model
         return $result;
     }
 
-    // function Tipe_Kendaraan($id_merk)
-    // {
-    //     $this->db->where('id_merk_kendaraan', $id_merk);
-    //     $this->db->order_by('id_tipe_kendaraan', 'ASC');
-    //     return $this->db->from('tipe_kendaraan')
-    //         ->get()
-    //         ->result();
-    // }
+    function hpPendamping($guru_pendamping)
+    {
+        $this->db->where('nama', $guru_pendamping);
+        $result = $this->db->get('tbl_guru')->result();
+        return $result;
+    }
 }

@@ -85,9 +85,6 @@
                         <!-- <input type="text" class="form-control" id="alamat_instansi" name="alamat_instansi" value="<?= $siswa['alamat_instansi']; ?>"> -->
                         <select name="alamat_instansi" id="alamat_instansi">
                             <option value="<?= $siswa['alamat_instansi']; ?>"><?= $siswa['alamat_instansi']; ?></option>
-                            <!-- <?php foreach ($alamat as $a) : ?>
-                                <option value=""><?= $a['alamat']; ?></option>
-                            <?php endforeach; ?> -->
                         </select>
                         <div id="loading" style="margin-top: 15px;">
                             <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>

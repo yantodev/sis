@@ -55,7 +55,16 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
-                                <td><?= $d['hp_pendamping']; ?></td>
+                                <td>
+                                    <input type="text" name="hp_pendamping[]" id="hp_pendamping" value="<?= $d['hp_pendamping']; ?>">
+                                    <!-- <select name="hp_pendamping[]" id="hp_pendamping">
+                                        <option value="<?= $d['hp_pendamping']; ?>"><?= $d['hp_pendamping']; ?></option>
+                                    </select>
+                                    <div id="loading" style="margin-top: 15px;">
+                                        <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+                                    </div>
+                                    </select> -->
+                                </td>
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>
