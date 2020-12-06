@@ -21,17 +21,17 @@
         <tr>
             <th style="text-align:left">Nomor</th>
             <th>:</th>
-            <th style="text-align:left">280/III.4.AU/F/2020</th>
+            <th style="text-align:left"><?= $pernyataan['nomor']; ?></th>
         </tr>
         <tr>
             <th style="text-align:left">Lampiran</th>
             <th>:</th>
-            <th style="text-align:left">2 Lembar</th>
+            <th style="text-align:left"><?= $pernyataan['lampiran']; ?></th>
         </tr>
         <tr>
             <th style="text-align:left">Hal</th>
             <th>:</th>
-            <th style="text-align:left">Permohonan Izin PKL</th>
+            <th style="text-align:left"><?= $pernyataan['hal']; ?></th>
         </tr>
     </thead>
 </table>
@@ -44,12 +44,12 @@
 </p>
 <p class="justify">
     <i>Assalamu’alaikum wr. wb.</i><br />
-    Dengan hormat, berkaitan dengan program kegiatan Praktik Kerja Lapangan yang akan dilakukan oleh siswa SMK Muhammadiyah Karangmojo, kami mohon izin untuk melakukan Praktik Kerja Lapangan di instansi / dunia usaha / dunia industri / dunia kerja (IDUKA) yang Bapak/Ibu pimpin. Kegiatan tersebut dilakukan selama 3 (tiga) bulan, yakni mulai tanggal :
+    <?= $pernyataan['p1']; ?>
 </p>
 <table border="1" align="center" cellspacing="0">
     <tr>
         <th>
-            <h3 style="text-align:center">02 Januari 2021 sampai dengan 31 Maret 2021</h3>
+            <h3 style="text-align:center"><?= $pernyataan['tgl_pkl']; ?></h3>
         </th>
     </tr>
 </table>
@@ -82,14 +82,14 @@
 </table>
 
 <p class="justify">
-    Sebagai alat konfirmasi, bersama surat ini kami lampirkan lembar pernyataan kesanggupan. Mohon berkenan mengisi dan diserahkan kepada kami melalui peserta PKL.<br />
-    Demikian surat ini kami kirimkan atas perhatian dan kerjasama Bapak/Ibu disampaikan terima kasih.
+    <?= $pernyataan['p2']; ?><br />
+    <?= $pernyataan['p3']; ?>
 </p>
 <p><i>Wassalamu’alaikum wr. wb</i></p>
 <table align="right">
     <tr>
         <td>
-            Karangmojo, 11 November 2020
+            <?= $pernyataan['tgl_surat']; ?>
         </td>
     </tr>
 </table>
@@ -102,7 +102,7 @@
                 </td>
             <tr>
                 <td align="center">
-                    <p>Kepala Sekolah</p>
+                    <p><?= $pernyataan['kepala_sekolah']; ?></p>
                 </td>
                 <td width="50%"></td>
                 <td>Ketua Kompetensi Keahlian</td>
@@ -118,7 +118,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <p>NBM. 1 076 230</p>
+                    <p><?= $pernyataan['nbm']; ?></p>
                 </td>
                 <td></td>
                 <td align="center">
@@ -128,7 +128,3 @@
         <?php endforeach; ?>
     </thead>
 </table>
-
-<!-- <small>
-    <font color="blue"><i>Narahubung : 087839839710 (Humas IDUKA)</i></font>
-</small> -->

@@ -56,6 +56,17 @@ class Home extends CI_Controller
         $this->load->view('home/permohonan', $data);
         $this->load->view('home/footer', $data);
     }
+    public function surat_tugas()
+    {
+        $data['title'] = 'Home';
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['data'] =  $this->Home_model->Jurusan();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $this->load->view('home/header', $data);
+        $this->load->view('home/navbar', $data);
+        $this->load->view('home/surat-tugas', $data);
+        $this->load->view('home/footer', $data);
+    }
 
     public function listIduka()
     {
@@ -88,8 +99,10 @@ class Home extends CI_Controller
         $data['alamat'] = $this->Admin_model->getAlamatIduka($iduka);
         $kajur = $this->input->get('jurusan');
         $data['kajur'] = $this->Admin_model->getKajur($kajur);
+        $data['pernyataan'] = $this->Home_model->getSurat();
 
         $this->load->view('home/cetak', $data);
+        $this->load->view('home/cetak2', $data);
 
         $mpdf = new \Mpdf\Mpdf(
             [
@@ -125,6 +138,35 @@ class Home extends CI_Controller
         $html2 = $this->load->view('home/cetak2', [], true);
         $mpdf->WriteHTML($html2);
         $mpdf->Output('Surat Permohonan PI.pdf', \Mpdf\Output\Destination::INLINE);
+    }
+    public function cetak_tugas()
+    {
+        $data['title'] = 'Cetak Surat Permohonan';
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['data'] =  $this->Home_model->Jurusan();
+        $data['instansi'] = $this->input->get('instansi');
+        $data['iduka'] = $this->input->get('iduka');
+        $iduka = $this->input->get('iduka');
+        $data['data'] = $this->Admin_model->getIdukaByIduka($iduka);
+        $data['alamat'] = $this->Admin_model->getAlamatIduka($iduka);
+        $kajur = $this->input->get('jurusan');
+        $data['kajur'] = $this->Admin_model->getKajur($kajur);
+        $data['pernyataan'] = $this->Home_model->getSurat();
+
+        $this->load->view('home/cetak-tugas', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $html = $this->load->view('home/cetak-tugas', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Surat Tugas PI.pdf', \Mpdf\Output\Destination::INLINE);
     }
 
     public function detailsiswa($id)

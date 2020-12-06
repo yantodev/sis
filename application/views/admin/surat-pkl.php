@@ -7,6 +7,10 @@
     <?php endif; ?>
     <h3>DATA SURAT PERMOHONAN PKL</h3>
     <div class="form-group col-4">
+        <label>Tempat, Tanggal Surat</label>
+        <input type="text" class="form-control" id="nomor" name="nomor" value="<?= $data['tgl_surat']; ?>">
+    </div>
+    <div class="form-group col-4">
         <label>Nomor</label>
         <input type="text" class="form-control" id="nomor" name="nomor" value="<?= $data['nomor']; ?>">
     </div>

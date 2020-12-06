@@ -66,7 +66,7 @@
         </tr>
     </thead>
 </table>
-<p class="justify">Memperhatikan surat permohonan izin PKL dari SMK Muhammadiyah Karangmojo Nomor : <b>280/III.4.AU/F/2020</b>, maka kami menyatakan :
+<p class="justify"><?= $pernyataan['p4']; ?>
 </p>
 <table border="1" align="center" cellspacing="0">
     <tr>
@@ -76,7 +76,7 @@
         </th>
     </tr>
 </table>
-<p class="justify">Menampung siswa Praktik Kerja Lapangan dari SMK Muhammadiyah Karangmojo, dengan durasi waktu mulai tanggal : <b>02 Januari 2021 s/d 31 Maret 2021</b> dengan daftar peserta PKL yang kami setujui sebagai berikut :
+<p class="justify"><?= $pernyataan['p5']; ?>
 </p>
 <table border="1" width="100%" cellspacing="0">
     <thead>
@@ -104,7 +104,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
-<p>Demikian surat pernyataan ini kami buat, agar dapat dipergunakan sebagaimana mestinya.
+<p><?= $pernyataan['p6']; ?>
 </p>
 
 <table align="right">

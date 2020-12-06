@@ -27,4 +27,9 @@ class Home_model extends CI_Model
         $result = $this->db->get('tbl_guru')->result();
         return $result;
     }
+
+    public function getSurat()
+    {
+        return $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
+    }
 }
