@@ -10,7 +10,7 @@
             </select>
         </div>
         <div class="form-group">
-            <select name="jurusan" id="jurusan">
+            <select name="guru" id="guru">
                 <option value="">Pilih Nama Guru</option>
                 <?php foreach ($guru as $d) : ?>
                     <option value="<?= $d['nama']; ?>"><?= $d['nama']; ?></option>

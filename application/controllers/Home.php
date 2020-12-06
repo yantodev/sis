@@ -143,15 +143,9 @@ class Home extends CI_Controller
     {
         $data['title'] = 'Cetak Surat Permohonan';
         $data['tp'] =  $this->Admin_model->getTP();
-        $data['data'] =  $this->Home_model->Jurusan();
-        $data['instansi'] = $this->input->get('instansi');
-        $data['iduka'] = $this->input->get('iduka');
-        $iduka = $this->input->get('iduka');
-        $data['data'] = $this->Admin_model->getIdukaByIduka($iduka);
-        $data['alamat'] = $this->Admin_model->getAlamatIduka($iduka);
-        $kajur = $this->input->get('jurusan');
-        $data['kajur'] = $this->Admin_model->getKajur($kajur);
         $data['pernyataan'] = $this->Home_model->getSurat();
+        $guru = $this->input->get('guru');
+        $data['guru'] = $this->Home_model->getTugas($guru);
 
         $this->load->view('home/cetak-tugas', $data);
 
