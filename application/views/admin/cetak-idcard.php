@@ -44,7 +44,7 @@
                         <i>https://data.smkmuhkarangmojo.sch.id</i>
                     </p>
                 </td>
-                <td valign="top" width="280px" height="290px">
+                <td width="280px" height="290px" valign="top">
                     <div class="card mt-2 pt-2" align="center">
                         <table align="center">
                             <tr align="center">
