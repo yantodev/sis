@@ -40,6 +40,9 @@
                         </td>
                     </tr>
                 </table>
+                <p><br />
+                    <i>https://data.smkmuhkarangmojo.sch.id</i>
+                </p>
             </td>
             <td valign="top" width="270px" height="400px">
                 <div class="card mt-2 pt-2" align="center">

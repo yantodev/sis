@@ -1029,4 +1029,41 @@ class Admin extends CI_Controller
         $this->load->view('admin/reset-password', $data);
         $this->load->view('wrapper/footer');
     }
+
+    public function idcard()
+    {
+        $data['title'] = 'ID CARD';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Admin_model->getJurusan();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/idcard', $data);
+        $this->load->view('wrapper/footer');
+    }
+
+    public function cetakIDCard()
+    {
+        $data['title'] = 'ID CARD';
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['data'] = $this->Admin_model->idcard($tp, $jurusan);
+        $data['tanggal'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
+        $this->load->view('admin/cetak-idcard', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'Folio',
+                'orientation' => 'P',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $html = $this->load->view('admin/cetak-idcard', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('CETAK ID CARD.pdf', \Mpdf\Output\Destination::INLINE);
+    }
 }

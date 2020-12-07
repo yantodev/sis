@@ -8,6 +8,11 @@ class Admin_model extends CI_Model
         return $this->db->get_where('master', ['nis' => $nis])->result_array();
     }
 
+    public function idcard($tp, $jurusan)
+    {
+        return $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+    }
+
     public function getJurusan()
     {
         return $this->db->get_where('tbl_jurusan')->result_array();

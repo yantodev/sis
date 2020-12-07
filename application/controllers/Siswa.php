@@ -30,7 +30,6 @@ class Siswa extends CI_Controller
 
         $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
-        $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('layout/sidebar', $data);

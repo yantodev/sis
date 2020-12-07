@@ -22,16 +22,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
-            <div class="col-sm-10">
-                <select name="jk" id="jk">
-                    <option value="">Jenis Kelamin</option>
-                    <option value="L">Laki-Laki</option>
-                    <option value="P">Perempuan</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row">
             <div class="col-sm-2">Photo</div>
             <div class="col-sm-10">
                 <div class="row">
