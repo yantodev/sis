@@ -14,7 +14,7 @@
                                     <select id="role_id" name="role_id" class="form-control">
                                         <option value="">Pilih Jurusan</option>
                                         <?php foreach ($jurusan as $j) : ?>
-                                            <option value="<?= $j['id_jurusan']; ?>"><?= $j['jurusan']; ?></option>
+                                            <option value="4"><?= $j['jurusan']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>

@@ -146,6 +146,7 @@ class Home extends CI_Controller
         $data['pernyataan'] = $this->Home_model->getSurat();
         $guru = $this->input->get('guru');
         $data['guru'] = $this->Home_model->getTugas($guru);
+        $data['instansi'] = $this->Home_model->getTugas2($guru);
 
         $this->load->view('home/cetak-tugas', $data);
 

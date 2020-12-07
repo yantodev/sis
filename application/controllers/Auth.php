@@ -52,7 +52,7 @@ class Auth extends CI_Controller
                                 redirect('admin');
                             } else {
                                 if ($user['role_id'] == 4) {
-                                    redirect('tkro');
+                                    redirect('siswa');
                                 } else {
                                     if ($user['role_id'] == 5) {
                                         redirect('tbsm');

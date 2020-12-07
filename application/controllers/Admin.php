@@ -1004,6 +1004,15 @@ class Admin extends CI_Controller
                 );
             }
             $this->db->update_batch('master', $result, 'nis');
+
+            // $result2 = array();
+            // foreach ($_POST['guru_pendamping'] as $key => $val) {
+            //     $result[] = array(
+            //         'nama_guru' => $_POST['guru_pendamping'][$key],
+
+            //     );
+            // }
+            // $this->db->insert_batch('tbl_surat_tugas', $result2);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
             redirect('admin/guru');
         }
