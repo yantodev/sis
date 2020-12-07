@@ -41,7 +41,6 @@ class Siswa extends CI_Controller
             $name = $this->input->post('name');
             $email = $this->input->post('email');
             $jk = $this->input->post('jk');
-            $jurusan = 'Teknik Kendaraan Ringan Otomotif';
 
             //cek jika ada gambar
             $upload_image = $_FILES['image']['name'];
@@ -74,7 +73,7 @@ class Siswa extends CI_Controller
             $this->db->set('nis', $nis);
             $this->db->set('name', $name);
             $this->db->set('jk', $jk);
-            $this->db->set('jurusan', $jurusan);
+            $this->db->set('image', $new_image);
             $this->db->where('email', $email);
             $this->db->update('master');
 

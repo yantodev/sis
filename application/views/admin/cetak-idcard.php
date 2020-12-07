@@ -15,7 +15,7 @@
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <img src="<?= base_url('assets/img/default.png'); ?>" width="100px" height="130px">
+                                    <img src="<?= base_url('assets/img/') . $siswa['image']; ?>" width="120px" height="150px">
                                 </td>
                             </tr>
                             <tr>
@@ -25,8 +25,8 @@
                             </tr>
                             <tr>
                                 <td align="center" height="80px">
-                                    <h4><u><?= $siswa['name']; ?></u><br />
-                                        <?= $siswa['kelas']; ?></h4>
+                                    <h3><u><?= $siswa['name']; ?></u><br />
+                                        <?= $siswa['kelas']; ?></h3>
                                 </td>
                             </tr>
                         </thead>
@@ -40,7 +40,7 @@
                             </td>
                         </tr>
                     </table>
-                    <p><br />
+                    <p style="text-align: justify;color:blue"><br />
                         <i>https://data.smkmuhkarangmojo.sch.id</i>
                     </p>
                 </td>
