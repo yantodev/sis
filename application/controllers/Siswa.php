@@ -47,14 +47,14 @@ class Siswa extends CI_Controller
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size']     = '2048';
-                $config['upload_path']  = './assets/img/';
+                $config['upload_path']  = './assets/img/foto';
 
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('image')) {
                     $old_image = $data['user']['image'];
                     if ($old_image != 'default.png') {
-                        unlink(FCPATH . 'assets/img/' . $old_image);
+                        unlink(FCPATH . 'assets/img/foto' . $old_image);
                     }
 
                     $new_image = $this->upload->data('file_name');
@@ -88,6 +88,7 @@ class Siswa extends CI_Controller
         $data['title'] = 'ID CARD';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+        $data['tgl'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('layout/sidebar', $data);

@@ -1,7 +1,7 @@
   <div class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
           <div class="col-md-4">
-              <img src="<?= base_url('assets/img/') . $user['image']; ?>" class="card-img" alt="...">
+              <img src="<?= base_url('assets/img/foto/') . $user['image']; ?>" class="card-img" alt="...">
           </div>
           <div class="col-md-8">
               <div class="card-body">

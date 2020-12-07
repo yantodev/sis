@@ -1,7 +1,7 @@
 <table border="1" cellspacing="0">
     <thead>
         <tr>
-            <td width="270px" height="400px" valign="top">
+            <td width="280px" height="290px" valign="top">
                 <table align="center">
                     <thead>
                         <tr>
@@ -15,12 +15,12 @@
                         </tr>
                         <tr>
                             <td align="center">
-                                <img src="<?= base_url('assets/img/') . $user['image']; ?>" width="120px" height="150px">
+                                <img src="<?= base_url('assets/img/foto/') . $user['image']; ?>" width="120px" height="150px">
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
-                                <h5>Teknik Kendaraan Ringan Otomotif</h5>
+                                <h4><?= $siswa['jurusan']; ?></h4>
                             </td>
                         </tr>
                         <tr>
@@ -35,7 +35,7 @@
                     <tr>
                         <td>
                             <b>
-                                <?= $siswa['mulai_pkl']; ?> - <?= $siswa['selesai_pkl']; ?>
+                                <?= $tgl['tgl_pkl']; ?>
                             </b>
                         </td>
                     </tr>
@@ -44,7 +44,7 @@
                     <i>https://data.smkmuhkarangmojo.sch.id</i>
                 </p>
             </td>
-            <td valign="top" width="270px" height="400px">
+            <td width="280px" height="290px" valign="top">
                 <div class="card mt-2 pt-2" align="center">
                     <table align="center">
                         <tr align="center">
