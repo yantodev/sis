@@ -13,7 +13,7 @@
             <select name="jurusan" id="jurusan">
                 <option value="">Pilih Jurusan</option>
                 <?php foreach ($data as $d) : ?>
-                    <option value="<?= $d['singkatan_jurusan']; ?>"><?= $d['jurusan']; ?></option>
+                    <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

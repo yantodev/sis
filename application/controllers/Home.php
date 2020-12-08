@@ -71,9 +71,9 @@ class Home extends CI_Controller
     public function listIduka()
     {
         // Ambil data ID Provinsi yang dikirim via ajax post
-        $singkatan_jurusan = $this->input->get('jurusan');
+        $jurusan = $this->input->get('jurusan');
 
-        $iduka = $this->Home_model->Iduka($singkatan_jurusan);
+        $iduka = $this->Home_model->Iduka($jurusan);
 
         // Buat variabel untuk menampung tag-tag option nya
         // Set defaultnya dengan tag option Pilih
