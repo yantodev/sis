@@ -1,6 +1,6 @@
    <div class="row">
        <div class="col-lg-5">
-           <?= $this->session->flashdata('message');; ?>
+           <?= $this->session->flashdata('message'); ?>
        </div>
    </div>
 

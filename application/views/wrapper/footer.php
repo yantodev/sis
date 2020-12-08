@@ -228,6 +228,20 @@
          CKEDITOR.disableautoInline = true;
          CKEDITOR.Inline('editable');
      </script>
+     <script>
+         var ckeditor = CKEDITOR.replace('laporan1', {
+             height: '100px'
+         });
+         CKEDITOR.disableautoInline = true;
+         CKEDITOR.Inline('editable');
+     </script>
+     <script>
+         var ckeditor = CKEDITOR.replace('laporan2', {
+             height: '100px'
+         });
+         CKEDITOR.disableautoInline = true;
+         CKEDITOR.Inline('editable');
+     </script>
      <!-- <script>
          $(document).ready(function() {
              $(document).on('click', '#guru', function() {

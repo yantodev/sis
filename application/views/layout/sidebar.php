@@ -30,6 +30,11 @@
                     <span>My Profile</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link pb-0" href="<?= base_url('siswa/laporan/') . $user['nis']; ?>">
+                    <i class="fas fa-book"></i>
+                    <span>Laporan</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-archive"></i>
                     <span>Data PKL</span>
