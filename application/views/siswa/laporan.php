@@ -1,6 +1,6 @@
 <h4><?= $user['nis']; ?> | <?= $user['name']; ?></h4>
 <div class="form-group">
-    <form action="<?= base_url('siswa/inputlaporan'); ?>" method="get">
+    <form action="<?= base_url('siswa/inputlaporan/') . $user['nis']; ?>" method="get">
         <select name="jurusan" id="jurusan">
             <option value="">Pilih Jurusan</option>
             <?php foreach ($jurusan as $j) : ?>

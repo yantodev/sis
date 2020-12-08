@@ -169,14 +169,14 @@ class Siswa extends CI_Controller
         $this->load->view('siswa/laporan', $data);
         $this->load->view('wrapper/footer');
     }
-    public function inputlaporan()
+    public function inputlaporan($nis)
     {
         $data['title'] = 'Input Laporan Kegiatan PKL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $jurusan = $this->input->get('jurusan');
         $data['tabel'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan])->result_array();
-
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
         $data['t2'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 2])->row_array();
         $data['t3'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 3])->row_array();
         $data['t4'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 4])->row_array();
@@ -210,7 +210,7 @@ class Siswa extends CI_Controller
                     $this->db->set('foto', $new_image);
                 } else {
                     echo $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
-                    redirect('siswa/inputlaporan');
+                    redirect('siswa');
                 }
             }
 
@@ -219,13 +219,15 @@ class Siswa extends CI_Controller
                 'nama_siswa' => $this->input->post('name'),
                 'laporan1' => $this->input->post('laporan1'),
                 'laporan2' => $this->input->post('laporan1'),
-                'jurusan' => $this->input->post('jurusan')
+                'jurusan' => $this->input->post('jurusan'),
+                'guru_pendamping' => $this->input->post('guru_pendamping'),
+                'tp' => $this->input->post('tp')
             ];
 
             $this->db->insert('tbl_laporan', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Laporan berhasil ditambahkan!!!</div>');
-            redirect('siswa/inputlaporan');
+            redirect('siswa');
         }
     }
 
