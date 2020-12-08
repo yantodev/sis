@@ -55,7 +55,7 @@ class Auth extends CI_Controller
                                     redirect('siswa');
                                 } else {
                                     if ($user['role_id'] == 5) {
-                                        redirect('tbsm');
+                                        redirect('pendamping');
                                     } else {
                                         if ($user['role_id'] == 6) {
                                             redirect('akl');
