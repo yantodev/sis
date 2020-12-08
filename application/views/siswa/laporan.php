@@ -13,19 +13,27 @@
     </select>
     <button type="submit" class="btn btn-primary">LIHAT</button>
 </form>
-
-<?php foreach ($laporan as $l) : ?>
-    <div class="card" style="width: 25rem;">
-        <img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="far fa-clock"> <?= $l['time']; ?></p>
-            <h5 class="card-title"><?= $t2['nama_tabel']; ?></h5>
-            <p class="card-text"><?= $l['laporan1']; ?></p>
-            <h5 class="card-title"><?= $t3['nama_tabel']; ?></h5>
-            <p class="card-text"><?= $l['laporan2']; ?></p>
-        </div>
-        <div class="card-body">
-            <a href="#" class="card-link">View</a>
-        </div>
-    </div>
-<?php endforeach; ?>
+<table class="table table-striped table-inverse table-responsive">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th><?= $t1['nama_tabel']; ?></th>
+            <th><?= $t2['nama_tabel']; ?></th>
+            <th><?= $t3['nama_tabel']; ?></th>
+            <th><?= $t4['nama_tabel']; ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $i = 1; ?>
+        <?php foreach ($laporan as $l) : ?>
+            <tr>
+                <td scope="row" <?= $i; ?>></td>
+                <td><?= $l['time']; ?></td>
+                <td><?= $l['laporan1']; ?></td>
+                <td><?= $l['laporan2']; ?></td>
+                <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="25px" height="25px"></td>
+            </tr>
+        <?php endforeach; ?>
+        <?php $i++; ?>
+    </tbody>
+</table>
