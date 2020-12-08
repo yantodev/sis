@@ -1,4 +1,4 @@
-<div class="row pb-3">
+<!-- <div class="row pb-3">
     <form action="" method="GET">
         <div class="form-group">
             <select name="jurusan" id="jurusan">
@@ -10,28 +10,36 @@
             <button type="submit" class="btn btn-primary">INPUT</button>
         </div>
     </form>
-</div>
+</div> -->
 <div class="col-lg-5">
     <?= $this->session->flashdata('message'); ?>
 </div>
 <form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <select name="jurusan" id="jurusan">
+            <option value="">Pilih Jurusan</option>
+            <?php foreach ($jurusan as $j) : ?>
+                <option value="<?= $j['kelompok']; ?>"><?= $j['jurusan']; ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
     <div class="form-group pb-0">
         <label>
-            Sistem/Komponen yang dikerjakan
+            <?= $t2['nama_tabel']; ?>
         </label>
         <?= form_error('laporan1', '<small class="text-danger pl-3">', '</small>'); ?>
     </div>
     <textarea name="laporan1" id="laporan1"></textarea>
     <div class="form-group mt-3">
         <label>
-            Uraian Pekerjaan dan Proses
+            <?= $t3['nama_tabel']; ?>
         </label>
         <?= form_error('laporan2', '<small class="text-danger pl-3">', '</small>'); ?>
     </div>
     <textarea name="laporan2" id="laporan2"></textarea>
     <div class="form-group mt-3">
         <label>
-            Gambar Kerja
+            <?= $t4['nama_tabel']; ?>
         </label>
     </div>
     <div class="col-sm-5">

@@ -1,9 +1,19 @@
 <h4><?= $user['nis']; ?> | <?= $user['name']; ?></h4>
-<div class="pb-3">
-    <a href="<?= base_url('siswa/inputlaporan'); ?>"><button class="btn btn-facebook">INPUT LAPORAN</button></a>
+<div class="form-group">
+    <form action="<?= base_url('siswa/inputlaporan'); ?>" method="get">
+        <select name="jurusan" id="jurusan">
+            <option value="">Pilih Jurusan</option>
+            <?php foreach ($jurusan as $j) : ?>
+                <option value="<?= $j['kelompok']; ?>"><?= $j['jurusan']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit" class="btn btn-primary">Input Laporan</button>
+    </form>
 </div>
 
-<p>Untuk melihat kegiatan isi data dibawah ini:</p>
+<div class="form-group">
+    <h4>Untuk melihat kegiatan isi data dibawah ini:</h4>
+</div>
 <form action="" method="GET">
     <select name="jurusan" id="jurusan">
         <option value="">Pilih Jurusan</option>
@@ -13,7 +23,7 @@
     </select>
     <button type="submit" class="btn btn-primary">LIHAT</button>
 </form>
-<table class="table table-striped table-inverse table-responsive">
+<table class="table table-striped table-inverse table-responsive mt-3">
     <thead class="thead-inverse">
         <tr>
             <th>#</th>
@@ -21,6 +31,7 @@
             <th><?= $t2['nama_tabel']; ?></th>
             <th><?= $t3['nama_tabel']; ?></th>
             <th><?= $t4['nama_tabel']; ?></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +42,8 @@
                 <td><?= $l['time']; ?></td>
                 <td><?= $l['laporan1']; ?></td>
                 <td><?= $l['laporan2']; ?></td>
-                <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="25px" height="25px"></td>
+                <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="50px" height="50px"></td>
+                <td><a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a></td>
             </tr>
         <?php endforeach; ?>
         <?php $i++; ?>

@@ -177,8 +177,13 @@ class Siswa extends CI_Controller
         $jurusan = $this->input->get('jurusan');
         $data['tabel'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan])->result_array();
 
+        $data['t2'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 2])->row_array();
+        $data['t3'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 3])->row_array();
+        $data['t4'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 4])->row_array();
+
         $this->form_validation->set_rules('laporan1', 'Ini', 'required|trim');
         $this->form_validation->set_rules('laporan2', 'Ini', 'required|trim');
+        $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('layout/sidebar', $data);
@@ -186,6 +191,7 @@ class Siswa extends CI_Controller
             $this->load->view('siswa/input-laporan', $data);
             $this->load->view('wrapper/footer');
         } else {
+
             $upload_image = $_FILES['foto']['name'];
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -213,7 +219,7 @@ class Siswa extends CI_Controller
                 'nama_siswa' => $this->input->post('name'),
                 'laporan1' => $this->input->post('laporan1'),
                 'laporan2' => $this->input->post('laporan1'),
-                'jurusan' => $jurusan
+                'jurusan' => $this->input->post('jurusan')
             ];
 
             $this->db->insert('tbl_laporan', $data);
@@ -221,5 +227,18 @@ class Siswa extends CI_Controller
         Laporan berhasil ditambahkan!!!</div>');
             redirect('siswa/inputlaporan');
         }
+    }
+
+    public function editlaporan($id)
+    {
+        $data['title'] = 'Edit Laporan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('tbl_laporan', ['id' => $id])->row_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('layout/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('siswa/edit-laporan', $data);
+        $this->load->view('wrapper/footer');
     }
 }
