@@ -11,7 +11,7 @@
 </div>
 <div class="form-group mb-0">
     <h4>Form Monitoring</h4>
-    <form action="<?= base_url('pendamping/cetakmonitoring/'); ?>" method="post">
+    <form action="<?= base_url('pendamping/cetakmonitoring'); ?>" method="post">
         <div class="form-group">
             <select name="jurusan" id="jurusan2">
                 <option value="">Pilih Jurusan</option>
@@ -27,8 +27,9 @@
                 <?php endforeach; ?>
             </select>
         </div>
+        <button type="submit">CETAK FORM</button>
     </form>
-    <a href="<?= base_url('pendamping/cetakmonitoring/'); ?>"><button class="btn btn-info">CETAK LEMBAR MONITORING</button></a>
+
 </div>
 <div class="row">
     <div class="col-lg-5">

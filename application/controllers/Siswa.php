@@ -146,6 +146,7 @@ class Siswa extends CI_Controller
                 'telp_pejabat' => $this->input->post('telp_pejabat'),
                 'email_pejabat' => $this->input->post('email_pejabat'),
                 'no_sertifikat' => $this->input->post('no_sertifikat'),
+                'jurusan' => $this->input->post('jurusan'),
                 'verifikasi' => 'Telah Verifikasi'
             ];
             $this->db->where('nis', $this->input->post('nis'));

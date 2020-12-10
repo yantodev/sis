@@ -219,7 +219,8 @@ class Pendamping extends CI_Controller
         $data['title'] = 'Lembar Monitoring';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->db->get_where('master', ['email_pendamping' => $this->session->userdata('email')])->row_array();
-        $data['siswa'] = $this->db->get_where('master', ['email_pendamping' => $this->session->userdata('email')])->result_array();
+        $jurusan = $this->input->post('jurusan');
+        $data['siswa'] = $this->db->get_where('master', ['email_pendamping' => $this->session->userdata('email'), 'jurusan' => $jurusan])->result_array();
         $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('wrapper/header', $data);
