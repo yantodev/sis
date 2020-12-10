@@ -867,20 +867,24 @@ class Admin extends CI_Controller
     }
     public function listIduka()
     {
-        // Ambil data yang dikirim via ajax post
         $singkatan_jurusan = $this->input->get('jurusan');
-
         $iduka = $this->Home_model->Iduka($singkatan_jurusan);
-
-        // Buat variabel untuk menampung tag-tag option nya
-        // Set defaultnya dengan tag option Pilih
         $lists = "<option value=''>Pilih Iduka/Instansi</option>";
-
         foreach ($iduka as $data) {
             $lists .= "<option value='" . $data->iduka . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
         }
-
         $callback = array('list_iduka' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
+        echo json_encode($callback); // konversi varibael $callback menjadi JSON
+    }
+    public function listIduka2()
+    {
+        $singkatan_jurusan = $this->input->get('jurusan2');
+        $iduka = $this->Home_model->Iduka($singkatan_jurusan);
+        $lists = "<option value=''>Pilih Iduka/Instansi</option>";
+        foreach ($iduka as $data) {
+            $lists .= "<option value='" . $data->iduka . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
+        }
+        $callback = array('list_iduka2' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
     public function hpGuru()

@@ -68,7 +68,7 @@
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Jurusan</label>
                     <div class="col-sm-8">
-                        <select name="jurusan" id="jurusan">
+                        <select name="jurusan" id="jurusan2">
                             <option value="">Pilih Jurusan</option>
                             <?php foreach ($iduka as $d) : ?>
                                 <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>

@@ -72,7 +72,7 @@
              // Kita sembunyikan dulu untuk loadingnya
              $("#loading").hide();
 
-             $("#jurusan").change(function() { // Ketika user mengganti atau memilih data jurusan
+             $("#jurusan2").change(function() { // Ketika user mengganti atau memilih data jurusan
                  $("#nama_instansi").hide(); // Sembunyikan dulu combobox kota nya
                  $("#loading").show(); // Tampilkan loadingnya
 
@@ -80,7 +80,7 @@
                      type: "GET", // Method pengiriman data bisa dengan GET atau POST
                      url: "<?php echo base_url("admin/listIduka"); ?>", // Isi dengan url/path file php yang dituju
                      data: {
-                         jurusan: $("#jurusan").val()
+                         jurusan: $("#jurusan2").val()
                      }, // data yang akan dikirim ke file yang dituju
                      dataType: "json",
                      beforeSend: function(e) {
@@ -93,6 +93,41 @@
                          // set isi dari combobox kota
                          // lalu munculkan kembali combobox kotanya
                          $("#nama_instansi").html(response.list_iduka).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- get iduka2 by jurusan -->
+     <script>
+         $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+             // Kita sembunyikan dulu untuk loadingnya
+             $("#loading").hide();
+
+             $("#jurusan2").change(function() { // Ketika user mengganti atau memilih data jurusan
+                 $("#lokasi").hide(); // Sembunyikan dulu combobox kota nya
+                 $("#loading").show(); // Tampilkan loadingnya
+
+                 $.ajax({
+                     type: "GET", // Method pengiriman data bisa dengan GET atau POST
+                     url: "<?php echo base_url("admin/listIduka2"); ?>", // Isi dengan url/path file php yang dituju
+                     data: {
+                         jurusan2: $("#jurusan2").val()
+                     }, // data yang akan dikirim ke file yang dituju
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) { // Ketika proses pengiriman berhasil
+                         $("#loading").hide(); // Sembunyikan loadingnya
+                         // set isi dari combobox kota
+                         // lalu munculkan kembali combobox kotanya
+                         $("#lokasi").html(response.list_iduka2).show();
                      },
                      error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
                          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
