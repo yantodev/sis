@@ -38,14 +38,14 @@
         <?php $i = 1; ?>
         <?php foreach ($laporan as $l) : ?>
             <tr>
-                <td scope="row" <?= $i; ?>></td>
-                <td><?= $l['time']; ?></td>
+                <td scope="row"><?= $i; ?></td>
+                <td><?= format_indo(date($l['time'])); ?></td>
                 <td><?= $l['laporan1']; ?></td>
                 <td><?= $l['laporan2']; ?></td>
                 <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="50px" height="50px"></td>
                 <td><a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a></td>
             </tr>
+            <?php $i++; ?>
         <?php endforeach; ?>
-        <?php $i++; ?>
     </tbody>
 </table>

@@ -27,6 +27,12 @@ class Home_model extends CI_Model
         $result = $this->db->get('tbl_guru')->result();
         return $result;
     }
+    function emailPendamping($guru_pendamping)
+    {
+        $this->db->where('nama', $guru_pendamping);
+        $result = $this->db->get('tbl_guru')->result();
+        return $result;
+    }
 
     public function getSurat()
     {

@@ -79,7 +79,6 @@
                 <div class="form-group row">
                     <label for="nama_instansi" class="col-sm-4 col-form-label">Nama Instansi</label>
                     <div class="col-sm-8">
-                        <!-- <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" value="<?= $siswa['nama_instansi']; ?>"> -->
                         <select name="nama_instansi" id="nama_instansi">
                             <option value="<?= $siswa['nama_instansi']; ?>"><?= $siswa['nama_instansi']; ?></option>
                             <?php foreach ($data as $d) : ?>
@@ -89,6 +88,30 @@
                         <small>Jika nama instansi tidak ditemukan silahkan hubungi <a href="https://api.whatsapp.com/send?phone=6281328646069">admin (081328646069)</a></small>
                     </div>
                     <?= form_error('nama_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">Guru Pendamping</label>
+                    <select name="guru_pendamping" id="guru_pendamping">
+                        <option value="<?= $siswa['guru_pendamping']; ?>"><?= $siswa['guru_pendamping']; ?></option>
+                        <?php foreach ($guru as $g) : ?>
+                            <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">HP Pendamping</label>
+                    <select name="hp_pendamping" id="hp_pendamping">
+                        <option value="<?= $siswa['hp_pendamping']; ?>"><?= $siswa['hp_pendamping']; ?></option>
+                        <div id="loading" style="margin-top: 15px;">
+                            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+                        </div>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">Email Pendamping</label>
+                    <select name="email_pendamping" id="email_pendamping">
+                        <option value="<?= $siswa['email_pendamping']; ?>"><?= $siswa['email_pendamping']; ?></option>
+                    </select>
                 </div>
                 <div class="form-group row">
                     <label for="alamat_instansi" class="col-sm-4 col-form-label">Alamat Instansi</label>

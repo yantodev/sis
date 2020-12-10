@@ -55,6 +55,7 @@
                         <select name="nama_instansi" id="nama_instansi" style="width: 300px;">
                             <option value="<?= $siswa['nama_instansi']; ?>"><?= $siswa['nama_instansi']; ?></option>
                         </select>
+                        <select name="alamat_instansi" id="alamat-instansi"></select>
                         <div id="loading" style="margin-top: 15px;">
                             <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
                         </div>

@@ -11,7 +11,12 @@
             <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
         <?php endforeach; ?>
     </select>
-    <button type="submit" class="btn btn-primary mb-2">SAVE</button>
+    <select name="nama_instansi" id="nama_instansi">
+        <div id="loading" style="margin-top: 15px;">
+            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+        </div>
+    </select>
+    <button type="submit" class="btn btn-primary mb-2">LIHAT</button>
 </form>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -34,8 +39,6 @@
                             <th>NIS</th>
                             <th>Name</th>
                             <th>Lokasi PKL</th>
-                            <th>Guru Pendamping</th>
-                            <th>No. HP</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,32 +49,34 @@
                                 <td><?= $d['nis']; ?></td>
                                 <td><?= $d['name']; ?></td>
                                 <td><?= $d['nama_instansi']; ?></td>
-                                <td>
-                                    <input type="hidden" name="nis[]" id="nis" value="<?= $d['nis']; ?>">
-                                    <select name="guru_pendamping[]" id="guru_pendamping">
-                                        <option value="<?= $d['guru_pendamping']; ?>"><?= $d['guru_pendamping']; ?></option>
-                                        <?php foreach ($guru as $g) : ?>
-                                            <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="text" name="hp_pendamping[]" id="hp_pendamping" value="<?= $d['hp_pendamping']; ?>">
-                                    <!-- <select name="hp_pendamping[]" id="hp_pendamping">
-                                        <option value="<?= $d['hp_pendamping']; ?>"><?= $d['hp_pendamping']; ?></option>
-                                    </select>
-                                    <div id="loading" style="margin-top: 15px;">
-                                        <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
-                                    </div>
-                                    </select> -->
-                                </td>
+                                <input type="hidden" name="nis[]" id="nis" value="<?= $d['nis']; ?>">
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary mb-2">SAVE</button>
+                <div class="form-group">
+                    <select name="guru_pendamping[]" id="guru_pendamping">
+                        <option value="<?= $d['guru_pendamping']; ?>"><?= $d['guru_pendamping']; ?></option>
+                        <?php foreach ($guru as $g) : ?>
+                            <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="hp_pendamping[]" id="hp_pendamping">
+                        <option value="<?= $d['hp_pendamping']; ?>"><?= $d['hp_pendamping']; ?></option>
+                        <div id="loading" style="margin-top: 15px;">
+                            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+                        </div>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="email_pendamping[]" id="email_pendamping">
+                        <option value="<?= $d['email_pendamping']; ?>"><?= $d['email_pendamping']; ?></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">SIMPAN</button>
         </form>
     </div>
-</div>
 </div>

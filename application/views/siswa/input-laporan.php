@@ -52,6 +52,7 @@
     <input type="hidden" name="nis" id="nis" value="<?= $user['nis']; ?>">
     <input type="hidden" name="name" id="name" value="<?= $user['name']; ?>">
     <input type="hidden" name="tp" id="tp" value="<?= $data['tp']; ?>">
+    <input type="hidden" name="kelas" id="kelas" value="<?= $data['kelas']; ?>">
     <input type="hidden" name="guru_pendamping" id="guru_pendamping" value="<?= $data['guru_pendamping']; ?>">
     <div class="mt-3">
         <button type="submit" class="btn btn-primary">SIMPAN</button>

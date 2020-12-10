@@ -42,9 +42,8 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Daftar Menu</h6>
-                        <a class="collapse-item" href="<?= base_url('pendamping/data/') . $user['nis']; ?>">Data pendamping</a>
-                        <a class="collapse-item" href="<?= base_url('pendamping/idcard/') . $user['nis']; ?>">IDCARD pendamping</a>
-                        <a class="collapse-item" href="#">Cetak Sertifikat</a>
+                        <a class="collapse-item" href="<?= base_url('pendamping/data/') . $user['nis']; ?>">Surat Tugas</a>
+                        <a class="collapse-item" href="<?= base_url('pendamping/monitoring'); ?>">Lembar Monitoring</a>
                     </div>
                 </div>
             </li>

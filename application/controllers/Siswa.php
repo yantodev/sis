@@ -118,6 +118,7 @@ class Siswa extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['kelas'] = $this->Admin_model->getKelas();
         $data['iduka'] = $this->db->get_where('tbl_jurusan')->result_array();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
         $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
         if ($this->form_validation->run() == false) {
@@ -132,6 +133,9 @@ class Siswa extends CI_Controller
                 'jk' => $this->input->post('jk'),
                 'kelas' => $this->input->post('kelas'),
                 'jurusan' => $this->input->post('jurusan'),
+                'guru_pendamping' => $this->input->post('guru_pendamping'),
+                'hp_pendamping' => $this->input->post('hp_pendamping'),
+                'email_pendamping' => $this->input->post('email_pendamping'),
                 'nama_instansi' => $this->input->post('nama_instansi'),
                 'alamat_instansi' => $this->input->post('alamat_instansi'),
                 'email_website_instansi' => $this->input->post('email_website_instansi'),
@@ -221,7 +225,8 @@ class Siswa extends CI_Controller
                 'laporan2' => $this->input->post('laporan1'),
                 'jurusan' => $this->input->post('jurusan'),
                 'guru_pendamping' => $this->input->post('guru_pendamping'),
-                'tp' => $this->input->post('tp')
+                'tp' => $this->input->post('tp'),
+                'kelas' => $this->input->post('kelas')
             ];
 
             $this->db->insert('tbl_laporan', $data);

@@ -894,6 +894,17 @@ class Admin extends CI_Controller
         $callback = array('list_hp' => $lists);
         echo json_encode($callback);
     }
+    public function emailGuru()
+    {
+        $guru_pendamping = $this->input->get('guru_pendamping');
+        $iduka = $this->Home_model->hpPendamping($guru_pendamping);
+
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->email . "'>" . $data->email . "</option>";
+        }
+        $callback = array('list_email' => $lists);
+        echo json_encode($callback);
+    }
 
     public function suratPKL($id)
     {
@@ -981,9 +992,10 @@ class Admin extends CI_Controller
         $this->load->model('Menu_model', 'menu');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
+        $iduka = $this->input->get('nama_instansi');
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan,])->result_array();
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
         $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
 
         $this->form_validation->set_rules('nis[]', 'NIS', 'required');
@@ -995,24 +1007,19 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $nis = $this->input->post('nis');
+            $guru = $this->input->post('guru_pendamping');
+            $hp = $this->input->post('hp_pendamping');
+            $email = $this->input->post('email_pendamping');
             $result = array();
             foreach ($nis as $key => $val) {
                 $result[] = array(
-                    "nis" => $nis[$key],
-                    "guru_pendamping"  => $_POST['guru_pendamping'][$key],
-                    "hp_pendamping"  => $_POST['hp_pendamping'][$key],
+                    'nis' => $nis[$key],
+                    'guru_pendamping'  => $guru[$key],
+                    'hp_pendamping'  => $hp[$key],
+                    'email_pendamping'  => $email[$key]
                 );
             }
             $this->db->update_batch('master', $result, 'nis');
-
-            // $result2 = array();
-            // foreach ($_POST['guru_pendamping'] as $key => $val) {
-            //     $result[] = array(
-            //         'nama_guru' => $_POST['guru_pendamping'][$key],
-
-            //     );
-            // }
-            // $this->db->insert_batch('tbl_surat_tugas', $result2);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
             redirect('admin/guru');
         }

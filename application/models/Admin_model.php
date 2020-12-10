@@ -49,6 +49,7 @@ class Admin_model extends CI_Model
         $this->db->order_by('iduka', 'ASC');
         return $this->db->get_where('tbl_iduka', ['jurusan' => $jurusan,])->result_array();
     }
+
     public function getKajur($kajur)
     {
         return $this->db->get_where('tbl_kajur', ['jurusan' => $kajur])->result_array();

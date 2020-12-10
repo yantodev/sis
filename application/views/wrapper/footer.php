@@ -205,6 +205,41 @@
              });
          });
      </script>
+     <!-- list email guru -->
+     <script>
+         $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+             // Kita sembunyikan dulu untuk loadingnya
+             $("#loading").hide();
+
+             $("#guru_pendamping").change(function() { // Ketika user mengganti atau memilih data iduka
+                 $("#email_pendamping").hide(); // Sembunyikan dulu combobox kota nya
+                 $("#loading").show(); // Tampilkan loadingnya
+
+                 $.ajax({
+                     type: "GET", // Method pengiriman data bisa dengan GET atau POST
+                     url: "<?php echo base_url("Admin/emailGuru"); ?>", // Isi dengan url/path file php yang dituju
+                     data: {
+                         guru_pendamping: $("#guru_pendamping").val()
+                     }, // data yang akan dikirim ke file yang dituju
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) { // Ketika proses pengiriman berhasil
+                         $("#loading").hide(); // Sembunyikan loadingnya
+                         // set isi dari combobox kota
+                         // lalu munculkan kembali combobox kotanya
+                         $("#email_pendamping").html(response.list_email).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
 
      <script type="text/javascript" src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
      <script>
@@ -242,18 +277,6 @@
          CKEDITOR.disableautoInline = true;
          CKEDITOR.Inline('editable');
      </script>
-     <!-- <script>
-         $(document).ready(function() {
-             $(document).on('click', '#guru', function() {
-                 var nama = $(this).data('nama');
-                 var nbm = $(this).data('nbm');
-                 var lokasi = $(this).data('lokasi');
-                 $('#nama').val(nama);
-                 $('#nbm').val(nbm);
-                 $('#lokasi').val(lokasi);
-             })
-         })
-     </script> -->
      </body>
 
      </html>
