@@ -7,7 +7,7 @@
             <option value="<?= $tp['tp']; ?>"><?= $tp['tp']; ?></option>
         <?php endforeach; ?>
     </select>
-    <select name="jurusan" id="jurusan">
+    <select name="jurusan" id="jurusan2">
         <option value="">Pilih Jurusan</option>
         <?php foreach ($jurusan as $j) : ?>
             <option value="<?= $j['jurusan']; ?>"><?= $j['jurusan']; ?></option>

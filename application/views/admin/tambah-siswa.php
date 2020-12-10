@@ -5,7 +5,7 @@
             <option value="<?= $d['tp']; ?>"><?= $d['tp']; ?></option>
         <?php endforeach; ?>
     </select>
-    <select name="jurusan" id="jurusan">
+    <select name="jurusan" id="jurusan2">
         <option value="">Silahkan Pilih Jurusan</option>
         <?php foreach ($jurusan as $d) : ?>
             <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
