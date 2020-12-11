@@ -22,7 +22,7 @@
         <thead class="thead-inverse">
             <tr>
                 <th>#</th>
-                <th>Tanggal</th>
+                <th width="150px">Tanggal</th>
                 <th>Nama</th>
                 <th>Jurusan</th>
                 <th>Iduka</th>
@@ -34,7 +34,7 @@
             <?php foreach ($data as $d) : ?>
                 <tr>
                     <td scope="row"><?= $i; ?></td>
-                    <td><?= format_indo(date($d['time'])); ?></td>
+                    <td><?= tanggal(date($d['time'])); ?></td>
                     <td><?= $d['nama']; ?></td>
                     <td><?= $d['jurusan']; ?></td>
                     <td><?= $d['lokasi']; ?></td>

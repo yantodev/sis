@@ -249,6 +249,11 @@ class Admin_model extends CI_Model
         $this->db->order_by('pengumuman', 'ASC');
         return $this->db->get_where('tbl_pengumuman')->result_array();
     }
+    public function getGuru()
+    {
+        $this->db->order_by('nama', 'ASC');
+        return $this->db->get_where('tbl_guru')->result_array();
+    }
 
     public function surat($id)
     {

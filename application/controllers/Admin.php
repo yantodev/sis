@@ -1082,7 +1082,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Monitoring';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $data['guru'] = $this->Admin_model->getGuru();
         $guru = $this->input->get('guru');
         $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
         $this->load->view('wrapper/header', $data);
