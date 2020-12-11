@@ -8,7 +8,7 @@
     <thead>
         <tr>
             <td>Nama Iduka</td>
-            <td>: <?= $data['nama_instansi']; ?></td>
+            <td>: <?= $data2['iduka']; ?></td>
         </tr>
         <tr>
             <td>Hari, Tanggal</td>
