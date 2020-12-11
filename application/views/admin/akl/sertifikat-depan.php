@@ -1,3 +1,52 @@
+<style type="text/css">
+    div .container {
+        /* max-width: 33 cm;
+        max-height: 21.5 cm; */
+        background-image: url('assets/img/pi-2020.png');
+    }
+
+    body {
+        font-family: Arial;
+    }
+
+    h1 {
+        font-family: times;
+        color: black;
+        font-size: 46px;
+    }
+
+    h2 {
+        font-family: Georgia;
+        color: black;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-family: serif;
+        color: black;
+        font-size: 36px;
+    }
+
+    h4 {
+        font-family: serif;
+        color: black;
+    }
+
+    h5 {
+        font-family: snell;
+        color: black;
+    }
+
+    p {
+        text-align: center;
+        color: black;
+        font-size: 18px;
+    }
+
+    table {
+        color: black;
+    }
+</style>
 <div class="container">
     <!-- Content here -->
     <table border="" align="center">
@@ -5,7 +54,7 @@
             <th>
                 <tr>
                     <td align="center" width="100%" colspan="3">
-                        <h1><?= $siswa['nama_instansi']; ?></h1>
+                        <h3><?= $siswa['nama_instansi']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -52,7 +101,7 @@
                 <tr>
                     <td align="center" height="80px" colspan="3">
                         <font size="6" face="times">
-                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan terhitung mulai tanggal <?= $siswa['mulai_pkl']; ?> sampai dengan <?= $siswa['selesai_pkl']; ?> di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
+                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $siswa['mulai_pkl']; ?> sampai dengan <?= $siswa['selesai_pkl']; ?> <br />di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
                         </font>
                     </td>
                 </tr>
@@ -62,7 +111,7 @@
     <table align="center"> -->
         <thead>
             <tr>
-                <td align="center" valign="bottom" height="100px">
+                <td align="center" valign="bottom" height="130px">
                     <p>Mengetahui,</p>
                 </td>
                 <td></td>

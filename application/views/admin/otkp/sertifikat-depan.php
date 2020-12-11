@@ -1,4 +1,4 @@
-<!-- <style type="text/css">
+<style type="text/css">
     div .container {
         /* max-width: 33 cm;
         max-height: 21.5 cm; */
@@ -30,7 +30,6 @@
     h4 {
         font-family: serif;
         color: black;
-        font-size: 18px;
     }
 
     h5 {
@@ -47,7 +46,7 @@
     table {
         color: black;
     }
-</style> -->
+</style>
 <div class="container">
     <!-- Content here -->
     <table border="" align="center">
@@ -55,7 +54,7 @@
             <th>
                 <tr>
                     <td align="center" width="100%" colspan="3">
-                        <h1><?= $siswa['nama_instansi']; ?></h1>
+                        <h3><?= $siswa['nama_instansi']; ?></h3>
                     </td>
                 </tr>
                 <tr>
@@ -102,7 +101,7 @@
                 <tr>
                     <td align="center" height="80px" colspan="3">
                         <font size="6" face="times">
-                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan terhitung mulai tanggal <?= $siswa['mulai_pkl']; ?> sampai dengan <?= $siswa['selesai_pkl']; ?> di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
+                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $siswa['mulai_pkl']; ?> sampai dengan <?= $siswa['selesai_pkl']; ?> <br />di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
                         </font>
                     </td>
                 </tr>
@@ -112,7 +111,7 @@
     <table align="center"> -->
         <thead>
             <tr>
-                <td align="center" valign="bottom" height="100px">
+                <td align="center" valign="bottom" height="130px">
                     <p>Mengetahui,</p>
                 </td>
                 <td></td>

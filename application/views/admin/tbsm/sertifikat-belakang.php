@@ -20,10 +20,10 @@
             </tr>
             <tr>
                 <td>
-                    <h3>Jurusan</h3>
+                    <h3>Kompetensi Keahlian</h3>
                 </td>
                 <td>
-                    <h3>: Tekni Bisnis Sepeda Motor</h3>
+                    <h3>: Teknik Kendaraan Ringan Otomotif</h3>
                 </td>
             </tr>
             <tr>
@@ -114,7 +114,7 @@
                     <h5>1</h5>
                 </td>
                 <td>
-                    <h5>Merawat dan Memperbaiki kerusakan Engine</h5>
+                    <h5>Memperbaiki Kerusakan Sistem Kelistrikan</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_5']; ?></h5>
@@ -125,7 +125,7 @@
                     <h5>2</h5>
                 </td>
                 <td>
-                    <h5>Memperbaiki kerusakan sistem kelistrikan</h5>
+                    <h5>Memperbaiki Kerusakan Sistem Kelistrikan</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_6']; ?></h5>
@@ -136,7 +136,7 @@
                     <h5>3</h5>
                 </td>
                 <td>
-                    <h5>Memperbaiki kerusakan chasis</h5>
+                    <h5>Memperbaiki Kerusakan Chasis</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_7']; ?></h5>
@@ -147,7 +147,7 @@
                     <h5>4</h5>
                 </td>
                 <td>
-                    <h5>Melaksanakan K3</h5>
+                    <h5>Melakukan Pekerjaan Bodi Otomotif</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_8']; ?></h5>
@@ -158,7 +158,7 @@
                     <h5>5</h5>
                 </td>
                 <td>
-                    <h5>Kebersihan</h5>
+                    <h5>Tugas lain yang relevan</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_9']; ?></h5>

@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <h3>Jurusan</h3>
+                    <h3>Kompetensi Keahlian</h3>
                 </td>
                 <td>
                     <h3>: Teknik Kendaraan Ringan Otomotif</h3>

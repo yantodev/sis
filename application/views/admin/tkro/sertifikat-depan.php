@@ -101,7 +101,7 @@
                 <tr>
                     <td align="center" height="80px" colspan="3">
                         <font size="6" face="times">
-                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan terhitung mulai tanggal <?= $siswa['mulai_pkl']; ?> sampai dengan <?= $siswa['selesai_pkl']; ?> di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
+                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $siswa['mulai_pkl']; ?> sampai dengan <?= $siswa['selesai_pkl']; ?> <br />di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
                         </font>
                     </td>
                 </tr>

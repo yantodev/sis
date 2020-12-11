@@ -20,10 +20,10 @@
             </tr>
             <tr>
                 <td>
-                    <h3>Jurusan</h3>
+                    <h3>Kompetensi Keahlian</h3>
                 </td>
                 <td>
-                    <h3>: Otomatisasi dan Tata Kelola Perkantoran</h3>
+                    <h3>: Teknik Kendaraan Ringan Otomotif</h3>
                 </td>
             </tr>
             <tr>
@@ -114,7 +114,7 @@
                     <h5>1</h5>
                 </td>
                 <td>
-                    <h5>Pengetikan Komputer</h5>
+                    <h5>Memperbaiki Kerusakan Sistem Kelistrikan</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_5']; ?></h5>
@@ -125,7 +125,7 @@
                     <h5>2</h5>
                 </td>
                 <td>
-                    <h5>Persuratan / surat menyurat</h5>
+                    <h5>Memperbaiki Kerusakan Sistem Kelistrikan</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_6']; ?></h5>
@@ -136,7 +136,7 @@
                     <h5>3</h5>
                 </td>
                 <td>
-                    <h5>Kearsipan</h5>
+                    <h5>Memperbaiki Kerusakan Chasis</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_7']; ?></h5>
@@ -147,7 +147,7 @@
                     <h5>4</h5>
                 </td>
                 <td>
-                    <h5>Kesekretariatan</h5>
+                    <h5>Melakukan Pekerjaan Bodi Otomotif</h5>
                 </td>
                 <td align="center">
                     <h5><?= $siswa['nilai_8']; ?></h5>
