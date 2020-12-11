@@ -11,6 +11,10 @@
             <td>: <?= $data2['iduka']; ?></td>
         </tr>
         <tr>
+            <td>Alamat Iduka</td>
+            <td>: <?= $data2['alamat']; ?></td>
+        </tr>
+        <tr>
             <td>Hari, Tanggal</td>
             <td>: ....................................................</td>
         </tr>

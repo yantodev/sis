@@ -1077,4 +1077,18 @@ class Admin extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output('CETAK ID CARD.pdf', \Mpdf\Output\Destination::INLINE);
     }
+
+    public function monitoring()
+    {
+        $data['title'] = 'Monitoring';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $guru = $this->input->get('guru');
+        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/monitoring', $data);
+        $this->load->view('wrapper/footer');
+    }
 }
