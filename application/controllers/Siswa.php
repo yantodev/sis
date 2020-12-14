@@ -158,7 +158,7 @@ class Siswa extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['kelas'] = $this->Admin_model->getKelas();
         $data['iduka'] = $this->db->get_where('tbl_jurusan')->result_array();
-        $data['guru'] = $this->Admin_model->Guru()->result_array();
+        $data['guru'] = $this->Admin_model->Guru();
         $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
         if ($this->form_validation->run() == false) {
