@@ -3,12 +3,14 @@ $tkro = ($siswa->tkro / $datatkro['jumlah']) * 100;
 $tbsm = ($siswa->tbsm / $datatbsm['jumlah']) * 100;
 $akl = ($siswa->akl / $dataakl['jumlah']) * 100;
 $otkp = ($siswa->otkp / $dataotkp['jumlah']) * 100;
-$bdp = ($siswa->bdp / $databdp['jumlah']) * 100
+$bdp = ($siswa->bdp / $databdp['jumlah']) * 100;
+
+$jumlah = $datatkro['jumlah'] + $datatbsm['jumlah'] + $dataakl['jumlah'] + $dataotkp['jumlah'] + $databdp['jumlah']
 ?>
 
 <p>Selamat datang <?= $user['name']; ?></p>
 
-<p>Jumlah Siswa Tahun Pelajaran 2020/2021 : <?= $siswa->tp; ?> Siswa</p>
+<p>Jumlah Siswa Tahun Pelajaran 2020/2021 : <?= $siswa->tp; ?> dari <?= $jumlah; ?> Siswa</p>
 
 <div class="form-group col-6">
      <label for="">Teknik Kendaraan Ringan (<?= $tkro; ?>%)</label>
