@@ -240,7 +240,7 @@ class Siswa extends CI_Controller
             $upload_image = $_FILES['foto']['name'];
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size']     = '2048';
+                $config['max_size']     = '5012';
                 $config['upload_path']  = './assets/img/gambar';
 
                 $this->load->library('upload', $config);
@@ -282,11 +282,49 @@ class Siswa extends CI_Controller
         $data['title'] = 'Edit Laporan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->db->get_where('tbl_laporan', ['id' => $id])->row_array();
+        $data['jurusan'] = $this->Admin_model->getJurusan();
 
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('layout/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
-        $this->load->view('siswa/edit-laporan', $data);
-        $this->load->view('wrapper/footer');
+        $this->form_validation->set_rules('laporan1', 'Ini', 'required|trim');
+        $this->form_validation->set_rules('laporan2', 'Ini', 'required|trim');
+        $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('layout/sidebar', $data);
+            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('siswa/edit-laporan', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '2048';
+            $config['upload_path']  = './assets/img/gambar';
+
+            $this->load->library('upload', $config);
+            if ($_FILES['foto']['name'] != null) {
+                if ($this->upload->do_upload('foto')) {
+                    $laporan1 = $this->input->post('laporan1');
+                    $laporan2 = $this->input->post('laporan2');
+                    $foto = $this->upload->data('file_name');
+                    $data = array(
+                        'laporan1' => $laporan1,
+                        'laporan2' => $laporan2,
+                        'foto' => $foto
+                    );
+                    //update
+                    $this->db->where('id', $id);
+                    $this->db->update('tbl_laporan', $data);
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Your profile has ben updated!</div>');
+                    redirect('siswa');
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->load->view('wrapper/header', $data);
+                    $this->load->view('pendamping/sidebar', $data);
+                    $this->load->view('wrapper/topbar', $data);
+                    $this->load->view('siswa/laporan', $error);
+                    $this->load->view('wrapper/footer');
+                }
+            }
+        }
     }
 }

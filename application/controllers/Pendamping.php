@@ -171,10 +171,11 @@ class Pendamping extends CI_Controller
             $this->load->view('pendamping/monitoring', $data);
             $this->load->view('wrapper/footer');
         } else {
+            $nama = $this->input->post('nama');
             $config['allowed_types'] = 'jpeg|jpg|png|pdf';
             $config['max_size']     = '5120';
             $config['upload_path']  = './assets/img/monitoring';
-            $config['file_name']  = 'laporan-' . date('Y-m-d');
+            // $config['file_name']  = 'laporan-' . date('Y-m-d');
 
             $this->load->library('upload', $config);
             if ($_FILES['foto']['name'] != null) {
