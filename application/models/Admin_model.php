@@ -3,6 +3,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_model extends CI_Model
 {
+    public function CountSiswa()
+    {
+        $sql = "SELECT  count(if(tp='2020/2021', tp, NULL)) as tp,
+                        sum(if(tp='2020/2021', tp, NULL)) as jumlah,
+                        count(if(jurusan='Teknik Kendaraan Ringan Otomotif' and tp='2020/2021' , jurusan, NULL)) as tkro, 
+                        count(if(jurusan='Teknik Bisnis Sepeda Motor' and tp='2020/2021' , jurusan, NULL)) as tbsm,
+                        count(if(jurusan='Akuntansi dan Keuangan Lembaga' and tp='2020/2021' , jurusan, NULL)) as akl ,
+                        count(if(jurusan='Otomatisasi dan Tata Kelola Perkantoran' and tp='2020/2021' , jurusan, NULL)) as otkp, 
+                        count(if(jurusan='Bisnis Daring dan Pemasaran' and tp='2020/2021' , jurusan, NULL)) as bdp 
+                FROM master";
+        $result = $this->db->query($sql);
+        return $result->row();
+    }
+    public function Count()
+    {
+        $sql = "SELECT sum(if(jurusan='Teknik Kendaraan Ringan Otomotif', jurusan, NULL)) as jumlah,
+                FROM tbl_jumlah_siswa";
+        $result = $this->db->query($sql);
+        return $result->row();
+    }
+
     public function siswa($nis)
     {
         return $this->db->get_where('master', ['nis' => $nis])->result_array();

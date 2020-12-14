@@ -18,6 +18,13 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['datatkro'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif'])->row_array();
+        $data['datatbsm'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Bisnis Sepeda Motor'])->row_array();
+        $data['dataakl'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Akuntansi dan Keuangan Lembaga'])->row_array();
+        $data['dataotkp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran'])->row_array();
+        $data['databdp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Bisnis Daring dan Pemasaran'])->row_array();
+        $data['siswa'] = $this->Admin_model->countSiswa();
+        // $data['jumlah'] = $this->Admin_model->count();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);

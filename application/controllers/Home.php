@@ -145,8 +145,10 @@ class Home extends CI_Controller
         $data['tp'] =  $this->Admin_model->getTP();
         $data['pernyataan'] = $this->Home_model->getSurat();
         $guru = $this->input->get('guru');
+        $tp = $this->input->get('tp');
         $data['guru'] = $this->Home_model->getTugas($guru);
         $data['instansi'] = $this->Home_model->getTugas2($guru);
+        $data['data'] = $this->db->get_where('master', ['guru_pendamping' => $guru, 'tp' => $tp])->result_array();
 
         $this->load->view('home/cetak-tugas', $data);
 

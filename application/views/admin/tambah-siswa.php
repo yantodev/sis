@@ -49,6 +49,27 @@
                                 <td><?= $d['nis']; ?></td>
                                 <td><?= $d['name']; ?></td>
                                 <td><?= $d['nama_instansi']; ?></td>
+                                <!-- <td>
+                                    <select name="guru_pendamping[]" id="guru_pendamping">
+                                        <option value="<?= $d['guru_pendamping']; ?>"><?= $d['guru_pendamping']; ?></option>
+                                        <?php foreach ($guru as $g) : ?>
+                                            <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <td>
+                                    <select name="hp_pendamping[]" id="hp_pendamping">
+                                        <option value="<?= $d['hp_pendamping']; ?>"><?= $d['hp_pendamping']; ?></option>
+                                        <div id="loading" style="margin-top: 15px;">
+                                            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+                                        </div>
+                                    </select>
+                                <td>
+                                    <select name="email_pendamping[]" id="email_pendamping">
+                                        <option value="<?= $d['email_pendamping']; ?>"><?= $d['email_pendamping']; ?></option>
+                                    </select>
+                                </td> -->
+                                </td>
+                                </td>
                                 <input type="hidden" name="nis[]" id="nis" value="<?= $d['nis']; ?>">
                             </tr>
                             <?php $i++; ?>
