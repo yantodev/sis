@@ -1,19 +1,15 @@
-<table class="table table-striped table-inverse table-responsive">
-    <thead class="thead-inverse">
-        <tr>
-            <th>#</th>
-            <th>Nama</th>
-            <th>Jurusan</th>
-            <th>Lokasi PKL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($siswa as $s) : ?>
-            <tr>
-                <td scope="row">1</td>
-                <td><?= $s['name']; ?></td>
-                <td><?= $s['jurusan']; ?></td>
-            </tr>
+<form action="<?= base_url('admin/cetaksiswa'); ?>">
+    <select name="tp" id="tp">
+        <option value="">Pilih Tahun Pelajaran</option>
+        <?php foreach ($tp as $d) : ?>
+            <option value="<?= $d['tp']; ?>"><?= $d['tp']; ?></option>
         <?php endforeach; ?>
-    </tbody>
-</table>
+    </select>
+    <select name="jurusan" id="jurusan">
+        <option value="">Silahkan Pilih Jurusan</option>
+        <?php foreach ($jurusan as $d) : ?>
+            <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit" class="btn btn-primary mb-2">SAVE</button>
+</form>

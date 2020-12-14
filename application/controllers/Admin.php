@@ -36,12 +36,39 @@ class Admin extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Daftar Siswa';
-        $data['siswa'] = $this->db->get_where('master', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif', 'tp' => '2020/2021'])->result_array();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Admin_model->getJurusan();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
         $this->load->view('admin/siswa', $data);
         $this->load->view('wrapper/footer');
+    }
+    public function CetakSiswa()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Rekap Siswa';
+        $jurusan = $this->input->get('jurusan');
+        $tp = $this->input->get('tp');
+        $data['siswa'] = $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/cetak-siswa', $data);
+        $this->load->view('wrapper/footer');
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'Folio',
+                'orientation' => 'P',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $html = $this->load->view('admin/cetak-siswa', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Rekap Siswa.pdf', \Mpdf\Output\Destination::INLINE);
     }
     public function profile()
     {
