@@ -8,11 +8,12 @@ $bdp = ($siswa->bdp / $databdp['jumlah']) * 100;
 $jumlah = $datatkro['jumlah'] + $datatbsm['jumlah'] + $dataakl['jumlah'] + $dataotkp['jumlah'] + $databdp['jumlah'];
 
 $jml = ($siswa->tp / $jumlah) * 100;
+$rekap = $siswa->tkro + $siswa->tbsm + $siswa->akl + $siswa->otkp + $siswa->bdp;
 ?>
 
 <p>Selamat datang <?= $user['name']; ?></p>
 
-<p>Jumlah Siswa Tahun Pelajaran 2020/2021 : <?= $siswa->tp; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml, 2); ?>%)</p>
+<p>Jumlah Siswa Tahun Pelajaran 2020/2021 : <?= $rekap; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml, 2); ?>%)</p>
 
 <div class="form-group col-6">
      <label for="">Teknik Kendaraan Ringan (<?= number_format($tkro, 2); ?>%)</label>
