@@ -7,8 +7,8 @@ $bdp = ($siswa->bdp / $databdp['jumlah']) * 100;
 
 $jumlah = $datatkro['jumlah'] + $datatbsm['jumlah'] + $dataakl['jumlah'] + $dataotkp['jumlah'] + $databdp['jumlah'];
 
-$jml = ($siswa->tp / $jumlah) * 100;
 $rekap = $siswa->tkro + $siswa->tbsm + $siswa->akl + $siswa->otkp + $siswa->bdp;
+$jml = ($rekap / $jumlah) * 100;
 ?>
 
 <p>Selamat datang <?= $user['name']; ?></p>
