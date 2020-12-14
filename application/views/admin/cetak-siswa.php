@@ -4,6 +4,7 @@
     <thead class="thead-inverse">
         <tr>
             <th>No.</th>
+            <th>NIS</th>
             <th>Nama</th>
             <th>Kelas</th>
             <th>Jurusan</th>
@@ -15,6 +16,7 @@
         <?php foreach ($siswa as $s) : ?>
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
+                <td><?= $s['nis']; ?></td>
                 <td><?= $s['name']; ?></td>
                 <td><?= $s['kelas']; ?></td>
                 <td><?= $s['jurusan']; ?></td>

@@ -50,7 +50,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Rekap Siswa';
         $jurusan = $this->input->get('jurusan');
         $tp = $this->input->get('tp');
-        $data['siswa'] = $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
+        $data['siswa'] = $this->Admin_model->getSiswa($jurusan, $tp);
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
