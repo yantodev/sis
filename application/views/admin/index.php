@@ -15,7 +15,7 @@ $rekap = $siswa->tkro + $siswa->tbsm + $siswa->akl + $siswa->otkp + $siswa->bdp;
 
 <p>Jumlah Siswa Tahun Pelajaran 2020/2021 : <?= $rekap; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml, 2); ?>%)</p>
 
-<p>Rekap Siswa pada : <?php echo format_indo(date('Y-m-d H:i:s')); ?></p>
+<p>Rekap Siswa pada : <?php echo format_indo(date('Y-m-d')); ?></p>
 <div class="form-group col-6">
      <label for="">Teknik Kendaraan Ringan (<?= number_format($tkro, 2); ?>%)</label>
      <div class="progress">
