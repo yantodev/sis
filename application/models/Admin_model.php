@@ -46,6 +46,7 @@ class Admin_model extends CI_Model
     }
     public function Guru()
     {
+        $this->db->order_by('nama', 'ASC');
         return $this->db->get_where('tbl_guru')->result_array();
     }
     public function getGuruby($id)
