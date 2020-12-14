@@ -11,6 +11,7 @@ $jumlah = $datatkro['jumlah'] + $datatbsm['jumlah'] + $dataakl['jumlah'] + $data
 <p>Selamat datang <?= $user['name']; ?></p>
 
 <p>Jumlah Siswa Tahun Pelajaran 2020/2021 : <?= $siswa->tp; ?> dari <?= $jumlah; ?> Siswa</p>
+<p><a href="<?= base_url('admin/data'); ?>"><button class="btn btn-facebook">Detail Siswa</button></a></p>
 
 <div class="form-group col-6">
      <label for="">Teknik Kendaraan Ringan (<?= $tkro; ?>%)</label>

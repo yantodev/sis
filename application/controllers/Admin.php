@@ -32,6 +32,17 @@ class Admin extends CI_Controller
         $this->load->view('wrapper/footer');
     }
 
+    public function Siswa()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Daftar Siswa';
+        $data['siswa'] = $this->db->get_where('master', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif', 'tp' => '2020/2021'])->result_array();
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/siswa', $data);
+        $this->load->view('wrapper/footer');
+    }
     public function profile()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
