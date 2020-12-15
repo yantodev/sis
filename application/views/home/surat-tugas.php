@@ -13,7 +13,7 @@
             <select name="guru" id="guru">
                 <option value="">Pilih Nama Guru</option>
                 <?php foreach ($guru as $d) : ?>
-                    <option value="<?= $d['nama']; ?>"><?= $d['nama']; ?></option>
+                    <option value="<?= $d['email']; ?>"><?= $d['nama']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

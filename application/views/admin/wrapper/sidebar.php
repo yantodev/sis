@@ -56,7 +56,7 @@
                         <a class="collapse-item" href="<?= base_url('admin/iduka'); ?>">Data Iduka</a>
                         <a class="collapse-item" href="<?= base_url('admin/guru'); ?>">Data Guru</a>
                         <a class="collapse-item" href="<?= base_url('admin/suratpkl/1'); ?>">Surat Permohonan</a>
-                        <a class="collapse-item" href="#">Surat Tugas</a>
+                        <a class="collapse-item" href="<?= base_url('admin/surattugas'); ?>">Surat Tugas</a>
                         <a class="collapse-item" href="<?= base_url('admin/monitoring'); ?>">Monitoring</a>
                         <a class="collapse-item" href="<?= base_url('admin/pengumuman'); ?>">Pengumuman</a>
                     </div>

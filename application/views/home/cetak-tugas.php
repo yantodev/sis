@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <td>Jabatan</td>
-            <td>: <?= $guru['nbm']; ?></td>
+            <td>: Guru</td>
         </tr>
     </tbody>
 </table>
@@ -37,8 +37,8 @@
         <?php foreach ($data as $d) : ?>
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
-                <td><?= $d['nama_instansi']; ?></td>
-                <td><?= $d['alamat_instansi']; ?></td>
+                <td><?= $d['iduka']; ?></td>
+                <td><?= $d['alamat']; ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>

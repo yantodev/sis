@@ -46,17 +46,19 @@
                         <?php foreach ($data as $d) : ?>
                             <tr>
                                 <td><?= $i; ?></td>
-                                <td><?= $d['nis']; ?></td>
-                                <td><?= $d['name']; ?></td>
-                                <td><?= $d['nama_instansi']; ?></td>
-                                <!-- <td>
+                                <td><input type="text" name="nis[]" id="nis" value="<?= $d['nis']; ?>" readonly></td>
+                                <td><input type="text" name="name[]" id="name" value="<?= $d['name']; ?>" readonly></td>
+                                <td><input type="text" name="nama_instansi[]" id="nama_instansi" value="<?= $d['nama_instansi']; ?>" readonly></td>
+                                <td><input type="text" name="alamat_instansi[]" id="alamat_instansi" value="<?= $d['alamat_instansi']; ?>" readonly></td>
+                                <td>
                                     <select name="guru_pendamping[]" id="guru_pendamping">
-                                        <option value="<?= $d['guru_pendamping']; ?>"><?= $d['guru_pendamping']; ?></option>
+                                        <option value="<?= $d['email_pendamping']; ?>"><?= $d['guru_pendamping']; ?></option>
                                         <?php foreach ($guru as $g) : ?>
-                                            <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
+                                            <option value="<?= $g['email']; ?>"><?= $g['nama']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                <td>
+                                </td>
+                                <!-- <td>
                                     <select name="hp_pendamping[]" id="hp_pendamping">
                                         <option value="<?= $d['hp_pendamping']; ?>"><?= $d['hp_pendamping']; ?></option>
                                         <div id="loading" style="margin-top: 15px;">
@@ -67,16 +69,14 @@
                                     <select name="email_pendamping[]" id="email_pendamping">
                                         <option value="<?= $d['email_pendamping']; ?>"><?= $d['email_pendamping']; ?></option>
                                     </select>
-                                </td> -->
                                 </td>
-                                </td>
-                                <input type="hidden" name="nis[]" id="nis" value="<?= $d['nis']; ?>">
+                                <input type="hidden" name="nis[]" id="nis" value="<?= $d['nis']; ?>"> -->
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <select name="guru_pendamping[]" id="guru_pendamping">
                         <option value="<?= $d['guru_pendamping']; ?>"><?= $d['guru_pendamping']; ?></option>
                         <?php foreach ($guru as $g) : ?>
@@ -96,7 +96,7 @@
                     <select name="email_pendamping[]" id="email_pendamping">
                         <option value="<?= $d['email_pendamping']; ?>"><?= $d['email_pendamping']; ?></option>
                     </select>
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary mb-2">SIMPAN</button>
         </form>
     </div>

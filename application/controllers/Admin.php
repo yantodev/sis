@@ -1045,7 +1045,7 @@ class Admin extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
-        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $data['guru'] = $this->Admin_model->Guru();
 
         $this->form_validation->set_rules('nis[]', 'NIS', 'required');
         if ($this->form_validation->run() == false) {
@@ -1055,20 +1055,24 @@ class Admin extends CI_Controller
             $this->load->view('admin/tambah-siswa', $data);
             $this->load->view('wrapper/footer');
         } else {
-            $nis = $this->input->post('nis');
-            $guru = $this->input->post('guru_pendamping');
-            $hp = $this->input->post('hp_pendamping');
-            $email = $this->input->post('email_pendamping');
+            $nis = $this->input->post('nis[]');
+            $guru = $this->input->post('guru_pendamping[]');
+            $email = $this->input->post('email_pendamping[]');
+            $lokasi = $this->input->post('nama_instansi[]');
+            $alamat = $this->input->post('alamat_instansi[]');
+            $nis = $this->input->post('nis[]');
+            $siswa = $this->input->post('name[]');
             $result = array();
             foreach ($nis as $key => $val) {
                 $result[] = array(
                     'nis' => $nis[$key],
-                    'guru_pendamping'  => $guru[$key],
-                    'hp_pendamping'  => $hp[$key],
-                    'email_pendamping'  => $email[$key]
+                    'email'  => $guru[$key],
+                    'lokasi'  => $lokasi[$key],
+                    'alamat'  => $alamat[$key],
+                    'nama_siswa'  => $siswa[$key],
                 );
             }
-            $this->db->update_batch('master', $result, 'nis');
+            $this->db->insert_batch('tbl_pendamping', $result);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
             redirect('admin/guru');
         }
@@ -1135,5 +1139,61 @@ class Admin extends CI_Controller
         $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/monitoring', $data);
         $this->load->view('wrapper/footer');
+    }
+
+    public function surattugas()
+    {
+        $data['title'] = 'Daftar Surat Tugas';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tp'] = $this->db->get_where('tp')->result_array();
+        $data['guru'] = $this->Admin_model->Guru();
+        $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
+        $guru = $this->input->get('guru');
+        $data['data'] = $this->db->get_where('tbl_iduka', ['active' => 1])->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/surat-tugas', $data);
+        $this->load->view('wrapper/footer');
+    }
+    public function tambahsurattugas()
+    {
+        $data['title'] = 'Tambah Surat Tugas';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tp'] = $this->db->get_where('tp')->result_array();
+        $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
+        $data['guru'] = $this->Admin_model->Guru();
+        // $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['data'] = $this->Admin_model->getIduka($jurusan);
+
+        $this->form_validation->set_rules('tp[]', 'TP', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('admin/wrapper/sidebar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
+            $this->load->view('admin/tambah-surat-tugas', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $email = $this->input->post('guru[]');
+            $lokasi = $this->input->post('lokasi[]');
+            $alamat = $this->input->post('alamat[]');
+            $tp = $this->input->post('tp[]');
+            $active = $this->input->post('active[]');
+            $result = array();
+            foreach ($lokasi as $key => $val) {
+                $result[] = array(
+                    'guru'     => $email[$key],
+                    'iduka'    => $lokasi[$key],
+                    'alamat'    => $alamat[$key],
+                    'tp'        => $tp[$key],
+                    'active'    => $active[$key],
+                );
+            }
+            $this->db->update_batch('tbl_iduka', $result, 'iduka');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
+            redirect('admin/surattugas');
+        }
     }
 }
