@@ -1,7 +1,7 @@
 <img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
 <h3 align="center">
     <u>SURAT TUGAS</u>
-    <br />Nomor :</h3>
+    <br />Nomor : /III/4/AU/F/2020</h3>
 <p>Kepala SMK Muhammadiyah Karangmojo Gunungkidul, memberi tugas kepada :
 </p>
 <table class="table">
