@@ -27,7 +27,7 @@ class Admin extends CI_Controller
         // $data['jumlah'] = $this->Admin_model->count();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('wrapper/footer');
     }
@@ -40,7 +40,7 @@ class Admin extends CI_Controller
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/siswa', $data);
         $this->load->view('wrapper/footer');
     }
@@ -53,7 +53,7 @@ class Admin extends CI_Controller
         $data['siswa'] = $this->Admin_model->getSiswa($jurusan, $tp);
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/cetak-siswa', $data);
         $this->load->view('wrapper/footer');
 
@@ -76,7 +76,7 @@ class Admin extends CI_Controller
         $data['title'] = 'My Profile';
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/profile', $data);
         $this->load->view('wrapper/footer');
     }
@@ -92,7 +92,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/change-password', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -133,7 +133,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/data-siswa', $data);
         $this->load->view('wrapper/footer');
     }
@@ -146,7 +146,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/detail-siswa', $data);
         $this->load->view('wrapper/footer');
     }
@@ -166,7 +166,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/edit-siswa', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -195,7 +195,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -213,7 +213,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tkro/nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -226,7 +226,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tkro/detail-nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -241,7 +241,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/tkro/edit-nilai', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -262,7 +262,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tbsm/nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -275,7 +275,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tbsm/detail-nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -290,7 +290,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/tbsm/edit-nilai', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -311,7 +311,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/akl/nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -324,7 +324,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/akl/detail-nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -339,7 +339,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/akl/edit-nilai', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -360,7 +360,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/otkp/nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -373,7 +373,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/otkp/detail-nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -388,7 +388,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/otkp/edit-nilai', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -409,7 +409,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/bdp/nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -422,7 +422,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/bdp/detail-nilai', $data);
         $this->load->view('wrapper/footer');
     }
@@ -437,7 +437,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/bdp/edit-nilai', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -453,7 +453,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/sertifikat');
         $this->load->view('wrapper/footer');
     }
@@ -469,7 +469,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tkro/sertifikat', $data);
         $this->load->view('wrapper/footer');
     }
@@ -482,7 +482,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tkro/sertifikat-depan', $data);
         $this->load->view('wrapper/footer');
 
@@ -513,7 +513,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tkro/sertifikat-belakang', $data);
         $this->load->view('wrapper/footer');
 
@@ -547,7 +547,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tbsm/sertifikat', $data);
         $this->load->view('wrapper/footer');
     }
@@ -560,7 +560,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tbsm/sertifikat-depan', $data);
         $this->load->view('wrapper/footer');
 
@@ -592,7 +592,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tbsm/sertifikat-belakang', $data);
         $this->load->view('wrapper/footer');
 
@@ -621,7 +621,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/akl/sertifikat', $data);
         $this->load->view('wrapper/footer');
     }
@@ -634,7 +634,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/akl/sertifikat-depan', $data);
         $this->load->view('wrapper/footer');
 
@@ -661,7 +661,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/akl/sertifikat-belakang', $data);
         $this->load->view('wrapper/footer');
 
@@ -690,7 +690,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/otkp/sertifikat', $data);
         $this->load->view('wrapper/footer');
     }
@@ -703,7 +703,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/otkp/sertifikat-depan', $data);
         $this->load->view('wrapper/footer');
 
@@ -730,7 +730,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/otkp/sertifikat-belakang', $data);
         $this->load->view('wrapper/footer');
 
@@ -759,7 +759,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/bdp/sertifikat', $data);
         $this->load->view('wrapper/footer');
     }
@@ -772,7 +772,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/bdp/sertifikat-depan', $data);
         $this->load->view('wrapper/footer');
 
@@ -799,7 +799,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/bdp/sertifikat-belakang', $data);
         $this->load->view('wrapper/footer');
 
@@ -823,7 +823,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/master-data', $data);
         $this->load->view('wrapper/footer');
     }
@@ -843,7 +843,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/iduka', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -865,7 +865,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/edit-iduka', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -885,7 +885,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/pengumuman', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -966,7 +966,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/surat-pkl', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -1001,7 +1001,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/guru', $data);
         $this->load->view('wrapper/footer');
     }
@@ -1017,7 +1017,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/edit-guru', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -1051,7 +1051,7 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
             $this->load->view('admin/tambah-siswa', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -1081,7 +1081,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/reset-password', $data);
         $this->load->view('wrapper/footer');
     }
@@ -1095,7 +1095,7 @@ class Admin extends CI_Controller
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/idcard', $data);
         $this->load->view('wrapper/footer');
     }
@@ -1112,7 +1112,7 @@ class Admin extends CI_Controller
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
-                'format' => 'Folio',
+                'format' => 'A4',
                 'orientation' => 'P',
                 'setAutoTopMargin' => false
             ]
@@ -1132,7 +1132,7 @@ class Admin extends CI_Controller
         $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/monitoring', $data);
         $this->load->view('wrapper/footer');
     }

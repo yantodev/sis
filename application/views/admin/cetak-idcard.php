@@ -15,7 +15,7 @@
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" width="120px" height="150px">
+                                    <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" width="100px" height="120px">
                                 </td>
                             </tr>
                             <tr>
@@ -40,9 +40,9 @@
                             </td>
                         </tr>
                     </table>
-                    <p style="text-align: justify;color:blue"><br />
+                    <!-- <p style="text-align: justify;color:blue"><br />
                         <i>https://data.smkmuhkarangmojo.sch.id</i>
-                    </p>
+                    </p> -->
                 </td>
                 <td width="280px" height="290px" valign="top">
                     <div class="card mt-2 pt-2" align="center">
@@ -60,13 +60,13 @@
                                     <?= $siswa['nama_instansi']; ?>
                                 </th>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td align="center" height="50px" valign="top">
                                     <p><?= $siswa['alamat_instansi']; ?></p>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
-                                <td align="center">
+                                <td align="center" height="40px" valign="bottom">
                                     <h7><b><u>GURU PENDAMPING</u></b></h7>
                                 </td>
                             </tr>
