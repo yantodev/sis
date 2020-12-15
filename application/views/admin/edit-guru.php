@@ -9,26 +9,12 @@
             <input type="text" class="form-control" id="nbm" name="nbm" value="<?= $guru['nbm']; ?>">
         </div>
         <div class="form-group">
-            <label for="">Telp/HP</label>
-            <input type="text" class="form-control" id="hp" name="hp" value="<?= $guru['hp']; ?>">
-        </div>
-        <label for="">Lokasi Pendamping</label>
-        <div class=" form-group">
-            <select name="jurusan" id="jurusan">
-                <option value="">Silahkan Pilih Jurusan</option>
-                <?php foreach ($data as $d) : ?>
-                    <option value="<?= $d['singkatan_jurusan']; ?>"><?= $d['jurusan']; ?></option>
-                <?php endforeach; ?>
-            </select>
+            <label for="">Email</label>
+            <input type="text" class="form-control" id="email" name="email" value="<?= $guru['email']; ?>">
         </div>
         <div class="form-group">
-            <select name="lokasi" id="lokasi" style="width: 300px;">
-                <option value="<?= $guru['lokasi']; ?>"><?= $guru['lokasi']; ?></option>
-            </select>
-            <div id="loading" style="margin-top: 15px;">
-                <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
-            </div>
-            </select>
+            <label for="">Telp/HP</label>
+            <input type="text" class="form-control" id="hp" name="hp" value="<?= $guru['hp']; ?>">
         </div>
         <input type="hidden" id="id" name="id" value="<?= $guru['id']; ?>">
         <button type="submit" class="btn btn-primary">SIMPAN</button>

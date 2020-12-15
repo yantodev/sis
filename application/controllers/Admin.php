@@ -129,7 +129,7 @@ class Admin extends CI_Controller
         $jurusan = $this->input->get('jurusan');
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan,])->result_array();
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -1024,8 +1024,8 @@ class Admin extends CI_Controller
             $data = [
                 'nama'  => htmlspecialchars($this->input->post('nama', true)),
                 'nbm'  => htmlspecialchars($this->input->post('nbm', true)),
+                'email'  => htmlspecialchars($this->input->post('email', true)),
                 'hp'  => htmlspecialchars($this->input->post('hp', true)),
-                'lokasi'  => htmlspecialchars($this->input->post('lokasi', true)),
             ];
             $this->db->where('id', $this->input->post('id'));
             $this->db->update('tbl_guru', $data);
