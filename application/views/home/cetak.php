@@ -102,14 +102,14 @@
                 </td>
             <tr>
                 <td align="center">
-                    <p><?= $pernyataan['kepala_sekolah']; ?></p>
+                    <p>Kepala Sekolah</p>
                 </td>
                 <td width="50%"></td>
                 <td>Ketua Kompetensi Keahlian</td>
             </tr>
             <tr>
                 <td align="center" valign="bottom" height="80px">
-                    <p><u>MUNAWAR, S.Pd.I</u></p>
+                    <p><u><?= $pernyataan['kepala_sekolah']; ?></u></p>
                 </td>
                 <td></td>
                 <td valign="bottom" align="center">
@@ -118,7 +118,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <p><?= $pernyataan['nbm']; ?></p>
+                    <p>NBM. <?= $pernyataan['nbm']; ?></p>
                 </td>
                 <td></td>
                 <td align="center">
