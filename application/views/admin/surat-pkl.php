@@ -8,7 +8,7 @@
     <h3>DATA SURAT PERMOHONAN PKL</h3>
     <div class="form-group col-4">
         <label>Tempat, Tanggal Surat</label>
-        <input type="text" class="form-control" id="nomor" name="nomor" value="<?= $data['tgl_surat']; ?>">
+        <input type="text" class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $data['tgl_surat']; ?>">
     </div>
     <div class="form-group col-4">
         <label>Nomor</label>

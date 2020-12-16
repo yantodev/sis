@@ -969,6 +969,7 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $data = [
+                'tgl_surat'  => htmlspecialchars($this->input->post('tgl_surat', true)),
                 'nomor'  => htmlspecialchars($this->input->post('nomor', true)),
                 'lampiran'  => htmlspecialchars($this->input->post('lampiran', true)),
                 'hal'  => htmlspecialchars($this->input->post('hal', true)),
