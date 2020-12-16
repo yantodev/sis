@@ -55,6 +55,7 @@
                         <h6 class="collapse-header">Daftar Menu</h6>
                         <a class="collapse-item" href="<?= base_url('admin/iduka'); ?>">Data Iduka</a>
                         <a class="collapse-item" href="<?= base_url('admin/guru'); ?>">Data Guru</a>
+                        <a class="collapse-item" href="<?= base_url('admin/nomorsurat'); ?>">Nomor Surat</a>
                         <a class="collapse-item" href="<?= base_url('admin/suratpkl/1'); ?>">Surat Permohonan</a>
                         <a class="collapse-item" href="<?= base_url('admin/surattugas'); ?>">Surat Tugas</a>
                         <a class="collapse-item" href="<?= base_url('admin/daftarpeserta'); ?>">Daftar Peserta</a>

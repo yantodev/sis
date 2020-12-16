@@ -147,7 +147,6 @@ class Home extends CI_Controller
         $guru = $this->input->get('guru');
         $tp = $this->input->get('tp');
         $data['guru'] = $this->Home_model->getTugas($guru);
-        $data['instansi'] = $this->Home_model->getTugas2($guru);
         $data['data'] = $this->db->get_where('tbl_iduka', ['guru' => $guru])->result_array();
 
         $this->load->view('home/cetak-tugas', $data);

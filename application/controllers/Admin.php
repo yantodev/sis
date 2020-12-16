@@ -1278,4 +1278,35 @@ class Admin extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output('Daftar Peserta PKL.pdf', \Mpdf\Output\Destination::INLINE);
     }
+
+    public function nomorsurat()
+    {
+        $data['title'] = 'Daftar Nomor Surat';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('tbl_nomor_surat')->result_array();
+
+        $this->form_validation->set_rules('id[]', 'ID', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('admin/wrapper/sidebar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
+            $this->load->view('admin/nomor-surat', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $nomor = $this->input->post('nomor[]');
+            $tgl_surat = $this->input->post('tgl_surat[]');
+            $id = $this->input->post('id[]');
+            $result = array();
+            foreach ($id as $key => $val) {
+                $result[] = array(
+                    'id' => $id[$key],
+                    'nomor'    => $nomor[$key],
+                    'tgl_surat' => $tgl_surat[$key],
+                );
+            }
+            $this->db->update_batch('tbl_nomor_surat', $result, 'id');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            redirect('admin/nomorsurat');
+        }
+    }
 }

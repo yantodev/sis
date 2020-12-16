@@ -40,7 +40,7 @@ class Home_model extends CI_Model
     }
     public function getTugas($guru)
     {
-        return $this->db->get_where('tbl_guru', ['email' => $guru])->row_array();
+        return $this->db->get_where('tbl_guru', ['nama' => $guru])->row_array();
     }
     public function getTugas2($guru)
     {
