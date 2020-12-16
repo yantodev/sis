@@ -12,24 +12,19 @@
 <div class="form-group mb-0">
     <h4>Form Monitoring</h4>
     <form action="<?= base_url('pendamping/cetakmonitoring'); ?>" method="post">
-        <div class="form-group">
-            <select name="jurusan" id="jurusan2">
-                <option value="">Pilih Jurusan</option>
-                <?php foreach ($jurusan as $j) : ?>
-                    <option value="<?= $j['jurusan']; ?>"><?= $j['jurusan']; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-        <div class="form-group">
-            <select name="nama_instansi" id="nama_instansi">
-                <?php foreach ($data as $d) : ?>
-                    <option value="<?= $d['iduka']; ?>"><?= $d['iduka']; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+        <select name="jurusan" id="jurusan2">
+            <option value="">Pilih Jurusan</option>
+            <?php foreach ($jurusan as $j) : ?>
+                <option value="<?= $j['jurusan']; ?>"><?= $j['jurusan']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <select name="nama_instansi" id="nama_instansi">
+            <?php foreach ($data as $d) : ?>
+                <option value="<?= $d['iduka']; ?>"><?= $d['iduka']; ?></option>
+            <?php endforeach; ?>
+        </select>
         <button type="submit">CETAK FORM</button>
     </form>
-
 </div>
 <div class="row">
     <div class="col-lg-5">

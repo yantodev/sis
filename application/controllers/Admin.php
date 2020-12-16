@@ -187,15 +187,54 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
+        $iduka = $this->input->get('nama_instansi');
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan,])->result_array();
+        $data['tabel'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan])->result_array();
+        $data['siswa'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
 
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('admin/wrapper/topbar', $data);
-        $this->load->view('admin/nilai', $data);
-        $this->load->view('wrapper/footer');
+        $this->form_validation->set_rules('id[]', 'ID', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('admin/wrapper/sidebar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
+            $this->load->view('admin/nilai', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $id = $this->input->post('id[]');
+            $nilai_1 = $this->input->post('nilai_1[]');
+            $nilai_2 = $this->input->post('nilai_2[]');
+            $nilai_3 = $this->input->post('nilai_3[]');
+            $nilai_4 = $this->input->post('nilai_4[]');
+            $nilai_5 = $this->input->post('nilai_5[]');
+            $nilai_6 = $this->input->post('nilai_6[]');
+            $nilai_7 = $this->input->post('nilai_7[]');
+            $nilai_8 = $this->input->post('nilai_8[]');
+            $nilai_9 = $this->input->post('nilai_9[]');
+            $nilai_10 = $this->input->post('nilai_10[]');
+            $nilai_11 = $this->input->post('nilai_11[]');
+            $result = array();
+            foreach ($id as $key => $val) {
+                $result[] = array(
+                    'id'    => $id[$key],
+                    'nilai_1'    => $nilai_1[$key],
+                    'nilai_2'    => $nilai_2[$key],
+                    'nilai_3'    => $nilai_3[$key],
+                    'nilai_4'    => $nilai_4[$key],
+                    'nilai_5'    => $nilai_5[$key],
+                    'nilai_6'    => $nilai_6[$key],
+                    'nilai_7'    => $nilai_7[$key],
+                    'nilai_8'    => $nilai_8[$key],
+                    'nilai_9'    => $nilai_9[$key],
+                    'nilai_10'    => $nilai_10[$key],
+                    'nilai_11'    => $nilai_11[$key],
+                );
+            }
+            $this->db->update_batch('master', $result, 'id');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Nilai berhasil di update!!!</div>');
+            redirect('admin/nilai');
+        }
     }
 
 
