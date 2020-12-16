@@ -77,7 +77,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center"><br />
+                                <td align="center">
                                     <b>SCAN ME</b><br />
                                     <barcode code="<?= base_url('home/detailsiswa/') . $siswa['id']; ?>" size="1.2" type="QR" error="M" class="barcode" />
                                 </td>

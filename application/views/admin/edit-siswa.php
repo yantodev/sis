@@ -41,10 +41,10 @@
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Jurusan</label>
                     <div class="col-sm-8">
-                        <select name="jurusan" id="jurusan">
+                        <select name="jurusan" id="jurusan2">
                             <option value="">Pilih Jurusan</option>
                             <?php foreach ($iduka as $d) : ?>
-                                <option value="<?= $d['singkatan_jurusan']; ?>"><?= $d['jurusan']; ?></option>
+                                <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -55,18 +55,20 @@
                         <select name="nama_instansi" id="nama_instansi" style="width: 300px;">
                             <option value="<?= $siswa['nama_instansi']; ?>"><?= $siswa['nama_instansi']; ?></option>
                         </select>
-                        <select name="alamat_instansi" id="alamat-instansi"></select>
-                        <div id="loading" style="margin-top: 15px;">
-                            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
-                        </div>
-                        </select>
+
                     </div>
                     <?= form_error('nama_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Alamat Instansi</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="alamat_instansi" name="alamat_instansi" value="<?= $siswa['alamat_instansi']; ?>">
+                        <select name="alamat_instansi" id="alamat_instansi">
+                            <option value="<?= $siswa['alamat_instansi']; ?>"><?= $siswa['alamat_instansi']; ?></option>
+                        </select>
+                        <div id="loading" style="margin-top: 15px;">
+                            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+                        </div>
+                        </select>
                     </div>
                     <?= form_error('alamat_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
