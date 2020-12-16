@@ -161,8 +161,6 @@ class Admin extends CI_Controller
 
         $this->form_validation->set_rules('nama_instansi', 'Nama Instansi', 'required');
         $this->form_validation->set_rules('alamat_instansi', 'Alamat Instansi', 'required');
-        $this->form_validation->set_rules('nama_pejabat', 'Nama Pejabat/Pemilik', 'required');
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
