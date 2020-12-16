@@ -45,7 +45,7 @@
                         <tr>
                             <th style="vertical-align: top;"></th>
                             <th style="vertical-align: top;">NIS</th>
-                            <th style="vertical-align: top;">Name</th>
+                            <th style="vertical-align: top;">Nama</th>
                             <?php foreach ($tabel as $t) : ?>
                                 <th style="vertical-align: top;width: 50px;"><?= $t['nama']; ?></th>
                             <?php endforeach; ?>
