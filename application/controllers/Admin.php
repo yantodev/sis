@@ -57,6 +57,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/cetak-siswa', $data);
         $this->load->view('wrapper/footer');
 
+        $filename = 'Rekap Siswa ' . $jurusan;
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
@@ -68,7 +69,7 @@ class Admin extends CI_Controller
 
         $html = $this->load->view('admin/cetak-siswa', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Rekap Siswa.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
     }
     public function profile()
     {

@@ -175,7 +175,7 @@ class Pendamping extends CI_Controller
             $config['allowed_types'] = 'jpeg|jpg|png|pdf';
             $config['max_size']     = '5120';
             $config['upload_path']  = './assets/img/monitoring';
-            // $config['file_name']  = 'laporan-' . date('Y-m-d');
+            $config['file_name']  = 'laporan-' . date('Y-m-d');
 
             $this->load->library('upload', $config);
             if ($_FILES['foto']['name'] != null) {
@@ -232,6 +232,7 @@ class Pendamping extends CI_Controller
         $this->load->view('pendamping/cetak-monitoring', $data);
         $this->load->view('wrapper/footer');
 
+        $filename = 'Lembar Monotoring ' . $instansi;
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
@@ -242,6 +243,6 @@ class Pendamping extends CI_Controller
 
         $html = $this->load->view('pendamping/cetak-monitoring', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Lembar monitornig.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
     }
 }
