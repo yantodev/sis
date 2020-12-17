@@ -174,8 +174,7 @@ class Admin extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['iduka'] = $this->db->get_where('tbl_jurusan')->result_array();
 
-        $this->form_validation->set_rules('nama_instansi', 'Nama Instansi', 'required');
-        $this->form_validation->set_rules('alamat_instansi', 'Alamat Instansi', 'required');
+        $this->form_validation->set_rules('id', 'ID', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
