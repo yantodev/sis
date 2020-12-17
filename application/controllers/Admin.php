@@ -137,6 +137,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/data-siswa', $data);
         $this->load->view('wrapper/footer');
     }
+    public function dataALL()
+    {
+        $data['title'] = 'Data siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('master')->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/data-siswa-all', $data);
+        $this->load->view('wrapper/footer');
+    }
 
     public function detailData($id)
     {

@@ -42,6 +42,7 @@
                         <a class="collapse-item" href="<?= base_url('admin/idcard'); ?>">Cetak ID Card</a>
                         <a class="collapse-item" href="<?= base_url('admin/sertifikat'); ?>">Cetak Sertifikat</a>
                         <a class="collapse-item" href="<?= base_url('admin/siswa'); ?>">Rekap Akun PKL</a>
+                        <a class="collapse-item" href="<?= base_url('admin/dataall'); ?>">Semua Siswa PKL</a>
                     </div>
                 </div>
             </li>
