@@ -139,6 +139,7 @@ class Admin_model extends CI_Model
         $data = [
             'tp' => htmlspecialchars($this->input->post('tp', true)),
             'name' => htmlspecialchars($this->input->post('name', true)),
+            'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
             'nama_instansi' => htmlspecialchars($this->input->post('nama_instansi', true)),
             'alamat_instansi' => htmlspecialchars($this->input->post('alamat_instansi', true)),
             'email_website_instansi' => htmlspecialchars($this->input->post('email_website_instansi', true)),
