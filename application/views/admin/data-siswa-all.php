@@ -1,3 +1,12 @@
+<form action="<?= base_url('admin/dataall'); ?> " method="get">
+    <select name="tp" id="tp">
+        <option value="">Pilih Tahun Pelajaran</option>
+        <?php foreach ($tp as $d) : ?>
+            <option value="<?= $d['tp']; ?>"><?= $d['tp']; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit" class="btn btn-primary mb-2">SAVE</button>
+</form>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">

@@ -47,6 +47,20 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-envelope"></i>
+                    <span>Cetak Surat PKL</span>
+                </a>
+                <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Daftar Menu</h6>
+                        <a class="collapse-item" href="<?= base_url('admin/surattugas'); ?>">Surat Tugas</a>
+                        <a class="collapse-item" href="<?= base_url('admin/daftarpeserta'); ?>">Daftar Peserta</a>
+                        <a class="collapse-item" href="<?= base_url('admin/suratjalan'); ?>">Surat Jalan</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-archive"></i>
                     <span>Master Data</span>
@@ -58,9 +72,6 @@
                         <a class="collapse-item" href="<?= base_url('admin/guru'); ?>">Data Guru</a>
                         <a class="collapse-item" href="<?= base_url('admin/nomorsurat'); ?>">Nomor Surat</a>
                         <a class="collapse-item" href="<?= base_url('admin/suratpkl/1'); ?>">Surat Permohonan</a>
-                        <a class="collapse-item" href="<?= base_url('admin/surattugas'); ?>">Surat Tugas</a>
-                        <a class="collapse-item" href="<?= base_url('admin/daftarpeserta'); ?>">Daftar Peserta</a>
-                        <a class="collapse-item" href="<?= base_url('admin/suratjalan'); ?>">Surat Jalan</a>
                         <a class="collapse-item" href="<?= base_url('admin/monitoring'); ?>">Monitoring</a>
                         <a class="collapse-item" href="<?= base_url('admin/pengumuman'); ?>">Pengumuman</a>
                     </div>

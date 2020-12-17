@@ -142,7 +142,9 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Data siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] = $this->db->get_where('master')->result_array();
+        $data['tp'] = $this->Admin_model->getTP();
+        $tp = $this->input->get('tp');
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
