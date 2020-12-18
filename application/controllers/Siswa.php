@@ -17,7 +17,7 @@ class Siswa extends CI_Controller
         $data['pengumuman'] = $this->Admin_model->Pengumuman();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('layout/sidebar', $data);
+        $this->load->view('siswa/layout/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
         $this->load->view('siswa/index', $data);
         $this->load->view('wrapper/footer');
@@ -32,7 +32,7 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('layout/sidebar', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
             $this->load->view('wrapper/topbar', $data);
             $this->load->view('siswa/edit-profile', $data);
             $this->load->view('wrapper/footer');
@@ -93,7 +93,7 @@ class Siswa extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('layout/sidebar', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
             $this->load->view('wrapper/topbar', $data);
             $this->load->view('siswa/change-password', $data);
             $this->load->view('wrapper/footer');
@@ -130,7 +130,7 @@ class Siswa extends CI_Controller
         $data['tgl'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('layout/sidebar', $data);
+        $this->load->view('siswa/layout/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
         $this->load->view('siswa/id-card', $data);
         $this->load->view('wrapper/footer');
@@ -162,7 +162,7 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('layout/sidebar', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
             $this->load->view('wrapper/topbar', $data);
             $this->load->view('siswa/edit-data', $data);
             $this->load->view('wrapper/footer');
@@ -209,7 +209,7 @@ class Siswa extends CI_Controller
         $data['t4'] = $this->db->get_where('tbl_tabel_laporan', ['kelompok' => $jurusan, 'id_tabel' => 4])->row_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('layout/sidebar', $data);
+        $this->load->view('siswa/layout/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
         $this->load->view('siswa/laporan', $data);
         $this->load->view('wrapper/footer');
@@ -231,7 +231,7 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('layout/sidebar', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
             $this->load->view('wrapper/topbar', $data);
             $this->load->view('siswa/input-laporan', $data);
             $this->load->view('wrapper/footer');
@@ -289,7 +289,7 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('jurusan', 'jurusan', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('layout/sidebar', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
             $this->load->view('wrapper/topbar', $data);
             $this->load->view('siswa/edit-laporan', $data);
             $this->load->view('wrapper/footer');
