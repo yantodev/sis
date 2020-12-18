@@ -72,7 +72,6 @@ class Siswa extends CI_Controller
             //update master
             $this->db->set('nis', $nis);
             $this->db->set('name', $name);
-            $this->db->set('jk', $jk);
             $this->db->set('image', $new_image);
             $this->db->where('email', $email);
             $this->db->update('master');
