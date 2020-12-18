@@ -9,6 +9,8 @@
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>Lokasi PKL</th>
+            <th>Alamat PKL</th>
+            <th>Pendamping</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +23,8 @@
                 <td><?= $s['kelas']; ?></td>
                 <td><?= $s['jurusan']; ?></td>
                 <td><?= $s['nama_instansi']; ?></td>
+                <td><?= $s['alamat_instansi']; ?></td>
+                <td width="300px"><?= $s['guru_pendamping']; ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>

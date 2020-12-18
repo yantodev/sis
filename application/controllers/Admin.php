@@ -62,7 +62,7 @@ class Admin extends CI_Controller
             [
                 'mode' => 'utf-8',
                 'format' => 'Folio',
-                'orientation' => 'P',
+                'orientation' => 'L',
                 'setAutoTopMargin' => false
             ]
         );
