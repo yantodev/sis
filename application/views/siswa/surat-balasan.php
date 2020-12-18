@@ -49,7 +49,7 @@
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="file" name="file">
                                 <label class="custom-file-label" for="file">Choose file</label>
-                                <small>ukuran file tidak boleh lebih dari 2Mb (format file gif|jpg|png)</small>
+                                <small>ukuran file tidak boleh lebih dari 10Mb (format file gif|jpg|png)</small>
                             </div>
                             <?= form_error('file', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
