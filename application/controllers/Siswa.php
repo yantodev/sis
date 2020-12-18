@@ -169,6 +169,7 @@ class Siswa extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $data = [
+                'tp' => $this->input->post('tp'),
                 'name' => $this->input->post('name'),
                 'jk' => $this->input->post('jk'),
                 'kelas' => $this->input->post('kelas'),
