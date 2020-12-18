@@ -72,7 +72,7 @@ $jml = ($rekap / $jumlah) * 100;
                     <label for="">Teknik Kendaraan Ringan Otomotif<br />
                          <?= $siswa->bls_tkro; ?> Siswa (<?= number_format($bls_tkro, 2); ?>%)</label>
                     <div class="progress">
-                         <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?= $balasan_tkro; ?>%" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_tkro; ?> dari <?= $datatkro['jumlah']; ?> Siswa</div>
+                         <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?= $bls_tkro; ?>%" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_tkro; ?> dari <?= $datatkro['jumlah']; ?> Siswa</div>
                     </div>
                </div>
                <div class="form-group col-6">
