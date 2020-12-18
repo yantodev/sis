@@ -43,6 +43,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Daftar Menu</h6>
                         <a class="collapse-item" href="<?= base_url('siswa/data/') . $user['nis']; ?>">Data Siswa</a>
+                        <a class="collapse-item" href="<?= base_url('siswa/surat/') . $user['nis']; ?>">Surat Balasan</a>
                         <a class="collapse-item" href="<?= base_url('siswa/idcard/') . $user['nis']; ?>">IDCARD Siswa</a>
                         <a class="collapse-item" href="#">Cetak Sertifikat</a>
                     </div>
