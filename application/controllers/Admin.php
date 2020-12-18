@@ -24,7 +24,7 @@ class Admin extends CI_Controller
         $data['dataotkp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran'])->row_array();
         $data['databdp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Bisnis Daring dan Pemasaran'])->row_array();
         $data['siswa'] = $this->Admin_model->countSiswa();
-        // $data['jumlah'] = $this->Admin_model->count();
+
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);

@@ -11,7 +11,13 @@ class Admin_model extends CI_Model
                         count(if(jurusan='Teknik Bisnis Sepeda Motor' and tp='2020/2021' , jurusan, NULL)) as tbsm,
                         count(if(jurusan='Akuntansi dan Keuangan Lembaga' and tp='2020/2021' , jurusan, NULL)) as akl ,
                         count(if(jurusan='Otomatisasi dan Tata Kelola Perkantoran' and tp='2020/2021' , jurusan, NULL)) as otkp, 
-                        count(if(jurusan='Bisnis Daring dan Pemasaran' and tp='2020/2021' , jurusan, NULL)) as bdp 
+                        count(if(jurusan='Bisnis Daring dan Pemasaran' and tp='2020/2021' , jurusan, NULL)) as bdp,
+
+                        count(if(jurusan='Teknik Kendaraan Ringan Otomotif' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_tkro, 
+                        count(if(jurusan='Teknik Bisnis Sepeda Motor' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_tbsm, 
+                        count(if(jurusan='Akuntansi dan Keuangan Lembaga' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_akl, 
+                        count(if(jurusan='Otomatisasi dan Tata Kelola Perkantoran' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_otkp, 
+                        count(if(jurusan='Bisnis Daring dan Pemasaran' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_bdp
                 FROM master";
         $result = $this->db->query($sql);
         return $result->row();

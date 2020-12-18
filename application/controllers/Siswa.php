@@ -239,7 +239,7 @@ class Siswa extends CI_Controller
                         $this->load->view('wrapper/header', $data);
                         $this->load->view('pendamping/sidebar', $data);
                         $this->load->view('wrapper/topbar', $data);
-                        $this->load->view('siswa/surat', $error);
+                        $this->load->view('siswa/surat/', $error);
                         $this->load->view('wrapper/footer');
                     }
                 }
