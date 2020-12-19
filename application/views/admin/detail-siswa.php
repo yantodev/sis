@@ -65,6 +65,6 @@
     </div>
     <div class="card-body pb-0">
         <b>D. SURAT BALASAN</b>
-        <p><img src="<?= base_url('assets/img/surat balasan/') . $siswa['file']; ?>" alt=""></p>
+        <p><img src="<?= base_url('assets/img/surat balasan/') . $siswa['file']; ?>" alt="" width="300px" height="500px"></p>
     </div>
 </div>
