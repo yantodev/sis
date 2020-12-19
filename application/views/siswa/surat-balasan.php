@@ -28,6 +28,13 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Lokasi PKL</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" value="<?= $siswa['nama_instansi']; ?>" readonly>
+                    <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Status</label>
                 <div class="col-sm-10">
                     <select name="status" id="status">
@@ -56,6 +63,7 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="nama" id="nama" value="<?= $siswa['nama_instansi']; ?>">
             <div class="form-group row justify-content-end">
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">KIRIM</button>

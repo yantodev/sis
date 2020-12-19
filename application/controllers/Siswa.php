@@ -233,7 +233,7 @@ class Siswa extends CI_Controller
                         $this->db->where('nis', $nis);
                         $this->db->update('master', $data);
                         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Surat balasan berhasil ditambahkan!</div>');
-                        redirect('siswa/surat/' . $nis);
+                        redirect('siswa/surat/');
                     } else {
                         $error = array('error' => $this->upload->display_errors());
                         $this->load->view('wrapper/header', $data);
