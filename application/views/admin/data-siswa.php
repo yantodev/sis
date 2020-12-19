@@ -16,7 +16,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DATA SISWA PKL SMK MUHAMMADIYAH KARANGMOJO</h6>
+        <h6 class="m-0 font-weight-bold text-primary">DATA SISWA PKL <?= $siswa; ?></h6>
     </div>
     <div class="card-body">
         <?= $this->session->flashdata('message');; ?>
@@ -27,9 +27,10 @@
                         <th>#</th>
                         <th>NIS</th>
                         <th>Name</th>
-                        <th>Jurusan</th>
                         <th>Lokasi PKL</th>
                         <th>Tahun Pelajaran</th>
+                        <th>Status</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -40,9 +41,10 @@
                             <td><?= $i; ?></td>
                             <td><?= $d['nis']; ?></td>
                             <td><?= $d['name']; ?></td>
-                            <td><?= $d['jurusan']; ?></td>
                             <td><?= $d['nama_instansi']; ?></td>
                             <td><?= $d['tp']; ?></td>
+                            <td><?= $d['status']; ?></td>
+                            <td><img src="<?= base_url('assets/img/surat balasan/') . $d['file']; ?>" alt="" width="50px" height="50px"></td>
                             <td>
                                 <a href="<?= base_url('admin/detailData/') . $d['id']; ?>" class="badge badge-warning">view</a>
                                 <a href="<?= base_url('admin/editData/') . $d['id']; ?>" class="badge badge-success">Edit</a>

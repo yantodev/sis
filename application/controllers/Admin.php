@@ -128,6 +128,7 @@ class Admin extends CI_Controller
         $this->load->model('Menu_model', 'menu');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
+        $data['siswa'] = $jurusan;
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
