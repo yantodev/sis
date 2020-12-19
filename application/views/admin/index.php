@@ -5,6 +5,9 @@ $akl = ($siswa->akl / $dataakl['jumlah']) * 100;
 $otkp = ($siswa->otkp / $dataotkp['jumlah']) * 100;
 $bdp = ($siswa->bdp / $databdp['jumlah']) * 100;
 
+$rekap = $siswa->tkro + $siswa->tbsm + $siswa->akl + $siswa->otkp + $siswa->bdp;
+$jml = ($rekap / $jumlah) * 100;
+
 $bls_tkro = ($siswa->bls_tkro / $datatkro['jumlah']) * 100;
 $bls_tbsm = ($siswa->bls_tbsm / $datatkro['jumlah']) * 100;
 $bls_akl = ($siswa->bls_akl / $datatkro['jumlah']) * 100;
@@ -13,8 +16,8 @@ $bls_bdp = ($siswa->bls_bdp / $datatkro['jumlah']) * 100;
 
 $jumlah = $datatkro['jumlah'] + $datatbsm['jumlah'] + $dataakl['jumlah'] + $dataotkp['jumlah'] + $databdp['jumlah'];
 
-$rekap = $siswa->tkro + $siswa->tbsm + $siswa->akl + $siswa->otkp + $siswa->bdp;
-$jml = ($rekap / $jumlah) * 100;
+$rekap_bls = $siswa->bls_tkro + $siswa->bls_tbsm + $siswa->bls_akl + $siswa->bls_otkp + $siswa->bls_bdp;
+$jml_bls = ($rekap_bls / $jumlah) * 100;
 ?>
 
 <p>Selamat datang <?= $user['name']; ?></p>
@@ -65,7 +68,7 @@ $jml = ($rekap / $jumlah) * 100;
           <div class="col order-5">
                <p style="text-align:center">Jumlah Siswa Yang Sudah Mendapat Surat Balasan<br />
                     Tahun Pelajaran 2020/2021<br />
-                    <?= $rekap; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml, 2); ?>%)</p>
+                    <?= $rekap_bls; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml_bls, 2); ?>%)</p>
 
                <p style="text-align:center">Rekap Siswa pada : <?php echo format_indo(date('Y-m-d')); ?></p>
                <div class="form-group col-6">
