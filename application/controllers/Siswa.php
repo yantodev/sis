@@ -215,7 +215,7 @@ class Siswa extends CI_Controller
         } else {
             $upload_image = $_FILES['file']['name'];
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
                 $config['max_size']     = '10024';
                 $config['upload_path']  = './assets/img/surat balasan';
 
@@ -233,7 +233,7 @@ class Siswa extends CI_Controller
                         $this->db->where('nis', $nis);
                         $this->db->update('master', $data);
                         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Surat balasan berhasil ditambahkan!</div>');
-                        redirect('siswa/surat/');
+                        redirect('siswa/surat/' . $nis);
                     } else {
                         $error = array('error' => $this->upload->display_errors());
                         $this->load->view('wrapper/header', $data);
