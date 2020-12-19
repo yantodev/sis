@@ -63,4 +63,8 @@
             </thead>
         </table>
     </div>
+    <div class="card-body pb-0">
+        <b>D. SURAT BALASAN</b>
+        <p><img src="<?= base_url('assets/img/surat balasan/') . $siswa['file']; ?>" alt=""></p>
+    </div>
 </div>
