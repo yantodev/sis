@@ -9,10 +9,10 @@ $rekap = $siswa->tkro + $siswa->tbsm + $siswa->akl + $siswa->otkp + $siswa->bdp;
 $jml = ($rekap / $jumlah) * 100;
 
 $bls_tkro = ($siswa->bls_tkro / $datatkro['jumlah']) * 100;
-$bls_tbsm = ($siswa->bls_tbsm / $datatkro['jumlah']) * 100;
-$bls_akl = ($siswa->bls_akl / $datatkro['jumlah']) * 100;
-$bls_otkp = ($siswa->bls_otkp / $datatkro['jumlah']) * 100;
-$bls_bdp = ($siswa->bls_bdp / $datatkro['jumlah']) * 100;
+$bls_tbsm = ($siswa->bls_tbsm / $datatbsm['jumlah']) * 100;
+$bls_akl = ($siswa->bls_akl / $dataakl['jumlah']) * 100;
+$bls_otkp = ($siswa->bls_otkp / $dataotkp['jumlah']) * 100;
+$bls_bdp = ($siswa->bls_bdp / $databdp['jumlah']) * 100;
 
 $jumlah = $datatkro['jumlah'] + $datatbsm['jumlah'] + $dataakl['jumlah'] + $dataotkp['jumlah'] + $databdp['jumlah'];
 
@@ -92,13 +92,13 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
                <div class="form-group col-6">
                     <label for="">Otomatisasi dan Tata Kelola Perkantoran <?= number_format($bls_otkp, 2); ?>%)</label>
                     <div class="progress">
-                         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: <?= $bls_otkp; ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_otkp; ?> dari <?= $dataotkp['jumlah']; ?> Siswa</div>
+                         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: <?= $bls_otkp; ?>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_otkp; ?> dari <?= $dataotkp['jumlah']; ?> Siswa</div>
                     </div>
                </div>
                <div class="form-group col-6">
                     <label for="">Bisnis Daring dan Pemasaran (<?= number_format($bls_bdp, 2); ?>%)</label>
                     <div class="progress">
-                         <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: <?= $bls_bdp; ?>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_bdp; ?> dari <?= $databdp['jumlah']; ?> Siswa</div>
+                         <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: <?= $bls_bdp; ?>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_bdp; ?> dari <?= $databdp['jumlah']; ?> Siswa</div>
                     </div>
                </div>
           </div>
