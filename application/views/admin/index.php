@@ -86,7 +86,7 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
                <div class="form-group col-6">
                     <label for="">Akuntansi dan Keuangan Lembaga (<?= number_format($bls_akl, 2); ?>%)</label>
                     <div class="progress">
-                         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: <?= $bls_akl; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $siswa->akl; ?> dari <?= $dataakl['jumlah']; ?> Siswa</div>
+                         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: <?= $bls_akl; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bls_akl; ?> dari <?= $dataakl['jumlah']; ?> Siswa</div>
                     </div>
                </div>
                <div class="form-group col-6">
