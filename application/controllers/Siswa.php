@@ -215,15 +215,15 @@ class Siswa extends CI_Controller
         } else {
             $upload_image = $_FILES['file']['name'];
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|PNG|JPG|JPEG';
                 $config['max_size']     = '10024';
                 $config['upload_path']  = './assets/img/surat balasan';
 
                 $this->load->library('upload', $config);
                 if ($_FILES['file']['name'] != null) {
                     if ($this->upload->do_upload('file')) {
-                        $nis = $this->input->post('nis');;
-                        $status = $this->input->post('status');;
+                        $nis = $this->input->post('nis');
+                        $status = $this->input->post('status');
                         $foto = $this->upload->data('file_name');
                         $data = array(
                             'status' => $status,
