@@ -21,7 +21,7 @@
         <tr>
             <th style="text-align:left">Nomor</th>
             <th>:</th>
-            <th style="text-align:left"><?= $pernyataan['nomor']; ?></th>
+            <th style="text-align:left"><?= $nomor['nomor']; ?></th>
         </tr>
         <tr>
             <th style="text-align:left">Lampiran</th>
@@ -89,7 +89,7 @@
 <table align="right">
     <tr>
         <td>
-            <?= $pernyataan['tgl_surat']; ?>
+            Karangmojo, <?= tanggal($nomor['tgl_surat']); ?>
         </td>
     </tr>
 </table>

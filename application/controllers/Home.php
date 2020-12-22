@@ -100,6 +100,7 @@ class Home extends CI_Controller
         $kajur = $this->input->get('jurusan');
         $data['kajur'] = $this->Admin_model->getKajur($kajur);
         $data['pernyataan'] = $this->Home_model->getSurat();
+        $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Permohonan'])->row_array();
 
         $this->load->view('home/cetak', $data);
         $this->load->view('home/cetak2', $data);
@@ -148,6 +149,7 @@ class Home extends CI_Controller
         $tp = $this->input->get('tp');
         $data['guru'] = $this->Home_model->getTugas($guru);
         $data['data'] = $this->db->get_where('tbl_iduka', ['guru' => $guru])->result_array();
+        $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Tugas'])->row_array();
 
         $this->load->view('home/cetak-tugas', $data);
 

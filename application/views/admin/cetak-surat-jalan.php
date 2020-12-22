@@ -1,7 +1,7 @@
 <img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
 <h3 align="center">
     <u>SURAT JALAN</u>
-    <br />Nomor : /III/4/AU/F/2020</h3>
+    <br />Nomor : <?= $data5['nomor']; ?></h3>
 <p>Kepala SMK Muhammadiyah Karangmojo menerangkan dengan sesungguhnya bahwa siswa tersebut di bawah ini :
 </p>
 <table border="1" width="100%" cellspacing="0">
@@ -55,7 +55,7 @@
     <tbody>
         <tr>
             <td width="400px" rowspan="4"></td>
-            <td>Karangmojo, 20 Desember 2020</td>
+            <td>Karangmojo, <?= tanggal($data5['tgl_surat']); ?></td>
         </tr>
         <tr>
             <td height="80px" valign="top">Kepala Sekolah,</td>

@@ -1450,6 +1450,7 @@ class Admin extends CI_Controller
         $data['data2'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->row_array();
         $data['data3'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
         $data['data4'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
         $this->load->view('admin/cetak-surat-jalan', $data);
 
         $mpdf = new \Mpdf\Mpdf(

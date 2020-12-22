@@ -1,7 +1,7 @@
 <img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
 <h3 align="center">
     <u>SURAT TUGAS</u>
-    <br />Nomor : /III/4/AU/F/2020</h3>
+    <br />Nomor : <?= $nomor['nomor']; ?></h3>
 <p>Kepala SMK Muhammadiyah Karangmojo Gunungkidul, memberi tugas kepada :
 </p>
 <table class="table">
@@ -50,7 +50,7 @@
     <tbody>
         <tr>
             <td width="400px" rowspan="4"></td>
-            <td>Karangmojo, 20 Desember 2020</td>
+            <td>Karangmojo, <?= tanggal($nomor['tgl_surat']); ?></td>
         </tr>
         <tr>
             <td height="80px" valign="top">Kepala Sekolah,</td>
