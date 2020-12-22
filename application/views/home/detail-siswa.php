@@ -1,7 +1,11 @@
 <h2 align="center"><?= $title; ?></h2>
+
 <table>
     <thead>
         <tr>
+            <td rowspan="9">
+                <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" class="rounded" width="150px" height="180px">
+            </td>
             <td>
                 NIS
             </td>

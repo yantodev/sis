@@ -68,13 +68,13 @@
                             </tr> -->
                             <tr>
                                 <td align="center" height="40px" valign="bottom">
-                                    <h7><b><u>GURU PENDAMPING</u></b></h7>
+                                    <h7><b><u>GURU PEMBIMBING</u></b></h7>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center">
                                     <h4><u><?= $siswa['guru_pendamping']; ?></u></h4>
-                                    <h5>Telp/HP. <?= $siswa['hp_pendamping']; ?></h5>
+                                    <!-- <h5>Telp/HP. <?= $siswa['hp_pendamping']; ?></h5> -->
                                 </td>
                             </tr>
                             <tr>
