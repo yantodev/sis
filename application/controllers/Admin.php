@@ -271,6 +271,56 @@ class Admin extends CI_Controller
             redirect('admin/data');
         }
     }
+    public function suratbalasan($nis)
+    {
+        $data['title'] = 'Surat Balasan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['pengumuman'] = $this->Admin_model->Pengumuman();
+        $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+
+        $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
+        $this->form_validation->set_rules('status', 'Status', 'required|trim');
+        // $this->form_validation->set_rules('file', 'Foto', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('admin/wrapper/sidebar', $data);
+            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('admin/surat-balasan', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $upload_image = $_FILES['file']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|PNG|JPG|JPEG';
+                $config['max_size']     = '10024';
+                $config['upload_path']  = './assets/img/surat balasan';
+
+                $this->load->library('upload', $config);
+                if ($_FILES['file']['name'] != null) {
+                    if ($this->upload->do_upload('file')) {
+                        $nis = $this->input->post('nis');
+                        $status = $this->input->post('status');
+                        $foto = $this->upload->data('file_name');
+                        $data = array(
+                            'status' => $status,
+                            'file' => $foto
+                        );
+                        //update
+                        $this->db->where('nis', $nis);
+                        $this->db->update('master', $data);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Surat balasan berhasil ditambahkan!</div>');
+                        redirect('admin/suratbalasan/' . $nis);
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        $this->load->view('wrapper/header', $data);
+                        $this->load->view('admin/wrapper/sidebar', $data);
+                        $this->load->view('wrapper/topbar', $data);
+                        $this->load->view('admin/surat-balasan', $error);
+                        $this->load->view('wrapper/footer');
+                    }
+                }
+            }
+        }
+    }
 
     public function hapus($id)
     {

@@ -237,9 +237,9 @@ class Siswa extends CI_Controller
                     } else {
                         $error = array('error' => $this->upload->display_errors());
                         $this->load->view('wrapper/header', $data);
-                        $this->load->view('pendamping/sidebar', $data);
+                        $this->load->view('siswa/layout/sidebar', $data);
                         $this->load->view('wrapper/topbar', $data);
-                        $this->load->view('siswa/surat/', $error);
+                        $this->load->view('siswa/surat-balasan', $error);
                         $this->load->view('wrapper/footer');
                     }
                 }
