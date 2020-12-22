@@ -171,17 +171,17 @@ class Home extends CI_Controller
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
 
         $this->load->view('home/detail-siswa', $data);
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'A4',
-                'orientation' => 'P',
-                'setAutoTopMargin' => false
-            ]
-        );
+        // $mpdf = new \Mpdf\Mpdf(
+        //     [
+        //         'mode' => 'utf-8',
+        //         'format' => 'A4',
+        //         'orientation' => 'P',
+        //         'setAutoTopMargin' => false
+        //     ]
+        // );
 
-        $html = $this->load->view('home/detail-siswa', [], true);
-        $mpdf->WriteHTML($html);
-        $mpdf->Output('Detail Siswa.pdf', \Mpdf\Output\Destination::INLINE);
+        // $html = $this->load->view('home/detail-siswa', [], true);
+        // $mpdf->WriteHTML($html);
+        // $mpdf->Output('Detail Siswa.pdf', \Mpdf\Output\Destination::INLINE);
     }
 }
