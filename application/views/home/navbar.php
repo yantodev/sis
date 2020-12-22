@@ -16,6 +16,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                         <a class="dropdown-item" href="https://youtu.be/mHXj5kVIHvg">Membuat Akun</a>
+                        <a class="dropdown-item" href="https://youtu.be/omf5jK0DVrk">Surat Balasan Akun</a>
                     </div>
                 </li>
                 </li>

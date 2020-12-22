@@ -15,7 +15,8 @@
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" width="100px" height="120px">
+                                    <!-- <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" width="100px" height="120px"> -->
+                                    <img src="<?= base_url('assets/img/foto/default.png'); ?>" width="100px" height="120px">
                                 </td>
                             </tr>
                             <tr>
