@@ -1,5 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+// Load library phpspreadsheet
+require('./vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Helper\Sample;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+// End load library phpspreadsheet
 
 class Admin extends CI_Controller
 {
@@ -139,6 +146,82 @@ class Admin extends CI_Controller
         $this->load->view('admin/data-siswa', $data);
         $this->load->view('wrapper/footer');
     }
+
+    // Export ke excel
+    public function export()
+    {
+        $tp = $this->input->post('tp');
+        $jurusan = $this->input->post('jurusan');
+
+        $data = $this->Admin_model->getExport($jurusan, $tp);
+        // Create new Spreadsheet object
+        $spreadsheet = new Spreadsheet();
+
+        // Set document properties
+        $spreadsheet->getProperties()->setCreator('Eko Cahyanto - IT Development SMK Muh Karangmojo')
+            ->setLastModifiedBy('Eko Cahyanto - IT Development SMK Muh Karangmojo')
+            ->setTitle('Office 2007 XLSX Test Document')
+            ->setSubject('Office 2007 XLSX Test Document')
+            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+            ->setKeywords('office 2007 openxml php')
+            ->setCategory('Test result file');
+
+        // Add some data
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'Rekap Siswa ' . $jurusan)
+            ->setCellValue('A2', 'Tahun Pelajaran ' . $tp)
+            ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
+            ->setCellValue('A5', 'NO')
+            ->setCellValue('B5', 'NIS')
+            ->setCellValue('C5', 'NAMA')
+            ->setCellValue('D5', 'KELAS')
+            ->setCellValue('E5', 'JURUSAN')
+            ->setCellValue('F5', 'LOKASI PKL')
+            ->setCellValue('G5', 'ALAMAT PKL')
+            ->setCellValue('H5', 'PENDAMPING');
+
+        // Miscellaneous glyphs, UTF-8
+        $i = 6;
+        $n = 1;
+        foreach ($data as $d) {
+
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $i, $n)
+                ->setCellValue('B' . $i, $d['nis'])
+                ->setCellValue('C' . $i, $d['name'])
+                ->setCellValue('D' . $i, $d['kelas'])
+                ->setCellValue('E' . $i, $d['jurusan'])
+                ->setCellValue('F' . $i, $d['nama_instansi'])
+                ->setCellValue('G' . $i, $d['alamat_instansi'])
+                ->setCellValue('H' . $i, $d['guru_pendamping']);
+            $i++;
+            $n++;
+        }
+
+        // Rename worksheet
+        $spreadsheet->getActiveSheet()->setTitle('Rekap Siswa Excel ' . date('d-m-Y H'));
+
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $spreadsheet->setActiveSheetIndex(0);
+
+        // Redirect output to a client’s web browser (Xlsx)
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="Rekap Siswa Excel.xlsx"');
+        header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+        // If you're serving to IE over SSL, then the following may be needed
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+        header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header('Pragma: public'); // HTTP/1.0
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+        exit;
+    }
+
     public function dataALL()
     {
         $data['title'] = 'Data siswa';

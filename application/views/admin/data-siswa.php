@@ -55,6 +55,25 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <form action="<?= base_url('admin/export'); ?> " method="post">
+                <div class="form-group">
+                    <select name="tp" id="tp">
+                        <option value="">Pilih Tahun Pelajaran</option>
+                        <?php foreach ($tp as $d) : ?>
+                            <option value="<?= $d['tp']; ?>"><?= $d['tp']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="jurusan" id="jurusan">
+                        <option value="">Silahkan Pilih Jurusan</option>
+                        <?php foreach ($jurusan as $d) : ?>
+                            <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit" class="fa-file-excel-o mb-3">Export Excel</button>
+            </form>
         </div>
     </div>
 </div>

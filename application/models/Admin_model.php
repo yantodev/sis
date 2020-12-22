@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_model extends CI_Model
 {
+    public function getExport($jurusan, $tp)
+    {
+        $this->db->order_by('nama_instansi', 'ASC');
+        return $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
+    }
     public function CountSiswa()
     {
         $sql = "SELECT  count(if(tp='2020/2021', tp, NULL)) as tp,
