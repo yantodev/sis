@@ -27,12 +27,12 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
 <div class="container">
      <div class="row">
           <div class="col">
-               <p style="text-align:center">Jumlah Siswa Yang Sudah Membuat Akun<br />
+               <p>Jumlah Siswa Yang Sudah Membuat Akun<br />
                     Tahun Pelajaran 2020/2021<br />
                     <?= $rekap; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml, 2); ?>%)</p>
 
-               <p style="text-align:center">Rekap Siswa pada : <?php echo format_indo(date('Y-m-d')); ?></p>
-               <div class="form-group col-6">
+               <p>Rekap Siswa pada : <?php echo format_indo(date('Y-m-d')); ?></p>
+               <div class=" form-group col-6">
                     <label for="">Teknik Kendaraan Ringan Otomotif (<?= number_format($tkro, 2); ?>%)</label>
                     <div class="progress">
                          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?= $tkro; ?>%" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="34"><?= $siswa->tkro; ?> dari <?= $datatkro['jumlah']; ?> Siswa</div>
@@ -66,11 +66,11 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
 
           <!-- surat balasan -->
           <div class="col order-5">
-               <p style="text-align:center">Jumlah Siswa Yang Sudah Mendapat Surat Balasan<br />
+               <p>Jumlah Siswa Yang Sudah Mendapat Surat Balasan<br />
                     Tahun Pelajaran 2020/2021<br />
                     <?= $rekap_bls; ?> dari <?= $jumlah; ?> Siswa (<?= number_format($jml_bls, 2); ?>%)</p>
 
-               <p style="text-align:center">Rekap Siswa pada : <?php echo format_indo(date('Y-m-d')); ?></p>
+               <p>Rekap Siswa pada : <?php echo format_indo(date('Y-m-d')); ?></p>
                <div class="form-group col-6">
                     <label for="">Teknik Kendaraan Ringan Otomotif (<?= number_format($bls_tkro, 2); ?>%)</label>
                     <div class="progress">
