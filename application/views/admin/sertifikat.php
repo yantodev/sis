@@ -1,19 +1,7 @@
-<div class="dropdown mb-3">
-    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Silahkan Pilih Jurusan
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="<?= base_url('admin/sertifikatTKRO'); ?>">Teknik Kendaraan Ringan Otomotif</a>
-        <a class="dropdown-item" href="<?= base_url('admin/sertifikatTBSM'); ?>">Teknik Bisnis Sepeda Motor</a>
-        <a class="dropdown-item" href="<?= base_url('admin/sertifikatAKL'); ?>">Akuntansi dan Keuangan Lembaga</a>
-        <a class="dropdown-item" href="<?= base_url('admin/sertifikatOTKP'); ?>">Otomatisasi dan Tata Kelola Perkantoran</a>
-        <a class="dropdown-item" href="<?= base_url('admin/sertifikatBDP'); ?>">Bisnis Daring dan Pemasaran</a>
-    </div>
-</div>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DATA SISWA JURUSAN TKRO</h6>
+        <h6 class="m-0 font-weight-bold text-primary">DAFTAR SISWA PKL</h6>
     </div>
     <div class="card-body">
         <form action="<?= base_url('admin/sertifikat'); ?> " method="get">
