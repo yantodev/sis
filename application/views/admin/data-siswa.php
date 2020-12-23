@@ -49,7 +49,7 @@
                                 <a href="<?= base_url('admin/detailData/') . $d['id']; ?>" class="badge badge-warning">view</a>
                                 <a href="<?= base_url('admin/editData/') . $d['id']; ?>" class="badge badge-success">Edit</a>
                                 <a href="<?= base_url('admin/suratbalasan/') . $d['nis']; ?>" class="badge badge-secondary">Upload</a>
-                                <a href="#" class="badge badge-danger" data-toggle="modal" data-target="#hapusModal">Hapus</a>
+                                <a href="<?= base_url('admin/hapus/') . $d['id']; ?>" class="badge badge-danger">Hapus</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
