@@ -10,6 +10,7 @@
             <th>Jurusan</th>
             <th>Lokasi PKL</th>
             <th>Alamat PKL</th>
+            <th>Status</th>
             <th>Pendamping</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
                 <td><?= $s['jurusan']; ?></td>
                 <td><?= $s['nama_instansi']; ?></td>
                 <td><?= $s['alamat_instansi']; ?></td>
+                <td><?= $s['status']; ?></td>
                 <td width="300px"><?= $s['guru_pendamping']; ?></td>
             </tr>
             <?php $i++; ?>
