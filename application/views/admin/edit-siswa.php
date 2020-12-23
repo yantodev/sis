@@ -22,7 +22,7 @@
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">NIS</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nis" name="nis" value="<?= $siswa['nis']; ?>" readonly>
+                        <input type="text" class="form-control" id="nis" name="nis" value="<?= $siswa['nis']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">

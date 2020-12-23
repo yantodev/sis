@@ -156,6 +156,7 @@ class Admin_model extends CI_Model
     {
         $data = [
             'tp' => htmlspecialchars($this->input->post('tp', true)),
+            'nis' => htmlspecialchars($this->input->post('nis', true)),
             'name' => htmlspecialchars($this->input->post('name', true)),
             'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
             'nama_instansi' => htmlspecialchars($this->input->post('nama_instansi', true)),

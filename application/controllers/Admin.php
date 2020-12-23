@@ -258,6 +258,8 @@ class Admin extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['iduka'] = $this->db->get_where('tbl_jurusan')->result_array();
 
+        $tp = $this->input->post('tp');
+        $jurusan = $this->input->post('jurusan');
         $this->form_validation->set_rules('id', 'ID', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -268,7 +270,7 @@ class Admin extends CI_Controller
         } else {
             $this->Admin_model->editSiswa();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
-            redirect('admin/data');
+            redirect('admin/data?tp=' . $tp . '&jurusan=' . $jurusan);
         }
     }
     public function suratbalasan($nis)
