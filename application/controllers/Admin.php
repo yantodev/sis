@@ -638,11 +638,86 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Cetak Sertifikat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tp'] = $this->db->get_where('tp')->result_array();
+        $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/sertifikat');
         $this->load->view('wrapper/footer');
+    }
+    public function CetakDepan()
+    {
+        $data['title'] = 'Detail Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $tp = $this->input->get('tp');
+        $id = $this->input->get('id');
+        $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
+        $data['siswa'] = $this->Admin_model->getSiswaById($id);
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/sertifikat-depan', $data);
+        $this->load->view('wrapper/footer');
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'L',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/pi-2020.png" width="100%" height="100%" />
+        </div>');
+
+        $html = $this->load->view('admin/sertifikat-depan', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('SERTIFIKAT PI.pdf', \Mpdf\Output\Destination::INLINE);
+    }
+
+    public function CetakBelakang()
+    {
+        $data['title'] = 'Detail Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $id = $this->input->get('id');
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['tabel'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan, 'id_kode' => 1])->result_array();
+        $data['tabel2'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan,  'id_kode' => 2])->result_array();
+        $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
+        $data['siswa'] = $this->Admin_model->getSiswaById($id);
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/sertifikat-belakang', $data);
+        $this->load->view('wrapper/footer');
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'L',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        // $mpdf->SetHTMLHeader('
+        // <div style="text-align: center; font-weight: bold;">
+        //   <img src="assets/img/pi-2020.png" width="100%" height="100%" />
+        // </div>');
+
+        $html = $this->load->view('admin/sertifikat-belakang', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('SERTIFIKAT PI.pdf', \Mpdf\Output\Destination::INLINE);
     }
 
     //SERTIFIKAT TKRO
