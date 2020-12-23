@@ -814,6 +814,76 @@ class Admin extends CI_Controller
         $callback = array('list_alamat' => $lists);
         echo json_encode($callback);
     }
+    public function EmailIduka()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->email_website . "'>" . $data->email_website . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
+    public function telpIduka()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->telp_instansi . "'>" . $data->telp_instansi . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
+    public function pejabatIduka()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->nama_pembimbing_instansi . "'>" . $data->nama_pembimbing_instansi . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
+    public function NIPpejabat()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->nip . "'>" . $data->nip . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
+    public function jabatan()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->jabatan . "'>" . $data->jabatan . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
+    public function hpPembimbing()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->hp_pembimbing . "'>" . $data->hp_pembimbing . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
+    public function emailPembimbing()
+    {
+        $nama_instansi = $this->input->get('nama_instansi');
+        $iduka = $this->Home_model->alamatIduka($nama_instansi);
+        foreach ($iduka as $data) {
+            $lists = "<option value='" . $data->email_pembimbing . "'>" . $data->email_pembimbing . "</option>";
+        }
+        $callback = array('list_web' => $lists);
+        echo json_encode($callback);
+    }
     public function listIduka()
     {
         $singkatan_jurusan = $this->input->get('jurusan');

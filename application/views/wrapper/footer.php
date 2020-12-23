@@ -173,31 +173,240 @@
      </script>
      <!-- get alamat iduka -->
      <script>
-         $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-             // Kita sembunyikan dulu untuk loadingnya
+         $(document).ready(function() {
              $("#loading").hide();
-
-             $("#nama_instansi").change(function() { // Ketika user mengganti atau memilih data iduka
-                 $("#alamat_instansi").hide(); // Sembunyikan dulu combobox kota nya
-                 $("#loading").show(); // Tampilkan loadingnya
+             $("#nama_instansi").change(function() {
+                 $("#alamat_instansi").hide();
+                 $("#loading").show();
 
                  $.ajax({
-                     type: "GET", // Method pengiriman data bisa dengan GET atau POST
-                     url: "<?php echo base_url("Admin/AlamatIduka"); ?>", // Isi dengan url/path file php yang dituju
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/AlamatIduka"); ?>",
                      data: {
                          nama_instansi: $("#nama_instansi").val()
-                     }, // data yang akan dikirim ke file yang dituju
+                     },
                      dataType: "json",
                      beforeSend: function(e) {
                          if (e && e.overrideMimeType) {
                              e.overrideMimeType("application/json;charset=UTF-8");
                          }
                      },
-                     success: function(response) { // Ketika proses pengiriman berhasil
-                         $("#loading").hide(); // Sembunyikan loadingnya
-                         // set isi dari combobox kota
-                         // lalu munculkan kembali combobox kotanya
+                     success: function(response) {
+                         $("#loading").hide();
                          $("#alamat_instansi").html(response.list_alamat).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!--email website -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#email_website_instansi").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/EmailIduka"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#email_website_instansi").html(response.list_web).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- telp instansi -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#telp_instansi").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/telpIduka"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#telp_instansi").html(response.list_web).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- Pejabat Iduka -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#nama_pejabat").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/pejabatIduka"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#nama_pejabat").html(response.list_web).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#no_pejabat").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/NIPpejabat"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#no_pejabat").html(response.list_web).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#jabatan").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/jabatan"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#jabatan").html(response.list_web).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#telp_pejabat").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/hppembimbing"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#telp_pejabat").html(response.list_web).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+             $("#nama_instansi").change(function() {
+                 $("#email_pejabat").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Admin/emailpembimbing"); ?>",
+                     data: {
+                         nama_instansi: $("#nama_instansi").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#email_pejabat").html(response.list_web).show();
                      },
                      error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
                          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error

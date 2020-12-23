@@ -75,45 +75,59 @@
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Alamat Email / Website</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="email_website_instansi" name="email_website_instansi" value="<?= $siswa['email_website_instansi']; ?>">
+                        <select name="email_website_instansi" id="email_website_instansi">
+                            <option value="<?= $siswa['email_website_instansi']; ?>"><?= $siswa['email_website_instansi']; ?></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Nomor Telp/HP Instansi</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="telp_instansi" name="telp_instansi" value="<?= $siswa['telp_instansi']; ?>">
+                        <select name="telp_instansi" id="telp_instansi">
+                            <option value="<?= $siswa['telp_instansi']; ?>"><?= $siswa['telp_instansi']; ?></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Nama Pejabat</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nama_pejabat" name="nama_pejabat" value="<?= $siswa['nama_pejabat']; ?>">
+                        <select name="nama_pejabat" id="nama_pejabat">
+                            <option value="<?= $siswa['nama_pejabat']; ?>"><?= $siswa['nama_pejabat']; ?></option>
+                        </select>
                     </div>
                     <?= form_error('nama_pejabat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">NIP/NIK/NRP *)</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="no_pejabat" name="no_pejabat" value="<?= $siswa['no_pejabat']; ?>">
+                        <select name="no_pejabat" id="no_pejabat">
+                            <option value="<?= $siswa['no_pejabat']; ?>"><?= $siswa['no_pejabat']; ?></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Jabatan</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= $siswa['jabatan']; ?>">
+                        <select name="jabatan" id="jabatan">
+                            <option value="<?= $siswa['jabatan']; ?>"><?= $siswa['jabatan']; ?></option>
+                        </select>
                     </div>
                     <?= form_error('jabatan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">No Telp/HP</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="telp_pejabat" name="telp_pejabat" value="<?= $siswa['telp_pejabat']; ?>">
+                        <select name="telp_pejabat" id="telp_pejabat">
+                            <option value="<?= $siswa['telp_pejabat']; ?>"><?= $siswa['telp_pejabat']; ?></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Alamat Email</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="email_pejabat" name="email_pejabat" value="<?= $siswa['email_pejabat']; ?>">
+                        <select name="email_pejabat" id="email_pejabat">
+                            <option value="<?= $siswa['email_pejabat']; ?>"><?= $siswa['email_pejabat']; ?></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
