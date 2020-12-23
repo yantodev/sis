@@ -45,12 +45,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="NewMenuModalLabel">TAMBAH GURU</h5>
+                <h5 class="modal-title" id="NewMenuModalLabel">TAMBAH USER</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/EditGuru'); ?>" method="POST">
+            <form action="" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Guru">
