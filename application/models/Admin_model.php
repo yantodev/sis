@@ -138,7 +138,14 @@ class Admin_model extends CI_Model
         $data = [
             'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
             'iduka' => htmlspecialchars($this->input->post('iduka', true)),
-            'alamat' => htmlspecialchars($this->input->post('alamat', true))
+            'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+            'email_website' => htmlspecialchars($this->input->post('email_website', true)),
+            'telp_instansi' => htmlspecialchars($this->input->post('telp_instansi', true)),
+            'nama_pembimbing_instansi' => htmlspecialchars($this->input->post('nama_pembimbing_instansi', true)),
+            'nip' => htmlspecialchars($this->input->post('nip', true)),
+            'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
+            'hp_pembimbing' => htmlspecialchars($this->input->post('hp_pembimbing', true)),
+            'email_pembimbing' => htmlspecialchars($this->input->post('email_pembimbing', true)),
         ];
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('tbl_iduka', $data);

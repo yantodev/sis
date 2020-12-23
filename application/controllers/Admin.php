@@ -1044,6 +1044,7 @@ class Admin extends CI_Controller
         $data['data'] = $this->Admin_model->getIdukaById($id);
         $data['data2'] =  $this->Admin_model->getJurusan();
 
+        $jurusan = $this->input->post('jurusan');
         $this->form_validation->set_rules('jurusan', 'jurusan', 'required');
         $this->form_validation->set_rules('iduka', 'Iduka/Instansi', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat Iduka/Instansi', 'required');
@@ -1056,7 +1057,7 @@ class Admin extends CI_Controller
         } else {
             $this->Admin_model->editIduka();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
-            redirect('admin/iduka');
+            redirect('admin/iduka?jurusan=' . $jurusan);
         }
     }
 

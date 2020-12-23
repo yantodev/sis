@@ -1,12 +1,3 @@
-<div class="dropdown mb-3">
-    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Silahkan Pilih Menu
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="<?= base_url('admin/iduka'); ?>">DATA IDUKA</a>
-        <a class="dropdown-item" href="<?= base_url('admin/pengumuman'); ?>">PENGUMUMAN</a>
-    </div>
-</div>
 <form action="<?= base_url('admin/iduka'); ?> " method="get">
     <select name="jurusan" id="jurusan">
         <option value="">Silahkan Pilih Jurusan</option>
@@ -36,6 +27,7 @@
                         <th>#</th>
                         <th>IDUKA</th>
                         <th>Alamat</th>
+                        <th>Pejabat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -46,6 +38,7 @@
                             <td><?= $i; ?></td>
                             <td><?= $d['iduka']; ?></td>
                             <td><?= $d['alamat']; ?></td>
+                            <td><?= $d['nama_pembimbing_instansi']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/editIduka/') . $d['id']; ?>" class="badge badge-success">Edit</a>
                             </td>
