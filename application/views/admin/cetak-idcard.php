@@ -5,23 +5,23 @@
         margin-left: 3.175cm;
         margin-right: 3.175cm;
     }
-</style>';
+</style>
 <?php foreach ($data as $siswa) : ?>
     <table border="1" cellspacing="0">
         <thead>
             <tr>
-                <td width="280px" height="350px" valign="top">
+                <td width="250px" height="350px" valign="top">
                     <table align="center">
                         <thead>
                             <tr>
                                 <td align="center" valign="top" height="50px">
-                                    <h3>
+                                    <h4>
                                         <b>
                                             PRAKTEK KERJA LAPANGAN<br />
                                             <?= $siswa['tp']; ?><br />
                                             SMK MUH KARANGMOJO
                                         </b>
-                                    </h3>
+                                    </h4>
                                 </td>
                             </tr>
                             <tr>
@@ -36,7 +36,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" height="80px">
+                                <td class="table-primary" align="center" height="80px">
                                     <h3><u><?= $siswa['name']; ?></u><br />
                                         <?= $siswa['kelas']; ?></h3>
                                 </td>
@@ -64,7 +64,7 @@
                         </tr>
                     </table>
                 </td>
-                <td width="280px" height="350px" valign="top">
+                <td width="250px" height="350px" valign="top">
                     <div class="card mt-2 pt-2" align="center">
                         <table align="center">
                             <tr align="center">
