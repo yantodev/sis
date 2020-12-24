@@ -727,7 +727,9 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
         $id = $this->input->get('id');
+        $iduka = $this->input->get('iduka');
         $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
+        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
 
         $this->load->view('wrapper/header', $data);

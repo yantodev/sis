@@ -125,7 +125,7 @@
                 </td>
                 <td></td>
                 <td>
-                    <p><?= $siswa['jabatan']; ?></p>
+                    <p><?= $data['jabatan']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -134,7 +134,7 @@
                 </td>
                 <td></td>
                 <td valign="bottom"><u>
-                        <p><?= $siswa['nama_pejabat']; ?>
+                        <p><?= $data['nama_pembimbing_instansi']; ?>
                     </u></p>
                 </td>
             </tr>
@@ -144,7 +144,7 @@
                 </td>
                 <td></td>
                 <td>
-                    <p>NIP/NRP. <?= $siswa['no_pejabat']; ?></p>
+                    <p>NIP/NRP. <?= $data['nip']; ?></p>
                 </td>
             </tr>
         </thead>

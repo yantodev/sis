@@ -40,7 +40,7 @@
                             <td><?= $d['name']; ?></td>
                             <td><?= $d['verifikasi']; ?></td>
                             <td>
-                                <a href="<?= base_url('admin/CetakDepan?id=') . $d['id'] . '&tp=' . $d['tp']; ?>" class="badge badge-warning">Depan</a>
+                                <a href="<?= base_url('admin/CetakDepan?id=') . $d['id'] . '&tp=' . $d['tp'] . '&iduka=' . $d['nama_instansi']; ?>" class="badge badge-warning">Depan</a>
                                 <a href="<?= base_url('admin/CetakBelakang?id=') . $d['id'] . '&tp=' . $d['tp'] . '&jurusan=' . $d['jurusan']; ?>" class="badge badge-success">Belakang</a>
                             </td>
                         </tr>
