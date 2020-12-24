@@ -74,7 +74,7 @@
                             <tr>
                                 <td align="center">
                                     <h4><u><?= $siswa['guru_pendamping']; ?></u></h4>
-                                    <!-- <h5>Telp/HP. <?= $siswa['hp_pendamping']; ?></h5> -->
+                                    <h5>Telp/HP. <?= $siswa['hp_pendamping']; ?></h5>
                                 </td>
                             </tr>
                             <tr>
