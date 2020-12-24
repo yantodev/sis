@@ -1,3 +1,12 @@
+<style>
+    @page {
+        margin-top: 0.5cm;
+        margin-bottom: 0.0cm;
+        margin-left: 0.0cm;
+        margin-right: 0.0cm;
+        background-image: url('assets/img/pi-2020.png');
+    }
+</style>
 <style type="text/css">
     div .container {
         /* max-width: 33 cm;

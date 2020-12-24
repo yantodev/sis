@@ -727,8 +727,8 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
         $id = $this->input->get('id');
-        $iduka = $this->input->get('iduka');
         $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
+        $iduka = $this->input->get('iduka');
         $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
 
@@ -741,16 +741,16 @@ class Admin extends CI_Controller
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
-                'format' => 'A4',
+                'format' => 'Folio',
                 'orientation' => 'L',
                 'setAutoTopMargin' => false
             ]
         );
 
-        // $mpdf->SetHTMLHeader('
-        // <div style="text-align: center; font-weight: bold;">
-        //   <img src="assets/img/pi-2020.png" width="100%" height="100%" />
-        // </div>');
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/pi-2020.png" width="100%" height="100%" />
+        </div>');
 
         $html = $this->load->view('admin/sertifikat-depan', [], true);
         $mpdf->WriteHTML($html);
@@ -764,6 +764,8 @@ class Admin extends CI_Controller
         $id = $this->input->get('id');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
+        $iduka = $this->input->get('iduka');
+        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
         $data['tabel'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan, 'id_kode' => 1])->result_array();
         $data['tabel2'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan,  'id_kode' => 2])->result_array();
         $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
@@ -778,7 +780,7 @@ class Admin extends CI_Controller
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
-                'format' => 'A4',
+                'format' => 'Folio',
                 'orientation' => 'L',
                 'setAutoTopMargin' => false
             ]

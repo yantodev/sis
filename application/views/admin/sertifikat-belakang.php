@@ -109,10 +109,10 @@
                 <td>
                     <h4>
                         <b>
-                            <?= $siswa['tgl_cetak']; ?><br />
-                            <?= $siswa['jabatan']; ?><br /><br /><br /><br />
-                            <?= $siswa['nama_pejabat']; ?><br />
-                            NIP/NRP. <?= $siswa['no_pejabat']; ?>
+                            <!-- <?= $tp['tgl']; ?><br /> -->
+                            <?= $data['jabatan']; ?><br /><br /><br /><br /><br />
+                            <?= $data['nama_pembimbing_instansi']; ?><br />
+                            NIP/NRP. <?= $data['nip']; ?>
                         </b>
                     </h4>
 
