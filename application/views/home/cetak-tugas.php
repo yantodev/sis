@@ -22,7 +22,7 @@
     </tbody>
 </table>
 
-<p>Sebagai guru pembimbing dalam praktik Kerja Lapangan, pada :</p>
+<p>Sebagai guru pembimbing dalam Praktik Kerja Lapangan (PKL), pada :</p>
 
 <table class="table" border="1" cellspacing="0">
     <thead>
