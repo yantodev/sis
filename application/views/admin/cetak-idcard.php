@@ -31,14 +31,18 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center">
+                                <td align="center" height="80px">
                                     <h3><?= $siswa['jurusan']; ?></h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="table-primary" align="center" height="80px">
-                                    <h3><u><?= ucwords(strtolower($siswa['name'])); ?></u><br />
-                                        <?= $siswa['kelas']; ?></h3>
+                                <td bgcolor="greenyellow" class="table-primary" align="center">
+                                    <h3><u><?= ucwords(strtolower($siswa['name'])); ?></u></h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="cadetblue" class="table-primary" align="center">
+                                    <h3><?= $siswa['kelas']; ?></h3>
                                 </td>
                             </tr>
                         </thead>
