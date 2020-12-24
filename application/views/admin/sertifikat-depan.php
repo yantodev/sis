@@ -116,7 +116,7 @@
                 </td>
                 <td></td>
                 <td valign="bottom">
-                    <p><?= $siswa['tgl_cetak']; ?></p>
+                    <p>Karangmojo, <?= $tp['tgl']; ?></p>
                 </td>
                 </>
             <tr>
