@@ -1155,7 +1155,7 @@ class Admin extends CI_Controller
         $data['guru'] = $this->Admin_model->Guru();
         $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['active' => 1])->result_array();
+        $data['data'] = $this->db->get_where('tbl_iduka', ['active' => 'Aktif'])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);

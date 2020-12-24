@@ -33,8 +33,9 @@
                     </td>
                     <td>
                         <select name="active[]" id="active">
-                            <option value="">Status</option>
-                            <option value="1">Active</option>
+                            <option value="<?= $d['active']; ?>"><?= $d['active']; ?></option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Non Aktif">Non Aktif</option>
                         </select>
                     </td>
                     <td>
