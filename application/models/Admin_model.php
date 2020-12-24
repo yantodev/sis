@@ -8,6 +8,12 @@ class Admin_model extends CI_Model
         $this->db->order_by('nama_instansi', 'ASC');
         return $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
     }
+    public function Rekap($tp)
+    {
+        $this->db->order_by('jurusan', 'ASC');
+        return $this->db->get_where('master', ['tp' => $tp])->result_array();
+    }
+
     public function CountSiswa()
     {
         $sql = "SELECT  count(if(tp='2020/2021', tp, NULL)) as tp,
