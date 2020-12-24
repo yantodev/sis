@@ -17,7 +17,7 @@
                                 <td align="center" valign="top" height="50px">
                                     <h3>
                                         <b>
-                                            PRAKTEK KERJA LAPANGA<br />
+                                            PRAKTEK KERJA LAPANGAN<br />
                                             <?= $siswa['tp']; ?><br />
                                             SMK MUH KARANGMOJO
                                         </b>
