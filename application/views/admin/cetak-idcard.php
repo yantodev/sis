@@ -1,8 +1,16 @@
+<style>
+    @page {
+        margin-top: 0.1cm;
+        margin-bottom: 0.0cm;
+        margin-left: 3.175cm;
+        margin-right: 3.175cm;
+    }
+</style>';
 <?php foreach ($data as $siswa) : ?>
     <table border="1" cellspacing="0">
         <thead>
             <tr>
-                <td width="280px" height="290px" valign="top">
+                <td width="280px" height="350px" valign="top">
                     <table align="center">
                         <thead>
                             <tr>
@@ -41,11 +49,19 @@
                             </td>
                         </tr>
                     </table>
-                    <!-- <p style="text-align: justify;color:blue"><br />
-                        <i>https://data.smkmuhkarangmojo.sch.id</i>
-                    </p> -->
+                    <table align="center" border="" cellspacing="0">
+                        <tr>
+                            <td>
+                                <b>
+                                    <p style="text-align: center;color:blue"><br />
+                                        <i>https://data.smkmuhkarangmojo.sch.id</i>
+                                    </p>
+                                </b>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
-                <td width="280px" height="290px" valign="top">
+                <td width="280px" height="350px" valign="top">
                     <div class="card mt-2 pt-2" align="center">
                         <table align="center">
                             <tr align="center">
@@ -61,20 +77,20 @@
                                     <?= $siswa['nama_instansi']; ?>
                                 </th>
                             </tr>
-                            <!-- <tr>
+                            <tr>
                                 <td align="center" height="50px" valign="top">
                                     <p><?= $siswa['alamat_instansi']; ?></p>
                                 </td>
-                            </tr> -->
+                            </tr>
                             <tr>
-                                <td align="center" height="40px" valign="bottom">
+                                <td align="center" height="20px" valign="bottom">
                                     <h7><b><u>GURU PEMBIMBING</u></b></h7>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center">
                                     <h4><u><?= $siswa['guru_pendamping']; ?></u></h4>
-                                    <h5>Telp/HP. <?= $siswa['hp_pendamping']; ?></h5>
+                                    <h4>Telp/HP. <?= $siswa['hp_pendamping']; ?></h4>
                                 </td>
                             </tr>
                             <tr>
