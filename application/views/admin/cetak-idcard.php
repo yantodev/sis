@@ -37,7 +37,7 @@
                             </tr>
                             <tr>
                                 <td class="table-primary" align="center" height="80px">
-                                    <h3><u><?= $siswa['name']; ?></u><br />
+                                    <h3><u><?= ucwords(strtolower($siswa['name'])); ?></u><br />
                                         <?= $siswa['kelas']; ?></h3>
                                 </td>
                             </tr>
@@ -77,7 +77,7 @@
                             </tr>
                             <tr>
                                 <th align="center">
-                                    <?= $siswa['nama_instansi']; ?>
+                                    <?= ucwords(strtolower($siswa['nama_instansi'])); ?>
                                 </th>
                             </tr>
                             <tr>
