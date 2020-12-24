@@ -25,6 +25,7 @@
                 <tr>
                     <td><?= $i; ?></td>
                     <td width="400px">
+                        <input class="col" type="hidden" name="id[]" id="id" value="<?= $d['id']; ?>" readonly>
                         <input class="col" type="text" name="lokasi[]" id="lokasi" value="<?= $d['iduka']; ?>" readonly>
                     </td>
                     <td>

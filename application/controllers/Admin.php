@@ -1253,14 +1253,16 @@ class Admin extends CI_Controller
             $this->load->view('admin/tambah-surat-tugas', $data);
             $this->load->view('wrapper/footer');
         } else {
+            $id = $this->input->post('id[]');
             $email = $this->input->post('guru[]');
             $lokasi = $this->input->post('lokasi[]');
             $alamat = $this->input->post('alamat[]');
             $tp = $this->input->post('tp[]');
             $active = $this->input->post('active[]');
             $result = array();
-            foreach ($lokasi as $key => $val) {
+            foreach ($id as $key => $val) {
                 $result[] = array(
+                    'id'     => $id[$key],
                     'guru'     => $email[$key],
                     'iduka'    => $lokasi[$key],
                     'alamat'    => $alamat[$key],
@@ -1268,7 +1270,7 @@ class Admin extends CI_Controller
                     'active'    => $active[$key],
                 );
             }
-            $this->db->update_batch('tbl_iduka', $result, 'iduka');
+            $this->db->update_batch('tbl_iduka', $result, 'id');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
             redirect('admin/surattugas');
         }
