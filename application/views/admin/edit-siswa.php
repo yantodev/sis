@@ -37,6 +37,36 @@
                         <input type="text" class="form-control" id="name" name="name" value="<?= $siswa['name']; ?>">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">Guru Pendamping</label>
+                    <div class="col-sm-8">
+                        <select name="guru_pendamping" id="guru_pendamping">
+                            <option value="<?= $siswa['guru_pendamping']; ?>"><?= $siswa['guru_pendamping']; ?></option>
+                            <?php foreach ($guru as $g) : ?>
+                                <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">HP Pendamping</label>
+                    <div class="col-sm-8">
+                        <select name="hp_pendamping" id="hp_pendamping">
+                            <option value="<?= $siswa['hp_pendamping']; ?>"><?= $siswa['hp_pendamping']; ?></option>
+                            <div id="loading" style="margin-top: 15px;">
+                                <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
+                            </div>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">Email Pendamping</label>
+                    <div class="col-sm-8">
+                        <select name="email_pendamping" id="email_pendamping">
+                            <option value="<?= $siswa['email_pendamping']; ?>"><?= $siswa['email_pendamping']; ?></option>
+                        </select>
+                    </div>
+                </div>
                 <h5><b>DATA INSTANSI / LOKASI PKL</b></h5>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Jurusan</label>
