@@ -22,14 +22,16 @@
     </tbody>
 </table>
 
-<p>Sebagai guru pembimbing dalam Praktik Kerja Lapangan (PKL), pada :</p>
+<p>Sebagai guru pembimbing dalam praktik kerja lapangan, pada :</p>
 
 <table class="table" border="1" cellspacing="0">
     <thead>
         <tr>
             <th>No.</th>
-            <th width="300px">Tempat PKL</th>
-            <th width="300px">Alamat</th>
+            <th>Nama Siswa</th>
+            <th>Kompetensi Keahlian</th>
+            <th>Tempat PKL</th>
+            <th>Alamat</th>
         </tr>
     </thead>
     <tbody>
@@ -37,8 +39,10 @@
         <?php foreach ($data as $d) : ?>
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
-                <td><?= $d['iduka']; ?></td>
-                <td><?= $d['alamat']; ?></td>
+                <td><?= ucwords(strtolower($d['name'])); ?></td>
+                <td><?= ucwords(strtolower($d['jurusan'])); ?></td>
+                <td><?= ucwords(strtolower($d['nama_instansi'])); ?></td>
+                <td><?= $d['alamat_instansi']; ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
