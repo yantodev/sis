@@ -20,7 +20,6 @@
         </tbody>
     </table>
 </div>
-<a href="<?= base_url('pendamping/cetakdetail/') . $siswa['nis']; ?>"><button class="btn btn-primary">CETAK</button></a>
 <form action="" method="post">
     <table class="table table-striped table-inverse table-responsive mt-3">
         <thead class="thead-inverse">
