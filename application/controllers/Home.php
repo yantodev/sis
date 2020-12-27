@@ -153,6 +153,7 @@ class Home extends CI_Controller
 
         $this->load->view('home/cetak-tugas', $data);
 
+        $filename = 'Surat Tugas ' . $guru;
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
@@ -164,7 +165,7 @@ class Home extends CI_Controller
 
         $html = $this->load->view('home/cetak-tugas', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Surat Tugas PI.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
     }
 
     public function detailsiswa($id)
