@@ -111,11 +111,27 @@ class Pendamping extends CI_Controller
         $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
         $data['laporan'] = $this->db->get_where('tbl_laporan', ['nis' => $nis])->result_array();
 
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
-        $this->load->view('pendamping/detail', $data);
-        $this->load->view('wrapper/footer');
+        $this->form_validation->set_rules('id[]', 'ID', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('pendamping/sidebar', $data);
+            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('pendamping/detail', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $id = $this->input->post('id[]');
+            $status = $this->input->post('status[]');
+            $result = array();
+            foreach ($id as $key => $val) {
+                $result[] = array(
+                    'id'     => $id[$key],
+                    'status'    => $status[$key],
+                );
+            }
+            $this->db->update_batch('tbl_laporan', $result, 'id');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
+            redirect('pendamping/cetakdetail/' . $nis);
+        }
     }
     public function cetakdetail($nis)
     {
@@ -123,7 +139,7 @@ class Pendamping extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
-        $data['laporan'] = $this->db->get_where('tbl_laporan', ['nis' => $nis])->result_array();
+        $data['laporan'] = $this->db->get_where('tbl_laporan', ['nis' => $nis, 'status' => 1])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('pendamping/sidebar', $data);
@@ -135,9 +151,14 @@ class Pendamping extends CI_Controller
             [
                 'mode' => 'utf-8',
                 'format' => 'A4',
-                'setAutoTopMargin' => false
+                'orientation' => 'P',
+                'setAutoTopMargin' => 'stretch'
             ]
         );
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/kop.png" width="100%" height="20%" />
+        </div>');
 
         $html = $this->load->view('pendamping/cetak-detail', [], true);
         $mpdf->WriteHTML($html);
@@ -240,6 +261,10 @@ class Pendamping extends CI_Controller
                 'setAutoTopMargin' => false
             ]
         );
+        // $mpdf->SetHTMLHeader('
+        // <div style="text-align: center; font-weight: bold;">
+        //   <img src="assets/img/kop.png" width="100%" height="100%" />
+        // </div>');
 
         $html = $this->load->view('pendamping/cetak-monitoring', [], true);
         $mpdf->WriteHTML($html);

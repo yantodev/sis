@@ -1,4 +1,13 @@
-<img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
+<!-- <style>
+    @page {
+        margin-top: 1.0cm;
+        margin-bottom: 1.0cm;
+        margin-left: 2.0cm;
+        margin-right: 2.0cm;
+        /* background-image: url('assets/img/kop.png'); */
+    }
+</style> -->
+<!-- <img src="<?= base_url('assets/img/kop.png'); ?>" alt=""> -->
 <h2 align="center">
     DETAIL LAPORAN KEGIATAN PKL SISWA<br />
     Tahun Pelajaran <?= $siswa['tp']; ?>
@@ -12,7 +21,7 @@
                     <h4>Nama Siswa</h4>
                 </td>
                 <td>
-                    <h4>: (<?= $siswa['nis']; ?>) <?= $siswa['name']; ?></h4>
+                    <h4>: <?= $siswa['nis']; ?> | <?= $siswa['name']; ?></h4>
                 </td>
             </tr>
             <tr>
@@ -36,33 +45,34 @@
 </div>
 <h3>Daftar Kegiatan Siswa</h3>
 <div class="form-group">
-    <table border="1" cellspacing="0" class="table table-striped table-inverse table-responsive mt-3">
+    <table border="1" cellspacing="0" width="100%" class="table table-striped table-inverse table-responsive mt-3">
         <thead class="thead-inverse">
             <tr>
-                <th>No</th>
+                <th width="15px">No</th>
                 <th width="100px">Tanggal</th>
                 <th>Kegiatan</th>
                 <th>Uraian Kegiatan</th>
-                <th>Foto</th>
+                <th width="90px">Foto</th>
+                <th>Paraf</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1; ?>
             <?php foreach ($laporan as $l) : ?>
                 <tr>
-                    <td scope="row" valign="top"><?= $i; ?></td>
+                    <td scope="row" valign="top" align="center"><?= $i; ?></td>
                     <td valign="top"><?= format_indo(date($l['time'])); ?></td>
                     <td valign="top"><?= $l['laporan1']; ?></td>
                     <td valign="top"><?= ucfirst($l['laporan2']); ?></td>
-                    <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="80px" height="80px"></td>
+                    <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="90px" height="90px"></td>
+                    <td valign="top" width="60px"></td>
                 </tr>
                 <?php $i++; ?>
             <?php endforeach; ?>
         </tbody>
     </table>
 </div>
-<br />
-<table align="center">
+<!-- <table align="center">
     <thead>
         <tr>
             <th align="center">Siswa</th>
@@ -83,4 +93,4 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->

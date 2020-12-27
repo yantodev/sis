@@ -41,7 +41,7 @@
                 <td scope="row" align="center"><?= $i; ?></td>
                 <td><?= ucwords(strtolower($d['name'])); ?></td>
                 <td><?= ucwords(strtolower($d['jurusan'])); ?></td>
-                <td><?= ucwords(strtolower($d['nama_instansi'])); ?></td>
+                <td><?= $d['nama_instansi']; ?></td>
                 <td><?= $d['alamat_instansi']; ?></td>
             </tr>
             <?php $i++; ?>

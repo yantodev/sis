@@ -21,27 +21,37 @@
     </table>
 </div>
 <a href="<?= base_url('pendamping/cetakdetail/') . $siswa['nis']; ?>"><button class="btn btn-primary">CETAK</button></a>
-<table class="table table-striped table-inverse table-responsive mt-3">
-    <thead class="thead-inverse">
-        <tr>
-            <th>#</th>
-            <th>Tanggal</th>
-            <th>Kegiatan</th>
-            <th>Uraian Kegiatan</th>
-            <th>Foto</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $i = 1; ?>
-        <?php foreach ($laporan as $l) : ?>
+<form action="" method="post">
+    <table class="table table-striped table-inverse table-responsive mt-3">
+        <thead class="thead-inverse">
             <tr>
-                <td scope="row"><?= $i; ?></td>
-                <td><?= format_indo(date($l['time'])); ?></td>
-                <td><?= $l['laporan1']; ?></td>
-                <td><?= $l['laporan2']; ?></td>
-                <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="80px" height="80px"></td>
+                <th></th>
+                <th>#</th>
+                <th>Tanggal</th>
+                <th>Kegiatan</th>
+                <th>Uraian Kegiatan</th>
+                <th>Foto</th>
             </tr>
-            <?php $i++; ?>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($laporan as $l) : ?>
+                <tr>
+                    <td scope="row"><?= $i; ?>
+                        <input type="hidden" name="id[]" id="id" value="<?= $l['id']; ?>">
+                    </td>
+                    <td><select name="status[]" id="status">
+                            <option value=""></option>
+                            <option value="1">Cetak</option>
+                    </td>
+                    <td><?= format_indo(date($l['time'])); ?></td>
+                    <td><?= $l['laporan1']; ?></td>
+                    <td><?= $l['laporan2']; ?></td>
+                    <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="80px" height="80px"></td>
+                </tr>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">CETAK</button>
+</form>
