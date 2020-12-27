@@ -169,8 +169,6 @@ class Pendamping extends CI_Controller
         $data['title'] = 'Detail Laporan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
-        $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
-        $data['laporan'] = $this->db->get_where('tbl_laporan', ['nis' => $nis, 'status' => 1])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('pendamping/sidebar', $data);

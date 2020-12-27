@@ -186,4 +186,45 @@ class Home extends CI_Controller
         // $mpdf->WriteHTML($html);
         // $mpdf->Output('Detail Siswa.pdf', \Mpdf\Output\Destination::INLINE);
     }
+    public function surat_pengantar()
+    {
+        $data['title'] = 'Home';
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['data'] =  $this->Home_model->Jurusan();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $this->load->view('home/header', $data);
+        $this->load->view('home/navbar', $data);
+        $this->load->view('home/surat-pengantar', $data);
+        $this->load->view('home/footer', $data);
+    }
+
+    public function cetak_pengantar()
+    {
+        $data['title'] = 'Cetak Surat Pengantar';
+        $data['instansi'] = $this->input->get('instansi');
+        $data['iduka'] = $this->input->get('iduka');
+        $iduka = $this->input->get('iduka');
+        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Pengantar'])->row_array();
+
+        $this->load->view('home/cetak-pengantar', $data);
+
+        $filename = 'Surat Pengantar ' . $iduka;
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => 'stretch'
+            ]
+        );
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/kop.png" width="100%" height="20%" />
+        </div>');
+
+        $html = $this->load->view('home/cetak-pengantar', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
+    }
 }
