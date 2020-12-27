@@ -164,17 +164,94 @@ class Pendamping extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output('Detail Laporan Siswa.pdf', \Mpdf\Output\Destination::INLINE);
     }
-    public function data()
+    public function surattugas()
     {
-        $data['title'] = 'Data';
+        $data['title'] = 'Detail Laporan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
+        $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+        $data['laporan'] = $this->db->get_where('tbl_laporan', ['nis' => $nis, 'status' => 1])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('pendamping/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
-        $this->load->view('pendamping/data', $data);
+        $this->load->view('pendamping/cetak-detail', $data);
+        $this->load->view('wrapper/footer');
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('master', ['email_pendamping' => $this->session->userdata('email')])->result_array();
+        $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
+        $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Tugas'])->row_array();
+
+        $this->load->view('pendamping/surat-tugas', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => 'stretch'
+            ]
+        );
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/kop.png" width="100%" height="20%" />
+        </div>');
+
+        $html = $this->load->view('pendamping/surat-tugas', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Surat Tugas.pdf', \Mpdf\Output\Destination::INLINE);
+    }
+
+    public function suratjalan()
+    {
+        $data['title'] = 'Surat Jalan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->Admin_model->getGuru();
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $guru = $this->input->get('guru');
+        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('pendamping/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/surat-jalan', $data);
         $this->load->view('wrapper/footer');
     }
+    public function cetaksuratjalan()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        // $data['data'] = $this->db->get_where('master', ['email_pendamping' => $this->session->userdata('email')])->result_array();
+        $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
+        $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Tugas'])->row_array();
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $iduka = $this->input->get('nama_instansi');
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
+        $data['data2'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['data3'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
+        $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
+
+        $this->load->view('pendamping/cetak-surat-jalan', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => 'stretch'
+            ]
+        );
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/kop.png" width="100%" height="20%" />
+        </div>');
+
+        $html = $this->load->view('pendamping/cetak-surat-jalan', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Surat Jalan.pdf', \Mpdf\Output\Destination::INLINE);
+    }
+
     public function monitoring()
     {
         $data['title'] = 'Lembar Monitoring';
