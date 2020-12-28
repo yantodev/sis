@@ -50,7 +50,8 @@
             <tr>
                 <th width="15px">No</th>
                 <th width="100px">Tanggal</th>
-                <th>Kegiatan</th>
+                <th>Bidang Pekerjaan</th>
+                <th>Standar Keterampilan</th>
                 <th>Uraian Kegiatan</th>
                 <th width="90px">Foto</th>
                 <th>Paraf</th>
@@ -62,8 +63,9 @@
                 <tr>
                     <td scope="row" valign="top" align="center"><?= $i; ?></td>
                     <td valign="top"><?= format_indo(date($l['time'])); ?></td>
-                    <td valign="top"><?= $l['laporan1']; ?></td>
-                    <td valign="top"><?= ucfirst($l['laporan2']); ?></td>
+                    <td valign="top"><?= $l['bidang_pekerjaan']; ?></td>
+                    <td valign="top"><?= $l['sub_1']; ?></td>
+                    <td valign="top"><?= $l['sub_2']; ?></td>
                     <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="90px" height="90px"></td>
                     <td valign="top" width="60px"></td>
                 </tr>

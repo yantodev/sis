@@ -226,6 +226,6 @@ class Home extends CI_Controller
 
         $html = $this->load->view('home/cetak-pengantar', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output($filename . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
 }

@@ -27,7 +27,8 @@
                 <th></th>
                 <th>#</th>
                 <th>Tanggal</th>
-                <th>Kegiatan</th>
+                <th>Bidang Pekerjaan</th>
+                <th>Standar Keterampilan</th>
                 <th>Uraian Kegiatan</th>
                 <th>Foto</th>
             </tr>
@@ -44,8 +45,9 @@
                             <option value="1">Cetak</option>
                     </td>
                     <td><?= format_indo(date($l['time'])); ?></td>
-                    <td><?= $l['laporan1']; ?></td>
-                    <td><?= $l['laporan2']; ?></td>
+                    <td><?= $l['bidang_pekerjaan']; ?></td>
+                    <td><?= $l['sub_1']; ?></td>
+                    <td><?= $l['sub_2']; ?></td>
                     <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="80px" height="80px"></td>
                 </tr>
                 <?php $i++; ?>

@@ -484,6 +484,180 @@
              });
          });
      </script>
+     <!-- Tabel Distribusi Kegiatan -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+
+             $("#jurusan").change(function() {
+                 $("#bidang_pekerjaan").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Distribusi/listBidangPekerjaan"); ?>",
+                     data: {
+                         jurusan: $("#jurusan").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#bidang_pekerjaan").html(response.list_iduka).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- sub_1 -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+
+             $("#bidang_pekerjaan").change(function() {
+                 $("#sub_1").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Distribusi/sub_1"); ?>",
+                     data: {
+                         bidang_pekerjaan: $("#bidang_pekerjaan").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#sub_1").html(response.sub_1).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- sub_2 -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+
+             $("#sub_1").change(function() {
+                 $("#sub_2").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Distribusi/sub_2"); ?>",
+                     data: {
+                         sub_1: $("#sub_1").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#sub_2").html(response.sub_2).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- sub_3 -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+
+             $("#sub_2").change(function() {
+                 $("#sub_3").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Distribusi/sub_3"); ?>",
+                     data: {
+                         sub_2: $("#sub_2").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#sub_3").html(response.sub_3).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- sub_4 -->
+     <script>
+         $(document).ready(function() {
+             $("#loading").hide();
+
+             $("#sub_3").change(function() {
+                 $("#sub_4").hide();
+                 $("#loading").show();
+
+                 $.ajax({
+                     type: "GET",
+                     url: "<?php echo base_url("Distribusi/sub_4"); ?>",
+                     data: {
+                         sub_3: $("#sub_3").val()
+                     },
+                     dataType: "json",
+                     beforeSend: function(e) {
+                         if (e && e.overrideMimeType) {
+                             e.overrideMimeType("application/json;charset=UTF-8");
+                         }
+                     },
+                     success: function(response) {
+                         $("#loading").hide();
+                         $("#sub_4").html(response.sub_4).show();
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                     }
+                 });
+             });
+         });
+     </script>
+     <!-- Menu -->
+     <script>
+         $('#jurusan').keyup(function() {
+             $.ajax({
+                 url: "<?php echo base_url("Distribusi/menu"); ?>",
+                 data: {
+                     text_box: $('input:text').val()
+                 },
+                 success: function(html) {
+                     $('#menu').html(html);
+                 }
+             })
+         })
+     </script>
 
      <script type="text/javascript" src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
      <script>
@@ -508,14 +682,21 @@
          CKEDITOR.Inline('editable');
      </script>
      <script>
-         var ckeditor = CKEDITOR.replace('laporan1', {
+         var ckeditor = CKEDITOR.replace('bidangpekerjaan', {
              height: '100px'
          });
          CKEDITOR.disableautoInline = true;
          CKEDITOR.Inline('editable');
      </script>
      <script>
-         var ckeditor = CKEDITOR.replace('laporan2', {
+         var ckeditor = CKEDITOR.replace('sub1', {
+             height: '100px'
+         });
+         CKEDITOR.disableautoInline = true;
+         CKEDITOR.Inline('editable');
+     </script>
+     <script>
+         var ckeditor = CKEDITOR.replace('sub2', {
              height: '100px'
          });
          CKEDITOR.disableautoInline = true;

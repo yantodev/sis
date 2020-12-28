@@ -1,3 +1,11 @@
+<style type="text/css">
+    p1 {
+        position: absolute;
+        left: 40px;
+        top: 120px;
+        color: red;
+    }
+</style>
 <img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
 <h3 align="center">
     <u>SURAT TUGAS</u>
@@ -57,13 +65,9 @@
             <td>Karangmojo, <?= tanggal($nomor['tgl_surat']); ?></td>
         </tr>
         <tr>
-            <td height="80px" valign="top">Kepala Sekolah,</td>
-        </tr>
-        <tr>
-            <td>Munawar, S.Pd.I</td>
-        </tr>
-        <tr>
-            <td>NBM. 1076230</td>
+            <td>
+                <img src="<?= base_url('assets/img/ttd-cap.png'); ?>" width="200px" height="150px">
+            </td>
         </tr>
     </tbody>
 </table>

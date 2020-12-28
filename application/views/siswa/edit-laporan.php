@@ -14,21 +14,28 @@
     </div>
     <div class="form-group pb-0">
         <label>
-            <?= $t2['nama_tabel']; ?>
+            Bidang Pekerjaan
         </label>
-        <?= form_error('laporan1', '<small class="text-danger pl-3">', '</small>'); ?>
+        <?= form_error('bidang_pekerjaan', '<small class="text-danger pl-3">', '</small>'); ?>
     </div>
-    <textarea name="laporan1" id="laporan1"><?= $data['laporan1']; ?></textarea>
+    <textarea name="bidangpekerjaan" id="bidang_pekerjaan"><?= $data['bidang_pekerjaan']; ?></textarea>
     <div class="form-group mt-3">
         <label>
-            <?= $t3['nama_tabel']; ?>
+            Standar Keterampilan
         </label>
-        <?= form_error('laporan2', '<small class="text-danger pl-3">', '</small>'); ?>
+        <?= form_error('sub_1', '<small class="text-danger pl-3">', '</small>'); ?>
     </div>
-    <textarea name="laporan2" id="laporan2"><?= $data['laporan2']; ?></textarea>
+    <textarea name="sub1" id="sub_1"><?= $data['sub_1']; ?></textarea>
     <div class="form-group mt-3">
         <label>
-            <?= $t4['nama_tabel']; ?>
+            Uraian Kerja
+        </label>
+        <?= form_error('sub_2', '<small class="text-danger pl-3">', '</small>'); ?>
+    </div>
+    <textarea name="sub2" id="sub_2"><?= $data['sub_2']; ?></textarea>
+    <div class="form-group mt-3">
+        <label>
+            Gambar Kerja
         </label>
     </div>
     <div class="form-group">
@@ -39,7 +46,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto">
+                        <input type="file" class="custom-file-input" id="foto" name="foto" value="<?= $data['foto']; ?>">
                         <label class="custom-file-label" for="foto">Choose file</label>
                         <small>ukuran file tidak boleh lebih dari 5Mb (format file gif|jpg|png)</small>
                     </div>
@@ -48,6 +55,7 @@
         </div>
     </div>
     <input type="hidden" name="id" id="id" value="<?= $data['id']; ?>">
+    <input type="hidden" name="nis" id="nis" value="<?= $data['nis']; ?>">
     <div class="mt-3">
         <button type="submit" class="btn btn-primary">SIMPAN</button>
     </div>
