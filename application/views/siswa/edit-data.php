@@ -64,6 +64,12 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="nis" class="col-sm-4 col-form-label">No. HP Siswa</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="hp_siswa" name="hp_siswa" value="<?= $siswa['hp_siswa']; ?>">
+                    </div>
+                </div>
                 <h5><b>DATA INSTANSI / LOKASI PKL</b></h5>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Jurusan</label>
