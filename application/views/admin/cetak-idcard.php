@@ -10,7 +10,7 @@
     <table border="1" cellspacing="0">
         <thead>
             <tr>
-                <td width="250px" height="350px" valign="top">
+                <td width="280px" height="350px" valign="top">
                     <table align="center">
                         <thead>
                             <tr>
@@ -68,7 +68,7 @@
                         </tr>
                     </table>
                 </td>
-                <td width="250px" height="350px" valign="top">
+                <td width="280px" height="350px" valign="top">
                     <div class="card mt-2 pt-2" align="center">
                         <table align="center">
                             <tr align="center">

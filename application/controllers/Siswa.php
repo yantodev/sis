@@ -418,4 +418,41 @@ class Siswa extends CI_Controller
             }
         }
     }
+    public function ibadah($nis)
+    {
+        $data['title'] = 'Laporan Ibadah-Ku';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['ibadah'] = $this->db->get_where('tbl_ibadah', ['nis' => $nis])->result_array();
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+
+        $this->form_validation->set_rules('shalat_fardu', 'Shalat Fardu', 'required|trim');
+        $this->form_validation->set_rules('shalat_dhuha', 'Shalat Dhuha', 'required|trim');
+        $this->form_validation->set_rules('tadarus_quran', 'Tadarus Quran', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
+            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('siswa/ibadah', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+
+            $nis = $this->input->post('nis');
+            $data = [
+                'nis' => $this->input->post('nis'),
+                'nama' => $this->input->post('name'),
+                'kelas' => $this->input->post('kelas'),
+                'jurusan' => $this->input->post('jurusan'),
+                'tp' => $this->input->post('tp'),
+                'shalat_fardu' => $this->input->post('shalat_fardu'),
+                'shalat_dhuha' => $this->input->post('shalat_dhuha'),
+                'tadarus_quran' => $this->input->post('tadarus_quran'),
+                // 'time' => date("Y-m-d")
+            ];
+
+            $this->db->insert('tbl_ibadah', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Laporan ibadah berhasil ditambahkan!!!</div>');
+            redirect('siswa/ibadah/' . $nis);
+        }
+    }
 }

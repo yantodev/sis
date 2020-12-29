@@ -35,7 +35,7 @@
                     <span>Laporan</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-archive"></i>
                     <span>Data PKL</span>
                 </a>
@@ -48,6 +48,11 @@
                         <a class="collapse-item" href="#">Cetak Sertifikat</a>
                     </div>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('siswa/ibadah/') . $user['nis']; ?>">
+                    <i class="fas fa-pray"></i>
+                    <span>Ibadah-Ku</span></a>
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
