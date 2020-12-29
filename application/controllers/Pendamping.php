@@ -345,4 +345,33 @@ class Pendamping extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
     }
+    public function ibadah()
+    {
+        $data['title'] = 'Laporan Ibadah Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tp'] = $this->db->get_where('tp')->result_array();
+        $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['data'] = $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('pendamping/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/laporan-ibadah', $data);
+        $this->load->view('wrapper/footer');
+    }
+    public function detail_ibadah($nis)
+    {
+        $data['title'] = 'Detail Ibadah Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+        $data['data2'] = $this->db->get_where('tbl_ibadah', ['nis' => $nis])->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('pendamping/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/detail-ibadah', $data);
+        $this->load->view('wrapper/footer');
+    }
 }

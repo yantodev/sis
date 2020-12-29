@@ -30,9 +30,17 @@
                     <span>My Profile</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link pb-0" href="<?= base_url('pendamping/laporan'); ?>">
-                    <i class="fas fa-book"></i>
-                    <span>Laporan Siswa</span></a>
+                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-archive"></i>
+                    <span>Laporan PKL</span>
+                </a>
+                <div id="laporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Daftar Menu</h6>
+                        <a class="collapse-item" href="<?= base_url('pendamping/laporan'); ?>">Laporan PKL</a>
+                        <a class="collapse-item" href="<?= base_url('pendamping/ibadah'); ?>">Laporan Ibadah</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
