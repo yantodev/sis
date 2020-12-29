@@ -89,34 +89,9 @@
                     </div>
                     <?= form_error('nama_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
-                <div class="form-group">
-                    <label for="nama_instansi" class="col-sm-4 col-form-label">Guru Pendamping</label>
-                    <select name="guru_pendamping" id="guru_pendamping">
-                        <option value="<?= $siswa['guru_pendamping']; ?>"><?= $siswa['guru_pendamping']; ?></option>
-                        <?php foreach ($guru as $g) : ?>
-                            <option value="<?= $g['nama']; ?>"><?= $g['nama']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="nama_instansi" class="col-sm-4 col-form-label">HP Pendamping</label>
-                    <select name="hp_pendamping" id="hp_pendamping">
-                        <option value="<?= $siswa['hp_pendamping']; ?>"><?= $siswa['hp_pendamping']; ?></option>
-                        <div id="loading" style="margin-top: 15px;">
-                            <img src="<?= base_url('assets/img/loading.gif'); ?>" width="18"> <small>Loading...</small>
-                        </div>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="nama_instansi" class="col-sm-4 col-form-label">Email Pendamping</label>
-                    <select name="email_pendamping" id="email_pendamping">
-                        <option value="<?= $siswa['email_pendamping']; ?>"><?= $siswa['email_pendamping']; ?></option>
-                    </select>
-                </div>
                 <div class="form-group row">
                     <label for="alamat_instansi" class="col-sm-4 col-form-label">Alamat Instansi</label>
                     <div class="col-sm-8">
-                        <!-- <input type="text" class="form-control" id="alamat_instansi" name="alamat_instansi" value="<?= $siswa['alamat_instansi']; ?>"> -->
                         <select name="alamat_instansi" id="alamat_instansi">
                             <option value="<?= $siswa['alamat_instansi']; ?>"><?= $siswa['alamat_instansi']; ?></option>
                         </select>
@@ -128,6 +103,24 @@
                     <?= form_error('alamat_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group row">
+                    <label for="email" class="col-sm-4 col-form-label">Guru Pembimbing</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="guru_pembimbing" name="guru_pembimbing" value="<?= $siswa['guru_pendamping']; ?>" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-4 col-form-label">Email Pembimbing</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="email_pendamping" name="email_pendamping" value="<?= $siswa['email_pendamping']; ?>" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-4 col-form-label">HP Pembimbing</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="hp_pendamping" name="hp_pendamping" value="<?= $siswa['hp_pendamping']; ?>" readonly>
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Alamat Email / Website</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="email_website_instansi" name="email_website_instansi" value="<?= $siswa['email_website_instansi']; ?>">
@@ -170,7 +163,7 @@
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="email_pejabat" name="email_pejabat" value="<?= $siswa['email_pejabat']; ?>">
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Nomor Sertifikat</label>
                     <div class="col-sm-8">
