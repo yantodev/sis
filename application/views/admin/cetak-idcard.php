@@ -81,7 +81,7 @@
                             </tr>
                             <tr>
                                 <th align="center">
-                                    <?= ucwords(strtolower($siswa['nama_instansi'])); ?>
+                                    <?= ucwords($siswa['nama_instansi']); ?>
                                 </th>
                             </tr>
                             <tr>
