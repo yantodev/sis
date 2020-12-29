@@ -52,7 +52,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('siswa/ibadah/') . $user['nis']; ?>">
                     <i class="fas fa-pray"></i>
-                    <span>Ibadah-Ku</span></a>
+                    <span>Ibadah-ku</span></a>
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">

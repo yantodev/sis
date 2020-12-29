@@ -420,7 +420,7 @@ class Siswa extends CI_Controller
     }
     public function ibadah($nis)
     {
-        $data['title'] = 'Laporan Ibadah-Ku';
+        $data['title'] = 'Laporan Ibadah-ku';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['ibadah'] = $this->db->get_where('tbl_ibadah', ['nis' => $nis])->result_array();
         $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
