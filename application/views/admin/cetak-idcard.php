@@ -68,9 +68,18 @@
                         </tr>
                     </table>
                 </td>
+                <td width="10px" height="350px">
+                    <table border="1" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td width="10px" height="420px"></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </td>
                 <td width="280px" height="350px" valign="top">
                     <div class="card mt-2 pt-2" align="center">
-                        <table align="center">
+                        <table border="" align="center">
                             <tr align="center">
                                 <th height="30px" valign="top">
                                     <h3><b><u>INFORMASI</u></b></h3>
