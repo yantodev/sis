@@ -43,7 +43,7 @@
     Sesuai program Kurikulum SMK Muhammadiyah Karangmojo tahun pelajaran 2020/2021 dan surat kesanggupan Bapak/Ibu untuk menerima siswa kami untuk melaksanakan kegiatan Praktik Kerja Lapangan (PKL) maka dengan ini kami kirimkan peserta PKL sebagaimana daftar terlampir.
 </p>
 <p class="justify">
-    Selanjutnya para peserta PKL kami serahkan sepenuhnya kepada Bapak/Ibu untuk mendapatkan bimbingan, pendidikan dan pelatihan, mulai tanggal 04 Januari 2021 sampai dengan 31 Maret 2021. Pada akhir PKL nanti kami mohon kepada Bapak/Ibu berkenan memberikan nilai terhadap siswa peserta PKL tersebut. <font color="blue"><b>Mengenai format penilaian, petunjuk penilaian, buku absen siswa ada pada buku laporan pembimbing. Setelah selesai masa PKL para siswa juga diwajibkan mengumpulkan buku laporan kegiatan PKL yang telah ditandatangani oleh Pembimbing IDUKA pada setiap jenis pekerjaan.</b></font>
+    Selanjutnya para peserta PKL kami serahkan sepenuhnya kepada Bapak/Ibu untuk mendapatkan bimbingan, pendidikan dan pelatihan, mulai tanggal 04 Januari 2021 sampai dengan 31 Maret 2021. Pada akhir PKL nanti kami mohon kepada Bapak/Ibu berkenan memberikan nilai terhadap siswa peserta PKL tersebut. <b>Mengenai format penilaian, petunjuk penilaian, buku absen siswa ada pada buku laporan pembimbing. Setelah selesai masa PKL para siswa juga diwajibkan mengumpulkan buku laporan kegiatan PKL yang telah ditandatangani oleh Pembimbing IDUKA pada setiap jenis pekerjaan.</b>
 </p>
 <p class="justify">
     Demikian atas perhatian dan kerjasamanya kami sampaikan terimakasih.
