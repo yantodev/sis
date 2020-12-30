@@ -72,7 +72,7 @@
                     <table border="1" cellspacing="0">
                         <thead>
                             <tr>
-                                <td width="10px" height="420px"></td>
+                                <td width="10px" height="350px"></td>
                             </tr>
                         </thead>
                     </table>
