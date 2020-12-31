@@ -497,35 +497,11 @@ class Siswa extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
 
-        // $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
-        // if ($this->form_validation->run() == false) {
         $this->load->view('wrapper/header', $data);
         $this->load->view('siswa/layout/sidebar', $data);
         $this->load->view('wrapper/topbar', $data);
-        $this->load->view('siswa/ttd-ortu', $data);
+        $this->load->view('siswa/surat-pernyataan', $data);
         $this->load->view('wrapper/footer');
-        //     } else {
-        //         $nis = $this->input->post('nis');
-        //         $data = [
-        //             'nm_ortu' => $this->input->post('nm_ortu'),
-        //             'status_keluarga' => $this->input->post('status_keluarga'),
-        //             'alamat_ortu' => $this->input->post('alamat_ortu'),
-        //             'tgl_surat' => date("Y-m-d")
-        //         ];
-        //         $this->db->where('nis', $nis);
-        //         $this->db->update('master', $data);
-        //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        // Laporan ibadah berhasil ditambahkan!!!</div>');
-        //         redirect('siswa/ttd_ortu/' . $nis);
-        //     }
-    }
-
-    public function ttd_ortu($nis)
-    {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
-
-        $this->load->view('siswa/ttd-ortu', $data);
     }
 
     public function insert_signature_ortu()
