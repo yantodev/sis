@@ -9,7 +9,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-book-open"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">APLIKASI</br><small>SMK Muhka</small></div>
+                <div class="sidebar-brand-text mx-3">E-PKL</br><small>SMK Muhka</small></div>
             </a>
 
             <hr class="sidebar-divider">
@@ -42,12 +42,12 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item pb-0">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#data_pkl" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-archive"></i>
                     <span>Data PKL</span>
                 </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="data_pkl" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Daftar Menu</h6>
                         <a class="collapse-item" href="<?= base_url('pendamping/monitoring'); ?>">Lembar Monitoring</a>
@@ -56,8 +56,10 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block mb-0">
+            <li class="nav-item pt-0">
+                <a class="nav-link" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>

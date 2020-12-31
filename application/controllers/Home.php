@@ -16,9 +16,10 @@ class Home extends CI_Controller
     public function index()
     {
         $data['title'] = 'Home';
-        $this->load->view('home/header', $data);
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
         $this->load->view('home/index', $data);
-        $this->load->view('home/footer', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
 
     public function data()
@@ -28,10 +29,10 @@ class Home extends CI_Controller
         $data['data'] =  $this->Admin_model->getJurusan();
         $jurusan = $this->input->get('jurusan');
         $data['iduka'] = $this->Admin_model->getIduka($jurusan);
-        $this->load->view('home/header', $data);
-        $this->load->view('home/navbar', $data);
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
         $this->load->view('home/data', $data);
-        $this->load->view('home/footer', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
     public function view()
     {
@@ -39,10 +40,10 @@ class Home extends CI_Controller
         $data['data2'] =  $this->Admin_model->getJurusan();
         $iduka = $this->input->get('iduka');
         $data['data'] = $this->Admin_model->getIdukaBy($iduka);
-        $this->load->view('home/navbar', $data);
-        $this->load->view('home/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
+        $this->load->view('home/wrapper/header', $data);
         $this->load->view('home/view', $data);
-        $this->load->view('home/footer', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
 
     public function Permohonan()
@@ -51,10 +52,10 @@ class Home extends CI_Controller
         $data['tp'] =  $this->Admin_model->getTP();
         $data['data'] =  $this->Home_model->Jurusan();
         $data['iduka'] = $this->db->get_where('tbl_iduka')->result_array();
-        $this->load->view('home/header', $data);
-        $this->load->view('home/navbar', $data);
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
         $this->load->view('home/permohonan', $data);
-        $this->load->view('home/footer', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
     public function surat_tugas()
     {
@@ -62,10 +63,10 @@ class Home extends CI_Controller
         $data['tp'] =  $this->Admin_model->getTP();
         $data['data'] =  $this->Home_model->Jurusan();
         $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
-        $this->load->view('home/header', $data);
-        $this->load->view('home/navbar', $data);
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
         $this->load->view('home/surat-tugas', $data);
-        $this->load->view('home/footer', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
 
     public function listIduka()
@@ -193,10 +194,10 @@ class Home extends CI_Controller
         $data['tp'] =  $this->Admin_model->getTP();
         $data['data'] =  $this->Home_model->Jurusan();
         $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
-        $this->load->view('home/header', $data);
-        $this->load->view('home/navbar', $data);
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
         $this->load->view('home/surat-pengantar', $data);
-        $this->load->view('home/footer', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
 
     public function cetak_pengantar()
@@ -227,5 +228,34 @@ class Home extends CI_Controller
         $html = $this->load->view('home/cetak-pengantar', [], true);
         $mpdf->WriteHTML($html);
         $mpdf->Output($filename . '.pdf', \Mpdf\Output\Destination::INLINE);
+    }
+
+    public function d_hadir()
+    {
+        $data['title'] = 'Home';
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['data'] =  $this->Home_model->Jurusan();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $data['kegiatan'] = $this->db->get('tbl_dh')->result_array();
+        $data['data'] = $this->Admin_model->CountDH();
+
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
+        $this->load->view('home/daftar-hadir', $data);
+        $this->load->view('home/wrapper/footer', $data);
+    }
+    public function absen($id)
+    {
+        $data['title'] = 'Absen';
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['data'] =  $this->Home_model->Jurusan();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $data['data'] = $this->db->get('tbl_dh', ['id' => $id])->row_array();
+        // $data['data'] = $this->Admin_model->CountDH();
+
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
+        $this->load->view('home/absen', $data);
+        $this->load->view('home/wrapper/footer', $data);
     }
 }

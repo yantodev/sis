@@ -18,7 +18,10 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- tanda tangan -->
 
+    <!-- JS  -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/signature-pad.js"></script>
 </head>
 
 <body id="page-top">

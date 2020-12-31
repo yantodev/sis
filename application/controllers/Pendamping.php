@@ -22,8 +22,8 @@ class Pendamping extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/index', $data);
         $this->load->view('wrapper/footer');
     }
@@ -38,8 +38,8 @@ class Pendamping extends CI_Controller
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('pendamping/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('pendamping/wrapper/sidebar', $data);
+            $this->load->view('pendamping/wrapper/topbar', $data);
             $this->load->view('pendamping/profile', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -98,8 +98,8 @@ class Pendamping extends CI_Controller
         $data['data'] = $this->db->get_where('master', ['jurusan' => $jurusan, 'guru_pendamping' => $nama, 'tp' => $tp, 'nama_instansi' => $instansi])->result_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/laporan', $data);
         $this->load->view('wrapper/footer');
     }
@@ -114,8 +114,8 @@ class Pendamping extends CI_Controller
         $this->form_validation->set_rules('id[]', 'ID', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('pendamping/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('pendamping/wrapper/sidebar', $data);
+            $this->load->view('pendamping/wrapper/topbar', $data);
             $this->load->view('pendamping/detail', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -142,8 +142,8 @@ class Pendamping extends CI_Controller
         $data['laporan'] = $this->db->get_where('tbl_laporan', ['nis' => $nis, 'status' => 1])->result_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/cetak-detail', $data);
         $this->load->view('wrapper/footer');
 
@@ -169,12 +169,6 @@ class Pendamping extends CI_Controller
         $data['title'] = 'Detail Laporan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
-        $this->load->view('pendamping/cetak-detail', $data);
-        $this->load->view('wrapper/footer');
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->db->get_where('master', ['email_pendamping' => $this->session->userdata('email')])->result_array();
         $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
@@ -211,8 +205,8 @@ class Pendamping extends CI_Controller
         $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/surat-jalan', $data);
         $this->load->view('wrapper/footer');
     }
@@ -262,8 +256,8 @@ class Pendamping extends CI_Controller
         // $this->form_validation->set_rules('foto', 'File', 'required|trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
-            $this->load->view('pendamping/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('pendamping/wrapper/sidebar', $data);
+            $this->load->view('pendamping/wrapper/topbar', $data);
             $this->load->view('pendamping/monitoring', $data);
             $this->load->view('wrapper/footer');
         } else {
@@ -295,8 +289,8 @@ class Pendamping extends CI_Controller
                 } else {
                     $error = array('error' => $this->upload->display_errors());
                     $this->load->view('wrapper/header', $data);
-                    $this->load->view('pendamping/sidebar', $data);
-                    $this->load->view('wrapper/topbar', $data);
+                    $this->load->view('pendamping/wrapper/sidebar', $data);
+                    $this->load->view('pendamping/wrapper/topbar', $data);
                     $this->load->view('pendamping/monitoring', $error);
                     $this->load->view('wrapper/footer');
                 }
@@ -323,8 +317,8 @@ class Pendamping extends CI_Controller
         $data['guru'] = $this->db->get_where('tbl_guru', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/cetak-monitoring', $data);
         $this->load->view('wrapper/footer');
 
@@ -356,8 +350,8 @@ class Pendamping extends CI_Controller
         $data['data'] = $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/laporan-ibadah', $data);
         $this->load->view('wrapper/footer');
     }
@@ -369,8 +363,8 @@ class Pendamping extends CI_Controller
         $data['data2'] = $this->db->get_where('tbl_ibadah', ['nis' => $nis])->result_array();
 
         $this->load->view('wrapper/header', $data);
-        $this->load->view('pendamping/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('pendamping/wrapper/sidebar', $data);
+        $this->load->view('pendamping/wrapper/topbar', $data);
         $this->load->view('pendamping/detail-ibadah', $data);
         $this->load->view('wrapper/footer');
     }

@@ -58,10 +58,10 @@ class Auth extends CI_Controller
                                         redirect('pendamping');
                                     } else {
                                         if ($user['role_id'] == 6) {
-                                            redirect('akl');
+                                            redirect('KS');
                                         } else {
                                             if ($user['role_id'] == 7) {
-                                                redirect('otkp');
+                                                redirect('kajur');
                                             } else {
                                                 if ($user['role_id'] == 8) {
                                                     redirect('bdp');

@@ -7,7 +7,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('home/data'); ?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
@@ -31,6 +31,9 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('home/d_hadir'); ?>">Daftar Hadir</a>
                 </li>
             </ul>
             <a href="<?= base_url('auth'); ?>"><button class="btn btn-outline-success my-2 my-sm-0">LOGIN</button></a>

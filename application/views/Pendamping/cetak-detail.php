@@ -67,7 +67,8 @@
                     <td valign="top"><?= $l['sub_1']; ?></td>
                     <td valign="top"><?= $l['sub_2']; ?></td>
                     <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="90px" height="90px"></td>
-                    <td valign="top" width="60px"></td>
+                    <td><img src="<?= base_url('') . $l['ttd']; ?>" width="90px" height="90px"></td>
+                    <!-- <td valign="top" width="60px"></td> -->
                 </tr>
                 <?php $i++; ?>
             <?php endforeach; ?>

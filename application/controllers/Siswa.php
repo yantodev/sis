@@ -455,4 +455,39 @@ class Siswa extends CI_Controller
             redirect('siswa/ibadah/' . $nis);
         }
     }
+    public function ttd($id)
+    {
+        $data['title'] = 'Form Tanda Tangan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('tbl_laporan', ['id' => $id])->row_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('siswa/layout/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('siswa/ttd', $data);
+        $this->load->view('wrapper/footer');
+    }
+    public function insert_signature()
+    {
+        $img = $_POST['image'];
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $file = './signature-image/' . uniqid() . '.png';
+        $success = file_put_contents($file, $data);
+        $image = str_replace('./', '', $file);
+
+        $id = $_POST['id'];
+        $data = array(
+            'ttd' => $image,
+        );
+        $this->db->where('id', $id);
+        $this->db->update('tbl_laporan', $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Data berhasil diupdate!</div>');
+        redirect('ks/profile');
+        // $this->welcome_model->insert_single_signature($image);
+        echo '<img src="' . base_url() . $image . '">';
+    }
 }

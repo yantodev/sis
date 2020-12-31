@@ -86,6 +86,8 @@
             <th>Bidang Pekerjaan</th>
             <th>Standar Keterampilan</th>
             <th>Uraian Pekerjaan</th>
+            <th>Foto</th>
+            <th>Paraf</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -94,12 +96,20 @@
         <?php foreach ($laporan as $l) : ?>
             <tr>
                 <td scope="row"><?= $i; ?></td>
-                <td><?= format_indo(date($l['time'])); ?></td>
+                <td width="150px"><?= format_indo(date($l['time'])); ?></td>
                 <td><?= $l['bidang_pekerjaan']; ?></td>
                 <td><?= $l['sub_1']; ?></td>
                 <td><?= $l['sub_2']; ?></td>
-                <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="50px" height="50px"></td>
-                <td><a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a></td>
+                <td>
+                    <img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="50px" height="50px">
+                </td>
+                <td>
+                    <img src="<?= base_url('') . $l['ttd']; ?>" width="50px" height="50px">
+                </td>
+                <td>
+                    <a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a>
+                    <a href="<?= base_url('siswa/ttd/') . $l['id']; ?>" class="badge badge-primary">TTD</a>
+                </td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>

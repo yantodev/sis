@@ -33,10 +33,11 @@ class Admin_model extends CI_Model
         $result = $this->db->query($sql);
         return $result->row();
     }
-    public function Count()
+    public function CountDH()
     {
-        $sql = "SELECT sum(if(jurusan='Teknik Kendaraan Ringan Otomotif', jurusan, NULL)) as jumlah,
-                FROM tbl_jumlah_siswa";
+        $sql = "SELECT  count(if(kegiatan='Koordinasi Tim PKL', kegiatan, NULL)) as kegiatan,
+                        count(if(kegiatan='Pembekalan Guru Pembimbing', kegiatan, NULL)) as kegiatan2
+                FROM tbl_daftar_hadir";
         $result = $this->db->query($sql);
         return $result->row();
     }
