@@ -1428,6 +1428,6 @@ class Admin extends CI_Controller
 
         $html = $this->load->view('admin/cetak-surat-pernyataan', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Daftar Peserta PKL.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output('Surat Pernyataan ' . $nis . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
 }
