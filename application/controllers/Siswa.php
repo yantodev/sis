@@ -519,6 +519,7 @@ class Siswa extends CI_Controller
             'nm_ortu' => $_POST['nm_ortu'],
             'status_keluarga' => $_POST['status_keluarga'],
             'alamat_ortu' => $_POST['alamat_ortu'],
+            'tgl_surat' => date("Y-m-d"),
             'ttd_ortu' => $image
         );
         $this->db->where('nis', $nis);
