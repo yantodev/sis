@@ -30,7 +30,7 @@
                         <th>Lokasi PKL</th>
                         <th>Tahun Pelajaran</th>
                         <th>Status</th>
-                        <th>Image</th>
+                        <th>TTD</th>
                         <th>Action</th>
                     </tr>
                 </thead>
