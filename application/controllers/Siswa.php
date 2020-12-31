@@ -490,4 +490,76 @@ class Siswa extends CI_Controller
         // $this->welcome_model->insert_single_signature($image);
         echo '<img src="' . base_url() . $image . '">';
     }
+
+    public function surat_pernyataan($nis)
+    {
+        $data['title'] = 'Surat Pernyataan Orang Tua';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+
+        // $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
+        // if ($this->form_validation->run() == false) {
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('siswa/layout/sidebar', $data);
+        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('siswa/ttd-ortu', $data);
+        $this->load->view('wrapper/footer');
+        //     } else {
+        //         $nis = $this->input->post('nis');
+        //         $data = [
+        //             'nm_ortu' => $this->input->post('nm_ortu'),
+        //             'status_keluarga' => $this->input->post('status_keluarga'),
+        //             'alamat_ortu' => $this->input->post('alamat_ortu'),
+        //             'tgl_surat' => date("Y-m-d")
+        //         ];
+        //         $this->db->where('nis', $nis);
+        //         $this->db->update('master', $data);
+        //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        // Laporan ibadah berhasil ditambahkan!!!</div>');
+        //         redirect('siswa/ttd_ortu/' . $nis);
+        //     }
+    }
+
+    public function ttd_ortu($nis)
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+
+        $this->load->view('siswa/ttd-ortu', $data);
+    }
+
+    public function insert_signature_ortu()
+    {
+        $img = $_POST['image'];
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $file = './signature-image/ttd-ortu/' . uniqid() . '.png';
+        $success = file_put_contents($file, $data);
+        $image = str_replace('./', '', $file);
+
+        $nis = $_POST['nis'];
+        $data = array(
+            'nm_ortu' => $_POST['nm_ortu'],
+            'status_keluarga' => $_POST['status_keluarga'],
+            'alamat_ortu' => $_POST['alamat_ortu'],
+            'ttd_ortu' => $image
+        );
+        $this->db->where('nis', $nis);
+        $this->db->update('master', $data);
+
+        // $data2 = array(
+        //     'nm_ortu' => $_POST['nm_ortu'],
+        //     'status_keluarga' => $_POST['status_keluarga'],
+        //     'alamat_ortu' => $_POST['alamat_ortu'],
+        // );
+        // $this->db->where('id', $_POST['id']);
+        // $this->db->update('master', $data2);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Data berhasil diupdate!</div>');
+        redirect('ks/profile');
+        // $this->welcome_model->insert_single_signature($image);
+        echo '<img src="' . base_url() . $image . '">';
+    }
 }
