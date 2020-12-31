@@ -45,6 +45,7 @@
                         <input type="text" class="form-control" id="alamat_ortu" name="alamat_ortu" value="<?= $data['alamat_ortu']; ?>" placeholder="Alamat Orang Tua / Wali">
                     </div>
                 </div>
+                <h5><b>PERNYATAAN ORANGTUA</b></h5>
                 <div class="form-group row">
                     <div class="col-sm-8">
                         <select class="form-control" name="pernyataan" id="pernyataan">
