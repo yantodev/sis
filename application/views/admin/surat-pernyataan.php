@@ -22,6 +22,10 @@
         <?= $this->session->flashdata('message');; ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <p>Rekap Siswa <?= $jrsn; ?></p>
+                <p>Belum Buat : <?= $count->belum_buat; ?> Siswa</p>
+                <p>Setuju : <?= $count->setuju; ?> Siswa</p>
+                <p>Tidak Setuju : <?= $count->tidak_setuju; ?> Siswa</p>
                 <thead>
                     <tr>
                         <th>#</th>

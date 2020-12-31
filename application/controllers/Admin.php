@@ -19,6 +19,7 @@ class Admin extends CI_Controller
         // is_logged_in();
         $this->load->model('Admin_model');
         $this->load->model('Home_model');
+        $this->load->model('Count_model');
     }
 
     public function index()
@@ -1403,6 +1404,8 @@ class Admin extends CI_Controller
         $data['jurusan'] =  $this->Home_model->Jurusan();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
+        $data['jrsn'] = $jurusan;
+        $data['count'] = $this->Count_model->countP($jurusan, $tp);
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
