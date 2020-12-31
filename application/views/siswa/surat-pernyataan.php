@@ -45,6 +45,16 @@
                         <input type="text" class="form-control" id="alamat_ortu" name="alamat_ortu" value="<?= $data['alamat_ortu']; ?>" placeholder="Alamat Orang Tua / Wali">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <div class="col-sm-8">
+                        <select class="form-control" name="pernyataan" id="pernyataan">
+                            <option value="<?= $data['pernyataan']; ?>"><?= $data['pernyataan']; ?></option>
+                            <option value="">Silahkan Pilih Pernyataan</option>
+                            <option value="Setuju">Setuju</option>
+                            <option value="Tidak Setuju">Tidak Setuju</option>
+                        </select>
+                    </div>
+                </div>
                 <section>
                     <div class="container">
                         <input type="hidden" name="nis" id="nis" value="<?= $data['nis']; ?>" readonly>
@@ -128,6 +138,7 @@
                     'nm_ortu': $('#nm_ortu').val(),
                     'status_keluarga': $('#status_keluarga').val(),
                     'alamat_ortu': $('#alamat_ortu').val(),
+                    'pernyataan': $('#pernyataan').val(),
                 },
                 success: function(datas1) {
                     signaturePad.clear();
