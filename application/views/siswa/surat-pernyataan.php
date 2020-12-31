@@ -158,8 +158,8 @@
         border: 1px dashed #ccc;
         border-radius: 5px;
         color: #bbbabb;
-        height: 220px;
-        width: 200px;
+        height: 150px;
+        width: 180px;
         text-align: center;
         /* float: right; */
         vertical-align: middle;

@@ -1394,4 +1394,40 @@ class Admin extends CI_Controller
             redirect('admin/nomorsurat');
         }
     }
+
+    public function surat_pernyataan()
+    {
+        $data['title'] = 'Surat Pernyataan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/surat-pernyataan', $data);
+        $this->load->view('wrapper/footer');
+    }
+
+    public function cetak_surat_pernyataan($nis)
+    {
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+        $data['tp'] = $this->db->get_where('tp', ['tp' => '2020/2021'])->row_array();
+        $this->load->view('admin/cetak-surat-jalan', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $html = $this->load->view('admin/cetak-surat-pernyataan', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Daftar Peserta PKL.pdf', \Mpdf\Output\Destination::INLINE);
+    }
 }
