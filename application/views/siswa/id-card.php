@@ -1,32 +1,47 @@
+<style>
+    @page {
+        margin-top: 0.5cm;
+        margin-bottom: 0.0cm;
+        margin-left: 3.175cm;
+        margin-right: 3.175cm;
+    }
+</style>
 <table border="1" cellspacing="0">
     <thead>
         <tr>
-            <td width="280px" height="290px" valign="top">
+            <td width="280px" height="350px" valign="top">
                 <table align="center">
                     <thead>
                         <tr>
-                            <td align="center" valign="top">
-                                <b>
-                                    PRAKTEK KERJA LAPANGAN<br />
-                                    <?= $siswa['tp']; ?><br />
-                                    SMK MUHAMMADIYAH KARANGMOJO
-                                </b>
+                            <td align="center" valign="top" height="50px">
+                                <h4>
+                                    <b>
+                                        PRAKTEK KERJA LAPANGAN<br />
+                                        <?= $siswa['tp']; ?><br />
+                                        SMK MUH KARANGMOJO
+                                    </b>
+                                </h4>
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
-                                <img src="<?= base_url('assets/img/foto/') . $user['image']; ?>" width="120px" height="150px">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <h4><?= $siswa['jurusan']; ?></h4>
+                                <img src="<?= base_url('assets/img/foto/') . $user['image']; ?>" width="100px" height="120px">
+                                <!-- <img src="<?= base_url('assets/img/foto/default.png'); ?>" width="110px" height="120px"> -->
                             </td>
                         </tr>
                         <tr>
                             <td align="center" height="80px">
-                                <h4><u><?= $siswa['name']; ?></u><br />
-                                    <?= $siswa['kelas']; ?></h4>
+                                <h3><?= $siswa['jurusan']; ?></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="greenyellow" class="table-primary" align="center">
+                                <h3><u><?= ucwords(strtolower($user['name'])); ?></u></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="cadetblue" class="table-primary" align="center">
+                                <h3><?= $siswa['kelas']; ?></h3>
                             </td>
                         </tr>
                     </thead>
@@ -40,16 +55,33 @@
                         </td>
                     </tr>
                 </table>
-                <p><br />
-                    <i>https://data.smkmuhkarangmojo.sch.id</i>
-                </p>
+                <table align="center" border="" cellspacing="0">
+                    <tr>
+                        <td>
+                            <b>
+                                <h5 style="text-align: center;color:blue"><br />
+                                    <i>https://data.smkmuhkarangmojo.sch.id</i>
+                                </h5>
+                            </b>
+                        </td>
+                    </tr>
+                </table>
             </td>
-            <td width="280px" height="290px" valign="top">
+            <td width="10px" height="350px">
+                <table border="1" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td width="10px" height="350px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </td>
+            <td width="280px" height="350px" valign="top">
                 <div class="card mt-2 pt-2" align="center">
-                    <table align="center">
+                    <table border="" align="center">
                         <tr align="center">
                             <th height="30px" valign="top">
-                                <h4><b><u>INFORMASI</u></b></h4>
+                                <h3><b><u>INFORMASI</u></b></h3>
                             </th>
                         </tr>
                         <tr>
@@ -57,7 +89,7 @@
                         </tr>
                         <tr>
                             <th align="center">
-                                <?= $siswa['nama_instansi']; ?>
+                                <?= ucwords($siswa['nama_instansi']); ?>
                             </th>
                         </tr>
                         <tr>
@@ -66,20 +98,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center">
-                                <h7><b><u>GURU PENDAMPING</u></b></h7>
+                            <td align="center" height="20px" valign="bottom">
+                                <h7><b><u>GURU PEMBIMBING</u></b></h7>
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
                                 <h4><u><?= $siswa['guru_pendamping']; ?></u></h4>
-                                <h5>Telp/HP. <?= $siswa['hp_pendamping']; ?></h5>
+                                <h4>Telp/HP. <?= $siswa['hp_pendamping']; ?></h4>
                             </td>
                         </tr>
                         <tr>
-                            <td align="center"><br />
+                            <td align="center" height="150px" valign="bottom">
                                 <b>SCAN ME</b><br />
-                                <barcode code="<?= base_url('home/detailsiswa/') . $siswa['id']; ?>" size="1.4" type="QR" error="M" class="barcode" />
+                                <barcode code="<?= base_url('home/detailsiswa/') . $siswa['id']; ?>" size="1.2" type="QR" error="M" class="barcode" />
                             </td>
                         </tr>
                     </table>
