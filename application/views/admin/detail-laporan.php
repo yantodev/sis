@@ -27,6 +27,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th width="150px">Tanggal</th>
                     <th>Bidang Pekerjaan</th>
                     <th>Uraian Kegiatan</th>
                     <th>Foto</th>
@@ -39,6 +40,7 @@
                 <?php foreach ($data as $d) : ?>
                     <tr>
                         <td><?= $i; ?></td>
+                        <td><?= tgl($d['time']); ?></td>
                         <td><?= $d['bidang_pekerjaan']; ?></td>
                         <td><?= $d['sub_1']; ?></td>
                         <td><img src="<?= base_url('assets/img/gambar/') . $d['foto']; ?>" alt="" width="80px" height="80px"></td>
