@@ -49,8 +49,8 @@
                     <td><?= $l['bidang_pekerjaan']; ?></td>
                     <td><?= $l['sub_1']; ?></td>
                     <td><?= $l['sub_2']; ?></td>
-                    <td><img src="<?= base_url('') . $l['ttd']; ?>" width="80px" height="80px"></td>
                     <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="80px" height="80px"></td>
+                    <td><img src="<?= base_url('') . $l['ttd']; ?>" width="80px" height="80px"></td>
                 </tr>
                 <?php $i++; ?>
             <?php endforeach; ?>
