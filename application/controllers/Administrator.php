@@ -123,16 +123,16 @@ class Administrator extends CI_Controller
         }
     }
 
-    public function resetpassword()
+    public function user()
     {
-        $data['title'] = 'Reset Password';
+        $data['title'] = 'User';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->db->get_where('user')->result_array();
 
         $this->load->view('administrator/wrapper/header', $data);
         $this->load->view('administrator/wrapper/sidebar', $data);
         $this->load->view('administrator/wrapper/topbar', $data);
-        $this->load->view('administrator/reset-password', $data);
+        $this->load->view('administrator/user', $data);
         $this->load->view('administrator/wrapper/footer');
     }
     public function reset($id)

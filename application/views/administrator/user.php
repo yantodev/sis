@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DAFTAR GURU PENDAMPING</h6>
+        <h6 class="m-0 font-weight-bold text-primary">DAFTAR USER</h6>
     </div>
     <div class="card-body">
         <?= $this->session->flashdata('message'); ?>
@@ -17,6 +17,8 @@
                         <th>#</th>
                         <th>NAMA</th>
                         <th>EMAIL</th>
+                        <th>JENIS AKUN</th>
+                        <th>ACTIVE</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -27,6 +29,8 @@
                             <td><?= $i; ?></td>
                             <td><?= $d['name']; ?></td>
                             <td><?= $d['email']; ?></td>
+                            <td><?= akun($d['role_id']); ?></td>
+                            <td><?= aktif($d['is_active']); ?></td>
                             <td>
                                 <a href="<?= base_url('administrator/reset/') . $d['id']; ?>" class="badge badge-danger">Reset Password</a>
                             </td>

@@ -35,3 +35,53 @@ function check_access($role_id, $menu_id)
         return "checked='checked'";
     }
 }
+
+if (!function_exists('akun')) {
+    function akun($akun)
+    {
+        switch ($akun) {
+            case 1:
+                $akun = "Administrator";
+                break;
+            case 2:
+                $akun = "Februari";
+                break;
+            case 3:
+                $akun = "Admin PKL";
+                break;
+            case 4:
+                $akun = "Siswa";
+                break;
+            case 5:
+                $akun = "Guru Pembimbing PKL";
+                break;
+            case 6:
+                $akun = "Kepala Sekolah";
+                break;
+            case 7:
+                $akun = "Ketua Komptensi Keahlian";
+                break;
+            case 11:
+                $akun = "Bendahara";
+                break;
+            case 12:
+                $akun = "Admin Lab Komputer";
+                break;
+        }
+        return $akun;
+    }
+}
+if (!function_exists('aktif')) {
+    function aktif($aktif)
+    {
+        switch ($aktif) {
+            case 0:
+                $aktif = "Non Aktif";
+                break;
+            case 1:
+                $aktif = "Aktif";
+                break;
+        }
+        return $aktif;
+    }
+}

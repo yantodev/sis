@@ -42,8 +42,8 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link pb-0" href="<?= base_url('administrator/resetpassword'); ?>">
-                    <i class="fas fa-trash-restore-alt"></i>
+                <a class="nav-link pb-0" href="<?= base_url('administrator/user'); ?>">
+                    <i class="fas fa-users"></i>
                     <span>Daftar User</span></a>
             </li>
             <li class="nav-item">
