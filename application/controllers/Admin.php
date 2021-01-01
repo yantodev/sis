@@ -1391,4 +1391,37 @@ class Admin extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output('Surat Pernyataan ' . $nis . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
+
+    public function laporan()
+    {
+        $data['title'] = 'Data Laporan siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Menu_model', 'menu');
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $data['siswa'] = $jurusan;
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Admin_model->getJurusan();
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/laporan', $data);
+        $this->load->view('wrapper/footer');
+    }
+    public function detail_laporan($nis)
+    {
+        $data['title'] = 'Data Detail Laporan siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['jurusan'] = $this->Admin_model->getJurusan();
+        $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+        $data['data'] = $this->db->get_where('tbl_laporan', ['nis' => $nis])->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/detail-laporan', $data);
+        $this->load->view('wrapper/footer');
+    }
 }
