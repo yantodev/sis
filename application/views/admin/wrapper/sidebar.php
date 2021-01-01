@@ -79,11 +79,6 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link pb-0" href="<?= base_url('admin/resetpassword'); ?>">
-                    <i class="fas fa-trash-restore-alt"></i>
-                    <span>Reset Password</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span></a>

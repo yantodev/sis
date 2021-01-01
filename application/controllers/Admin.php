@@ -1130,48 +1130,6 @@ class Admin extends CI_Controller
         }
     }
 
-    public function resetpassword()
-    {
-        $data['title'] = 'Reset Password';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] = $this->db->get_where('user')->result_array();
-
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('admin/wrapper/sidebar', $data);
-        $this->load->view('admin/wrapper/topbar', $data);
-        $this->load->view('admin/reset-password', $data);
-        $this->load->view('wrapper/footer');
-    }
-    public function reset($id)
-    {
-        $data['title'] = 'Reset Password';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] = $this->db->get_where('user', ['id' => $id])->row_array();
-
-        $this->form_validation->set_rules('password1', 'Password baru', 'required|trim|min_length[8]|matches[password2]');
-        $this->form_validation->set_rules('password2', 'Ulangi password', 'required|trim|min_length[8]|matches[password1]');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('wrapper/header', $data);
-            $this->load->view('admin/wrapper/sidebar', $data);
-            $this->load->view('admin/wrapper/topbar', $data);
-            $this->load->view('admin/reset', $data);
-            $this->load->view('wrapper/footer');
-        } else {
-            $new_password = $this->input->post('password1');
-            $id = $this->input->post('id');
-            //password ok
-            $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-
-            $this->db->set('password', $password_hash);
-            $this->db->where('id', $id);
-            $this->db->update('user');
-
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil di reset!!!</div>');
-            redirect('admin/reset/' . $id);
-        }
-    }
-
     public function idcard()
     {
         $data['title'] = 'ID CARD';

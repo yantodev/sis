@@ -16,22 +16,22 @@ class Administrator extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Dashboard';
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('administrator/wrapper/header', $data);
+        $this->load->view('administrator/wrapper/sidebar', $data);
+        $this->load->view('administrator/wrapper/topbar', $data);
         $this->load->view('administrator/index', $data);
-        $this->load->view('wrapper/footer');
+        $this->load->view('administrator/wrapper/footer');
     }
 
     public function profile()
     {
         $data['title'] = 'My Profile';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('administrator/wrapper/header', $data);
+        $this->load->view('administrator/wrapper/sidebar', $data);
+        $this->load->view('administrator/wrapper/topbar', $data);
         $this->load->view('administrator/profile', $data);
-        $this->load->view('wrapper/footer');
+        $this->load->view('administrator/wrapper/footer');
     }
 
     public function role()
@@ -40,11 +40,11 @@ class Administrator extends CI_Controller
         $data['title'] = 'Role';
 
         $data['role'] = $this->db->get('user_role')->result_array();
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('administrator/wrapper/header', $data);
+        $this->load->view('administrator/wrapper/sidebar', $data);
+        $this->load->view('administrator/wrapper/topbar', $data);
         $this->load->view('administrator/role', $data);
-        $this->load->view('wrapper/footer');
+        $this->load->view('administrator/wrapper/footer');
     }
 
     public function roleaccess($role_id)
@@ -56,11 +56,11 @@ class Administrator extends CI_Controller
         $this->db->where('id !=', 1);
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
-        $this->load->view('wrapper/header', $data);
-        $this->load->view('wrapper/sidebar', $data);
-        $this->load->view('wrapper/topbar', $data);
+        $this->load->view('administrator/wrapper/header', $data);
+        $this->load->view('administrator/wrapper/sidebar', $data);
+        $this->load->view('administrator/wrapper/topbar', $data);
         $this->load->view('administrator/role-access', $data);
-        $this->load->view('wrapper/footer');
+        $this->load->view('administrator/wrapper/footer');
     }
 
     public function changeaccess()
@@ -93,11 +93,11 @@ class Administrator extends CI_Controller
         $this->form_validation->set_rules('password2', 'Ulangi password', 'required|trim|min_length[8]|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('wrapper/header', $data);
-            $this->load->view('wrapper/sidebar', $data);
-            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('administrator/wrapper/header', $data);
+            $this->load->view('administrator/wrapper/sidebar', $data);
+            $this->load->view('administrator/wrapper/topbar', $data);
             $this->load->view('administrator/change-password', $data);
-            $this->load->view('wrapper/footer');
+            $this->load->view('administrator/wrapper/footer');
         } else {
             $current_password = $this->input->post('current_password');
             $new_password = $this->input->post('password1');
@@ -120,6 +120,48 @@ class Administrator extends CI_Controller
                     redirect('administrator/changepassword');
                 }
             }
+        }
+    }
+
+    public function resetpassword()
+    {
+        $data['title'] = 'Reset Password';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('user')->result_array();
+
+        $this->load->view('administrator/wrapper/header', $data);
+        $this->load->view('administrator/wrapper/sidebar', $data);
+        $this->load->view('administrator/wrapper/topbar', $data);
+        $this->load->view('administrator/reset-password', $data);
+        $this->load->view('administrator/wrapper/footer');
+    }
+    public function reset($id)
+    {
+        $data['title'] = 'Reset Password';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $this->form_validation->set_rules('password1', 'Password baru', 'required|trim|min_length[8]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Ulangi password', 'required|trim|min_length[8]|matches[password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('administrator/wrapper/header', $data);
+            $this->load->view('administrator/wrapper/sidebar', $data);
+            $this->load->view('administrator/wrapper/topbar', $data);
+            $this->load->view('administrator/reset', $data);
+            $this->load->view('administrator/wrapper/footer');
+        } else {
+            $new_password = $this->input->post('password1');
+            $id = $this->input->post('id');
+            //password ok
+            $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+            $this->db->set('password', $password_hash);
+            $this->db->where('id', $id);
+            $this->db->update('user');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil di reset!!!</div>');
+            redirect('administrator/reset/' . $id);
         }
     }
 }

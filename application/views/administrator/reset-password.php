@@ -28,7 +28,7 @@
                             <td><?= $d['name']; ?></td>
                             <td><?= $d['email']; ?></td>
                             <td>
-                                <a href="<?= base_url('admin/reset/') . $d['id']; ?>" class="badge badge-danger">Reset Password</a>
+                                <a href="<?= base_url('administrator/reset/') . $d['id']; ?>" class="badge badge-danger">Reset Password</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
