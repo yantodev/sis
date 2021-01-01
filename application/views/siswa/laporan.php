@@ -30,19 +30,6 @@
             </select>
             <?= form_error('sub_2', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
-        <div class="form-group">
-            <select name="sub_3" id="sub_3">
-            </select>
-            <?= form_error('sub_3', '<small class="text-danger pl-3">', '</small>'); ?>
-        </div>
-        <!-- <div class="form-group">
-        <select name="sub_4" id="sub_4">
-        </select>
-        <?= form_error('sub_4', '<small class="text-danger pl-3">', '</small>'); ?>
-    </div> -->
-        <!-- <div id="menu">
-        <?= form_error('menu', '<small class="text-danger pl-3">', '</small>'); ?>
-    </div> -->
 
         <div class="col-sm-5">
             <div class="custom-file">
@@ -84,7 +71,6 @@
             <th>#</th>
             <th>Tanggal</th>
             <th>Bidang Pekerjaan</th>
-            <th>Standar Keterampilan</th>
             <th>Uraian Pekerjaan</th>
             <th>Foto</th>
             <th>Paraf</th>
@@ -99,7 +85,6 @@
                 <td width="150px"><?= format_indo(date($l['time'])); ?></td>
                 <td><?= $l['bidang_pekerjaan']; ?></td>
                 <td><?= $l['sub_1']; ?></td>
-                <td><?= $l['sub_2']; ?></td>
                 <td>
                     <img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="50px" height="50px">
                 </td>
