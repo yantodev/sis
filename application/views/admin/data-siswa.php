@@ -29,6 +29,7 @@
                         <th>Name</th>
                         <th>Lokasi PKL</th>
                         <th>Tahun Pelajaran</th>
+                        <th>Guru Pembimbing</th>
                         <th>Status</th>
                         <th>Image</th>
                         <th>Action</th>
@@ -43,6 +44,7 @@
                             <td><?= $d['name']; ?></td>
                             <td><?= $d['nama_instansi']; ?></td>
                             <td><?= $d['tp']; ?></td>
+                            <td><?= $d['guru_pendamping']; ?></td>
                             <td><?= $d['status']; ?></td>
                             <td><img src="<?= base_url('assets/img/surat balasan/') . $d['file']; ?>" alt="" width="50px" height="50px"></td>
                             <td>
