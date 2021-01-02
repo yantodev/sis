@@ -1424,4 +1424,46 @@ class Admin extends CI_Controller
         $this->load->view('admin/detail-laporan', $data);
         $this->load->view('wrapper/footer');
     }
+    public function daftar_hadir()
+    {
+        $data['title'] = 'Surat Jalan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->Admin_model->getGuru();
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $guru = $this->input->get('guru');
+        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/daftar-hadir', $data);
+        $this->load->view('wrapper/footer');
+    }
+
+    public function cetak_DH()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $iduka = $this->input->get('nama_instansi');
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
+        $data['data2'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->row_array();
+        $data['data3'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
+        $data['data4'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
+        $this->load->view('admin/cetak-DH', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'L',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $html = $this->load->view('admin/cetak-DH', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Daftar Hadir' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
+    }
 }

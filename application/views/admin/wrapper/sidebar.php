@@ -41,6 +41,7 @@
                         <a class="collapse-item" href="<?= base_url('admin/nilai'); ?>">Nilai Siswa</a>
                         <a class="collapse-item" href="<?= base_url('admin/laporan'); ?>">Laporan Siswa</a>
                         <a class="collapse-item" href="<?= base_url('admin/surat_pernyataan'); ?>">Surat Pernyataan Siswa</a>
+                        <a class="collapse-item" href="<?= base_url('admin/daftar_hadir'); ?>">Daftar Hadir Siswa</a>
                         <a class="collapse-item" href="<?= base_url('admin/idcard'); ?>">Cetak ID Card</a>
                         <a class="collapse-item" href="<?= base_url('admin/sertifikat'); ?>">Cetak Sertifikat</a>
                         <a class="collapse-item" href="<?= base_url('admin/siswa'); ?>">Rekap Akun PKL</a>

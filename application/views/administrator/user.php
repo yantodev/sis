@@ -32,7 +32,8 @@
                             <td><?= akun($d['role_id']); ?></td>
                             <td><?= aktif($d['is_active']); ?></td>
                             <td>
-                                <a href="<?= base_url('administrator/reset/') . $d['id']; ?>" class="badge badge-danger">Reset Password</a>
+                                <a href="<?= base_url('administrator/edit_user/') . $d['id']; ?>" class="badge badge-success">Edit</a>
+                                <a href="<?= base_url('administrator/reset/') . $d['id']; ?>" class="badge badge-danger">Reset</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

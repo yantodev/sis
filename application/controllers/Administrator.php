@@ -164,4 +164,33 @@ class Administrator extends CI_Controller
             redirect('administrator/reset/' . $id);
         }
     }
+    public function edit_user($id)
+    {
+        $data['title'] = 'Edit User';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $this->form_validation->set_rules('password1', 'Password baru', 'required|trim|min_length[8]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Ulangi password', 'required|trim|min_length[8]|matches[password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('administrator/wrapper/header', $data);
+            $this->load->view('administrator/wrapper/sidebar', $data);
+            $this->load->view('administrator/wrapper/topbar', $data);
+            $this->load->view('administrator/edit-user', $data);
+            $this->load->view('administrator/wrapper/footer');
+        } else {
+            $new_password = $this->input->post('password1');
+            $id = $this->input->post('id');
+            //password ok
+            $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+            $this->db->set('password', $password_hash);
+            $this->db->where('id', $id);
+            $this->db->update('user');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil di reset!!!</div>');
+            redirect('administrator/reset/' . $id);
+        }
+    }
 }
