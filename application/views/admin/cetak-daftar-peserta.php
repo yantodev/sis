@@ -57,7 +57,7 @@
 <table class="table">
     <tbody>
         <tr>
-            <td width="400px" rowspan="4"></td>
+            <td width="400px" rowspan="5"></td>
             <td>Karangmojo, 18 Desember 2020</td>
         </tr>
         <tr>
