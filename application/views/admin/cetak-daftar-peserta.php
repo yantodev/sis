@@ -61,7 +61,7 @@
             <td>Karangmojo, 18 Desember 2020</td>
         </tr>
         <tr>
-            <td height="80px" valign="top">Kepala Sekolah,</td>
+            <td valign="top">Kepala Sekolah,</td>
         </tr>
         <tr>
             <td>
