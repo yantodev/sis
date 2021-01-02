@@ -10,7 +10,7 @@
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">NIS</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="nis" name="nis" value="<?= $user['nis']; ?>">
+                <input type="text" class="form-control" id="nis" name="nis" value="<?= $user['nis']; ?>" readonly>
                 <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
         </div>
