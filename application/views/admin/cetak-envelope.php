@@ -22,8 +22,8 @@
 <table>
     <tbody>
         <tr>
-            <td width="50%"></td>
-            <td height="120px" valign="bottom">
+            <td width="60%"></td>
+            <td height="140px" valign="bottom">
                 Kepada Yth.<br />
                 Bapak/Ibu <?= $instansi; ?> <?= $data['iduka']; ?><br />
                 Di <?= $data['alamat']; ?>
