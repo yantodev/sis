@@ -58,11 +58,11 @@
             <td>Karangmojo, <?= tanggal($data5['tgl_surat']); ?></td>
         </tr>
         <tr>
-            <td height="80px" valign="top">Kepala Sekolah,</td>
+            <td>Kepala Sekolah,</td>
         </tr>
         <tr>
             <td>
-                <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="170px" height="100px">
+                <img src=" <?= base_url('assets/img/ttd-ks.png'); ?>" width="170px" height="100px">
             </td>
         </tr>
         <tr>
