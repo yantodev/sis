@@ -1466,4 +1466,43 @@ class Admin extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output('Daftar Hadir ' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
+    public function envelope()
+    {
+        $data['title'] = 'Amplop';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->Admin_model->getGuru();
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $guru = $this->input->get('guru');
+        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/envelope', $data);
+        $this->load->view('wrapper/footer');
+    }
+    public function cetak_envelope()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $tp = $this->input->get('tp');
+        $jurusan = $this->input->get('jurusan');
+        $iduka = $this->input->get('nama_instansi');
+        $data['instansi'] = $this->input->get('instansi');
+        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
+        $this->load->view('admin/cetak-envelope', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => array(110, 220),
+                'orientation' => 'L',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        $html = $this->load->view('admin/cetak-envelope', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Daftar Hadir ' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
+    }
 }

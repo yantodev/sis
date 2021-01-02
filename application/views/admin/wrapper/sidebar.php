@@ -60,6 +60,7 @@
                         <a class="collapse-item" href="<?= base_url('admin/surattugas'); ?>">Surat Tugas</a>
                         <a class="collapse-item" href="<?= base_url('admin/daftarpeserta'); ?>">Daftar Peserta</a>
                         <a class="collapse-item" href="<?= base_url('admin/suratjalan'); ?>">Surat Jalan</a>
+                        <a class="collapse-item" href="<?= base_url('admin/envelope'); ?>">Envelope</a>
                     </div>
                 </div>
             </li>
