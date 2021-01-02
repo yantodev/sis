@@ -66,7 +66,17 @@
         </tr>
         <tr>
             <td>
-                <img src="<?= base_url('assets/img/ttd-cap.png'); ?>" width="200px" height="150px">
+                <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="100px" height="100px">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MUNAWAR, S.Pd.I
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NBM. 1076230
             </td>
         </tr>
     </tbody>
