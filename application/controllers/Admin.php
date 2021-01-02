@@ -855,6 +855,12 @@ class Admin extends CI_Controller
             redirect('admin/iduka?jurusan=' . $jurusan);
         }
     }
+    public function hapusIduka($id)
+    {
+        $this->Admin_model->hapusIduka($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>');
+        redirect('admin/iduka');
+    }
 
     public function Pengumuman()
     {

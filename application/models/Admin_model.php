@@ -190,6 +190,11 @@ class Admin_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('master');
     }
+    public function hapusIduka($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tbl_iduka');
+    }
 
     //TKRO
     public function Siswatkro()

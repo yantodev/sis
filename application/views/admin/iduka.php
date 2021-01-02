@@ -41,6 +41,7 @@
                             <td><?= $d['nama_pembimbing_instansi']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/editIduka/') . $d['id']; ?>" class="badge badge-success">Edit</a>
+                                <a href="<?= base_url('admin/hapusIduka/') . $d['id']; ?>" class="badge badge-danger">Hapus</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
