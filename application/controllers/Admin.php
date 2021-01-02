@@ -77,7 +77,7 @@ class Admin extends CI_Controller
 
         $html = $this->load->view('admin/cetak-siswa', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output($filename, \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output($filename . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
     public function profile()
     {

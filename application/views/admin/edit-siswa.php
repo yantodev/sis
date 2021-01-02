@@ -96,7 +96,6 @@
                         <select name="nama_instansi" id="nama_instansi" style="width: 300px;">
                             <option value="<?= $siswa['nama_instansi']; ?>"><?= $siswa['nama_instansi']; ?></option>
                         </select>
-
                     </div>
                     <?= form_error('nama_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>

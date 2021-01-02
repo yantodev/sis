@@ -10,6 +10,7 @@ class Home_model extends CI_Model
 
     function Iduka($singkatan_jurusan)
     {
+        $this->db->order_by('iduka', $singkatan_jurusan);
         $this->db->where('jurusan', $singkatan_jurusan);
         $result = $this->db->get('tbl_iduka')->result();
         return $result;
