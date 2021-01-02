@@ -61,10 +61,19 @@
             <td height="80px" valign="top">Kepala Sekolah,</td>
         </tr>
         <tr>
-            <td><?= $data3['kepala_sekolah']; ?></td>
+            <td>
+                <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="170px" height="100px">
+            </td>
         </tr>
         <tr>
-            <td>NBM. <?= $data3['nbm']; ?></td>
+            <td>
+                MUNAWAR, S.Pd.I
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NBM. 1076230
+            </td>
         </tr>
     </tbody>
 </table>
