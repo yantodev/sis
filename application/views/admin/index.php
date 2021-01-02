@@ -25,7 +25,7 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
 
 
 <div class="container">
-     <p>Rekap Surat Siswa<br />
+     <p>Rekap Surat Balasan Iduka<br />
           Tahun Pelajaran 2020/2021<br />
           <?php echo format_indo(date('Y-m-d')); ?></p>
      <div class="row">
