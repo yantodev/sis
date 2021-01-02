@@ -1,5 +1,11 @@
 <form action="<?= base_url('admin/cetak_envelope'); ?>">
     <div class="form-grop pb-2">
+        <select class="form-control col-3" name="hal" id="hal">
+            <option value="">Pilih Hal</option>
+            <option value="Pengiriman peserta PKL">Pengiriman peserta PKL</option>
+        </select>
+    </div>
+    <div class="form-grop pb-2">
         <select class="form-control col-3" name="tp" id="tp">
             <option value="">Pilih Tahun Pelajaran</option>
             <?php foreach ($tp as $d) : ?>

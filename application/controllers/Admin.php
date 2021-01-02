@@ -1488,6 +1488,7 @@ class Admin extends CI_Controller
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
         $data['instansi'] = $this->input->get('instansi');
+        $data['hal'] = $this->input->get('hal');
         $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
         $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
         $this->load->view('admin/cetak-envelope', $data);

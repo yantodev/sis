@@ -12,7 +12,7 @@
         <tr>
             <td width="50px"></td>
             <td>
-                Hal : <b>Pengiriman peserta PKL</b>
+                Hal : <b><?= $hal; ?></b>
             </td>
         </tr>
     </tbody>
