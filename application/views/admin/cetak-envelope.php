@@ -25,7 +25,7 @@
             <td width="60%"></td>
             <td height="140px" valign="bottom">
                 Kepada Yth.<br />
-                Bapak/Ibu <?= $instansi; ?> <?= $data['iduka']; ?><br />
+                Bapak/Ibu <?= $instansi; ?> <b><?= $data['iduka']; ?></b><br />
                 Di <?= $data['alamat']; ?>
             </td>
         </tr>
