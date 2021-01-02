@@ -37,3 +37,6 @@
     </div>
     <button type="submit" class="btn btn-primary mb-2">CETAK</button>
 </form>
+<p>
+    <i>Catatan : Gunakan amplop dengan ukuran 110 x 230 mm</i>
+</p>
