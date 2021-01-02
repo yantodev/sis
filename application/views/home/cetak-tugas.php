@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <td>
-                <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="150px" height="100px">
+                <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="170px" height="100px">
             </td>
         </tr>
         <tr>
