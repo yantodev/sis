@@ -58,16 +58,25 @@
     <tbody>
         <tr>
             <td width="400px" rowspan="4"></td>
-            <td>Karangmojo, 20 Desember 2020</td>
+            <td>Karangmojo, 18 Desember 2020</td>
         </tr>
         <tr>
             <td height="80px" valign="top">Kepala Sekolah,</td>
         </tr>
         <tr>
-            <td><?= $data3['kepala_sekolah']; ?></td>
+            <td>
+                <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="170px" height="100px">
+            </td>
         </tr>
         <tr>
-            <td>NBM. <?= $data3['nbm']; ?></td>
+            <td>
+                MUNAWAR, S.Pd.I
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NBM. 1076230
+            </td>
         </tr>
     </tbody>
 </table>
