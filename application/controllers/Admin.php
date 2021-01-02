@@ -1464,6 +1464,6 @@ class Admin extends CI_Controller
 
         $html = $this->load->view('admin/cetak-DH', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Daftar Hadir' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output('Daftar Hadir ' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
 }
