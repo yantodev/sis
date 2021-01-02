@@ -130,7 +130,7 @@ class Auth extends CI_Controller
                 'image' => 'default.png',
                 'password'  => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id'   => htmlspecialchars($this->input->post('role_id', true)),
-                'is_active' => 1,
+                'is_active' => 0,
                 'date_created' => date("Y-m-d H:i:s")
             ];
             $master = [

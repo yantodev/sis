@@ -162,6 +162,7 @@ class Admin_model extends CI_Model
     public function editSiswa()
     {
         $data = [
+            'jk' => htmlspecialchars($this->input->post('jk', true)),
             'tp' => htmlspecialchars($this->input->post('tp', true)),
             'nis' => htmlspecialchars($this->input->post('nis', true)),
             'name' => htmlspecialchars($this->input->post('name', true)),

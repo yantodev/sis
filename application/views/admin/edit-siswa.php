@@ -32,6 +32,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-8">
+                        <select name="jk" id="jk">
+                            <option value="value=" <?= $siswa['jk']; ?>><?= $siswa['jk']; ?></option>
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="L">Laki-Laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Nama Siswa</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="name" name="name" value="<?= $siswa['name']; ?>">
