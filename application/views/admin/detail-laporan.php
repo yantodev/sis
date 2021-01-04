@@ -1,4 +1,5 @@
 <div class="card-body">
+    <?= $this->session->flashdata('message'); ?>
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
             <tr>
@@ -21,7 +22,6 @@
 </div>
 
 <div class="card-body">
-    <?= $this->session->flashdata('message');; ?>
     <div class="table-responsive">
         <table class="table table-striped table-inverse table-responsive">
             <thead>
@@ -46,7 +46,7 @@
                         <td><img src="<?= base_url('assets/img/gambar/') . $d['foto']; ?>" alt="" width="80px" height="80px"></td>
                         <td><img src="<?= base_url('') . $d['ttd']; ?>" alt="" width="80px" height="80px"></td>
                         <td>
-                            <a href="<?= base_url('admin/hapus_laporan/') . $d['nis']; ?>" class="badge badge-danger">Hapus</a>
+                            <a href="<?= base_url('admin/hapus_laporan/') . $d['id'] . '/' . $d['nis']; ?>" class="badge badge-danger">Hapus</a>
                         </td>
                     </tr>
                     <?php $i++; ?>

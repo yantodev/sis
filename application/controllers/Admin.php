@@ -1430,6 +1430,13 @@ class Admin extends CI_Controller
         $this->load->view('admin/detail-laporan', $data);
         $this->load->view('wrapper/footer');
     }
+    public function hapus_laporan($id, $nis)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tbl_laporan');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>');
+        redirect('admin/detail_laporan/' . $nis);
+    }
     public function daftar_hadir()
     {
         $data['title'] = 'Surat Jalan';
