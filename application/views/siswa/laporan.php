@@ -65,6 +65,7 @@
         </thead>
     </table>
 </div>
+<small><i>Jangan lupa meminta tanda tangan pembimbing yang ada di instansi di menu TTD samping kanan laporan anda...</i></small>
 <table class="table table-striped table-inverse table-responsive mt-3">
     <thead class="thead-inverse">
         <tr>
