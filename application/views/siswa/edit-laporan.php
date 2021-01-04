@@ -21,18 +21,11 @@
     <textarea name="bidangpekerjaan" id="bidang_pekerjaan"><?= $data['bidang_pekerjaan']; ?></textarea>
     <div class="form-group mt-3">
         <label>
-            Standar Keterampilan
+            Uraian Kerja
         </label>
         <?= form_error('sub_1', '<small class="text-danger pl-3">', '</small>'); ?>
     </div>
     <textarea name="sub1" id="sub_1"><?= $data['sub_1']; ?></textarea>
-    <div class="form-group mt-3">
-        <label>
-            Uraian Kerja
-        </label>
-        <?= form_error('sub_2', '<small class="text-danger pl-3">', '</small>'); ?>
-    </div>
-    <textarea name="sub2" id="sub_2"><?= $data['sub_2']; ?></textarea>
     <div class="form-group mt-3">
         <label>
             Gambar Kerja
