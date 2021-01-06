@@ -61,7 +61,7 @@
             <?php foreach ($laporan as $l) : ?>
                 <tr>
                     <td scope="row" valign="top" align="center"><?= $i; ?></td>
-                    <td valign="top"><?= format_indo(date($l['time'])); ?></td>
+                    <td valign="top"><?= tgl(date($l['time'])); ?></td>
                     <td valign="top"><?= $l['bidang_pekerjaan']; ?></td>
                     <td valign="top"><?= $l['sub_1']; ?></td>
                     <!-- <td valign="top"><?= $l['sub_2']; ?></td> -->
