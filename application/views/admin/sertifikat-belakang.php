@@ -23,7 +23,7 @@
                     <h3>Kompetensi Keahlian</h3>
                 </td>
                 <td>
-                    <h3>: Teknik Kendaraan Ringan Otomotif</h3>
+                    <h3>: <?= $siswa['jurusan']; ?></h3>
                 </td>
             </tr>
             <tr>

@@ -742,7 +742,7 @@ class Admin extends CI_Controller
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
-                'format' => 'Folio',
+                'format' => array(210, 330),
                 'orientation' => 'L',
                 'setAutoTopMargin' => false
             ]
