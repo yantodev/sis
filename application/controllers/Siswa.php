@@ -6,6 +6,9 @@ class Siswa extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->userdata('email')) {
+            redirect('auth');
+        }
         // is_logged_in();
         $this->load->model('Admin_model');
     }
@@ -315,43 +318,22 @@ class Siswa extends CI_Controller
             $this->load->view('siswa/edit-laporan', $data);
             $this->load->view('wrapper/footer');
         } else {
-            $nis = $this->input->post('nis');
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']     = '2048';
-            $config['upload_path']  = './assets/img/gambar';
+            $data = [
+                'bidang_pekerjaan' => $this->input->post('bidangpekerjaan'),
+                'sub_1' => $this->input->post('sub1'),
+                'sub_2' => $this->input->post('sub1'),
+            ];
 
-            $this->load->library('upload', $config);
-            if ($_FILES['foto']['name'] != null) {
-                if ($this->upload->do_upload('foto')) {
-                    $bidang_pekerjaan = $this->input->post('bidangpekerjaan');
-                    $sub_1 = $this->input->post('sub1');
-                    $sub_2 = $this->input->post('sub2');
-                    $foto = $this->upload->data('file_name');
-                    $data = array(
-                        'bidang_pekerjaan' => $bidang_pekerjaan,
-                        'sub_1' => $sub_1,
-                        'sub_2' => $sub_2,
-                        'foto' => $foto
-                    );
+            //update
+            $this->db->where('id', $this->input->post('id'));
+            $this->db->update('tbl_laporan', $data);
 
-                    //update
-                    $this->db->where('id', $id);
-                    $this->db->update('tbl_laporan', $data);
-
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Data berhasil di edit!</div>');
-                    redirect('siswa/laporan/' . $nis);
-                } else {
-                    $error = array('error' => $this->upload->display_errors());
-                    $this->load->view('wrapper/header', $data);
-                    $this->load->view('siswa/layout/sidebar', $data);
-                    $this->load->view('wrapper/topbar', $data);
-                    $this->load->view('siswa/laporan', $error);
-                    $this->load->view('wrapper/footer');
-                }
-            }
+            redirect('siswa/laporan/' . $this->input->post('nis'));
         }
     }
+
     public function ibadah($nis)
     {
         $data['title'] = 'Laporan Ibadah-ku';

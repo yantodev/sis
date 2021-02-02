@@ -26,7 +26,7 @@
         <?= form_error('sub_1', '<small class="text-danger pl-3">', '</small>'); ?>
     </div>
     <textarea name="sub1" id="sub_1"><?= $data['sub_1']; ?></textarea>
-    <div class="form-group mt-3">
+    <!-- <div class="form-group mt-3">
         <label>
             Gambar Kerja
         </label>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <input type="hidden" name="id" id="id" value="<?= $data['id']; ?>">
     <input type="hidden" name="nis" id="nis" value="<?= $data['nis']; ?>">
     <div class="mt-3">
