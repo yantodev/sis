@@ -30,7 +30,6 @@
             </select>
             <?= form_error('sub_2', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
-
         <div class="col-sm-5">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="foto" name="foto">
@@ -68,7 +67,11 @@
 <small>
     <i>
         Jangan lupa meminta tanda tangan pembimbing yang ada di instansi di menu TTD samping kanan laporan anda...<br />
-        Menu TTD bukan untuk siswa ya...
+        Menu TTD bukan untuk siswa ya...<br />
+        Keterangan: <br />
+        <a href="#" class="badge badge-success">Edit</a> => Digunankan untuk edit data<br />
+        <a href="#" class="badge badge-primary">TTD</a> => Digunankan untuk tanda tangan pembimbing(instansi) iduka<br />
+        <a href="#" class="badge badge-warning">Upload</a> => Digunakan untuk upload gambar kerja
     </i>
 </small>
 <table class="table table-striped table-inverse table-responsive mt-3">
@@ -100,6 +103,7 @@
                 <td>
                     <a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a>
                     <a href="<?= base_url('siswa/ttd/') . $l['id']; ?>" class="badge badge-primary">TTD</a>
+                    <a href="<?= base_url('siswa/u_ft/') . $l['id']; ?>" class="badge badge-warning">Upload</a>
                 </td>
             </tr>
             <?php $i++; ?>

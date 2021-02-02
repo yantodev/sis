@@ -318,22 +318,71 @@ class Siswa extends CI_Controller
             $this->load->view('siswa/edit-laporan', $data);
             $this->load->view('wrapper/footer');
         } else {
+            $id = $this->input->post('id');
+            $nis = $this->input->post('nis');
             $data = [
                 'bidang_pekerjaan' => $this->input->post('bidangpekerjaan'),
                 'sub_1' => $this->input->post('sub1'),
-                'sub_2' => $this->input->post('sub1'),
-            ];
+                'sub_2' => $this->input->post('sub2'),
 
+            ];
             //update
-            $this->db->where('id', $this->input->post('id'));
+            $this->db->where('id', $id);
             $this->db->update('tbl_laporan', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Data berhasil di edit!</div>');
-            redirect('siswa/laporan/' . $this->input->post('nis'));
+            redirect('siswa/laporan/' . $nis);
         }
     }
 
+    public function u_ft($id)
+    {
+        $data['title'] = 'Upload Foto Laporan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('tbl_laporan', ['id' => $id])->row_array();
+        $data['jurusan'] = $this->Admin_model->getJurusan();
+
+        $this->form_validation->set_rules('id', 'ID', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('siswa/layout/sidebar', $data);
+            $this->load->view('wrapper/topbar', $data);
+            $this->load->view('siswa/u_foto', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $id = $this->input->post('id');
+            $nis = $this->input->post('nis');
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '2048';
+            $config['upload_path']  = './assets/img/gambar';
+
+            $this->load->library('upload', $config);
+            if ($_FILES['foto']['name'] != null) {
+                if ($this->upload->do_upload('foto')) {
+                    $foto = $this->upload->data('file_name');
+                    $data = array(
+                        'foto' => $foto
+                    );
+
+                    //update
+                    $this->db->where('id', $id);
+                    $this->db->update('tbl_laporan', $data);
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Data berhasil di edit!</div>');
+                    redirect('siswa/laporan/' . $nis);
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->load->view('wrapper/header', $data);
+                    $this->load->view('siswa/layout/sidebar', $data);
+                    $this->load->view('wrapper/topbar', $data);
+                    $this->load->view('siswa/u_foto', $error);
+                    $this->load->view('wrapper/footer');
+                }
+            }
+        }
+    }
     public function ibadah($nis)
     {
         $data['title'] = 'Laporan Ibadah-ku';
