@@ -505,4 +505,43 @@ class Siswa extends CI_Controller
         // $this->welcome_model->insert_single_signature($image);
         echo '<img src="' . base_url() . $image . '">';
     }
+
+    public function sertifikat($nis)
+    {
+        $data['title'] = 'Sertifikat Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+
+        $this->load->view('siswa/sertifikat-depan', $data);
+        $this->load->view('siswa/sertifikat-belakang', $data);
+
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => array(210, 330),
+                'orientation' => 'L',
+                'setAutoTopMargin' => false
+            ]
+        );
+
+        // $mpdf->SetHTMLHeader('
+        // <div style="text-align: center; font-weight: bold;">
+        //   <img src="assets/img/pi-2020.png" width="100%" height="100%" />
+        // </div>');
+        $html = $this->load->view('siswa/sertifikat-depan', [], true);
+        $mpdf->WriteHTML($html);
+
+        $mpdf->AddPage(
+            [
+                'mode' => 'utf-8',
+                'format' => array(210, 330),
+                'orientation' => 'L',
+                'setAutoTopMargin' => false
+            ]
+        );
+        $html2 = $this->load->view('siswa/sertifikat-belakang', [], true);
+        $mpdf->WriteHTML($html2);
+
+        $mpdf->Output('SERTIFIKAT PI.pdf', \Mpdf\Output\Destination::INLINE);
+    }
 }

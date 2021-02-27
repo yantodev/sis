@@ -46,7 +46,7 @@
                         <a class="collapse-item" href="<?= base_url('siswa/surat/') . $user['nis']; ?>">Surat Balasan</a>
                         <a class="collapse-item" href="<?= base_url('siswa/surat_pernyataan/') . $user['nis']; ?>">Surat Pernyataan</a>
                         <a class="collapse-item" href="<?= base_url('siswa/idcard/') . $user['nis']; ?>">IDCARD Siswa</a>
-                        <a class="collapse-item" href="#">Cetak Sertifikat</a>
+                        <a class="collapse-item" href="<?= base_url('siswa/sertifikat/') . $user['nis']; ?>">Cetak Sertifikat</a>
                     </div>
                 </div>
             </li>
