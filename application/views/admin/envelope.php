@@ -3,6 +3,8 @@
         <select class="form-control col-3" name="hal" id="hal">
             <option value="">Pilih Hal</option>
             <option value="Pengiriman peserta PKL">Pengiriman peserta PKL</option>
+            <option value="Penarikan Peserta PKL">Penarikan Peserta PKL</option>
+            <option value="Permohonan Nilai PKL">Permohonan Nilai PKL</option>
         </select>
     </div>
     <div class="form-grop pb-2">
