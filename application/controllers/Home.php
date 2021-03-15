@@ -243,7 +243,7 @@ class Home extends CI_Controller
 
     public function cetak_tarik_nilai()
     {
-        $data['title'] = 'Cetak Surat Pengantar';
+        $data['title'] = 'Cetak Surat Penarikan dan Permohonan Nilai';
         $data['instansi'] = $this->input->get('instansi');
         $data['iduka'] = $this->input->get('iduka');
         $iduka = $this->input->get('iduka');
@@ -252,7 +252,7 @@ class Home extends CI_Controller
 
         $this->load->view('home/cetak-tarik-nilai', $data);
 
-        $filename = 'Surat Pengantar ' . $iduka;
+        $filename = 'Surat Penarikan dan Permohonan Nilai ' . $iduka;
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
