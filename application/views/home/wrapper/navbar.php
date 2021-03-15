@@ -28,8 +28,9 @@
                         <a class="dropdown-item" href="<?= base_url('home/permohonan'); ?>">Surat Permohonan</a>
                         <a class="dropdown-item" href="<?= base_url('home/surat_tugas'); ?>">Surat Tugas</a>
                         <a class="dropdown-item" href="<?= base_url('home/surat_pengantar'); ?>">Surat Pengantar</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="<?= base_url('home/surat_tarik_nilai'); ?>">Surat Penarikan & Nilai</a>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
                 <li class="nav-item">

@@ -229,6 +229,51 @@ class Home extends CI_Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output($filename . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
+    public function surat_tarik_nilai()
+    {
+        $data['title'] = 'Home';
+        $data['tp'] =  $this->Admin_model->getTP();
+        $data['data'] =  $this->Home_model->Jurusan();
+        $data['guru'] = $this->db->get_where('tbl_guru')->result_array();
+        $this->load->view('home/wrapper/header', $data);
+        $this->load->view('home/wrapper/navbar', $data);
+        $this->load->view('home/surat-tarik-nilai', $data);
+        $this->load->view('home/wrapper/footer', $data);
+    }
+
+    public function cetak_tarik_nilai()
+    {
+        $data['title'] = 'Cetak Surat Pengantar';
+        $data['instansi'] = $this->input->get('instansi');
+        $data['iduka'] = $this->input->get('iduka');
+        $iduka = $this->input->get('iduka');
+        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['id' => 5])->row_array();
+
+        $this->load->view('home/cetak-tarik-nilai', $data);
+
+        $filename = 'Surat Pengantar ' . $iduka;
+        $mpdf = new \Mpdf\Mpdf(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => 'stretch'
+            ]
+        );
+        $mpdf->SetHTMLHeader('
+        <div style="text-align: center; font-weight: bold;">
+          <img src="assets/img/kop.png" width="100%" height="20%" />
+        </div>');
+        $mpdf->SetHTMLFooter('
+        <div>
+          <p>Kontak Person WA: 0813-2864-6069</p>
+        </div>');
+
+        $html = $this->load->view('home/cetak-tarik-nilai', [], true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output($filename . '.pdf', \Mpdf\Output\Destination::INLINE);
+    }
 
     public function d_hadir()
     {
