@@ -41,9 +41,14 @@
                     <label for="tp" class="col-sm-4 col-form-label">Kelas</label>
                     <div class="col-sm-8">
                         <select name="kelas" id="kelas">
-                            <option value="<?= $siswa['kelas']; ?>"><?= $siswa['kelas']; ?></option>
+                            <option value="<?= $k['id']; ?>">
+                            <?php 
+                            $kls = $this->db->get_where('tbl_kelas',['id'=> $siswa['kelas']])->row_array();
+                            echo $kls['kelas']; 
+                            ?>
+                            </option>
                             <?php foreach ($kelas as $k) : ?>
-                                <option value="<?= $k['kelas']; ?>"><?= $k['kelas']; ?></option>
+                                <option value="<?= $k['id']; ?>"><?= $k['kelas']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -77,7 +82,7 @@
                         <select name="jurusan" id="jurusan2">
                             <option value="<?= $siswa['jurusan']; ?>"><?= $siswa['jurusan']; ?></option>
                             <?php foreach ($iduka as $d) : ?>
-                                <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
+                                <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -88,10 +93,10 @@
                         <select name="nama_instansi" id="nama_instansi">
                             <option value="<?= $siswa['nama_instansi']; ?>"><?= $siswa['nama_instansi']; ?></option>
                             <?php foreach ($data as $d) : ?>
-                                <option value="<?= $d['iduka']; ?>"><?= $d['iduka']; ?></option>
+                                <option value="<?= $d['id']; ?>"><?= $d['iduka']; ?></option>
                             <?php endforeach; ?>
                         </select><br />
-                        <small>Jika nama instansi tidak ditemukan silahkan hubungi <a href="https://api.whatsapp.com/send?phone=6281328646069">admin (081328646069)</a></small>
+                        <small>Jika nama instansi tidak ditemukan silahkan hubungi <a href="https://api.whatsapp.com/send?phone=6283840398931">admin (083840398931)</a></small>
                     </div>
                     <?= form_error('nama_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
@@ -126,50 +131,6 @@
                         <input type="text" class="form-control" id="hp_pendamping" name="hp_pendamping" value="<?= $siswa['hp_pendamping']; ?>" readonly>
                     </div>
                 </div>
-                <!-- <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">Alamat Email / Website</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="email_website_instansi" name="email_website_instansi" value="<?= $siswa['email_website_instansi']; ?>">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">Nomor Telp/HP Instansi</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="telp_instansi" name="telp_instansi" value="<?= $siswa['telp_instansi']; ?>">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">Nama Pejabat</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nama_pejabat" name="nama_pejabat" value="<?= $siswa['nama_pejabat']; ?>">
-                    </div>
-                    <?= form_error('nama_pejabat', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-                <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">NIP/NIK/NRP *)</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="no_pejabat" name="no_pejabat" value="<?= $siswa['no_pejabat']; ?>">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">Jabatan</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= $siswa['jabatan']; ?>">
-                    </div>
-                    <?= form_error('jabatan', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-                <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">No Telp/HP</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="telp_pejabat" name="telp_pejabat" value="<?= $siswa['telp_pejabat']; ?>">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="nis" class="col-sm-4 col-form-label">Alamat Email</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="email_pejabat" name="email_pejabat" value="<?= $siswa['email_pejabat']; ?>">
-                    </div>
-                </div> -->
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Nomor Sertifikat</label>
                     <div class="col-sm-8">

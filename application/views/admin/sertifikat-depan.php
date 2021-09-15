@@ -55,6 +55,9 @@
     table {
         color: black;
     }
+    .isi {
+        margin-left:25px;
+    }
 </style>
 <div class="container">
     <!-- Content here -->
@@ -107,8 +110,8 @@
                         </font>
                     </td>
                 </tr>
-                <tr>
-                    <td align="center" height="80px" colspan="3">
+                <tr >
+                    <td  align="center" height="90px" colspan="3">
                         <font size="6" face="times">
                             Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $tp['pkl']; ?> <br />di <?= $siswa['nama_instansi']; ?> dengan hasil terlampir dibelakang sertifikat ini.
                         </font>

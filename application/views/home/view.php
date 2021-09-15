@@ -35,7 +35,12 @@
                                 <td><?= $d['nis']; ?></td>
                                 <td><?= $d['name']; ?></td>
                                 <td><?= $d['jk']; ?></td>
-                                <td><?= $d['kelas']; ?></td>
+                                <td>
+                                    <?php 
+                                    $kelas = $this->db->get_where('tbl_kelas',['id'=> $d['kelas']])->row_array();
+                                    echo $kelas['kelas']; 
+                                    ?>
+                                </td>
                                 <td><?= $d['jurusan']; ?></td>
                                 <td><?= $d['tp']; ?></td>
                             </tr>

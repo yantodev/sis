@@ -46,7 +46,12 @@
                 <td><?= $d['nis']; ?></td>
                 <td><?= ucwords(strtolower($d['name'])); ?></td>
                 <td><?= $d['jk']; ?></td>
-                <td><?= $d['kelas']; ?></td>
+                <td>
+                    <?php 
+                    $kelas = $this->db->get_where('tbl_kelas',['id'=> $d['kelas']])->row_array();
+                    echo $kelas['kelas']; 
+                    ?>
+                </td>
                 <td><?= $d['jurusan']; ?></td>
             </tr>
             <?php $i++; ?>

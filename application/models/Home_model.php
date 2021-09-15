@@ -17,7 +17,7 @@ class Home_model extends CI_Model
     }
     function alamatIduka($nama_instansi)
     {
-        $this->db->where('iduka', $nama_instansi);
+        $this->db->where('id', $nama_instansi);
         $result = $this->db->get('tbl_iduka')->result();
         return $result;
     }
@@ -46,5 +46,15 @@ class Home_model extends CI_Model
     public function getTugas2($guru)
     {
         return $this->db->get_where('tbl_guru', ['nama' => $guru])->result_array();
+    }
+    	/**
+    * Get All Data Siswa
+    */
+    public function get_all()
+    {
+        $this->db->select("*");
+        $this->db->from("user");
+        $this->db->order_by("id", "DESC");
+        return $this->db->get();
     }
 }

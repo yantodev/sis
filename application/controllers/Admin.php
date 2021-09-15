@@ -742,7 +742,7 @@ class Admin extends CI_Controller
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
-                'format' => array(210, 330),
+                'format' => array(215, 330),
                 'orientation' => 'L',
                 'setAutoTopMargin' => false
             ]
@@ -973,7 +973,7 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->Iduka($singkatan_jurusan);
         $lists = "<option value=''>Pilih Iduka/Instansi</option>";
         foreach ($iduka as $data) {
-            $lists .= "<option value='" . $data->iduka . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
+            $lists .= "<option value='" . $data->id . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
         }
         $callback = array('list_iduka' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
@@ -984,7 +984,7 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->Iduka($singkatan_jurusan);
         $lists = "<option value=''>Pilih Iduka/Instansi</option>";
         foreach ($iduka as $data) {
-            $lists .= "<option value='" . $data->iduka . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
+            $lists .= "<option value='" . $data->id . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
         }
         $callback = array('list_iduka2' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
         echo json_encode($callback); // konversi varibael $callback menjadi JSON

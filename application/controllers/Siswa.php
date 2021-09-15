@@ -153,7 +153,7 @@ class Siswa extends CI_Controller
 
     public function data($nis)
     {
-        $data['title'] = 'Data';
+        $data['title'] = 'Data Identitas Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
         $data['data'] = $this->db->get_where('tbl_iduka', ['jurusan' => 'TKRO'])->result_array();
