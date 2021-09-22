@@ -10,4 +10,12 @@ class Api_model extends CI_Model
         $this->db->order_by("id", "ASC");
         return $this->db->get();
     }
+
+    public function getJurusan()
+    {
+        $this->db->select("*");
+        $this->db->from("tbl_jurusan");
+        $this->db->order_by("id", "ASC");
+        return $this->db->get();
+    }
 }

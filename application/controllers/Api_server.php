@@ -23,7 +23,30 @@ class Api_server extends CI_Controller
                 'id' => $hasil->id,
                 'name' => $hasil->name,
                 'email'     => $hasil->email,        
-                'password'     => $hasil->password,        
+                'password'     => $hasil->password,    
+                'role_id' => $hasil->role_id,    
+            );
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode(
+            array(
+                'success' => true,
+                'message' => 'Get All Data Siswa',
+                'data'    => $response  
+            )
+        );
+    }
+
+    public function getJurusan()
+    {
+        $data = $this->Api_model->getJurusan();
+        $response = array();
+
+        foreach ($data->result() as $hasil) {
+            $response[] = array(
+                'id' => $hasil->id,
+                'jurusan' => $hasil->jurusan,
             );
         }
         
