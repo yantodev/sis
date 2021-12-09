@@ -1,3 +1,4 @@
+
 <form action="<?= base_url('admin/data'); ?> " method="get">
     <select name="tp" id="tp">
         <option value="">Pilih Tahun Pelajaran</option>
@@ -8,7 +9,7 @@
     <select name="jurusan" id="jurusan">
         <option value="">Silahkan Pilih Jurusan</option>
         <?php foreach ($jurusan as $d) : ?>
-            <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
+            <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
         <?php endforeach; ?>
     </select>
     <button type="submit" class="btn btn-primary mb-2">SAVE</button>
@@ -42,7 +43,12 @@
                             <td><?= $i; ?></td>
                             <td><?= $d['nis']; ?></td>
                             <td><?= $d['name']; ?></td>
-                            <td><?= $d['nama_instansi']; ?></td>
+                            <td>
+                            <?php
+                            $iduka = $this->db->get_where('tbl_iduka',['id'=>$d['nama_instansi']])->row_array();
+                            echo $iduka["iduka"]
+                            ?>
+                            </td>
                             <td><?= $d['tp']; ?></td>
                             <td><?= $d['guru_pendamping']; ?></td>
                             <td><?= $d['status']; ?></td>

@@ -16,7 +16,9 @@
     }
 </style>
 <!-- Surat Pernyataan -->
-<h3 style="text-align: center;">
+<h3 style="text-align: center">
+<br/>
+<br/>
     PERNYATAAN KESANGGUPAN<br />
     MENAMPUNG SISWA PRAKTIK KERJA LAPANGAN (PKL)<br />
 </h3>
@@ -66,7 +68,7 @@
         </tr>
     </thead>
 </table>
-<p class="justify"><?= $pernyataan['p4']; ?>
+<p class="justify">Memperhatikan surat permohonan izin PKL dari SMK Muhammadiyah Karangmojo Nomor : <?= $nomor['nomor']; ?>, maka kami menyatakan :
 </p>
 <table border="1" align="center" cellspacing="0">
     <tr>
@@ -89,13 +91,19 @@
             <th>Kompetensi Keahlian</th>
         </tr>
     </thead>
+    <?php
+        $i = 1;
+        $data_duka = $this->input->get('iduka');
+        $data_tp = $this->input->get('tp');
+        $master_data = $this->db->get_where('master',['nama_instansi'=>$data_duka, 'tp'=> $data_tp])->result_array();
+        ?>
     <tbody>
         <?php $i = 1; ?>
-        <?php foreach ($data as $d) : ?>
+        <?php foreach ($master_data as $d) : ?>
             <tr>
                 <td style="text-align:center"><?= $i; ?></td>
                 <td><?= $d['nis']; ?></td>
-                <td><?= $d['name']; ?></td>
+                <td><?= ucwords(strtolower($d['name'])); ?></td>
                 <td><?= $d['jk']; ?></td>
                 <td>
                     <?php 
@@ -103,7 +111,11 @@
                     echo $kelas['kelas']; 
                     ?>
                 </td>
-                <td><?= $d['jurusan']; ?></td>
+                <td>
+                    <?php $data_jurusan = $this->db->get_where('tbl_jurusan',['id'=> $d['jurusan']])->row_array();
+                    echo $data_jurusan['jurusan'];
+                    ?>
+                </td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>

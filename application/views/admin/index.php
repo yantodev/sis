@@ -1,3 +1,11 @@
+<style>
+     .rekap {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+     }
+
+</style>
 <?php
 $tkro = ($siswa->tkro / $datatkro['jumlah']) * 100;
 $tbsm = ($siswa->tbsm / $datatbsm['jumlah']) * 100;
@@ -21,12 +29,52 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
 ?>
 
 <p>Selamat datang <?= $user['name']; ?></p>
+<?= $this->session->flashdata('message'); ?>
 
-
-
-<div class="container">
+<div class="rekap">
+<div class="rekap-akun">
+     <p>Rekap Akun Siswa<br />
+          Tahun Pelajaran 2021/2022<br />
+          <?php echo format_indo(date('Y-m-d')); ?></p>
+     <div class="row">
+          <!-- surat balasan -->
+          <div class="col order-5">
+          <div class="form-group col-6">
+                    <label for="">Teknik Kendaraan Ringan Otomotif (<?= number_format($tkro, 2); ?>%)</label>
+                    <div class="progress">   
+                         <div class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" style="width:<?= $tkro; ?>%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><?= $siswa->tkro; ?> dari <?= $datatkro['jumlah']; ?> Siswa</div>
+                    </div>
+               </div>
+               <div class="form-group col-6">
+                    <label for="">Teknik Bisnis Sepeda Motor (<?= number_format($tbsm, 2); ?>%)</label>
+                    <div class="progress">
+                         <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width:<?= $tbsm; ?>%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><?= $siswa->tbsm; ?> dari <?= $datatbsm['jumlah']; ?> Siswa</div>
+                    </div>
+               </div>
+               <div class="form-group col-6">
+                    <label for="">Akuntansi dan Keuangan Lembaga (<?= number_format($akl, 2); ?>%)</label>
+                    <div class="progress">
+                         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: <?= $akl; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $siswa->akl; ?> dari <?= $dataakl['jumlah']; ?> Siswa</div>
+                    </div>
+               </div>
+               <div class="form-group col-6">
+                    <label for="">Otomatisasi dan Tata Kelola Perkantoran <?= number_format($otkp, 2); ?>%)</label>
+                    <div class="progress">
+                         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: <?= $otkp; ?>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><?= $siswa->otkp; ?> dari <?= $dataotkp['jumlah']; ?> Siswa</div>
+                    </div>
+               </div>
+               <div class="form-group col-6">
+                    <label for="">Bisnis Daring dan Pemasaran (<?= number_format($bdp, 2); ?>%)</label>
+                    <div class="progress">
+                         <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: <?= $bdp; ?>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><?= $siswa->bdp; ?> dari <?= $databdp['jumlah']; ?> Siswa</div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+<div class="rekap-balab">
      <p>Rekap Surat Balasan Iduka<br />
-          Tahun Pelajaran 2020/2021<br />
+          Tahun Pelajaran 2021/2022<br />
           <?php echo format_indo(date('Y-m-d')); ?></p>
      <div class="row">
           <!-- surat balasan -->
@@ -64,5 +112,7 @@ $jml_bls = ($rekap_bls / $jumlah) * 100;
           </div>
      </div>
 </div>
+</div>
+
 
 <p><a href="<?= base_url('admin/data'); ?>"><button class="btn btn-facebook">Detail Siswa</button></a></p>

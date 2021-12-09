@@ -1,3 +1,7 @@
+<?php 
+    $jurusan = $this->db->get_where('tbl_jurusan',['id'=>$siswa['jurusan']])->row_array();
+$instansi = $this->db->get_where('tbl_iduka',['id'=>$siswa['nama_instansi']])->row_array();
+?>
 <div class="container">
     <h1 align="center">DAFTAR NILAI PRAKTIK KERJA LAPANGAN</h1>
     <table align="center">
@@ -7,7 +11,7 @@
                     <h3>Nama</h3>
                 </td>
                 <td>
-                    <h3>: <?= $siswa['name']; ?></h3>
+                    <h3>: <?= ucwords(strtolower($siswa['name'])); ?></h3>
                 </td>
             </tr>
             <tr>
@@ -23,7 +27,7 @@
                     <h3>Kompetensi Keahlian</h3>
                 </td>
                 <td>
-                    <h3>: <?= $siswa['jurusan']; ?></h3>
+                    <h3>: <?= $jurusan['jurusan']; ?></h3>
                 </td>
             </tr>
             <tr>
@@ -110,9 +114,9 @@
                     <h4>
                         <b>
                             <!-- <?= $tp['tgl']; ?><br /> -->
-                            <?= $data['jabatan']; ?><br /><br /><br /><br /><br />
-                            <?= $data['nama_pembimbing_instansi']; ?><br />
-                            NIP/NRP. <?= $data['nip']; ?>
+                            <?= $instansi['jabatan']; ?><br /><br /><br /><br /><br />
+                            <?= $instansi['nama_pembimbing_instansi']; ?><br />
+                            NIP/NRP. <?= $instansi['nip']; ?>
                         </b>
                     </h4>
 

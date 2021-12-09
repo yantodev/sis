@@ -29,7 +29,7 @@
                 <select name="jurusan" id="jurusan2">
                     <option value="">Silahkan Pilih Jurusan</option>
                     <?php foreach ($jurusan as $d) : ?>
-                        <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
+                        <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="nama_instansi" id="nama_instansi">

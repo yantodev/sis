@@ -81,7 +81,7 @@ class Home extends CI_Controller
         $lists = "<option value=''>Pilih Iduka/Instansi</option>";
 
         foreach ($iduka as $data) {
-            $lists .= "<option value='" . $data->iduka . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
+            $lists .= "<option value='" . $data->id . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
         }
 
         $callback = array('list_iduka' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
@@ -206,7 +206,7 @@ class Home extends CI_Controller
         $data['instansi'] = $this->input->get('instansi');
         $data['iduka'] = $this->input->get('iduka');
         $iduka = $this->input->get('iduka');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['data'] = $this->db->get_where('tbl_iduka', ['id' => $iduka])->row_array();
         $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Pengantar'])->row_array();
 
         $this->load->view('home/cetak-pengantar', $data);
@@ -241,18 +241,33 @@ class Home extends CI_Controller
         $this->load->view('home/wrapper/footer', $data);
     }
 
-    public function cetak_tarik_nilai()
+    public function cetak_srt_penarikan()
     {
         $data['title'] = 'Cetak Surat Penarikan dan Permohonan Nilai';
         $data['instansi'] = $this->input->get('instansi');
         $data['iduka'] = $this->input->get('iduka');
-        $iduka = $this->input->get('iduka');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['tp'] = $this->input->get('tp');
+        $jurusan = $this->db->get_where('tbl_iduka', ['id'=> $this->input->get('iduka')])->row_array();
+        $data['data'] = $this->db->get_where('tbl_iduka', [
+            'id' => $this->input->get('iduka')
+            ])->row_array();
+        $data['master'] = $this->db->get_where('master', [
+            'nama_instansi' => $this->input->get('iduka'),
+            'tp' => $this->input->get('tp')
+         ])->result_array();
+         $data['nonteknis'] = $this->db->get_where('tbl_nilai',[
+             'jurusan' =>$jurusan['jurusan']
+             ])->result_array();
+        $jurusan2 = $this->db->get_where('tbl_nilai',[
+             'jurusan' =>$jurusan['jurusan']
+             ])->row_array();
+        $data['jurusan2']= $this->db->get_where('tbl_jurusan',['id'=>$jurusan2['jurusan']])->row_array();
         $data['nomor'] = $this->db->get_where('tbl_nomor_surat', ['id' => 5])->row_array();
 
-        $this->load->view('home/cetak-tarik-nilai', $data);
+        $this->load->view('home/penarikan/cetak1', $data);
+        $this->load->view('home/penarikan/cetak2', $data);
 
-        $filename = 'Surat Penarikan dan Permohonan Nilai ' . $iduka;
+        $filename = 'Surat Penarikan dan Permohonan Nilai ' . $this->input->get('iduka');
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
@@ -261,17 +276,32 @@ class Home extends CI_Controller
                 'setAutoTopMargin' => 'stretch'
             ]
         );
-        $mpdf->SetHTMLHeader('
-        <div style="text-align: center; font-weight: bold;">
-          <img src="assets/img/kop.png" width="100%" height="20%" />
-        </div>');
+        // $mpdf->SetHTMLHeader('
+        // <div style="text-align: center; font-weight: bold;">
+        //   <img src="assets/img/kop.png" width="100%" height="20%" />
+        // </div>');
         $mpdf->SetHTMLFooter('
         <div>
           <p>Kontak Person WA: 0813-2864-6069</p>
         </div>');
 
-        $html = $this->load->view('home/cetak-tarik-nilai', [], true);
+        $html = $this->load->view('home/penarikan/cetak1', [], true);
         $mpdf->WriteHTML($html);
+
+        $mpdf->AddPage(
+            [
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'orientation' => 'P',
+                'setAutoTopMargin' => false
+            ]
+        );
+        $mpdf->SetFooter('<p align="left">
+                            Nilai Kompeten aspek non teknis minimal b dan nilai teknis minimal 75<br/>
+                            *) Lingkari salah satu yang sesuai atau coret semua apabila tidak terpakai
+                        </p>');
+        $html2 = $this->load->view('home/penarikan/cetak2', [], true);
+        $mpdf->WriteHTML($html2);
         $mpdf->Output($filename . '.pdf', \Mpdf\Output\Destination::INLINE);
     }
 

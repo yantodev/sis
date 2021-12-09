@@ -83,9 +83,9 @@
                     <label for="nis" class="col-sm-4 col-form-label">Jurusan</label>
                     <div class="col-sm-8">
                         <select name="jurusan" id="jurusan2">
-                            <option value="<?= $siswa['jurusan']; ?>"><?= $siswa['jurusan']; ?></option>
+                            <option value="<?= $siswa['id']; ?>"><?= $siswa['jurusan']; ?></option>
                             <?php foreach ($iduka as $d) : ?>
-                                <option value="<?= $d['jurusan']; ?>"><?= $d['jurusan']; ?></option>
+                                <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

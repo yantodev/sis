@@ -1,4 +1,7 @@
 <style type="text/css">
+    @page {
+        margin-top: 20px;
+    }
     .left {
         text-align: left;
     }
@@ -15,6 +18,10 @@
         text-align: justify;
     }
 </style>
+<div style="margin-top: 0;">
+
+    <img  src="assets/img/kop.png" width="100%" height="20%" />
+</div>
 <table>
     <thead>
         <tr>
@@ -56,8 +63,9 @@
     <tbody>
         <tr>
             <td width="400px" rowspan="4"></td>
-            <td>Karangmojo, <?= tanggal($nomor['tgl_surat']); ?></td>
+            <td>Karangmojo, <?= tanggal(date("Y/m/d")); ?></td>
         </tr>
+        <tr><td>Kepala Sekolah</td></tr>
         <tr>
             <td>
                 <img src="<?= base_url('assets/img/ttd-ks.png'); ?>" width="170px" height="100px">
@@ -65,11 +73,7 @@
         </tr>
         <tr>
             <td>
-                MUNAWAR, S.Pd.I
-            </td>
-        </tr>
-        <tr>
-            <td>
+                MUNAWAR, S.Pd.I<br/>
                 NBM. 1076230
             </td>
         </tr>

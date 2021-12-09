@@ -26,6 +26,8 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['datatkro'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif'])->row_array();
         $data['datatbsm'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Bisnis Sepeda Motor'])->row_array();
         $data['dataakl'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Akuntansi dan Keuangan Lembaga'])->row_array();
@@ -51,6 +53,8 @@ class Admin extends CI_Controller
         $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/siswa', $data);
         $this->load->view('wrapper/footer');
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
     }
     public function CetakSiswa()
     {
@@ -81,6 +85,8 @@ class Admin extends CI_Controller
     }
     public function profile()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'My Profile';
         $this->load->view('wrapper/header', $data);
@@ -91,6 +97,8 @@ class Admin extends CI_Controller
     }
     public function changepassword()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Change Password';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -131,6 +139,8 @@ class Admin extends CI_Controller
 
     public function data()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Data siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Menu_model', 'menu');
@@ -296,6 +306,8 @@ class Admin extends CI_Controller
 
     public function dataALL()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Data siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] = $this->Admin_model->getTP();
@@ -311,6 +323,8 @@ class Admin extends CI_Controller
 
     public function detailData($id)
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Detail Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
@@ -324,6 +338,8 @@ class Admin extends CI_Controller
 
     public function editData($id)
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Edit Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
@@ -348,6 +364,8 @@ class Admin extends CI_Controller
     }
     public function suratbalasan($nis)
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Surat Balasan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['pengumuman'] = $this->Admin_model->Pengumuman();
@@ -399,6 +417,8 @@ class Admin extends CI_Controller
 
     public function hapus($id)
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->Admin_model->hapusData($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>');
         redirect('admin/data');
@@ -406,6 +426,8 @@ class Admin extends CI_Controller
 
     public function nilai()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
@@ -464,6 +486,8 @@ class Admin extends CI_Controller
     //TKRO
     public function nilaitkro()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         // $data['data'] =  $this->Admin_model->Siswatkro();
@@ -483,7 +507,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Detail Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -496,7 +521,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Edit Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -514,7 +540,8 @@ class Admin extends CI_Controller
     //TBSM
     public function nilaitbsm()
     {
-        $data['title'] = 'Nilai Siswa';
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();        $data['title'] = 'Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
@@ -532,7 +559,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Detail Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -545,7 +573,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Edit Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -568,7 +597,8 @@ class Admin extends CI_Controller
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Akuntansi dan Keuangan Lembaga'])->result_array();
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -581,7 +611,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Detail Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -594,7 +625,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Edit Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -617,7 +649,8 @@ class Admin extends CI_Controller
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran'])->result_array();
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -630,7 +663,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Detail Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -643,7 +677,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Edit Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -666,7 +701,8 @@ class Admin extends CI_Controller
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Bisnis Daring dan Pemasaran'])->result_array();
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -679,7 +715,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Detail Nilai Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -692,7 +729,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Edit Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -709,6 +747,8 @@ class Admin extends CI_Controller
 
     public function sertifikat()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Cetak Sertifikat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] = $this->db->get_where('tp')->result_array();
@@ -724,6 +764,7 @@ class Admin extends CI_Controller
     }
     public function CetakDepan()
     {
+        
         $data['title'] = 'Detail Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
@@ -799,6 +840,8 @@ class Admin extends CI_Controller
 
     public function masterdata()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Master Data';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('wrapper/header', $data);
@@ -811,6 +854,8 @@ class Admin extends CI_Controller
     //IDUKA
     public  function iduka()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'IDUKA';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] =  $this->Admin_model->getJurusan();
@@ -834,6 +879,8 @@ class Admin extends CI_Controller
     }
     public function editIduka($id)
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Edit Data IDUKA';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->Admin_model->getIdukaById($id);
@@ -864,6 +911,8 @@ class Admin extends CI_Controller
 
     public function Pengumuman()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Pengumuman';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['pengumuman'] = $this->Admin_model->Pengumuman();
@@ -1017,7 +1066,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Surat PKL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->Admin_model->surat($id);
-
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $this->form_validation->set_rules('nomor', 'nomor', 'required');
         $this->form_validation->set_rules('lampiran', 'lampiran', 'required');
         if ($this->form_validation->run() == false) {
@@ -1051,6 +1101,8 @@ class Admin extends CI_Controller
 
     public function Guru()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Data Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->Admin_model->Guru();
@@ -1065,6 +1117,8 @@ class Admin extends CI_Controller
     }
     public function editGuru($id)
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Edit Data Pendamping';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] =  $this->Admin_model->getJurusan();
@@ -1094,6 +1148,8 @@ class Admin extends CI_Controller
 
     public function tambahsiswa()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Data Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Menu_model', 'menu');
@@ -1138,6 +1194,8 @@ class Admin extends CI_Controller
 
     public function idcard()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'ID CARD';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] = $this->Admin_model->getTP();
@@ -1189,6 +1247,8 @@ class Admin extends CI_Controller
 
     public function surattugas()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Daftar Surat Tugas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] = $this->db->get_where('tp')->result_array();
@@ -1205,6 +1265,8 @@ class Admin extends CI_Controller
     }
     public function tambahsurattugas()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Tambah Surat Tugas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] = $this->db->get_where('tp')->result_array();
@@ -1247,6 +1309,8 @@ class Admin extends CI_Controller
 
     public function daftarpeserta()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Daftar Peserta';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] =  $this->Admin_model->getTP();
@@ -1289,7 +1353,8 @@ class Admin extends CI_Controller
 
     public function suratjalan()
     {
-        $data['title'] = 'Surat Jalan';
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();        $data['title'] = 'Surat Jalan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
         $data['tp'] =  $this->Admin_model->getTP();
@@ -1331,6 +1396,8 @@ class Admin extends CI_Controller
 
     public function nomorsurat()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Daftar Nomor Surat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data'] = $this->db->get_where('tbl_nomor_surat')->result_array();
@@ -1362,6 +1429,8 @@ class Admin extends CI_Controller
 
     public function surat_pernyataan()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Surat Pernyataan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['tp'] =  $this->Admin_model->getTP();
@@ -1409,6 +1478,8 @@ class Admin extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -1423,6 +1494,8 @@ class Admin extends CI_Controller
         $data['jurusan'] = $this->Admin_model->getJurusan();
         $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
         $data['data'] = $this->db->get_where('tbl_laporan', ['nis' => $nis])->result_array();
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -1439,6 +1512,8 @@ class Admin extends CI_Controller
     }
     public function daftar_hadir()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Surat Jalan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
@@ -1481,6 +1556,8 @@ class Admin extends CI_Controller
     }
     public function envelope()
     {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
         $data['title'] = 'Amplop';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
@@ -1518,5 +1595,27 @@ class Admin extends CI_Controller
         $html = $this->load->view('admin/cetak-envelope', [], true);
         $mpdf->WriteHTML($html);
         $mpdf->Output('Daftar Hadir ' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
+    }
+
+    public function user()
+    {
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['title'] = 'User';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data'] = $this->db->get_where('user')->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/user', $data);
+        $this->load->view('wrapper/footer');
+    }
+    public function actived($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('user', ['is_active'=>1]);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User berhasil di aktifkan!!!</div>');
+        redirect('admin');
     }
 }

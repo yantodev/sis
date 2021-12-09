@@ -16,20 +16,28 @@ class Admin_model extends CI_Model
 
     public function CountSiswa()
     {
-        $sql = "SELECT  count(if(tp='2020/2021', tp, NULL)) as tp,
-                        sum(if(tp='2020/2021', tp, NULL)) as jumlah,
-                        count(if(jurusan='Teknik Kendaraan Ringan Otomotif' and tp='2020/2021' , jurusan, NULL)) as tkro, 
-                        count(if(jurusan='Teknik Bisnis Sepeda Motor' and tp='2020/2021' , jurusan, NULL)) as tbsm,
-                        count(if(jurusan='Akuntansi dan Keuangan Lembaga' and tp='2020/2021' , jurusan, NULL)) as akl ,
-                        count(if(jurusan='Otomatisasi dan Tata Kelola Perkantoran' and tp='2020/2021' , jurusan, NULL)) as otkp, 
-                        count(if(jurusan='Bisnis Daring dan Pemasaran' and tp='2020/2021' , jurusan, NULL)) as bdp,
+        $sql = "SELECT  count(if(tp='2021/2022', tp, NULL)) as tp,
+                        sum(if(tp='2021/2022', tp, NULL)) as jumlah,
+                        count(if(jurusan=1 and tp='2021/2022' , jurusan, NULL)) as tkro, 
+                        count(if(jurusan=2 and tp='2021/2022' , jurusan, NULL)) as tbsm,
+                        count(if(jurusan=3 and tp='2021/2022' , jurusan, NULL)) as akl ,
+                        count(if(jurusan=4 and tp='2021/2022' , jurusan, NULL)) as otkp, 
+                        count(if(jurusan=5 and tp='2021/2022' , jurusan, NULL)) as bdp,
 
-                        count(if(jurusan='Teknik Kendaraan Ringan Otomotif' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_tkro, 
-                        count(if(jurusan='Teknik Bisnis Sepeda Motor' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_tbsm, 
-                        count(if(jurusan='Akuntansi dan Keuangan Lembaga' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_akl, 
-                        count(if(jurusan='Otomatisasi dan Tata Kelola Perkantoran' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_otkp, 
-                        count(if(jurusan='Bisnis Daring dan Pemasaran' and tp='2020/2021' and status='Diterima' , jurusan, NULL)) as bls_bdp
+                        count(if(jurusan=1 and tp='2021/2022' and status='Diterima' , jurusan, NULL)) as bls_tkro, 
+                        count(if(jurusan=2 and tp='2021/2022' and status='Diterima' , jurusan, NULL)) as bls_tbsm, 
+                        count(if(jurusan=3 and tp='2021/2022' and status='Diterima' , jurusan, NULL)) as bls_akl, 
+                        count(if(jurusan=4 and tp='2021/2022' and status='Diterima' , jurusan, NULL)) as bls_otkp, 
+                        count(if(jurusan=5 and tp='2021/2022' and status='Diterima' , jurusan, NULL)) as bls_bdp
                 FROM master";
+        $result = $this->db->query($sql);
+        return $result->row();
+    }
+    public function countUser()
+    {
+        $sql = "SELECT count(if(is_active =0, is_active, null)) as is_active
+                FROM user";
+
         $result = $this->db->query($sql);
         return $result->row();
     }
@@ -44,7 +52,7 @@ class Admin_model extends CI_Model
 
     public function getSiswa($jurusan, $tp)
     {
-        $this->db->order_by('nama_instansi', 'ASC');
+        $this->db->order_by('nis', 'ASC');
         return $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
     }
 

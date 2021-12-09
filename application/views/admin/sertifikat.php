@@ -14,7 +14,7 @@
             <select name="jurusan" id="jurusan">
                 <option value="">Pilih Jurusan</option>
                 <?php foreach ($jurusan as $j) : ?>
-                    <option value="<?= $j['jurusan']; ?>"><?= $j['jurusan']; ?></option>
+                    <option value="<?= $j['id']; ?>"><?= $j['jurusan']; ?></option>
                 <?php endforeach; ?>
             </select>
             <button type="submit" class="btn btn-primary mb-2">SAVE</button>

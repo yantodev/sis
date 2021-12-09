@@ -21,12 +21,27 @@
                 <td scope="row" align="center"><?= $i; ?></td>
                 <td><?= $s['nis']; ?></td>
                 <td><?= $s['name']; ?></td>
-                <td><?= $s['kelas']; ?></td>
-                <td><?= $s['jurusan']; ?></td>
-                <td><?= $s['nama_instansi']; ?></td>
-                <td><?= $s['alamat_instansi']; ?></td>
+                <td>
+                    <?php
+                    $data_kelas = $this->db->get_where('tbl_kelas',['id'=> $s['kelas']])->row_array();
+                   echo $data_kelas['kelas'];
+                   ?>
+                  </td>
+                <td>
+                    <?php
+                    $data_jurusan = $this->db->get_where('tbl_jurusan',['id'=> $s['jurusan']])->row_array();
+                   echo $data_jurusan['jurusan'];
+                   ?>
+                </td>
+                <td>
+                    <?php
+                    $data_iduka = $this->db->get_where('tbl_iduka',['id'=> $s['nama_instansi']])->row_array();
+                   echo $data_iduka['iduka'];
+                   ?>
+                </td>
+                <td><?= $data_iduka['alamat']; ?></td>
                 <td><?= $s['status']; ?></td>
-                <td width="300px"><?= $s['guru_pendamping']; ?></td>
+                <td><?= $s['guru_pendamping']; ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>

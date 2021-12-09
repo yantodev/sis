@@ -10,6 +10,13 @@
 
         <div class="container mt-5 align-content-center">
             <div class="row">
+            <div class="col-auto mt-2 mb-5">
+                <div class="card" style="width: 10rem;">
+                        <a href="http://yantodev.ddns.net/nilai">
+                            <img src="<?= base_url(); ?>/assets/home/logo/Laporan.png" class="card-img-top">
+                        </a>
+                    </div>
+                </div>
                 <div class="col-auto mt-2">
                     <div class="card" style="width: 10rem;">
                         <a href="https://data.smkmuhkarangmojo.sch.id">
