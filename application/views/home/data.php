@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 style="text-align: center;">Selamat Datang di Aplikasi PKL<br> SMK Muhammadiyah Karangmojo</h2>
+    <h2 style="text-align: center; margin-bottom:25px">Selamat Datang di Aplikasi PKL<br> SMK Muhammadiyah Karangmojo</h2>
     <p>Silahkan pilih menu dibawah untuk melihat data lokasi IDUKA (PKL)</p>
     <form action="<?= base_url('home/data'); ?> " method="get">
         <select name="jurusan" id="jurusan">
