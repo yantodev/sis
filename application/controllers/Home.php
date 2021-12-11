@@ -15,25 +15,17 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Home';
-        $this->load->view('home/wrapper/header', $data);
-        // $this->load->view('home/wrapper/navbar', $data);
-        $this->load->view('home/index', $data);
-        $this->load->view('home/wrapper/footer', $data);
-    }
-
-    public function data()
-    {
-        $data['title'] = 'Home';
+      $data['title'] = 'Home';
         $data['tp'] =  $this->Admin_model->getTP();
         $data['data'] =  $this->Admin_model->getJurusan();
         $jurusan = $this->input->get('jurusan');
         $data['iduka'] = $this->Admin_model->getIduka($jurusan);
         $this->load->view('home/wrapper/header', $data);
         $this->load->view('home/wrapper/navbar', $data);
-        $this->load->view('home/data', $data);
+        $this->load->view('home/index', $data);
         $this->load->view('home/wrapper/footer', $data);
     }
+
     public function view()
     {
         $data['title'] = 'Home';

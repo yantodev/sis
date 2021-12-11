@@ -77,7 +77,7 @@
                         <a class="collapse-item" href="<?= base_url('admin/nomorsurat'); ?>">Nomor Surat</a>
                         <a class="collapse-item" href="<?= base_url('admin/suratpkl/1'); ?>">Surat Permohonan</a>
                         <a class="collapse-item" href="<?= base_url('admin/monitoring'); ?>">Monitoring</a>
-                        <a class="collapse-item" href="<?= base_url('admin/pengumuman'); ?>">Pengumuman</a>
+                        <a class="collapse-item" href="<?= base_url('admin/tp'); ?>">Tahun Pelajaran</a>
                     </div>
                 </div>
             </li>
