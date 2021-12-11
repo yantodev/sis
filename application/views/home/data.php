@@ -1,5 +1,5 @@
 <div class="container">
-    <h4>Selamat Datang di Aplikasi PKL SMK Muhammadiyah Karangmojo</h4>
+    <h2 style="text-align: center;">Selamat Datang di Aplikasi PKL<br> SMK Muhammadiyah Karangmojo</h2>
     <p>Silahkan pilih menu dibawah untuk melihat data lokasi IDUKA (PKL)</p>
     <form action="<?= base_url('home/data'); ?> " method="get">
         <select name="jurusan" id="jurusan">
@@ -37,7 +37,7 @@
                                 <td><?= $d['alamat']; ?></td>
                                 <td>
                                     <form action="<?= base_url('home/view'); ?>" method="GET">
-                                        <input type="hidden" id="iduka" name="iduka" value="<?= $d['iduka']; ?>">
+                                        <input type="hidden" id="iduka" name="iduka" value="<?= $d['id']; ?>">
                                         <button type="submit" class="btn btn-primary">View</button>
                                     </form>
                                 </td>
