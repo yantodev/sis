@@ -1618,4 +1618,19 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User berhasil di aktifkan!!!</div>');
         redirect('admin');
     }
+
+    public function tp() 
+    {
+        $data['title'] = 'Tahun Pelajaran';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['isActive'] = $this->Admin_model->countUser();
+        $data['data'] = $this->db->get_where('tp')->result_array();
+
+        $this->load->view('wrapper/header', $data);
+        $this->load->view('admin/wrapper/sidebar', $data);
+        $this->load->view('admin/wrapper/topbar', $data);
+        $this->load->view('admin/tp', $data);
+        $this->load->view('wrapper/footer');
+    }
 }

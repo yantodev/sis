@@ -24,17 +24,17 @@
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
-                                <?php foreach($data_user as $user): ?>
-                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url('admin/actived/').$user['id']; ?>">
+                                <?php foreach($data_user as $data_user): ?>
+                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url('admin/actived/').$data_user['id']; ?>">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?= base_url('assets/img/foto/').$user['image'] ?>"
+                                        <img class="rounded-circle" src="<?= base_url('assets/img/foto/').$data_user['image'] ?>"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate"><?= $user['name']; ?></div>
-                                        <div class="small text-gray-500"><?= $user['email']; ?></div>
-                                        <div class="small text-gray-500"><?= format_indo($user['date_created']); ?></div>
+                                        <div class="text-truncate"><?= $data_user['name']; ?></div>
+                                        <div class="small text-gray-500"><?= $data_user['email']; ?></div>
+                                        <div class="small text-gray-500"><?= format_indo($data_user['date_created']); ?></div>
                                     </div>
                                 </a>
                                 <?php endforeach;?>

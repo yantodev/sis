@@ -1,53 +1,53 @@
-    <div class="container mt-2 ml-3">
-        <div class="media">
-            <img src="<?= base_url(); ?>/assets/home/logo/logo.png" class="mr-3" alt="...">
-            <div class="media-body">
-                <h5 class="mt-0 mb-0">Sistem Informasi Sekolah</h5>
-                <h3 class="mt-0 mb-0">SMK Muhammadiyah Karangmojo</h3>
-                <h7 class="mt-0 mb-0">Jl. Karangmojo - Ponjong KM 0,5 Karangmojo</h7>
-            </div>
-        </div>
+<div class="container">
+    <h2 style="text-align: center; margin-bottom:25px">Selamat Datang di Aplikasi PKL<br> SMK Muhammadiyah Karangmojo</h2>
+    <p>Silahkan pilih menu dibawah untuk melihat data lokasi IDUKA (PKL)</p>
+    <form action="<?= base_url('home/data'); ?> " method="get">
+        <select name="jurusan" id="jurusan">
+            <option value="">Silahkan Pilih Jurusan</option>
+            <?php foreach ($data as $d) : ?>
+                <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit" class="btn btn-primary mb-2">SAVE</button>
+    </form>
 
-        <div class="container mt-5 align-content-center">
-            <div class="row">
-            <div class="col-auto mt-2 mb-5">
-                <div class="card" style="width: 10rem;">
-                        <a href="http://yantodev.ddns.net/nilai">
-                            <img src="<?= base_url(); ?>/assets/home/logo/Laporan.png" class="card-img-top">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-auto mt-2">
-                    <div class="card" style="width: 10rem;">
-                        <a href="https://data.smkmuhkarangmojo.sch.id">
-                            <img src="<?= base_url(); ?>/assets/home/logo/email-logo.png" class="card-img-top">
-                        </a>
-                    </div>
-                </div>
-                <!-- PKL -->
-                <div class="col-auto mt-2">
-                    <div class="card" style="width: 10rem;">
-                        <a href="<?= base_url('home/data'); ?>">
-                            <!-- script maintenance -->
-                            <!-- <a href="<?= base_url('auth/maintenance'); ?>"> -->
-                            <img src="<?= base_url(); ?>/assets/home/logo/pkl.png" class="card-img-top">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-auto mt-2">
-                    <div class="card" style="width: 10rem;">
-                        <a href="#">
-                            <img src="<?= base_url(); ?>/assets/home/logo/logo-labkom.png" class="card-img-top">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-auto mt-2">
-                    <div class="card" style="width: 10rem;">
-                        <a href="#">
-                            <img src="<?= base_url(); ?>/assets/home/logo/lab-tbsm.png" class="card-img-top">
-                        </a>
-                    </div>
-                </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DATA IDUKA (Dunia Usaha Dunia Industri Dunia Kerja)</h6>
+            <small>Klik <b>View</b> untuk melihat siswa yang pernah PKL di lokasi</small>
+        </div>
+        <div class="card-body">
+            <?= $this->session->flashdata('message'); ?>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>IDUKA</th>
+                            <th>Alamat</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($iduka as $d) : ?>
+                            <tr>
+                                <td><?= $i; ?></td>
+                                <td><?= $d['iduka']; ?></td>
+                                <td><?= $d['alamat']; ?></td>
+                                <td>
+                                    <form action="<?= base_url('home/view'); ?>" method="GET">
+                                        <input type="hidden" id="iduka" name="iduka" value="<?= $d['id']; ?>">
+                                        <button type="submit" class="btn btn-primary">View</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php $i++; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/mHXj5kVIHvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
