@@ -23,8 +23,17 @@
                 <td><?= $d['nis']; ?></td>
                 <td><?= ucwords(strtolower($d['name'])); ?></td>
                 <td><?= $d['jk']; ?></td>
-                <td><?= $d['kelas']; ?></td>
-                <td><?= $d['jurusan']; ?></td>
+                <td>
+                    <?php
+                    $kls = $this->db->get_where('tbl_kelas',['id'=> $d['kelas']])->row_array();
+                    echo $kls['kelas']
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    $jrs = $this->db->get_where('tbl_jurusan',['id'=> $d['jurusan']])->row_array();
+                    echo $jrs['jurusan']
+                    ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
@@ -36,7 +45,14 @@
         <tr>
             <td width="50px"></td>
             <td>Tempat Praktik</td>
-            <td>: <b><?= $data2['nama_instansi']; ?></b></td>
+           <td>:
+                <b>
+                <?php 
+                $nm = $this->db->get_where('tbl_iduka', ['id'=>$data2['nama_instansi']])->row_array();
+                echo $nm['iduka']
+                ?>
+                </b>
+            </td>
         </tr>
         <tr>
             <td width="50px"></td>

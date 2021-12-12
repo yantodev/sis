@@ -1,3 +1,7 @@
+<?php 
+
+?>
+
 <img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
 <h3 align="center">
     <u>DAFTAR PESERTA PRAKTIK INDUSTRI</u>
@@ -7,12 +11,23 @@
         <tr>
             <td width="50px"></td>
             <td>Tempat Praktik</td>
-            <td>: <b><?= $data2['nama_instansi']; ?></b></td>
+            <td>:
+                <b>
+                <?php 
+                $nm = $this->db->get_where('tbl_iduka', ['id'=>$data2['nama_instansi']])->row_array();
+                echo $nm['iduka']
+                ?>
+                </b>
+            </td>
         </tr>
         <tr>
             <td width="50px"></td>
             <td>Alamat</td>
-            <td>: <b><?= $data2['alamat_instansi']; ?></b></td>
+            <td>: 
+                <b>
+                <?= $nm['alamat']; ?>
+                </b>
+            </td>
         </tr>
         <tr>
             <td width="50px"></td>
@@ -52,7 +67,12 @@
                     echo $kelas['kelas']; 
                     ?>
                 </td>
-                <td><?= $d['jurusan']; ?></td>
+                <td>
+                    <?php
+                    $jrs = $this->db->get_where('tbl_jurusan', ["id"=>$d['jurusan']])->row_array(); 
+                    echo $jrs['jurusan']
+                    ?>
+                </td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
