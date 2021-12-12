@@ -32,7 +32,12 @@
                             </tr>
                             <tr>
                                 <td align="center" height="80px">
-                                    <h3><?= $siswa['jurusan']; ?></h3>
+                                    <h3>
+                                        <?php
+                                        $jrs = $this->db->get_where('tbl_jurusan',['id'=> $siswa['jurusan']])->row_array();
+                                        echo  $jrs['jurusan']
+                                        ?>
+                                    </h3>
                                 </td>
                             </tr>
                             <tr>
@@ -42,7 +47,10 @@
                             </tr>
                             <tr>
                                 <td bgcolor="cadetblue" class="table-primary" align="center">
-                                    <h3><?= $siswa['kelas']; ?></h3>
+                                    <h3><?php
+                                    $kls = $this->db->get_where('tbl_kelas',['id'=>$siswa['kelas']])->row_array();
+                                    echo $kls['kelas']
+                                    ?></h3>
                                 </td>
                             </tr>
                         </thead>
@@ -90,12 +98,15 @@
                             </tr>
                             <tr>
                                 <th align="center">
-                                    <?= ucwords($siswa['nama_instansi']); ?>
+                                    <?php
+                                    $idk = $this->db->get_where('tbl_iduka',['id'=>$siswa['nama_instansi']])->row_array();
+                                    echo ucwords($idk['iduka']);
+                                    ?>
                                 </th>
                             </tr>
                             <tr>
                                 <td align="center" height="50px" valign="top">
-                                    <p><?= $siswa['alamat_instansi']; ?></p>
+                                    <p><?= $idk['alamat']; ?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -105,8 +116,12 @@
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <h4><u><?= $siswa['guru_pendamping']; ?></u></h4>
-                                    <h4>Telp/HP. <?= $siswa['hp_pendamping']; ?></h4>
+                                    <h4><u><?= $idk['guru']; ?></u></h4>
+                                    <h4>Telp/HP. 
+                                        <?php
+                                        $guru = $this->db->get_where('tbl_guru',['nama'=> $idk['guru']])->row_array();
+                                        echo $guru['hp'];
+                                     ?></h4>
                                 </td>
                             </tr>
                             <tr>
