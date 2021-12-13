@@ -263,7 +263,7 @@ class Siswa extends CI_Controller
 
             $upload_image = $_FILES['foto']['name'];
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|heic';
                 $config['max_size']     = '10024';
                 $config['upload_path']  = './assets/img/gambar';
 
