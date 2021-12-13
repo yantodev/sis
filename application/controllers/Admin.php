@@ -267,15 +267,17 @@ class Admin extends CI_Controller
         $i = 6;
         $n = 1;
         foreach ($data as $d) {
-
+            $kelas = $this->db->get_where('tbl_kelas',['id'=>$d['kelas']])->row_array();
+            $jurusan = $this->db->get_where('tbl_jurusan', ['id'=>$d['jurusan']])->row_array();
+            $iduka = $this->db->get_where('tbl_iduka',['id'=> $d['nama_instansi']])->row_array();
             $spreadsheet->setActiveSheetIndex(0)
                 ->setCellValue('A' . $i, $n)
                 ->setCellValue('B' . $i, $d['nis'])
                 ->setCellValue('C' . $i, $d['name'])
-                ->setCellValue('D' . $i, $d['kelas'])
-                ->setCellValue('E' . $i, $d['jurusan'])
-                ->setCellValue('F' . $i, $d['nama_instansi'])
-                ->setCellValue('G' . $i, $d['alamat_instansi']);
+                ->setCellValue('D' . $i, $kelas['kelas'])
+                ->setCellValue('E' . $i, $jurusan['jurusan'])
+                ->setCellValue('F' . $i, $iduka['iduka'])
+                ->setCellValue('G' . $i, $iduka['alamat']);
             $i++;
             $n++;
         }

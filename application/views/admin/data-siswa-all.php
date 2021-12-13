@@ -34,8 +34,18 @@
                             <td><?= $i; ?></td>
                             <td><?= $d['nis']; ?></td>
                             <td><?= $d['name']; ?></td>
-                            <td><?= $d['jurusan']; ?></td>
-                            <td><?= $d['nama_instansi']; ?></td>
+                            <td>
+                                <?php
+                                $jurusan = $this->db->get_where('tbl_jurusan', ['id'=>$d['jurusan']])->row_array();
+                                echo $jurusan['jurusan']
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                $iduka = $this->db->get_where('tbl_iduka',['id'=> $d['nama_instansi']])->row_array();
+                                echo $iduka['iduka']
+                                ?>
+                            </td>
                             <td><?= $d['tp']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/detailData/') . $d['id']; ?>" class="badge badge-warning">view</a>
