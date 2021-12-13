@@ -52,7 +52,7 @@ class Admin_model extends CI_Model
 
     public function getSiswa($jurusan, $tp)
     {
-        $this->db->order_by('nis', 'ASC');
+        $this->db->order_by('nama_instansi', 'ASC');
         return $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
     }
 
