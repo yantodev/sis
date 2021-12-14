@@ -34,7 +34,7 @@
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="foto" name="foto">
                 <label class="custom-file-label" for="foto">Choose file</label>
-                <small>ukuran file tidak boleh lebih dari 2Mb (format file gif|jpg|png)</small>
+                <small>ukuran file tidak boleh lebih dari 10Mb (format file gif|jpg|png|heic)</small>
             </div>
         </div>
         <input type="hidden" name="nis" id="nis" value="<?= $user['nis']; ?>">
