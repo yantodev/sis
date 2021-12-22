@@ -116,11 +116,15 @@
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <h4><u><?= $idk['guru']; ?></u></h4>
+                                    <h4><u>
+                                         <?php
+                                        $guru = $this->db->get_where('tbl_guru',['id'=> $idk['guru']])->row_array();
+                                        echo $guru['nama'];
+                                     ?>
+                                     </u></h4>
                                     <h4>Telp/HP. 
-                                        <?php
-                                        $guru = $this->db->get_where('tbl_guru',['nama'=> $idk['guru']])->row_array();
-                                        echo $guru['hp'];
+                                        <?=
+                                        $guru['hp'];
                                      ?></h4>
                                 </td>
                             </tr>
