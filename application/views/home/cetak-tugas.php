@@ -48,9 +48,18 @@
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
                 <td><?= ucwords(strtolower($d['name'])); ?></td>
-                <td><?= ucwords(strtolower($d['jurusan'])); ?></td>
-                <td><?= $d['nama_instansi']; ?></td>
-                <td><?= $d['alamat_instansi']; ?></td>
+                <td>
+                <?php
+                    $jrs = $this->db->get_where('tbl_jurusan', ["id"=>$d['jurusan']])->row_array(); 
+                    echo ucwords(strtolower($jrs['jurusan']))
+                    ?></td>
+                <td>
+                <?php
+                    $pkl = $this->db->get_where('tbl_iduka', ["id"=>$d['nama_instansi']])->row_array(); 
+                    echo ucwords(strtolower($pkl['iduka']))
+                    ?>    
+                </td>
+                <td><?= ucwords(strtolower($pkl['alamat'])); ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>

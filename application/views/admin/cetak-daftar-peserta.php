@@ -4,7 +4,7 @@
 
 <img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
 <h3 align="center">
-    <u>DAFTAR PESERTA PRAKTIK INDUSTRI</u>
+    <u>DAFTAR PESERTA PRAKTIK KERJA LAPANGAN</u>
     <br />TAHUN PELAJARAN <?= $data2['tp']; ?></h3>
 <table class="table">
     <tbody>
