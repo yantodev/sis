@@ -16,7 +16,10 @@
                 <td scope="row"><?= $i; ?></td>
                 <td><?= $d['iduka']; ?></td>
                 <td><?= $d['alamat']; ?></td>
-                <td><?= $d['guru']; ?></td>
+                <td>
+                    <?php $guru = $this->db->get_where('tbl_guru', ["id"=>$d['guru']])->row_array();
+                    echo $guru['nama'] ?>    
+               </td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
