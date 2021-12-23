@@ -37,7 +37,12 @@
         <tr>
             <td width="50px"></td>
             <td>Guru Pembimbing</td>
-            <td>: <b> <?= $data4['guru']; ?></b></td>
+            <td>: <b> 
+                <?php
+                    $guru = $this->db->get_where('tbl_guru',['id'=>$data4['guru']])->row_array();
+                    echo $guru['nama']
+                ?>
+            </b></td>
         </tr>
     </tbody>
 </table>
