@@ -35,7 +35,7 @@
                     <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-8">
                         <select name="jk" id="jk">
-                            <option value="value=" <?= $siswa['jk']; ?>><?= $siswa['jk']; ?></option>
+                            <option value=<?= $siswa['jk']; ?>><?= $siswa['jk']; ?></option>
                             <option value="">Pilih Jenis Kelamin</option>
                             <option value="L">Laki-Laki</option>
                             <option value="P">Perempuan</option>
@@ -46,6 +46,18 @@
                     <label for="nis" class="col-sm-4 col-form-label">Nama Siswa</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="name" name="name" value="<?= $siswa['name']; ?>">
+                    </div>
+                </div>
+                <?php $kls = $this->db->get_where('tbl_kelas', ['id'=>$siswa['kelas']])->row_array(); ?>
+                <div class="form-group row">
+                    <label for="nama_instansi" class="col-sm-4 col-form-label">Kelas</label>
+                    <div class="col-sm-8">
+                        <select name="kelas" id="kelas">
+                            <option value="<?= $siswa['kelas']; ?>"><?= $kls['kelas']; ?></option>
+                            <?php foreach ($kelas as $k) : ?>
+                                <option value="<?= $k['id']; ?>"><?= $k['kelas']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">

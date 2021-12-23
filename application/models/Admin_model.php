@@ -175,6 +175,7 @@ class Admin_model extends CI_Model
             'nis' => htmlspecialchars($this->input->post('nis', true)),
             'name' => htmlspecialchars($this->input->post('name', true)),
             'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
+            'kelas' => $this->input->post('kelas'),
             'guru_pendamping' => $this->input->post('guru_pendamping'),
             'hp_pendamping' => $this->input->post('hp_pendamping'),
             'email_pendamping' => $this->input->post('email_pendamping'),

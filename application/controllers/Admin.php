@@ -348,6 +348,7 @@ class Admin extends CI_Controller
         $data['tp'] = $this->Admin_model->getTP();
         $data['iduka'] = $this->db->get_where('tbl_jurusan')->result_array();
         $data['guru'] = $this->Admin_model->Guru();
+        $data["kelas"] = $this->db->get_where('tbl_kelas')->result_array();
 
         $tp = $this->input->post('tp');
         $jurusan = $this->input->post('jurusan');
