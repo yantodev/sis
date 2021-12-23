@@ -39,9 +39,12 @@
                             <option value="Non Aktif">Non Aktif</option>
                         </select>
                     </td>
+                    <?php 
+                    $gr = $this->db->get_where('tbl_guru',['id'=>$d['guru']])->row_array();
+                    ?>
                     <td>
                         <select name="guru[]" id="guru">
-                            <option value="<?= $d['id']; ?>"><?= $d['guru']; ?></option>
+                            <option value="<?= $d['id']; ?>"><?= $gr['nama']; ?></option>
                             <?php foreach ($guru as $g) : ?>
                                 <option value="<?= $g['id']; ?>"><?= $g['nama']; ?></option>
                             <?php endforeach; ?>
