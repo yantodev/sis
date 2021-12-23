@@ -44,7 +44,7 @@
                     ?>
                     <td>
                         <select name="guru[]" id="guru">
-                            <option value="<?= $d['id']; ?>"><?= $gr['nama']; ?></option>
+                            <option value="<?= $d['guru']; ?>"><?= $gr['nama']; ?></option>
                             <?php foreach ($guru as $g) : ?>
                                 <option value="<?= $g['id']; ?>"><?= $g['nama']; ?></option>
                             <?php endforeach; ?>
