@@ -93,6 +93,7 @@
                 <h5><b>DATA INSTANSI / LOKASI PKL</b></h5>
                 <?php 
                 $jrs = $this->db->get_where('tbl_jurusan',['id'=>$siswa['jurusan']])->row_array();
+                $idk = $this->db->get_where('tbl_iduka',['id'=>$siswa['nama_instansi']])->row_array();
                 ?>
                 <div class="form-group row">
                     <label for="nis" class="col-sm-4 col-form-label">Jurusan</label>
@@ -109,7 +110,7 @@
                     <label for="nis" class="col-sm-4 col-form-label">Nama Instansi</label>
                     <div class="col-sm-8">
                         <select name="nama_instansi" id="nama_instansi" style="width: 300px;">
-                            <option value="<?= $siswa['nama_instansi']; ?>"><?= $siswa['nama_instansi']; ?></option>
+                            <option value="<?= $siswa['nama_instansi']; ?>"><?= $idk['iduka']; ?></option>
                         </select>
                     </div>
                     <?= form_error('nama_instansi', '<small class="text-danger pl-3">', '</small>'); ?>
