@@ -85,7 +85,7 @@
                         </thead>
                     </table>
                 </td>
-                <td width="280px" height="350px" valign="top">
+                <td width="6.5cm" height="10.5cm" valign="top">
                     <div class="card mt-2 pt-2" align="center">
                         <table border="" align="center">
                             <tr align="center">
