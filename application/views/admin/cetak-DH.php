@@ -6,6 +6,7 @@
         margin-right: 2.175cm;
     }
 </style>
+<?php $idk = $this->db->get_where('tbl_iduka',['id'=> $data2['nama_instansi']])->row_array(); ?>
 <h3 align="center">
     DAFTAR HADIR PESERTA PRAKTIK KERJA LAPANGAN (PKL)<br />
     SMK MUHAMMADIYAH KARANGMOJO<br />
@@ -19,7 +20,7 @@
             <th width="400px" align="left">..............................................</th>
             <th>NAMA IDUKA</th>
             <th>:</th>
-            <th><?= $data2['nama_instansi']; ?></th>
+            <th><?= $idk['iduka']; ?></th>
         </tr>
     </thead>
 </table>
