@@ -85,6 +85,7 @@
                         </thead>
                     </table>
                 </td>
+                <!-- lembar kedua -->
                 <td width="6.5cm" height="10.5cm" valign="top">
                     <div class="card mt-2 pt-2" align="center">
                         <table border="" align="center">
