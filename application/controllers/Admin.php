@@ -1223,7 +1223,7 @@ class Admin extends CI_Controller
         $mpdf = new \Mpdf\Mpdf(
             [
                 'mode' => 'utf-8',
-                'format' => 'a3',
+                'format' => 'A4',
                 'orientation' => 'P',
                 // 'setAutoTopMargin' => false
             ]
@@ -1517,7 +1517,7 @@ class Admin extends CI_Controller
     {
         $data['isActive'] = $this->Admin_model->countUser();
         $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $data['title'] = 'Surat Jalan';
+        $data['title'] = 'Daftar Hadir Peserta PKL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
         $data['tp'] =  $this->Admin_model->getTP();

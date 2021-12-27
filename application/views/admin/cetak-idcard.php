@@ -1,145 +1,156 @@
 <style>
     @page {
-        margin-top: 0.5cm;
+        margin-top: 0.3cm;
         margin-bottom: 0.0cm;
         margin-left: 3.175cm;
         margin-right: 3.175cm;
     }
+    .container{
+        margin: 15px;
+    }
+    .id-card{
+        position: relative;
+        display: inline;
+        width: 492px;
+    }
+    .id-card .konten{
+        border:2px solid #000;
+        width: 242px;
+        height: 340px;
+        float: left;
+    }
+    .konten-left .header{
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px
+    }
+    .konten-left .foto{
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .konten-left .jurusan{
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .konten-left .name{
+        text-align: center;
+        font-weight: bolder;
+        font-size: 18px;
+        background-color: greenyellow;
+    }
+    .konten-left .kelas{
+        text-align: center;
+        font-weight: bolder;
+        font-size: large;
+        background-color: cadetblue;
+    }
+    .konten-left .tanggal{
+        margin: 3px;
+        text-align: center;
+        font-weight: bolder;
+         border:2px solid #000;
+    }
+    .konten-left .link{
+        border-top: 5px;
+        text-align: center;
+        font-size: small;
+    }
+   .konten-right .header{
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+   }
+   .konten-right .lokasi{
+        text-align: center;
+        font-weight: bold;
+   }
+   .konten-right .alamat{
+        text-align: center;
+        font-weight: bold;
+        font-size: small;
+        margin-bottom: 5px;
+   }
+   .konten-right .guru{
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+   }
+   .konten-right .scan{
+        text-align: center;
+        font-weight: bold;
+   }
 </style>
+
 <?php foreach ($data as $siswa) : ?>
-    <table border="1" cellspacing="0">
-        <thead>
-            <tr>
-                <td width="245.6px" height="396.8px" valign="top">
-                    <table align="center">
-                        <thead>
-                            <tr>
-                                <td align="center" valign="top" height="50px">
-                                    <h4>
-                                        <b>
-                                            PRAKTEK KERJA LAPANGAN<br />
-                                            <?= $siswa['tp']; ?><br />
-                                            SMK MUH KARANGMOJO
-                                        </b>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <!-- <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" width="100px" height="120px"> -->
-                                    <img src="<?= base_url('assets/img/foto/default.png'); ?>" width="110px" height="120px">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="80px">
-                                    <h3>
-                                        <?php
-                                        $jrs = $this->db->get_where('tbl_jurusan',['id'=> $siswa['jurusan']])->row_array();
-                                        echo  $jrs['jurusan']
-                                        ?>
-                                    </h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td bgcolor="greenyellow" class="table-primary" align="center">
-                                    <h3><u><?= ucwords(strtolower($siswa['name'])); ?></u></h3>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td bgcolor="cadetblue" class="table-primary" align="center">
-                                    <h3><?php
-                                    $kls = $this->db->get_where('tbl_kelas',['id'=>$siswa['kelas']])->row_array();
-                                    echo $kls['kelas']
-                                    ?></h3>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                    <table align="center" border="1" cellspacing="0">
-                        <tr>
-                            <td>
-                                <b>
-                                    <?= $tanggal['tgl_pkl']; ?>
-                                </b>
-                            </td>
-                        </tr>
-                    </table>
-                    <table align="center" border="" cellspacing="0">
-                        <tr>
-                            <td>
-                                <b>
-                                    <h5 style="text-align: center;color:blue"><br />
-                                        <i>https://data.smkmuhkarangmojo.sch.id</i>
-                                    </h5>
-                                </b>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td width="10px" height="350px">
-                    <table border="1" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <td width="10px" height="350px"></td>
-                            </tr>
-                        </thead>
-                    </table>
-                </td>
-                <!-- lembar kedua -->
-                <td width="245.6px" height="396.8px" valign="top">
-                    <div class="card mt-2 pt-2" align="center">
-                        <table border="" align="center">
-                            <tr align="center">
-                                <th height="30px" valign="top">
-                                    <h3><b><u>INFORMASI</u></b></h3>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>Lokasi PKL</th>
-                            </tr>
-                            <tr>
-                                <th align="center">
-                                    <?php
-                                    $idk = $this->db->get_where('tbl_iduka',['id'=>$siswa['nama_instansi']])->row_array();
-                                    echo ucwords($idk['iduka']);
-                                    ?>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td align="center" height="50px" valign="top">
-                                    <p><?= $idk['alamat']; ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="20px" valign="bottom">
-                                    <h7><b><u>GURU PEMBIMBING</u></b></h7>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <h4><u>
-                                         <?php
-                                        $guru = $this->db->get_where('tbl_guru',['id'=> $idk['guru']])->row_array();
-                                        echo $guru['nama'];
-                                     ?>
-                                     </u></h4>
-                                    <h4>Telp/HP. 
-                                        <?=
-                                        $guru['hp'];
-                                     ?></h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="150px" valign="bottom">
-                                    <b>SCAN ME</b><br />
-                                    <barcode code="<?= base_url('home/detailsiswa/') . $siswa['id']; ?>" size="1.2" type="QR" error="M" class="barcode" />
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </thead>
-    </table>
-    <br />
+    <div class="container">
+    <div class="id-card">
+        <div class="konten">
+            <div class="konten-left">
+                <div class="header">
+                        PRAKTEK KERJA LAPANGAN<br />
+                        <?= $siswa['tp']; ?><br />
+                        SMK MUH KARANGMOJO
+                </div>
+                <div class="foto">
+                     <!-- <img src="<?= base_url('assets/img/foto/') . $siswa['image']; ?>" width="100px" height="120px"> -->
+                    <img src="<?= base_url('assets/img/foto/default.png'); ?>" width="90px" height="100px">
+                </div>
+                <div class="jurusan">
+                     <?php
+                        $jrs = $this->db->get_where('tbl_jurusan',['id'=> $siswa['jurusan']])->row_array();
+                        echo  $jrs['jurusan']
+                    ?>
+                </div>
+                <div class="name">
+                 <?= ucwords(strtolower($siswa['name'])); ?>
+                </div>
+                <div class="kelas">
+                    <?php
+                        $kls = $this->db->get_where('tbl_kelas',['id'=>$siswa['kelas']])->row_array();
+                        echo $kls['kelas']
+                    ?>
+                </div>
+                <div class="tanggal">
+                     <?= $tanggal['tgl_pkl']; ?>
+                </div>
+                <div class="link">
+                    <a href="https://data.smkmuhkarangmojo.sch.id" target="_blank">https://data.smkmuhkarangmojo.sch.id</a>
+                </div>
+            </div>
+        </div>
+        <div class="konten">
+            <div class="konten-right">
+                <div class="header">
+                    <u>INFORMASI</u>
+                </div>
+                <div class="lokasi">
+                    Lokasi PKL<br/>
+                    <?php
+                        $idk = $this->db->get_where('tbl_iduka',['id'=>$siswa['nama_instansi']])->row_array();
+                        echo ucwords($idk['iduka']);
+                    ?>
+                </div>
+                <div class="alamat">
+                     <?= $idk['alamat']; ?>
+                </div>
+                <div class="guru">
+                     <u>
+                         GURU PEMBIMBING<br>
+                        <?php
+                            $guru = $this->db->get_where('tbl_guru',['id'=> $idk['guru']])->row_array();
+                            echo $guru['nama'];
+                        ?>
+                    </u> <br>
+                    Telp/Hp.
+                    <?= $guru['hp'];?>
+                </div>
+                <div class="scan">
+                    <b>SCAN ME</b><br />
+                    <barcode code="<?= base_url('home/detailsiswa/') . $siswa['id']; ?>" size="1.2" type="QR" error="M" class="barcode" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php endforeach; ?>
