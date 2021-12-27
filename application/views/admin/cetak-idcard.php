@@ -10,7 +10,7 @@
     <table border="1" cellspacing="0">
         <thead>
             <tr>
-                <td width="280px" height="350px" valign="top">
+                <td width="6.5cm" height="10.5cm" valign="top">
                     <table align="center">
                         <thead>
                             <tr>
