@@ -36,18 +36,20 @@
     <tbody>
         <?php
             $i = 1;
+            $guru = $this->db->get_where('tbl_guru',['email'=>$user['email']])->row_array();
+            $iduka = $this->db->get_where('tbl_iduka',['guru'=>$guru['id']])->result_array();
         ?>
-        <?php foreach ($user as $d) : ?>
+        <?php foreach ($iduka as $m) : ?>
             <?php 
-                 $m = $this->db->get_where('tbl_iduka',['guru'=>$d['id']])->result_array();
-                $master = $this->db->get_where('master',['nama_instansi'=>$m['id']])->result_array();
+                $data = $this->db->get_where('master',['nama_instansi'=>$m['id'],'tp'=>'2021/2022'])->result_array();
             ?>
+                <?php foreach($data as $d) :?>
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
-                <td><?= ucwords(strtolower($master['name'])); ?></td>
+                <td><?= ucwords(strtolower($d['name'])); ?></td>
                 <td>
                     <?php
-                        $jrs = $this->db->get_where('tbl_jurusan',['id'=>$master['jurusan']])->row_array();
+                        $jrs = $this->db->get_where('tbl_jurusan',['id'=>$d['jurusan']])->row_array();
                         echo ucwords(strtolower($jrs['jurusan']));
                     ?>
                 </td>
@@ -59,7 +61,8 @@
                 </td>
                 <td><?= $idk['alamat']; ?></td>
             </tr>
-            <?php $i++; ?>
+                <?php $i++; ?>
+            <?php endforeach; ?>
         <?php endforeach; ?>
     </tbody>
 </table>
