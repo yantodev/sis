@@ -37,13 +37,17 @@
         <?php
             $i = 1;
         ?>
-        <?php foreach ($data as $d) : ?>
+        <?php foreach ($user as $d) : ?>
+            <?php 
+                 $m = $this->db->get_where('tbl_iduka',['guru'=>$d['id']])->result_array();
+                $master = $this->db->get_where('master',['nama_instansi'=>$m['id']])->result_array();
+            ?>
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
-                <td><?= ucwords(strtolower($d['name'])); ?></td>
+                <td><?= ucwords(strtolower($master['name'])); ?></td>
                 <td>
                     <?php
-                        $jrs = $this->db->get_where('tbl_jurusan',['id'=>$d['jurusan']])->row_array();
+                        $jrs = $this->db->get_where('tbl_jurusan',['id'=>$master['jurusan']])->row_array();
                         echo ucwords(strtolower($jrs['jurusan']));
                     ?>
                 </td>
