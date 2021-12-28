@@ -34,14 +34,26 @@
         </tr>
     </thead>
     <tbody>
-        <?php $i = 1; ?>
+        <?php
+            $i = 1;
+        ?>
         <?php foreach ($data as $d) : ?>
             <tr>
                 <td scope="row" align="center"><?= $i; ?></td>
                 <td><?= ucwords(strtolower($d['name'])); ?></td>
-                <td><?= ucwords(strtolower($d['jurusan'])); ?></td>
-                <td><?= $d['nama_instansi']; ?></td>
-                <td><?= $d['alamat_instansi']; ?></td>
+                <td>
+                    <?php
+                        $jrs = $this->db->get_where('tbl_jurusan',['id'=>$d['jurusan']])->row_array();
+                        echo ucwords(strtolower($jrs['jurusan']));
+                    ?>
+                </td>
+                <td>
+                    <?php
+                        $idk = $this->db->get_where('tbl_iduka',['id'=>$d['nama_instansi']])->row_array();
+                        echo ucwords(strtolower($idk['iduka']));
+                    ?>
+                </td>
+                <td><?= $idk['alamat']; ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
