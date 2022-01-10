@@ -3,19 +3,27 @@
         <tbody>
             <tr>
                 <td>NIS Siswa</td>
-                <td>: <?= $siswa['nis']; ?></td>
+                <td>: <?= $siswa['nis'] ?></td>
             </tr>
             <tr>
                 <td>Nama Siswa</td>
-                <td>: <?= $siswa['name']; ?></td>
+                <td>: <?= $siswa['name'] ?></td>
             </tr>
+            <?php
+            $kls = $this->db
+                ->get_where('tbl_kelas', ['id' => $siswa['kelas']])
+                ->row_array();
+            $jrs = $this->db
+                ->get_where('tbl_jurusan', ['id' => $siswa['jurusan']])
+                ->row_array();
+            ?>
             <tr>
                 <td>Kelas</td>
-                <td>: <?= $siswa['kelas']; ?></td>
+                <td>: <?= $kls['kelas'] ?></td>
             </tr>
             <tr>
                 <td>Jurusan</td>
-                <td>: <?= $siswa['jurusan']; ?></td>
+                <td>: <?= $jrs['jurusan'] ?></td>
             </tr>
         </tbody>
     </table>
@@ -35,21 +43,25 @@
         </thead>
         <tbody>
             <?php $i = 1; ?>
-            <?php foreach ($laporan as $l) : ?>
+            <?php foreach ($laporan as $l): ?>
                 <tr>
-                    <td scope="row"><?= $i; ?>
-                        <input type="hidden" name="id[]" id="id" value="<?= $l['id']; ?>">
+                    <td scope="row"><?= $i ?>
+                        <input type="hidden" name="id[]" id="id" value="<?= $l[
+                            'id'
+                        ] ?>">
                     </td>
                     <td><select name="status[]" id="status">
                             <option value=""></option>
                             <option value="1">Cetak</option>
                     </td>
-                    <td><?= format_indo(date($l['time'])); ?></td>
-                    <td><?= $l['bidang_pekerjaan']; ?></td>
-                    <td><?= $l['sub_1']; ?></td>
-                    <!-- <td><?= $l['sub_2']; ?></td> -->
-                    <td><img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="80px" height="80px"></td>
-                    <td><img src="<?= base_url('') . $l['ttd']; ?>" width="80px" height="80px"></td>
+                    <td><?= format_indo(date($l['time'])) ?></td>
+                    <td><?= $l['bidang_pekerjaan'] ?></td>
+                    <td><?= $l['sub_1'] ?></td>
+                    <!-- <td><?= $l['sub_2'] ?></td> -->
+                    <td><img src="<?= base_url('assets/img/gambar/') .
+                        $l['foto'] ?>" width="80px" height="80px"></td>
+                    <td><img src="<?= base_url('') .
+                        $l['ttd'] ?>" width="80px" height="80px"></td>
                 </tr>
                 <?php $i++; ?>
             <?php endforeach; ?>
