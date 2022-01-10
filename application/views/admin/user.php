@@ -3,11 +3,11 @@
         <h6 class="m-0 font-weight-bold text-primary">DAFTAR USER</h6>
     </div>
     <div class="card-body">
-        <?= $this->session->flashdata('message'); ?>
+        <?= $this->session->flashdata('message') ?>
         <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#NewIduka">TAMBAH USER</a>
-        <?php if (validation_errors()) : ?>
+        <?php if (validation_errors()): ?>
             <div class=" alert alert-danger" role="alert">
-                <?= validation_errors(); ?>
+                <?= validation_errors() ?>
             </div>
         <?php endif; ?>
         <div class="table-responsive">
@@ -24,16 +24,22 @@
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($data as $d) : ?>
+                    <?php foreach ($data as $d): ?>
                         <tr>
-                            <td><?= $i; ?></td>
-                            <td><?= $d['name']; ?></td>
-                            <td><?= $d['email']; ?></td>
-                            <td><?= akun($d['role_id']); ?></td>
-                            <td><?= aktif($d['is_active']); ?></td>
+                            <td><?= $i ?></td>
+                            <td><?= $d['name'] ?></td>
+                            <td><?= $d['email'] ?></td>
+                            <td><?= akun($d['role_id']) ?></td>
+                            <td><?= aktif($d['is_active']) ?></td>
                             <td>
-                                <a href="<?= base_url('admin/edit_user/') . $d['id']; ?>" class="badge badge-success">Edit</a>
-                                <a href="<?= base_url('admin/reset/') . $d['id']; ?>" class="badge badge-danger">Reset</a>
+                                <!-- <a href="<?= base_url('admin/edit_user/') .
+                                    $d[
+                                        'id'
+                                    ] ?>" class="badge badge-success">Edit</a> -->
+                                <a href="<?= base_url('admin/reset/') .
+                                    $d[
+                                        'id'
+                                    ] ?>" class="badge badge-danger">Reset</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

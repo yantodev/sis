@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 // Load library phpspreadsheet
-require('./vendor/autoload.php');
+require './vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Helper\Sample;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -25,14 +25,38 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $data['datatkro'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif'])->row_array();
-        $data['datatbsm'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Bisnis Sepeda Motor'])->row_array();
-        $data['dataakl'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Akuntansi dan Keuangan Lembaga'])->row_array();
-        $data['dataotkp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran'])->row_array();
-        $data['databdp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Bisnis Daring dan Pemasaran'])->row_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $data['datatkro'] = $this->db
+            ->get_where('tbl_jumlah_siswa', [
+                'jurusan' => 'Teknik Kendaraan Ringan Otomotif',
+            ])
+            ->row_array();
+        $data['datatbsm'] = $this->db
+            ->get_where('tbl_jumlah_siswa', [
+                'jurusan' => 'Teknik Bisnis Sepeda Motor',
+            ])
+            ->row_array();
+        $data['dataakl'] = $this->db
+            ->get_where('tbl_jumlah_siswa', [
+                'jurusan' => 'Akuntansi dan Keuangan Lembaga',
+            ])
+            ->row_array();
+        $data['dataotkp'] = $this->db
+            ->get_where('tbl_jumlah_siswa', [
+                'jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran',
+            ])
+            ->row_array();
+        $data['databdp'] = $this->db
+            ->get_where('tbl_jumlah_siswa', [
+                'jurusan' => 'Bisnis Daring dan Pemasaran',
+            ])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->countSiswa();
 
         $this->load->view('wrapper/header', $data);
@@ -44,7 +68,9 @@ class Admin extends CI_Controller
 
     public function Siswa()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['title'] = 'Daftar Siswa';
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
@@ -54,11 +80,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/siswa', $data);
         $this->load->view('wrapper/footer');
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
     }
     public function CetakSiswa()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['title'] = 'Rekap Siswa';
         $jurusan = $this->input->get('jurusan');
         $tp = $this->input->get('tp');
@@ -70,14 +100,12 @@ class Admin extends CI_Controller
         $this->load->view('wrapper/footer');
 
         $filename = 'Rekap Siswa ' . $jurusan;
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'Folio',
-                'orientation' => 'L',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'Folio',
+            'orientation' => 'L',
+            'setAutoTopMargin' => false,
+        ]);
 
         $html = $this->load->view('admin/cetak-siswa', [], true);
         $mpdf->WriteHTML($html);
@@ -86,8 +114,12 @@ class Admin extends CI_Controller
     public function profile()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['title'] = 'My Profile';
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -98,13 +130,29 @@ class Admin extends CI_Controller
     public function changepassword()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Change Password';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
 
-        $this->form_validation->set_rules('current_password', 'Password lama', 'required|trim');
-        $this->form_validation->set_rules('password1', 'Password baru', 'required|trim|min_length[8]|matches[password2]');
-        $this->form_validation->set_rules('password2', 'Ulangi password', 'required|trim|min_length[8]|matches[password1]');
+        $this->form_validation->set_rules(
+            'current_password',
+            'Password lama',
+            'required|trim'
+        );
+        $this->form_validation->set_rules(
+            'password1',
+            'Password baru',
+            'required|trim|min_length[8]|matches[password2]'
+        );
+        $this->form_validation->set_rules(
+            'password2',
+            'Ulangi password',
+            'required|trim|min_length[8]|matches[password1]'
+        );
 
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -115,22 +163,39 @@ class Admin extends CI_Controller
         } else {
             $current_password = $this->input->post('current_password');
             $new_password = $this->input->post('password1');
-            if (!password_verify($current_password, $data['user']['password'])) {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama salah!!!</div>');
+            if (
+                !password_verify($current_password, $data['user']['password'])
+            ) {
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-danger" role="alert">Password lama salah!!!</div>'
+                );
                 redirect('admin/changepassword');
             } else {
                 if ($current_password == $new_password) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru sama dengan yang lama!!!</div>');
+                    $this->session->set_flashdata(
+                        'message',
+                        '<div class="alert alert-danger" role="alert">Password baru sama dengan yang lama!!!</div>'
+                    );
                     redirect('admin/changepassword');
                 } else {
                     //password ok
-                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    $password_hash = password_hash(
+                        $new_password,
+                        PASSWORD_DEFAULT
+                    );
 
                     $this->db->set('password', $password_hash);
-                    $this->db->where('email', $this->session->userdata('email'));
+                    $this->db->where(
+                        'email',
+                        $this->session->userdata('email')
+                    );
                     $this->db->update('user');
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password baru sama dengan yang lama!!!</div>');
+                    $this->session->set_flashdata(
+                        'message',
+                        '<div class="alert alert-success" role="alert">Password baru sama dengan yang lama!!!</div>'
+                    );
                     redirect('admin/changepassword');
                 }
             }
@@ -140,16 +205,22 @@ class Admin extends CI_Controller
     public function data()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Data siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $this->load->model('Menu_model', 'menu');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $data['siswa'] = $jurusan;
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -169,16 +240,23 @@ class Admin extends CI_Controller
         $spreadsheet = new Spreadsheet();
 
         // Set document properties
-        $spreadsheet->getProperties()->setCreator('Eko Cahyanto - IT Development SMK Muh Karangmojo')
-            ->setLastModifiedBy('Eko Cahyanto - IT Development SMK Muh Karangmojo')
+        $spreadsheet
+            ->getProperties()
+            ->setCreator('Eko Cahyanto - IT Development SMK Muh Karangmojo')
+            ->setLastModifiedBy(
+                'Eko Cahyanto - IT Development SMK Muh Karangmojo'
+            )
             ->setTitle('Office 2007 XLSX Test Document')
             ->setSubject('Office 2007 XLSX Test Document')
-            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+            ->setDescription(
+                'Test document for Office 2007 XLSX, generated using PHP classes.'
+            )
             ->setKeywords('office 2007 openxml php')
             ->setCategory('Test result file');
 
         // Add some data
-        $spreadsheet->setActiveSheetIndex(0)
+        $spreadsheet
+            ->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Rekap Siswa ' . $jurusan)
             ->setCellValue('A2', 'Tahun Pelajaran ' . $tp)
             ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
@@ -195,8 +273,8 @@ class Admin extends CI_Controller
         $i = 6;
         $n = 1;
         foreach ($data as $d) {
-
-            $spreadsheet->setActiveSheetIndex(0)
+            $spreadsheet
+                ->setActiveSheetIndex(0)
                 ->setCellValue('A' . $i, $n)
                 ->setCellValue('B' . $i, $d['nis'])
                 ->setCellValue('C' . $i, $d['name'])
@@ -210,14 +288,20 @@ class Admin extends CI_Controller
         }
 
         // Rename worksheet
-        $spreadsheet->getActiveSheet()->setTitle('Rekap Siswa Excel ' . date('d-m-Y H'));
+        $spreadsheet
+            ->getActiveSheet()
+            ->setTitle('Rekap Siswa Excel ' . date('d-m-Y H'));
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $spreadsheet->setActiveSheetIndex(0);
 
         // Redirect output to a client’s web browser (Xlsx)
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="Rekap Siswa Excel.xlsx"');
+        header(
+            'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        );
+        header(
+            'Content-Disposition: attachment;filename="Rekap Siswa Excel.xlsx"'
+        );
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
@@ -230,7 +314,7 @@ class Admin extends CI_Controller
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
-        exit;
+        exit();
     }
 
     public function RekapExcel()
@@ -242,16 +326,23 @@ class Admin extends CI_Controller
         $spreadsheet = new Spreadsheet();
 
         // Set document properties
-        $spreadsheet->getProperties()->setCreator('Eko Cahyanto - IT Development SMK Muh Karangmojo')
-            ->setLastModifiedBy('Eko Cahyanto - IT Development SMK Muh Karangmojo')
+        $spreadsheet
+            ->getProperties()
+            ->setCreator('Eko Cahyanto - IT Development SMK Muh Karangmojo')
+            ->setLastModifiedBy(
+                'Eko Cahyanto - IT Development SMK Muh Karangmojo'
+            )
             ->setTitle('Office 2007 XLSX Test Document')
             ->setSubject('Office 2007 XLSX Test Document')
-            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+            ->setDescription(
+                'Test document for Office 2007 XLSX, generated using PHP classes.'
+            )
             ->setKeywords('office 2007 openxml php')
             ->setCategory('Test result file');
 
         // Add some data
-        $spreadsheet->setActiveSheetIndex(0)
+        $spreadsheet
+            ->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Rekap Siswa ')
             ->setCellValue('A2', 'Tahun Pelajaran ' . $tp)
             ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
@@ -267,10 +358,17 @@ class Admin extends CI_Controller
         $i = 6;
         $n = 1;
         foreach ($data as $d) {
-            $kelas = $this->db->get_where('tbl_kelas',['id'=>$d['kelas']])->row_array();
-            $jurusan = $this->db->get_where('tbl_jurusan', ['id'=>$d['jurusan']])->row_array();
-            $iduka = $this->db->get_where('tbl_iduka',['id'=> $d['nama_instansi']])->row_array();
-            $spreadsheet->setActiveSheetIndex(0)
+            $kelas = $this->db
+                ->get_where('tbl_kelas', ['id' => $d['kelas']])
+                ->row_array();
+            $jurusan = $this->db
+                ->get_where('tbl_jurusan', ['id' => $d['jurusan']])
+                ->row_array();
+            $iduka = $this->db
+                ->get_where('tbl_iduka', ['id' => $d['nama_instansi']])
+                ->row_array();
+            $spreadsheet
+                ->setActiveSheetIndex(0)
                 ->setCellValue('A' . $i, $n)
                 ->setCellValue('B' . $i, $d['nis'])
                 ->setCellValue('C' . $i, $d['name'])
@@ -283,14 +381,20 @@ class Admin extends CI_Controller
         }
 
         // Rename worksheet
-        $spreadsheet->getActiveSheet()->setTitle('Rekap Siswa Excel ' . date('d-m-Y H'));
+        $spreadsheet
+            ->getActiveSheet()
+            ->setTitle('Rekap Siswa Excel ' . date('d-m-Y H'));
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $spreadsheet->setActiveSheetIndex(0);
 
         // Redirect output to a client’s web browser (Xlsx)
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="Rekap Siswa Excel.xlsx"');
+        header(
+            'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        );
+        header(
+            'Content-Disposition: attachment;filename="Rekap Siswa Excel.xlsx"'
+        );
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
@@ -303,18 +407,24 @@ class Admin extends CI_Controller
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
-        exit;
+        exit();
     }
 
     public function dataALL()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Data siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['tp'] = $this->Admin_model->getTP();
         $tp = $this->input->get('tp');
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['tp' => $tp])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -326,9 +436,13 @@ class Admin extends CI_Controller
     public function detailData($id)
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Detail Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
 
         $this->load->view('wrapper/header', $data);
@@ -341,14 +455,18 @@ class Admin extends CI_Controller
     public function editData($id)
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Edit Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['tp'] = $this->Admin_model->getTP();
         $data['iduka'] = $this->db->get_where('tbl_jurusan')->result_array();
         $data['guru'] = $this->Admin_model->Guru();
-        $data["kelas"] = $this->db->get_where('tbl_kelas')->result_array();
+        $data['kelas'] = $this->db->get_where('tbl_kelas')->result_array();
 
         $tp = $this->input->post('tp');
         $jurusan = $this->input->post('jurusan');
@@ -361,18 +479,27 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editSiswa();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/data?tp=' . $tp . '&jurusan=' . $jurusan);
         }
     }
     public function suratbalasan($nis)
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Surat Balasan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['pengumuman'] = $this->Admin_model->Pengumuman();
-        $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
+        $data['siswa'] = $this->db
+            ->get_where('master', ['nis' => $nis])
+            ->row_array();
 
         $this->form_validation->set_rules('nis', 'NIS', 'required|trim');
         $this->form_validation->set_rules('status', 'Status', 'required|trim');
@@ -387,8 +514,8 @@ class Admin extends CI_Controller
             $upload_image = $_FILES['file']['name'];
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|PNG|JPG|JPEG';
-                $config['max_size']     = '10024';
-                $config['upload_path']  = './assets/img/surat balasan';
+                $config['max_size'] = '10024';
+                $config['upload_path'] = './assets/img/surat balasan';
 
                 $this->load->library('upload', $config);
                 if ($_FILES['file']['name'] != null) {
@@ -396,17 +523,20 @@ class Admin extends CI_Controller
                         $nis = $this->input->post('nis');
                         $status = $this->input->post('status');
                         $foto = $this->upload->data('file_name');
-                        $data = array(
+                        $data = [
                             'status' => $status,
-                            'file' => $foto
-                        );
+                            'file' => $foto,
+                        ];
                         //update
                         $this->db->where('nis', $nis);
                         $this->db->update('master', $data);
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Surat balasan berhasil ditambahkan!</div>');
+                        $this->session->set_flashdata(
+                            'message',
+                            '<div class="alert alert-success" role="alert">Surat balasan berhasil ditambahkan!</div>'
+                        );
                         redirect('admin/suratbalasan/' . $nis);
                     } else {
-                        $error = array('error' => $this->upload->display_errors());
+                        $error = ['error' => $this->upload->display_errors()];
                         $this->load->view('wrapper/header', $data);
                         $this->load->view('admin/wrapper/sidebar', $data);
                         $this->load->view('wrapper/topbar', $data);
@@ -421,26 +551,45 @@ class Admin extends CI_Controller
     public function hapus($id)
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->Admin_model->hapusData($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>'
+        );
         redirect('admin/data');
     }
 
     public function nilai()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan,])->result_array();
-        $data['tabel'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan])->result_array();
-        $data['siswa'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])
+            ->result_array();
+        $data['tabel'] = $this->db
+            ->get_where('tbl_nilai', ['jurusan' => $jurusan])
+            ->result_array();
+        $data['siswa'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->result_array();
 
         $this->form_validation->set_rules('id[]', 'ID', 'required');
         if ($this->form_validation->run() == false) {
@@ -462,41 +611,52 @@ class Admin extends CI_Controller
             $nilai_9 = $this->input->post('nilai_9[]');
             $nilai_10 = $this->input->post('nilai_10[]');
             $nilai_11 = $this->input->post('nilai_11[]');
-            $result = array();
+            $result = [];
             foreach ($id as $key => $val) {
-                $result[] = array(
-                    'id'    => $id[$key],
-                    'nilai_1'    => $nilai_1[$key],
-                    'nilai_2'    => $nilai_2[$key],
-                    'nilai_3'    => $nilai_3[$key],
-                    'nilai_4'    => $nilai_4[$key],
-                    'nilai_5'    => $nilai_5[$key],
-                    'nilai_6'    => $nilai_6[$key],
-                    'nilai_7'    => $nilai_7[$key],
-                    'nilai_8'    => $nilai_8[$key],
-                    'nilai_9'    => $nilai_9[$key],
-                    'nilai_10'    => $nilai_10[$key],
-                    'nilai_11'    => $nilai_11[$key],
-                );
+                $result[] = [
+                    'id' => $id[$key],
+                    'nilai_1' => $nilai_1[$key],
+                    'nilai_2' => $nilai_2[$key],
+                    'nilai_3' => $nilai_3[$key],
+                    'nilai_4' => $nilai_4[$key],
+                    'nilai_5' => $nilai_5[$key],
+                    'nilai_6' => $nilai_6[$key],
+                    'nilai_7' => $nilai_7[$key],
+                    'nilai_8' => $nilai_8[$key],
+                    'nilai_9' => $nilai_9[$key],
+                    'nilai_10' => $nilai_10[$key],
+                    'nilai_11' => $nilai_11[$key],
+                ];
             }
             $this->db->update_batch('master', $result, 'id');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Nilai berhasil di update!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Nilai berhasil di update!!!</div>'
+            );
             redirect('admin/nilai');
         }
     }
-
 
     //TKRO
     public function nilaitkro()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         // $data['data'] =  $this->Admin_model->Siswatkro();
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Teknik Kendaraan Ringan Otomotif'])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => 'Teknik Kendaraan Ringan Otomotif',
+            ])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -508,10 +668,14 @@ class Admin extends CI_Controller
     public function detailtkro($id)
     {
         $data['title'] = 'Detail Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -522,11 +686,19 @@ class Admin extends CI_Controller
     public function edittkro($id)
     {
         $data['title'] = 'Edit Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $this->form_validation->set_rules(
+            'nilai_1',
+            'Nilai Disiplin',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -535,7 +707,10 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editSiswaTKRO();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/nilaitkro');
         }
     }
@@ -544,11 +719,21 @@ class Admin extends CI_Controller
     public function nilaitbsm()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();        $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $data['title'] = 'Nilai Siswa';
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Teknik Bisnis Sepeda Motor'])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => 'Teknik Bisnis Sepeda Motor',
+            ])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -560,10 +745,14 @@ class Admin extends CI_Controller
     public function detailtbsm($id)
     {
         $data['title'] = 'Detail Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -574,11 +763,19 @@ class Admin extends CI_Controller
     public function edittbsm($id)
     {
         $data['title'] = 'Edit Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $this->form_validation->set_rules(
+            'nilai_1',
+            'Nilai Disiplin',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -587,7 +784,10 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editSiswaTBSM();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/nilaitbsm');
         }
     }
@@ -596,12 +796,21 @@ class Admin extends CI_Controller
     public function nilaiakl()
     {
         $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Akuntansi dan Keuangan Lembaga'])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => 'Akuntansi dan Keuangan Lembaga',
+            ])
+            ->result_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -612,10 +821,14 @@ class Admin extends CI_Controller
     public function detailakl($id)
     {
         $data['title'] = 'Detail Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -626,11 +839,19 @@ class Admin extends CI_Controller
     public function editakl($id)
     {
         $data['title'] = 'Edit Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $this->form_validation->set_rules(
+            'nilai_1',
+            'Nilai Disiplin',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -639,7 +860,10 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editSiswaAKL();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/nilaiakl');
         }
     }
@@ -648,12 +872,21 @@ class Admin extends CI_Controller
     public function nilaiotkp()
     {
         $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran'])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran',
+            ])
+            ->result_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -664,10 +897,14 @@ class Admin extends CI_Controller
     public function detailotkp($id)
     {
         $data['title'] = 'Detail Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -678,11 +915,19 @@ class Admin extends CI_Controller
     public function editotkp($id)
     {
         $data['title'] = 'Edit Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $this->form_validation->set_rules(
+            'nilai_1',
+            'Nilai Disiplin',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -691,7 +936,10 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editSiswaOTKP();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/nilaiotkp');
         }
     }
@@ -700,12 +948,21 @@ class Admin extends CI_Controller
     public function nilaibdp()
     {
         $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $data['tp'] = $this->Admin_model->getTP();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => 'Bisnis Daring dan Pemasaran'])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => 'Bisnis Daring dan Pemasaran',
+            ])
+            ->result_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -716,10 +973,14 @@ class Admin extends CI_Controller
     public function detailbdp($id)
     {
         $data['title'] = 'Detail Nilai Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -730,11 +991,19 @@ class Admin extends CI_Controller
     public function editbdp($id)
     {
         $data['title'] = 'Edit Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
-        $this->form_validation->set_rules('nilai_1', 'Nilai Disiplin', 'required');
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $this->form_validation->set_rules(
+            'nilai_1',
+            'Nilai Disiplin',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -743,7 +1012,10 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editSiswaBDP();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/nilaibdp');
         }
     }
@@ -751,14 +1023,20 @@ class Admin extends CI_Controller
     public function sertifikat()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Cetak Sertifikat';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['tp'] = $this->db->get_where('tp')->result_array();
         $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -767,14 +1045,17 @@ class Admin extends CI_Controller
     }
     public function CetakDepan()
     {
-        
         $data['title'] = 'Detail Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $id = $this->input->get('id');
         $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
         $iduka = $this->input->get('iduka');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_iduka', ['iduka' => $iduka])
+            ->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
 
         $this->load->view('wrapper/header', $data);
@@ -783,14 +1064,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/sertifikat-depan', $data);
         $this->load->view('wrapper/footer');
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => array(215, 330),
-                'orientation' => 'L',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => [215, 330],
+            'orientation' => 'L',
+            'setAutoTopMargin' => false,
+        ]);
 
         $mpdf->SetHTMLHeader('
         <div style="text-align: center; font-weight: bold;">
@@ -805,14 +1084,22 @@ class Admin extends CI_Controller
     public function CetakBelakang()
     {
         $data['title'] = 'Detail Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $id = $this->input->get('id');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('iduka');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
-        $data['tabel'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan, 'id_kode' => 1])->result_array();
-        $data['tabel2'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan,  'id_kode' => 2])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_iduka', ['iduka' => $iduka])
+            ->row_array();
+        $data['tabel'] = $this->db
+            ->get_where('tbl_nilai', ['jurusan' => $jurusan, 'id_kode' => 1])
+            ->result_array();
+        $data['tabel2'] = $this->db
+            ->get_where('tbl_nilai', ['jurusan' => $jurusan, 'id_kode' => 2])
+            ->result_array();
         $data['tp'] = $this->db->get_where('tp', ['tp' => $tp])->row_array();
         $data['siswa'] = $this->Admin_model->getSiswaById($id);
 
@@ -822,14 +1109,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/sertifikat-belakang', $data);
         $this->load->view('wrapper/footer');
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'Folio',
-                'orientation' => 'L',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'Folio',
+            'orientation' => 'L',
+            'setAutoTopMargin' => false,
+        ]);
 
         // $mpdf->SetHTMLHeader('
         // <div style="text-align: center; font-weight: bold;">
@@ -844,9 +1129,13 @@ class Admin extends CI_Controller
     public function masterdata()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Master Data';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -855,18 +1144,26 @@ class Admin extends CI_Controller
     }
 
     //IDUKA
-    public  function iduka()
+    public function iduka()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'IDUKA';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] =  $this->Admin_model->getJurusan();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $data['data'] = $this->Admin_model->getJurusan();
         $jurusan = $this->input->get('jurusan');
         $data['iduka'] = $this->Admin_model->getIduka($jurusan);
 
         $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
-        $this->form_validation->set_rules('iduka', 'Iduka/Instansi', 'required');
+        $this->form_validation->set_rules(
+            'iduka',
+            'Iduka/Instansi',
+            'required'
+        );
         $this->form_validation->set_rules('alamat', 'Alamat Iduka', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
@@ -876,23 +1173,38 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->addIduka();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambah!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil ditambah!!!</div>'
+            );
             redirect('admin/iduka');
         }
     }
     public function editIduka($id)
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Edit Data IDUKA';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['data'] = $this->Admin_model->getIdukaById($id);
-        $data['data2'] =  $this->Admin_model->getJurusan();
+        $data['data2'] = $this->Admin_model->getJurusan();
 
         $jurusan = $this->input->post('jurusan');
         $this->form_validation->set_rules('jurusan', 'jurusan', 'required');
-        $this->form_validation->set_rules('iduka', 'Iduka/Instansi', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat Iduka/Instansi', 'required');
+        $this->form_validation->set_rules(
+            'iduka',
+            'Iduka/Instansi',
+            'required'
+        );
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat Iduka/Instansi',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -901,26 +1213,40 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $this->Admin_model->editIduka();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/iduka?jurusan=' . $jurusan);
         }
     }
     public function hapusIduka($id)
     {
         $this->Admin_model->hapusIduka($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>'
+        );
         redirect('admin/iduka');
     }
 
     public function Pengumuman()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Pengumuman';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['pengumuman'] = $this->Admin_model->Pengumuman();
 
-        $this->form_validation->set_rules('pengumuman', 'pengumuman', 'required');
+        $this->form_validation->set_rules(
+            'pengumuman',
+            'pengumuman',
+            'required'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('wrapper/header', $data);
             $this->load->view('admin/wrapper/sidebar', $data);
@@ -929,11 +1255,16 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $data = [
-                'judul'  => htmlspecialchars($this->input->post('judul', true)),
-                'pengumuman'  => htmlspecialchars($this->input->post('pengumuman', true))
+                'judul' => htmlspecialchars($this->input->post('judul', true)),
+                'pengumuman' => htmlspecialchars(
+                    $this->input->post('pengumuman', true)
+                ),
             ];
             $this->db->insert('tbl_pengumuman', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Berhasil ditambah!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Pengumuman Berhasil ditambah!!!</div>'
+            );
             redirect('admin/pengumuman');
         }
     }
@@ -944,9 +1275,14 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
 
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->alamat . "'>" . $data->alamat . "</option>";
+            $lists =
+                "<option value='" .
+                $data->alamat .
+                "'>" .
+                $data->alamat .
+                '</option>';
         }
-        $callback = array('list_alamat' => $lists);
+        $callback = ['list_alamat' => $lists];
         echo json_encode($callback);
     }
     public function EmailIduka()
@@ -954,9 +1290,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->email_website . "'>" . $data->email_website . "</option>";
+            $lists =
+                "<option value='" .
+                $data->email_website .
+                "'>" .
+                $data->email_website .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function telpIduka()
@@ -964,9 +1305,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->telp_instansi . "'>" . $data->telp_instansi . "</option>";
+            $lists =
+                "<option value='" .
+                $data->telp_instansi .
+                "'>" .
+                $data->telp_instansi .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function pejabatIduka()
@@ -974,9 +1320,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->nama_pembimbing_instansi . "'>" . $data->nama_pembimbing_instansi . "</option>";
+            $lists =
+                "<option value='" .
+                $data->nama_pembimbing_instansi .
+                "'>" .
+                $data->nama_pembimbing_instansi .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function NIPpejabat()
@@ -984,9 +1335,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->nip . "'>" . $data->nip . "</option>";
+            $lists =
+                "<option value='" .
+                $data->nip .
+                "'>" .
+                $data->nip .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function jabatan()
@@ -994,9 +1350,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->jabatan . "'>" . $data->jabatan . "</option>";
+            $lists =
+                "<option value='" .
+                $data->jabatan .
+                "'>" .
+                $data->jabatan .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function hpPembimbing()
@@ -1004,9 +1365,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->hp_pembimbing . "'>" . $data->hp_pembimbing . "</option>";
+            $lists =
+                "<option value='" .
+                $data->hp_pembimbing .
+                "'>" .
+                $data->hp_pembimbing .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function emailPembimbing()
@@ -1014,9 +1380,14 @@ class Admin extends CI_Controller
         $nama_instansi = $this->input->get('nama_instansi');
         $iduka = $this->Home_model->alamatIduka($nama_instansi);
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->email_pembimbing . "'>" . $data->email_pembimbing . "</option>";
+            $lists =
+                "<option value='" .
+                $data->email_pembimbing .
+                "'>" .
+                $data->email_pembimbing .
+                '</option>';
         }
-        $callback = array('list_web' => $lists);
+        $callback = ['list_web' => $lists];
         echo json_encode($callback);
     }
     public function listIduka()
@@ -1025,9 +1396,14 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->Iduka($singkatan_jurusan);
         $lists = "<option value=''>Pilih Iduka/Instansi</option>";
         foreach ($iduka as $data) {
-            $lists .= "<option value='" . $data->id . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
+            $lists .=
+                "<option value='" .
+                $data->id .
+                "'>" .
+                $data->iduka .
+                '</option>'; // Tambahkan tag option ke variabel $lists
         }
-        $callback = array('list_iduka' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
+        $callback = ['list_iduka' => $lists]; // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
     public function listIduka2()
@@ -1036,9 +1412,14 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->Iduka($singkatan_jurusan);
         $lists = "<option value=''>Pilih Iduka/Instansi</option>";
         foreach ($iduka as $data) {
-            $lists .= "<option value='" . $data->id . "'>" . $data->iduka . "</option>"; // Tambahkan tag option ke variabel $lists
+            $lists .=
+                "<option value='" .
+                $data->id .
+                "'>" .
+                $data->iduka .
+                '</option>'; // Tambahkan tag option ke variabel $lists
         }
-        $callback = array('list_iduka2' => $lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
+        $callback = ['list_iduka2' => $lists]; // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
     public function hpGuru()
@@ -1047,9 +1428,10 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->hpPendamping($guru_pendamping);
 
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->hp . "'>" . $data->hp . "</option>";
+            $lists =
+                "<option value='" . $data->hp . "'>" . $data->hp . '</option>';
         }
-        $callback = array('list_hp' => $lists);
+        $callback = ['list_hp' => $lists];
         echo json_encode($callback);
     }
     public function emailGuru()
@@ -1058,19 +1440,28 @@ class Admin extends CI_Controller
         $iduka = $this->Home_model->hpPendamping($guru_pendamping);
 
         foreach ($iduka as $data) {
-            $lists = "<option value='" . $data->email . "'>" . $data->email . "</option>";
+            $lists =
+                "<option value='" .
+                $data->email .
+                "'>" .
+                $data->email .
+                '</option>';
         }
-        $callback = array('list_email' => $lists);
+        $callback = ['list_email' => $lists];
         echo json_encode($callback);
     }
 
     public function suratPKL($id)
     {
         $data['title'] = 'Surat PKL';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['data'] = $this->Admin_model->surat($id);
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $this->form_validation->set_rules('nomor', 'nomor', 'required');
         $this->form_validation->set_rules('lampiran', 'lampiran', 'required');
         if ($this->form_validation->run() == false) {
@@ -1081,23 +1472,34 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $data = [
-                'tgl_surat'  => htmlspecialchars($this->input->post('tgl_surat', true)),
-                'nomor'  => htmlspecialchars($this->input->post('nomor', true)),
-                'lampiran'  => htmlspecialchars($this->input->post('lampiran', true)),
-                'hal'  => htmlspecialchars($this->input->post('hal', true)),
-                'tgl_pkl'  => htmlspecialchars($this->input->post('tgl_pkl', true)),
-                'p1'  => htmlspecialchars($this->input->post('p1', true)),
-                'p2'  => htmlspecialchars($this->input->post('p2', true)),
-                'p3'  => htmlspecialchars($this->input->post('p3', true)),
-                'p4'  => htmlspecialchars($this->input->post('p4', true)),
-                'p5'  => htmlspecialchars($this->input->post('p5', true)),
-                'p6'  => htmlspecialchars($this->input->post('p6', true)),
-                'kepala_sekolah'  => htmlspecialchars($this->input->post('kepala_sekolah', true)),
-                'nbm'  => htmlspecialchars($this->input->post('nbm', true)),
+                'tgl_surat' => htmlspecialchars(
+                    $this->input->post('tgl_surat', true)
+                ),
+                'nomor' => htmlspecialchars($this->input->post('nomor', true)),
+                'lampiran' => htmlspecialchars(
+                    $this->input->post('lampiran', true)
+                ),
+                'hal' => htmlspecialchars($this->input->post('hal', true)),
+                'tgl_pkl' => htmlspecialchars(
+                    $this->input->post('tgl_pkl', true)
+                ),
+                'p1' => htmlspecialchars($this->input->post('p1', true)),
+                'p2' => htmlspecialchars($this->input->post('p2', true)),
+                'p3' => htmlspecialchars($this->input->post('p3', true)),
+                'p4' => htmlspecialchars($this->input->post('p4', true)),
+                'p5' => htmlspecialchars($this->input->post('p5', true)),
+                'p6' => htmlspecialchars($this->input->post('p6', true)),
+                'kepala_sekolah' => htmlspecialchars(
+                    $this->input->post('kepala_sekolah', true)
+                ),
+                'nbm' => htmlspecialchars($this->input->post('nbm', true)),
             ];
             $this->db->where('id', $this->input->post('id'));
             $this->db->update('tbl_surat', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data berhasil di update!!!</div>'
+            );
             redirect('admin/suratpkl/1');
         }
     }
@@ -1105,11 +1507,15 @@ class Admin extends CI_Controller
     public function Guru()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Data Guru';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['guru'] = $this->Admin_model->Guru();
-        $data['data'] =  $this->Admin_model->getJurusan();
+        $data['data'] = $this->Admin_model->getJurusan();
         // $data['guru2'] =  $this->Admin_model->getGuruby();
 
         $this->load->view('wrapper/header', $data);
@@ -1121,11 +1527,15 @@ class Admin extends CI_Controller
     public function editGuru($id)
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Edit Data Pendamping';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data'] =  $this->Admin_model->getJurusan();
-        $data['guru'] =  $this->Admin_model->getGuruby($id);
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $data['data'] = $this->Admin_model->getJurusan();
+        $data['guru'] = $this->Admin_model->getGuruby($id);
 
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('nbm', 'nbm', 'required');
@@ -1137,14 +1547,17 @@ class Admin extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
             $data = [
-                'nama'  => htmlspecialchars($this->input->post('nama', true)),
-                'nbm'  => htmlspecialchars($this->input->post('nbm', true)),
-                'email'  => htmlspecialchars($this->input->post('email', true)),
-                'hp'  => htmlspecialchars($this->input->post('hp', true)),
+                'nama' => htmlspecialchars($this->input->post('nama', true)),
+                'nbm' => htmlspecialchars($this->input->post('nbm', true)),
+                'email' => htmlspecialchars($this->input->post('email', true)),
+                'hp' => htmlspecialchars($this->input->post('hp', true)),
             ];
             $this->db->where('id', $this->input->post('id'));
             $this->db->update('tbl_guru', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data berhasil di update!!!</div>'
+            );
             redirect('admin/guru');
         }
     }
@@ -1152,16 +1565,26 @@ class Admin extends CI_Controller
     public function tambahsiswa()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Data Siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $this->load->model('Menu_model', 'menu');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->result_array();
         $data['guru'] = $this->Admin_model->Guru();
 
         $this->form_validation->set_rules('nis[]', 'NIS', 'required');
@@ -1179,18 +1602,21 @@ class Admin extends CI_Controller
             $alamat = $this->input->post('alamat_instansi[]');
             $nis = $this->input->post('nis[]');
             $siswa = $this->input->post('name[]');
-            $result = array();
+            $result = [];
             foreach ($nis as $key => $val) {
-                $result[] = array(
+                $result[] = [
                     'nis' => $nis[$key],
-                    'email'  => $guru[$key],
-                    'lokasi'  => $lokasi[$key],
-                    'alamat'  => $alamat[$key],
-                    'nama_siswa'  => $siswa[$key],
-                );
+                    'email' => $guru[$key],
+                    'lokasi' => $lokasi[$key],
+                    'alamat' => $alamat[$key],
+                    'nama_siswa' => $siswa[$key],
+                ];
             }
             $this->db->insert_batch('tbl_pendamping', $result);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>'
+            );
             redirect('admin/guru');
         }
     }
@@ -1198,9 +1624,13 @@ class Admin extends CI_Controller
     public function idcard()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'ID CARD';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
 
@@ -1217,17 +1647,17 @@ class Admin extends CI_Controller
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $data['data'] = $this->Admin_model->idcard($tp, $jurusan);
-        $data['tanggal'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
+        $data['tanggal'] = $this->db
+            ->get_where('tbl_surat', ['id' => 1])
+            ->row_array();
         $this->load->view('admin/cetak-idcard', $data);
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'A4',
-                'orientation' => 'P',
-                // 'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'P',
+            // 'setAutoTopMargin' => false
+        ]);
 
         $html = $this->load->view('admin/cetak-idcard', [], true);
         $mpdf->WriteHTML($html);
@@ -1237,10 +1667,14 @@ class Admin extends CI_Controller
     public function monitoring()
     {
         $data['title'] = 'Monitoring';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_monitoring', ['nama' => $guru])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -1251,14 +1685,20 @@ class Admin extends CI_Controller
     public function surattugas()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Daftar Surat Tugas';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['tp'] = $this->db->get_where('tp')->result_array();
         $data['guru'] = $this->Admin_model->Guru();
         $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['active' => 'Aktif'])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_iduka', ['active' => 'Aktif'])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -1269,9 +1709,13 @@ class Admin extends CI_Controller
     public function tambahsurattugas()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Tambah Surat Tugas';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['tp'] = $this->db->get_where('tp')->result_array();
         $data['jurusan'] = $this->db->get_where('tbl_jurusan')->result_array();
         $data['guru'] = $this->Admin_model->Guru();
@@ -1293,19 +1737,22 @@ class Admin extends CI_Controller
             $alamat = $this->input->post('alamat[]');
             $tp = $this->input->post('tp[]');
             $active = $this->input->post('active[]');
-            $result = array();
+            $result = [];
             foreach ($id as $key => $val) {
-                $result[] = array(
-                    'id'     => $id[$key],
-                    'guru'     => $email[$key],
-                    'iduka'    => $lokasi[$key],
-                    'alamat'    => $alamat[$key],
-                    'tp'        => $tp[$key],
-                    'active'    => $active[$key],
-                );
+                $result[] = [
+                    'id' => $id[$key],
+                    'guru' => $email[$key],
+                    'iduka' => $lokasi[$key],
+                    'alamat' => $alamat[$key],
+                    'tp' => $tp[$key],
+                    'active' => $active[$key],
+                ];
             }
             $this->db->update_batch('tbl_iduka', $result, 'id');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data pendamping berhasil di update!!!</div>'
+            );
             redirect('admin/surattugas');
         }
     }
@@ -1313,14 +1760,20 @@ class Admin extends CI_Controller
     public function daftarpeserta()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Daftar Peserta';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['tp'] =  $this->Admin_model->getTP();
-        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Home_model->Jurusan();
         $data['guru'] = $this->Admin_model->getGuru();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_monitoring', ['nama' => $guru])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -1330,40 +1783,66 @@ class Admin extends CI_Controller
 
     public function cetakdaftarpeserta()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
-        $data['data2'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->row_array();
-        $data['data3'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
-        $data['data4'] = $this->db->get_where('tbl_iduka', ['id' => $iduka])->row_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->result_array();
+        $data['data2'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->row_array();
+        $data['data3'] = $this->db
+            ->get_where('tbl_surat', ['id' => 1])
+            ->row_array();
+        $data['data4'] = $this->db
+            ->get_where('tbl_iduka', ['id' => $iduka])
+            ->row_array();
         $this->load->view('admin/cetak-daftar-peserta', $data);
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'A4',
-                'orientation' => 'P',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'P',
+            'setAutoTopMargin' => false,
+        ]);
 
         $html = $this->load->view('admin/cetak-daftar-peserta', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Daftar Peserta PKL.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output(
+            'Daftar Peserta PKL.pdf',
+            \Mpdf\Output\Destination::INLINE
+        );
     }
 
     public function suratjalan()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();        $data['title'] = 'Surat Jalan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
+        $data['title'] = 'Surat Jalan';
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
-        $data['tp'] =  $this->Admin_model->getTP();
-        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Home_model->Jurusan();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_monitoring', ['nama' => $guru])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -1372,37 +1851,62 @@ class Admin extends CI_Controller
     }
     public function cetaksuratjalan()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
-        $data['data2'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->row_array();
-        $data['data3'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
-        $data['data4'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
-        $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->result_array();
+        $data['data2'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->row_array();
+        $data['data3'] = $this->db
+            ->get_where('tbl_surat', ['id' => 1])
+            ->row_array();
+        $data['data4'] = $this->db
+            ->get_where('tbl_iduka', ['iduka' => $iduka])
+            ->row_array();
+        $data['data5'] = $this->db
+            ->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])
+            ->row_array();
         $this->load->view('admin/cetak-surat-jalan', $data);
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'A4',
-                'orientation' => 'P',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'P',
+            'setAutoTopMargin' => false,
+        ]);
 
         $html = $this->load->view('admin/cetak-surat-jalan', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Daftar Peserta PKL.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output(
+            'Daftar Peserta PKL.pdf',
+            \Mpdf\Output\Destination::INLINE
+        );
     }
 
     public function nomorsurat()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Daftar Nomor Surat';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['data'] = $this->db->get_where('tbl_nomor_surat')->result_array();
 
         $this->form_validation->set_rules('id[]', 'ID', 'required');
@@ -1416,16 +1920,19 @@ class Admin extends CI_Controller
             $nomor = $this->input->post('nomor[]');
             $tgl_surat = $this->input->post('tgl_surat[]');
             $id = $this->input->post('id[]');
-            $result = array();
+            $result = [];
             foreach ($id as $key => $val) {
-                $result[] = array(
+                $result[] = [
                     'id' => $id[$key],
-                    'nomor'    => $nomor[$key],
+                    'nomor' => $nomor[$key],
                     'tgl_surat' => $tgl_surat[$key],
-                );
+                ];
             }
             $this->db->update_batch('tbl_nomor_surat', $result, 'id');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Data Berhasil diupdate!!!</div>'
+            );
             redirect('admin/nomorsurat');
         }
     }
@@ -1433,16 +1940,22 @@ class Admin extends CI_Controller
     public function surat_pernyataan()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Surat Pernyataan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['tp'] =  $this->Admin_model->getTP();
-        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Home_model->Jurusan();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $data['jrsn'] = $jurusan;
         $data['count'] = $this->Count_model->countP($jurusan, $tp);
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -1452,37 +1965,48 @@ class Admin extends CI_Controller
 
     public function cetak_surat_pernyataan($nis)
     {
-        $data['data'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
-        $data['tp'] = $this->db->get_where('tp', ['tp' => '2020/2021'])->row_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['nis' => $nis])
+            ->row_array();
+        $data['tp'] = $this->db
+            ->get_where('tp', ['tp' => '2020/2021'])
+            ->row_array();
         $this->load->view('admin/cetak-surat-jalan', $data);
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'A4',
-                'orientation' => 'P',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'P',
+            'setAutoTopMargin' => false,
+        ]);
 
         $html = $this->load->view('admin/cetak-surat-pernyataan', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Surat Pernyataan ' . $nis . '.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output(
+            'Surat Pernyataan ' . $nis . '.pdf',
+            \Mpdf\Output\Destination::INLINE
+        );
     }
 
     public function laporan()
     {
         $data['title'] = 'Data Laporan siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $this->load->model('Menu_model', 'menu');
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $data['siswa'] = $jurusan;
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $data['data'] = $this->db
+            ->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])
+            ->result_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -1493,12 +2017,20 @@ class Admin extends CI_Controller
     public function detail_laporan($nis)
     {
         $data['title'] = 'Data Detail Laporan siswa';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['siswa'] = $this->db->get_where('master', ['nis' => $nis])->row_array();
-        $data['data'] = $this->db->get_where('tbl_laporan', ['nis' => $nis])->result_array();
+        $data['siswa'] = $this->db
+            ->get_where('master', ['nis' => $nis])
+            ->row_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_laporan', ['nis' => $nis])
+            ->result_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
 
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
@@ -1510,20 +2042,29 @@ class Admin extends CI_Controller
     {
         $this->db->where('id', $id);
         $this->db->delete('tbl_laporan');
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>');
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-danger" role="alert">Data berhasil dihapus!!!</div>'
+        );
         redirect('admin/detail_laporan/' . $nis);
     }
     public function daftar_hadir()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Daftar Hadir Peserta PKL';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
-        $data['tp'] =  $this->Admin_model->getTP();
-        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Home_model->Jurusan();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_monitoring', ['nama' => $guru])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -1533,41 +2074,68 @@ class Admin extends CI_Controller
 
     public function cetak_DH()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
-        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->result_array();
-        $data['data2'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan, 'nama_instansi' => $iduka])->row_array();
-        $data['data3'] = $this->db->get_where('tbl_surat', ['id' => 1])->row_array();
-        $data['data4'] = $this->db->get_where('tbl_iduka', ['iduka' => $iduka])->row_array();
-        $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
+        $data['data'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->result_array();
+        $data['data2'] = $this->db
+            ->get_where('master', [
+                'tp' => $tp,
+                'jurusan' => $jurusan,
+                'nama_instansi' => $iduka,
+            ])
+            ->row_array();
+        $data['data3'] = $this->db
+            ->get_where('tbl_surat', ['id' => 1])
+            ->row_array();
+        $data['data4'] = $this->db
+            ->get_where('tbl_iduka', ['iduka' => $iduka])
+            ->row_array();
+        $data['data5'] = $this->db
+            ->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])
+            ->row_array();
         $this->load->view('admin/cetak-DH', $data);
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => 'A4',
-                'orientation' => 'L',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'L',
+            'setAutoTopMargin' => false,
+        ]);
 
         $html = $this->load->view('admin/cetak-DH', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Daftar Hadir ' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output(
+            'Daftar Hadir ' . $iduka . '.pdf',
+            \Mpdf\Output\Destination::INLINE
+        );
     }
     public function envelope()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'Amplop';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $data['guru'] = $this->Admin_model->getGuru();
-        $data['tp'] =  $this->Admin_model->getTP();
-        $data['jurusan'] =  $this->Home_model->Jurusan();
+        $data['tp'] = $this->Admin_model->getTP();
+        $data['jurusan'] = $this->Home_model->Jurusan();
         $guru = $this->input->get('guru');
-        $data['data'] = $this->db->get_where('tbl_monitoring', ['nama' => $guru])->result_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_monitoring', ['nama' => $guru])
+            ->result_array();
         $this->load->view('wrapper/header', $data);
         $this->load->view('admin/wrapper/sidebar', $data);
         $this->load->view('admin/wrapper/topbar', $data);
@@ -1576,36 +2144,49 @@ class Admin extends CI_Controller
     }
     public function cetak_envelope()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
         $data['instansi'] = $this->input->get('instansi');
         $data['hal'] = $this->input->get('hal');
-        $data['data'] = $this->db->get_where('tbl_iduka', ['id' => $iduka])->row_array();
-        $data['data5'] = $this->db->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])->row_array();
+        $data['data'] = $this->db
+            ->get_where('tbl_iduka', ['id' => $iduka])
+            ->row_array();
+        $data['data5'] = $this->db
+            ->get_where('tbl_nomor_surat', ['jenis' => 'Surat Jalan'])
+            ->row_array();
         $this->load->view('admin/cetak-envelope', $data);
 
-        $mpdf = new \Mpdf\Mpdf(
-            [
-                'mode' => 'utf-8',
-                'format' => array(110, 220),
-                'orientation' => 'L',
-                'setAutoTopMargin' => false
-            ]
-        );
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => [110, 220],
+            'orientation' => 'L',
+            'setAutoTopMargin' => false,
+        ]);
 
         $html = $this->load->view('admin/cetak-envelope', [], true);
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Daftar Hadir ' . $iduka . '.pdf', \Mpdf\Output\Destination::INLINE);
+        $mpdf->Output(
+            'Daftar Hadir ' . $iduka . '.pdf',
+            \Mpdf\Output\Destination::INLINE
+        );
     }
 
     public function user()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['title'] = 'User';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $this->db->where('role_id !=', 1);
+        $this->db->where('role_id !=', 3);
         $data['data'] = $this->db->get_where('user')->result_array();
 
         $this->load->view('wrapper/header', $data);
@@ -1617,16 +2198,23 @@ class Admin extends CI_Controller
     public function actived($id)
     {
         $this->db->where('id', $id);
-        $this->db->update('user', ['is_active'=>1]);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User berhasil di aktifkan!!!</div>');
+        $this->db->update('user', ['is_active' => 1]);
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-success" role="alert">User berhasil di aktifkan!!!</div>'
+        );
         redirect('admin');
     }
 
-    public function tp() 
+    public function tp()
     {
         $data['title'] = 'Tahun Pelajaran';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data_user'] = $this->db->get_where('user', ['is_active'=>0])->result_array();
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $data['data_user'] = $this->db
+            ->get_where('user', ['is_active' => 0])
+            ->result_array();
         $data['isActive'] = $this->Admin_model->countUser();
         $data['data'] = $this->db->get_where('tp')->result_array();
 
@@ -1635,5 +2223,50 @@ class Admin extends CI_Controller
         $this->load->view('admin/wrapper/topbar', $data);
         $this->load->view('admin/tp', $data);
         $this->load->view('wrapper/footer');
+    }
+
+    public function reset($id)
+    {
+        $data['title'] = 'Reset Password';
+        $data['user'] = $this->db
+            ->get_where('user', ['email' => $this->session->userdata('email')])
+            ->row_array();
+        $data['data'] = $this->db
+            ->get_where('user', ['id' => $id])
+            ->row_array();
+
+        $this->form_validation->set_rules(
+            'password1',
+            'Password baru',
+            'required|trim|min_length[8]|matches[password2]'
+        );
+        $this->form_validation->set_rules(
+            'password2',
+            'Ulangi password',
+            'required|trim|min_length[8]|matches[password1]'
+        );
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('wrapper/header', $data);
+            $this->load->view('admin/wrapper/sidebar', $data);
+            $this->load->view('admin/wrapper/topbar', $data);
+            $this->load->view('admin/reset', $data);
+            $this->load->view('wrapper/footer');
+        } else {
+            $new_password = $this->input->post('password1');
+            $id = $this->input->post('id');
+            //password ok
+            $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+            $this->db->set('password', $password_hash);
+            $this->db->where('id', $id);
+            $this->db->update('user');
+
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">Password berhasil di reset!!!</div>'
+            );
+            redirect('admin/reset/' . $id);
+        }
     }
 }
