@@ -12,11 +12,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php $i=1 ?>
-            <?php foreach($data as $d): ?>
+            <?php $i = 1; ?>
+            <?php foreach ($data as $d): ?>
             <tr>
-                <td><?= $i++; ?></td>
-                <td><?= $d['tp']; ?></td>
+                <td><?= $i++ ?></td>
+                <td><?= $d['tp'] ?></td>
                 <td><badge><button class="badge badge-primary">Edit</button></badge></td>
             </tr>
             <?php endforeach; ?>
