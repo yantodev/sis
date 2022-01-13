@@ -59,9 +59,9 @@
         margin-left:25px;
     }
 </style>
-<?php 
-    $instansi = $this->db->get_where('tbl_iduka',['id'=>$siswa['nama_instansi']])->row_array();
-?>
+<?php $instansi = $this->db
+    ->get_where('tbl_iduka', ['id' => $siswa['nama_instansi']])
+    ->row_array(); ?>
 <div class="container">
     <!-- Content here -->
     <table border="" align="center">
@@ -70,13 +70,13 @@
                 <tr>
                     <td align="center" width="100%" colspan="3">
                         <h3>
-                    <?= $instansi["iduka"] ?>
+                    <?= $instansi['iduka'] ?>
                     </h3>
                     </td>
                 </tr>
                 <tr>
                     <td align="center" colspan="3">
-                        <b><i>Alamat : <?= $instansi['alamat']; ?></i></b>
+                        <b><i>Alamat : <?= $instansi['alamat'] ?></i></b>
                     </td>
                 </tr>
                 <hr>
@@ -90,7 +90,7 @@
                 <tr>
                     <td align="center" colspan="3">
                         <font size="5" face="times">
-                            <b>Nomor : <?= $siswa['no_sertifikat']; ?></b>
+                            <b>Nomor : <?= $siswa['no_sertifikat'] ?></b>
                         </font>
                     </td>
                 </tr>
@@ -104,7 +104,9 @@
                 <tr>
                     <td align="center" colspan="3">
                         <font size="7">
-                            <h3><b><u><?= ucwords(strtolower($siswa['name'])); ?></u></b></h3>
+                            <h3><b><u><?= ucwords(
+                                strtolower($siswa['name'])
+                            ) ?></u></b></h3>
                         </font>
                     </td>
                 </tr>
@@ -118,7 +120,11 @@
                 <tr >
                     <td  align="center" height="90px" colspan="3">
                         <font size="6" face="times">
-                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $tp['pkl']; ?> <br />di <?= $instansi["iduka"]; ?> dengan hasil terlampir dibelakang sertifikat ini.
+                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $tp[
+                                'pkl'
+                            ] ?> <br />di <?= $instansi[
+     'iduka'
+ ] ?> dengan hasil terlampir dibelakang sertifikat ini.
                         </font>
                     </td>
                 </tr>
@@ -133,7 +139,7 @@
                 </td>
                 <td></td>
                 <td valign="bottom">
-                    <p>Karangmojo, <?= $tp['tgl']; ?></p>
+                    <p>Karangmojo, <?= $tp['tgl'] ?></p>
                 </td>
                 </>
             <tr>
@@ -142,17 +148,17 @@
                 </td>
                 <td></td>
                 <td>
-                    <p><?= $instansi['jabatan']; ?></p>
+                    <p><?= $instansi['jabatan'] ?></p>
                 </td>
             </tr>
             <tr>
                 <td align="center" valign="bottom" height="80px">
-                    <!-- <img src="<?= base_url('assets/home/ttd-ks.png'); ?>"/> -->
+                    <img src="<?= base_url('assets/home/ttd-ks.png') ?>"/>
                     <p><u>MUNAWAR, S.Pd.I</u></p>
                 </td>
                 <td></td>
                 <td valign="bottom"><u>
-                        <p><?= $instansi['nama_pembimbing_instansi']; ?>
+                        <p><?= $instansi['nama_pembimbing_instansi'] ?>
                     </u></p>
                 </td>
             </tr>
@@ -162,7 +168,7 @@
                 </td>
                 <td></td>
                 <td>
-                    <p>NIP/NRP. <?= $instansi['nip']; ?></p>
+                    <p>NIP/NRP. <?= $instansi['nip'] ?></p>
                 </td>
             </tr>
         </thead>
