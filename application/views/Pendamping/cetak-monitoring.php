@@ -1,18 +1,23 @@
-<img src="<?= base_url('assets/img/kop.png'); ?>" alt="">
+<img src="<?= base_url('assets/img/kop.png') ?>" alt="">
 <h3 align="center">
     LEMBAR MONITORING SISWA PRAKTIK KERJA LAPANGAN<br />
     SMK MUHAMMADIYAH KARANGMOJO<br />
-    Tahun Pelajaran <?= $data['tp']; ?>
+    Tahun Pelajaran <?php
+    $dttp = $this->db
+        ->get_where('tp', ['id' => $this->input->get('tp')])
+        ->row_array();
+    echo $dttp['tp'];
+    ?>
 </h3>
 <table>
     <thead>
         <tr>
             <td>Nama Iduka</td>
-            <td>: <?= $data2['iduka']; ?></td>
+            <td>: <?= $data2['iduka'] ?></td>
         </tr>
         <tr>
             <td>Alamat Iduka</td>
-            <td>: <?= $data2['alamat']; ?></td>
+            <td>: <?= $data2['alamat'] ?></td>
         </tr>
         <tr>
             <td>Hari, Tanggal</td>
@@ -31,10 +36,10 @@
     </thead>
     <tbody>
         <?php $i = 1; ?>
-        <?php foreach ($siswa as $s) : ?>
+        <?php foreach ($siswa as $s): ?>
             <tr>
-                <td valign="top" align="center"><?= $i; ?></td>
-                <td valign="top"><?= $s['name']; ?></td>
+                <td valign="top" align="center"><?= $i ?></td>
+                <td valign="top"><?= $s['name'] ?></td>
                 <td valign="top" height="70px"></td>
                 <td></td>
             </tr>
@@ -65,8 +70,8 @@
             </td>
             <td></td>
             <td align="center">
-                <?= $guru['nama']; ?><br />
-                NBM. <?= $guru['nbm']; ?>
+                <?= $guru['nama'] ?><br />
+                NBM. <?= $guru['nbm'] ?>
             </td>
         </tr>
     </tbody>

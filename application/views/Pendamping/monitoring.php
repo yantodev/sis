@@ -11,7 +11,13 @@
 </div>
 <div class="form-group mb-0">
     <h4>Form Monitoring</h4>
-    <form action="<?= base_url('pendamping/cetakmonitoring') ?>" method="post">
+    <form action="<?= base_url('pendamping/cetakmonitoring') ?>" method="get">
+        <select name="tp" id="tp">
+            <option value="">Pilih Tahun Pelajaran</option>
+            <?php foreach ($tp as $tp): ?>
+            <option value="<?= $tp['id'] ?>"><?= $tp['tp'] ?></option>
+            <?php endforeach; ?>
+        </select>
         <select name="jurusan" id="jurusan2">
             <option value="">Pilih Jurusan</option>
             <?php foreach ($jurusan as $j): ?>
