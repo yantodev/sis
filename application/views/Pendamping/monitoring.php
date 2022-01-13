@@ -46,7 +46,7 @@
             <select name="jurusan" id="jurusan">
                 <option value="">Pilih Jurusan</option>
                 <?php foreach ($jurusan as $j): ?>
-                    <option value="<?= $j['jurusan'] ?>"><?= $j[
+                    <option value="<?= $j['id'] ?>"><?= $j[
     'jurusan'
 ] ?></option>
                 <?php endforeach; ?>
