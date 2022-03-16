@@ -1,0 +1,22 @@
+@page {
+    margin-top: 20px;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.justify {
+    text-align: justify;
+}
+.jurusan{
+    border: 3px solid #000000
+}
