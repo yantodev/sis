@@ -9,7 +9,7 @@
             <select name="jurusan" id="jurusan">
                 <option value="">Pilih Jurusan</option>
                 <?php foreach ($jurusan as $j) : ?>
-                    <option value="<?= $j['jurusan']; ?>"><?= $j['jurusan']; ?></option>
+                <option value="<?= $j['jurusan']; ?>"><?= $j['jurusan']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -70,7 +70,8 @@
         Menu TTD bukan untuk siswa ya...<br />
         Keterangan: <br />
         <a href="#" class="badge badge-success">Edit</a> => Digunankan untuk edit data<br />
-        <a href="#" class="badge badge-primary">TTD</a> => Digunankan untuk tanda tangan pembimbing(instansi) iduka<br />
+        <a href="#" class="badge badge-primary">TTD</a> => Digunankan untuk tanda tangan pembimbing(instansi)
+        iduka<br />
         <a href="#" class="badge badge-warning">Upload</a> => Digunakan untuk upload gambar kerja
     </i>
 </small>
@@ -89,24 +90,24 @@
     <tbody>
         <?php $i = 1; ?>
         <?php foreach ($laporan as $l) : ?>
-            <tr>
-                <td scope="row"><?= $i; ?></td>
-                <td width="150px"><?= format_indo(date($l['time'])); ?></td>
-                <td><?= $l['bidang_pekerjaan']; ?></td>
-                <td><?= $l['sub_1']; ?></td>
-                <td>
-                    <img src="<?= base_url('assets/img/gambar/') . $l['foto']; ?>" width="50px" height="50px">
-                </td>
-                <td>
-                    <img src="<?= base_url('') . $l['ttd']; ?>" width="50px" height="50px">
-                </td>
-                <td>
-                    <a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a>
-                    <a href="<?= base_url('siswa/ttd/') . $l['id']; ?>" class="badge badge-primary">TTD</a>
-                    <a href="<?= base_url('siswa/u_ft/') . $l['id']; ?>" class="badge badge-warning">Upload</a>
-                </td>
-            </tr>
-            <?php $i++; ?>
+        <tr>
+            <td scope="row"><?= $i; ?></td>
+            <td width="150px"><?= format_indo(date($l['time'])); ?></td>
+            <td><?= $l['bidang_pekerjaan']; ?></td>
+            <td><?= $l['sub_1']; ?></td>
+            <td>
+                <img src="<?= base_url('assets/img/foto/gambar/') . $l['foto']; ?>" width="50px" height="50px">
+            </td>
+            <td>
+                <img src="<?= base_url('') . $l['ttd']; ?>" width="50px" height="50px">
+            </td>
+            <td>
+                <a href="<?= base_url('siswa/editlaporan/') . $l['id']; ?>" class="badge badge-success">Edit</a>
+                <a href="<?= base_url('siswa/ttd/') . $l['id']; ?>" class="badge badge-primary">TTD</a>
+                <a href="<?= base_url('siswa/u_ft/') . $l['id']; ?>" class="badge badge-warning">Upload</a>
+            </td>
+        </tr>
+        <?php $i++; ?>
         <?php endforeach; ?>
     </tbody>
 </table>
