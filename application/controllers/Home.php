@@ -268,6 +268,8 @@ class Home extends CI_Controller
                 'setAutoTopMargin' => 'stretch'
             ]
         );
+        $stylesheet = file_get_contents('assets/yantodev/css/pdf.css'); // external css
+         $mpdf->WriteHTML($stylesheet,1);
         // $mpdf->SetHTMLHeader('
         // <div style="text-align: center; font-weight: bold;">
         //   <img src="assets/img/kop.png" width="100%" height="20%" />
@@ -284,7 +286,7 @@ class Home extends CI_Controller
             [
                 'mode' => 'utf-8',
                 'format' => 'A4',
-                'orientation' => 'P',
+                'orientation' => 'L',
                 'setAutoTopMargin' => false
             ]
         );
