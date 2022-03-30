@@ -261,11 +261,11 @@ class Siswa extends CI_Controller
             $this->load->view('wrapper/footer');
         } else {
 
-            $upload_image = $_FILES['foto']['name'];
+            $upload_image = base64_encode($_FILES['foto'])['name'];
             if ($upload_image) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg|heic';
                 $config['max_size']     = '10024';
-                $config['upload_path']  = './assets/img/gambar';
+                $config['upload_path']  = './assets/img/foto/gambar';
 
                 $this->load->library('upload', $config);
 
@@ -353,9 +353,9 @@ class Siswa extends CI_Controller
         } else {
             $id = $this->input->post('id');
             $nis = $this->input->post('nis');
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
             $config['max_size']     = '2048';
-            $config['upload_path']  = './assets/img/gambar';
+            $config['upload_path']  = './assets/img/foto/gambar';
 
             $this->load->library('upload', $config);
             if ($_FILES['foto']['name'] != null) {
@@ -364,7 +364,6 @@ class Siswa extends CI_Controller
                     $data = array(
                         'foto' => $foto
                     );
-
                     //update
                     $this->db->where('id', $id);
                     $this->db->update('tbl_laporan', $data);
