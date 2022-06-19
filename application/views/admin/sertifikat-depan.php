@@ -1,63 +1,64 @@
 <style>
-    @page {
-        margin-top: 0.5cm;
-        margin-bottom: 0.0cm;
-        margin-left: 0.0cm;
-        margin-right: 0.0cm;
-        background-image: url('assets/img/pi-2020.png');
-    }
+@page {
+    margin-top: 0.5cm;
+    margin-bottom: 0.0cm;
+    margin-left: 0.0cm;
+    margin-right: 0.0cm;
+    background-image: url('assets/img/pi-2020.png');
+}
 </style>
 <style type="text/css">
-    div .container {
-        /* max-width: 33 cm;
+div .container {
+    /* max-width: 33 cm;
         max-height: 21.5 cm; */
-        background-image: url('assets/img/pi-2020.png');
-    }
+    background-image: url('assets/img/pi-2020.png');
+}
 
-    body {
-        font-family: Arial;
-    }
+body {
+    font-family: Arial;
+}
 
-    h1 {
-        font-family: times;
-        color: black;
-        font-size: 46px;
-    }
+h1 {
+    font-family: times;
+    color: black;
+    font-size: 46px;
+}
 
-    h2 {
-        font-family: Georgia;
-        color: black;
-        font-size: 24px;
-    }
+h2 {
+    font-family: Georgia;
+    color: black;
+    font-size: 24px;
+}
 
-    h3 {
-        font-family: serif;
-        color: black;
-        font-size: 36px;
-    }
+h3 {
+    font-family: serif;
+    color: black;
+    font-size: 36px;
+}
 
-    h4 {
-        font-family: serif;
-        color: black;
-    }
+h4 {
+    font-family: serif;
+    color: black;
+}
 
-    h5 {
-        font-family: snell;
-        color: black;
-    }
+h5 {
+    font-family: snell;
+    color: black;
+}
 
-    p {
-        text-align: center;
-        color: black;
-        font-size: 18px;
-    }
+p {
+    text-align: center;
+    color: black;
+    font-size: 18px;
+}
 
-    table {
-        color: black;
-    }
-    .isi {
-        margin-left:25px;
-    }
+table {
+    color: black;
+}
+
+.isi {
+    margin-left: 25px;
+}
 </style>
 <?php $instansi = $this->db
     ->get_where('tbl_iduka', ['id' => $siswa['nama_instansi']])
@@ -70,8 +71,8 @@
                 <tr>
                     <td align="center" width="100%" colspan="3">
                         <h3>
-                    <?= $instansi['iduka'] ?>
-                    </h3>
+                            <?= $instansi['iduka'] ?>
+                        </h3>
                     </td>
                 </tr>
                 <tr>
@@ -105,8 +106,8 @@
                     <td align="center" colspan="3">
                         <font size="7">
                             <h3><b><u><?= ucwords(
-                                strtolower($siswa['name'])
-                            ) ?></u></b></h3>
+                                            strtolower($siswa['name'])
+                                        ) ?></u></b></h3>
                         </font>
                     </td>
                 </tr>
@@ -117,14 +118,12 @@
                         </font>
                     </td>
                 </tr>
-                <tr >
-                    <td  align="center" height="90px" colspan="3">
+                <tr>
+                    <td align="center" height="90px" colspan="3">
                         <font size="6" face="times">
-                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai tanggal <?= $tp[
-                                'pkl'
-                            ] ?> <br />di <?= $instansi[
-     'iduka'
- ] ?> dengan hasil terlampir dibelakang sertifikat ini.
+                            Telah melaksanakan Praktek Kerja Lapangan (PKL) Selama 3 (tiga) Bulan<br />terhitung mulai
+                            tanggal <?= $tp['pkl'] ?> <br />di <?= $instansi['iduka'] ?> dengan hasil terlampir
+                            dibelakang sertifikat ini.
                         </font>
                     </td>
                 </tr>
@@ -153,7 +152,7 @@
             </tr>
             <tr>
                 <td align="center" valign="bottom" height="80px">
-                    <img src="<?= base_url('assets/home/ttd-ks.png') ?>"/>
+                    <img src="<?= base_url('assets/home/ttd-ks.png') ?>" />
                     <p><u>MUNAWAR, S.Pd.I</u></p>
                 </td>
                 <td></td>
