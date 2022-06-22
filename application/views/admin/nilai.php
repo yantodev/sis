@@ -1,14 +1,19 @@
-<div class="dropdown mb-3">
-    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Silahkan Pilih Jurusan
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="<?= base_url('admin/nilaitkro'); ?>">Teknik Kendaraan Ringan Otomotif</a>
-        <a class="dropdown-item" href="<?= base_url('admin/nilaitbsm'); ?>">Teknik Bisnis Sepeda Motor</a>
-        <a class="dropdown-item" href="<?= base_url('admin/nilaiakl'); ?>">Akuntansi dan Keuangan Lembaga</a>
-        <a class="dropdown-item" href="<?= base_url('admin/nilaiotkp'); ?>">Otomatisasi dan Tata Kelola Perkantoran</a>
-        <a class="dropdown-item" href="<?= base_url('admin/nilaibdp'); ?>">Bisnis Daring dan Pemasaran</a>
-    </div>
+<div style="margin: 10px;">
+    <form action="<?= base_url('admin/exportnilai'); ?>" method="GET">
+        <select name="kelas" id="kelas">
+            <option value="">Pilih Kelas</option>
+            <?php foreach ($kelas as $k) : ?>
+            <option value="<?= $k['id']; ?>"><?= $k['kelas']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <select name="jurusan" id="jurusan">
+            <option value="">Pilih Jurusan</option>
+            <?php foreach ($jurusan as $d) : ?>
+            <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit">EXPORT</button>
+    </form>
 </div>
 
 <!-- DataTales Example -->
@@ -23,13 +28,13 @@
                 <select name="tp" id="tp">
                     <option value="">Pilih Tahun Pelajaran</option>
                     <?php foreach ($tp as $d) : ?>
-                        <option value="<?= $d['tp']; ?>"><?= $d['tp']; ?></option>
+                    <option value="<?= $d['tp']; ?>"><?= $d['tp']; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="jurusan" id="jurusan2">
                     <option value="">Silahkan Pilih Jurusan</option>
                     <?php foreach ($jurusan as $d) : ?>
-                        <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
+                    <option value="<?= $d['id']; ?>"><?= $d['jurusan']; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="nama_instansi" id="nama_instansi">
@@ -47,20 +52,21 @@
                             <th style="vertical-align: top;">NIS</th>
                             <th style="vertical-align: top;">Nama</th>
                             <?php foreach ($tabel as $t) : ?>
-                                <th style="vertical-align: top;width: 50px;"><?= $t['nama']; ?></th>
+                            <th style="vertical-align: top;width: 50px;"><?= $t['nama']; ?></th>
                             <?php endforeach; ?>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($siswa as $d) : ?>
-                            <tr>
-                                <td><input type="hidden" name="id[]" id="id" value="<?= $d['id']; ?>"></td>
-                                <td><?= $d['nis']; ?></td>
-                                <td><?= $d['name']; ?></td>
-                                <?php foreach ($tabel as $t) : ?>
-                                    <td><input style="width: 50px;" type="text" name="<?= $t['kode']; ?>[]" id="<?= $t['kode']; ?>" value="<?= $d[$t['kode']]; ?>"></td>
-                                <?php endforeach; ?>
-                            </tr>
+                        <tr>
+                            <td><input type="hidden" name="id[]" id="id" value="<?= $d['id']; ?>"></td>
+                            <td><?= $d['nis']; ?></td>
+                            <td><?= $d['name']; ?></td>
+                            <?php foreach ($tabel as $t) : ?>
+                            <td><input style="width: 50px;" type="text" name="<?= $t['kode']; ?>[]"
+                                    id="<?= $t['kode']; ?>" value="<?= $d[$t['kode']]; ?>"></td>
+                            <?php endforeach; ?>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

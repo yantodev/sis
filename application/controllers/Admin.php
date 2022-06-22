@@ -25,38 +25,14 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $data['user'] = $this->db
-            ->get_where('user', ['email' => $this->session->userdata('email')])
-            ->row_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db
-            ->get_where('user', ['is_active' => 0])
-            ->result_array();
-        $data['datatkro'] = $this->db
-            ->get_where('tbl_jumlah_siswa', [
-                'jurusan' => 'Teknik Kendaraan Ringan Otomotif',
-            ])
-            ->row_array();
-        $data['datatbsm'] = $this->db
-            ->get_where('tbl_jumlah_siswa', [
-                'jurusan' => 'Teknik Bisnis Sepeda Motor',
-            ])
-            ->row_array();
-        $data['dataakl'] = $this->db
-            ->get_where('tbl_jumlah_siswa', [
-                'jurusan' => 'Akuntansi dan Keuangan Lembaga',
-            ])
-            ->row_array();
-        $data['dataotkp'] = $this->db
-            ->get_where('tbl_jumlah_siswa', [
-                'jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran',
-            ])
-            ->row_array();
-        $data['databdp'] = $this->db
-            ->get_where('tbl_jumlah_siswa', [
-                'jurusan' => 'Bisnis Daring dan Pemasaran',
-            ])
-            ->row_array();
+        $data['data_user'] = $this->db->get_where('user', ['is_active' => 0])->result_array();
+        $data['datatkro'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif',])->row_array();
+        $data['datatbsm'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Teknik Bisnis Sepeda Motor',])->row_array();
+        $data['dataakl'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Akuntansi dan Keuangan Lembaga',])->row_array();
+        $data['dataotkp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Otomatisasi dan Tata Kelola Perkantoran',])->row_array();
+        $data['databdp'] = $this->db->get_where('tbl_jumlah_siswa', ['jurusan' => 'Bisnis Daring dan Pemasaran',])->row_array();
         $data['siswa'] = $this->Admin_model->countSiswa();
 
         $this->load->view('wrapper/header', $data);
@@ -565,31 +541,22 @@ class Admin extends CI_Controller
     public function nilai()
     {
         $data['isActive'] = $this->Admin_model->countUser();
-        $data['data_user'] = $this->db
-            ->get_where('user', ['is_active' => 0])
-            ->result_array();
+        $data['data_user'] = $this->db->get_where('user', ['is_active' => 0])->result_array();
         $data['title'] = 'Nilai Siswa';
-        $data['user'] = $this->db
-            ->get_where('user', ['email' => $this->session->userdata('email')])
-            ->row_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $tp = $this->input->get('tp');
         $jurusan = $this->input->get('jurusan');
         $iduka = $this->input->get('nama_instansi');
         $data['tp'] = $this->Admin_model->getTP();
         $data['jurusan'] = $this->Admin_model->getJurusan();
-        $data['data'] = $this->db
-            ->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])
-            ->result_array();
-        $data['tabel'] = $this->db
-            ->get_where('tbl_nilai', ['jurusan' => $jurusan])
-            ->result_array();
-        $data['siswa'] = $this->db
-            ->get_where('master', [
-                'tp' => $tp,
-                'jurusan' => $jurusan,
-                'nama_instansi' => $iduka,
-            ])
-            ->result_array();
+        $data['data'] = $this->db->get_where('master', ['tp' => $tp, 'jurusan' => $jurusan])->result_array();
+        $data['tabel'] = $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan])->result_array();
+        $data['siswa'] = $this->db->get_where('master', [
+            'tp' => $tp,
+            'jurusan' => $jurusan,
+            'nama_instansi' => $iduka,
+        ])->result_array();
+        $data['kelas'] = $this->Admin_model->getKelas();
 
         $this->form_validation->set_rules('id[]', 'ID', 'required');
         if ($this->form_validation->run() == false) {
@@ -2268,5 +2235,308 @@ class Admin extends CI_Controller
             );
             redirect('admin/reset/' . $id);
         }
+    }
+
+    public function exportnilai()
+    {
+        $kelas = $this->input->get('kelas');
+        $jurusan = $this->input->get('jurusan');
+
+        $data = $this->Admin_model->getNilai($kelas, '2021/2022');
+        $datakelas = $this->Admin_model->getKelasByID($kelas);
+        // Create new Spreadsheet object
+        $spreadsheet = new Spreadsheet();
+
+        // Set document properties
+        $spreadsheet
+            ->getProperties()
+            ->setCreator('Eko Cahyanto - JAVA DEVELOPER')
+            ->setLastModifiedBy(
+                'Eko Cahyanto - JAVA DEVELOPER'
+            )
+            ->setTitle('Office 2007 XLSX Test Document')
+            ->setSubject('Office 2007 XLSX Test Document')
+            ->setDescription(
+                'Test document for Office 2007 XLSX, generated using PHP classes.'
+            )
+            ->setKeywords('office 2007 openxml php')
+            ->setCategory('Test result file');
+
+        // Add some data
+        if ($jurusan == 1) {
+            $spreadsheet
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Rekap Siswa Kelas ' . $datakelas['kelas'])
+                ->setCellValue('A2', 'Tahun Pelajaran 2021/2022')
+                ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
+                ->setCellValue('A5', 'NO')
+                ->setCellValue('B5', 'NIS')
+                ->setCellValue('C5', 'NAMA')
+                ->setCellValue('D5', 'KELAS')
+                ->setCellValue('E5', 'LOKASI PKL')
+                ->setCellValue('F5', 'ALAMAT PKL')
+                ->setCellValue('G5', 'Disiplin')
+                ->setCellValue('H5', 'Kerjasama')
+                ->setCellValue('I5', 'Inisiatif')
+                ->setCellValue('J5', 'Tanggungjawab')
+                ->setCellValue('K5', 'Merawat dan Memperbaiki kerusakan Engine')
+                ->setCellValue('L5', 'Memperbaiki kerusakan sistem kelistrikan')
+                ->setCellValue('M5', 'Memperbaiki kerusakan chasis')
+                ->setCellValue('N5', 'Melaksanakan K3')
+                ->setCellValue('O5', 'Tugas lain yang relevan');
+
+            // Miscellaneous glyphs, UTF-8
+            $i = 6;
+            $n = 1;
+            foreach ($data as $d) {
+                $kls = $this->Admin_model->getKelasByID($d['kelas']);
+                $iduka = $this->Admin_model->getIdukaById($d['nama_instansi']);
+                $spreadsheet
+                    ->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $n)
+                    ->setCellValue('B' . $i, $d['nis'])
+                    ->setCellValue('C' . $i, $d['name'])
+                    ->setCellValue('D' . $i, $kls['kelas'])
+                    ->setCellValue('E' . $i, $iduka['iduka'])
+                    ->setCellValue('F' . $i, $iduka['alamat'])
+                    ->setCellValue('G' . $i, $d['nilai_1'])
+                    ->setCellValue('H' . $i, $d['nilai_2'])
+                    ->setCellValue('I' . $i, $d['nilai_3'])
+                    ->setCellValue('J' . $i, $d['nilai_4'])
+                    ->setCellValue('K' . $i, $d['nilai_5'])
+                    ->setCellValue('L' . $i, $d['nilai_6'])
+                    ->setCellValue('M' . $i, $d['nilai_7'])
+                    ->setCellValue('N' . $i, $d['nilai_8'])
+                    ->setCellValue('O' . $i, $d['nilai_9']);
+                $i++;
+                $n++;
+            }
+        } else if ($jurusan == 2) {
+            $spreadsheet
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Rekap Siswa Kelas ' . $datakelas['kelas'])
+                ->setCellValue('A2', 'Tahun Pelajaran 2021/2022')
+                ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
+                ->setCellValue('A5', 'NO')
+                ->setCellValue('B5', 'NIS')
+                ->setCellValue('C5', 'NAMA')
+                ->setCellValue('D5', 'KELAS')
+                ->setCellValue('E5', 'LOKASI PKL')
+                ->setCellValue('F5', 'ALAMAT PKL')
+                ->setCellValue('G5', 'Disiplin')
+                ->setCellValue('H5', 'Kerjasama')
+                ->setCellValue('I5', 'Inisiatif')
+                ->setCellValue('J5', 'Tanggungjawab')
+                ->setCellValue('K5', 'Merawat dan memperbaiki kerusakan engine')
+                ->setCellValue('L5', 'Memperbaiki kerusakan sistem kelistrikan')
+                ->setCellValue('M5', 'Memperbaiki kerusakan chasis')
+                ->setCellValue('N5', 'Melaksanakan K3')
+                ->setCellValue('O5', 'Kebersihan');
+
+            // Miscellaneous glyphs, UTF-8
+            $i = 6;
+            $n = 1;
+            foreach ($data as $d) {
+                $kls = $this->Admin_model->getKelasByID($d['kelas']);
+                $iduka = $this->Admin_model->getIdukaById($d['nama_instansi']);
+                $spreadsheet
+                    ->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $n)
+                    ->setCellValue('B' . $i, $d['nis'])
+                    ->setCellValue('C' . $i, $d['name'])
+                    ->setCellValue('D' . $i, $kls['kelas'])
+                    ->setCellValue('E' . $i, $iduka['iduka'])
+                    ->setCellValue('F' . $i, $iduka['alamat'])
+                    ->setCellValue('G' . $i, $d['nilai_1'])
+                    ->setCellValue('H' . $i, $d['nilai_2'])
+                    ->setCellValue('I' . $i, $d['nilai_3'])
+                    ->setCellValue('J' . $i, $d['nilai_4'])
+                    ->setCellValue('K' . $i, $d['nilai_5'])
+                    ->setCellValue('L' . $i, $d['nilai_6'])
+                    ->setCellValue('M' . $i, $d['nilai_7'])
+                    ->setCellValue('N' . $i, $d['nilai_8'])
+                    ->setCellValue('O' . $i, $d['nilai_9']);
+                $i++;
+                $n++;
+            }
+        } else if ($jurusan == 3) {
+            $spreadsheet
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Rekap Siswa Kelas ' . $datakelas['kelas'])
+                ->setCellValue('A2', 'Tahun Pelajaran 2021/2022')
+                ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
+                ->setCellValue('A5', 'NO')
+                ->setCellValue('B5', 'NIS')
+                ->setCellValue('C5', 'NAMA')
+                ->setCellValue('D5', 'KELAS')
+                ->setCellValue('E5', 'LOKASI PKL')
+                ->setCellValue('F5', 'ALAMAT PKL')
+                ->setCellValue('G5', 'Disiplin')
+                ->setCellValue('H5', 'Kerjasama')
+                ->setCellValue('I5', 'Inisiatif')
+                ->setCellValue('J5', 'Tanggungjawab')
+                ->setCellValue('K5', 'Menyiapkan administrasi pembukuan')
+                ->setCellValue('L5', 'Penyusunan bukti transaksi')
+                ->setCellValue('M5', 'Melakukan pencatatan transakai keuangan')
+                ->setCellValue('N5', 'Penyusunan laporan keuangan')
+                ->setCellValue('O5', 'Tugas lain yang relevan');
+
+            // Miscellaneous glyphs, UTF-8
+            $i = 6;
+            $n = 1;
+            foreach ($data as $d) {
+                $kls = $this->Admin_model->getKelasByID($d['kelas']);
+                $iduka = $this->Admin_model->getIdukaById($d['nama_instansi']);
+                $spreadsheet
+                    ->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $n)
+                    ->setCellValue('B' . $i, $d['nis'])
+                    ->setCellValue('C' . $i, $d['name'])
+                    ->setCellValue('D' . $i, $kls['kelas'])
+                    ->setCellValue('E' . $i, $iduka['iduka'])
+                    ->setCellValue('F' . $i, $iduka['alamat'])
+                    ->setCellValue('G' . $i, $d['nilai_1'])
+                    ->setCellValue('H' . $i, $d['nilai_2'])
+                    ->setCellValue('I' . $i, $d['nilai_3'])
+                    ->setCellValue('J' . $i, $d['nilai_4'])
+                    ->setCellValue('K' . $i, $d['nilai_5'])
+                    ->setCellValue('L' . $i, $d['nilai_6'])
+                    ->setCellValue('M' . $i, $d['nilai_7'])
+                    ->setCellValue('N' . $i, $d['nilai_8'])
+                    ->setCellValue('O' . $i, $d['nilai_9']);
+                $i++;
+                $n++;
+            }
+        } else if ($jurusan == 4) {
+            $spreadsheet
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Rekap Siswa Kelas ' . $datakelas['kelas'])
+                ->setCellValue('A2', 'Tahun Pelajaran 2021/2022')
+                ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
+                ->setCellValue('A5', 'NO')
+                ->setCellValue('B5', 'NIS')
+                ->setCellValue('C5', 'NAMA')
+                ->setCellValue('D5', 'KELAS')
+                ->setCellValue('E5', 'LOKASI PKL')
+                ->setCellValue('F5', 'ALAMAT PKL')
+                ->setCellValue('G5', 'Disiplin')
+                ->setCellValue('H5', 'Kerjasama')
+                ->setCellValue('I5', 'Inisiatif')
+                ->setCellValue('J5', 'Tanggungjawab')
+                ->setCellValue('K5', 'Pengetikan Komputer')
+                ->setCellValue('L5', 'Persuratan / surat menyurat')
+                ->setCellValue('M5', 'Kearsipan')
+                ->setCellValue('N5', 'Kesekretariatan')
+                ->setCellValue('O5', 'Tugas lain yang relevan');
+
+            // Miscellaneous glyphs, UTF-8
+            $i = 6;
+            $n = 1;
+            foreach ($data as $d) {
+                $kls = $this->Admin_model->getKelasByID($d['kelas']);
+                $iduka = $this->Admin_model->getIdukaById($d['nama_instansi']);
+                $spreadsheet
+                    ->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $n)
+                    ->setCellValue('B' . $i, $d['nis'])
+                    ->setCellValue('C' . $i, $d['name'])
+                    ->setCellValue('D' . $i, $kls['kelas'])
+                    ->setCellValue('E' . $i, $iduka['iduka'])
+                    ->setCellValue('F' . $i, $iduka['alamat'])
+                    ->setCellValue('G' . $i, $d['nilai_1'])
+                    ->setCellValue('H' . $i, $d['nilai_2'])
+                    ->setCellValue('I' . $i, $d['nilai_3'])
+                    ->setCellValue('J' . $i, $d['nilai_4'])
+                    ->setCellValue('K' . $i, $d['nilai_5'])
+                    ->setCellValue('L' . $i, $d['nilai_6'])
+                    ->setCellValue('M' . $i, $d['nilai_7'])
+                    ->setCellValue('N' . $i, $d['nilai_8'])
+                    ->setCellValue('O' . $i, $d['nilai_9']);
+                $i++;
+                $n++;
+            }
+        } else {
+            $spreadsheet
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Rekap Siswa Kelas ' . $datakelas['kelas'])
+                ->setCellValue('A2', 'Tahun Pelajaran 2021/2022')
+                ->setCellValue('A3', 'Tanggal Rekap ' . format_indo(date('Y-m-d')))
+                ->setCellValue('A5', 'NO')
+                ->setCellValue('B5', 'NIS')
+                ->setCellValue('C5', 'NAMA')
+                ->setCellValue('D5', 'KELAS')
+                ->setCellValue('E5', 'LOKASI PKL')
+                ->setCellValue('F5', 'ALAMAT PKL')
+                ->setCellValue('G5', 'Disiplin')
+                ->setCellValue('H5', 'Kerjasama')
+                ->setCellValue('I5', 'Inisiatif')
+                ->setCellValue('J5', 'Tanggungjawab')
+                ->setCellValue('K5', 'Keselamatan dan Kesehatan Kerja')
+                ->setCellValue('L5', 'Stok Barang')
+                ->setCellValue('M5', 'Penataan Produk')
+                ->setCellValue('N5', 'Pelayanan Prima')
+                ->setCellValue('O5', 'Komunikasi Bisnis')
+                ->setCellValue('P5', 'Mengoperasikan Alat Transaksi')
+                ->setCellValue('Q5', 'Laporan Penjualan');
+
+            // Miscellaneous glyphs, UTF-8
+            $i = 6;
+            $n = 1;
+            foreach ($data as $d) {
+                $kls = $this->Admin_model->getKelasByID($d['kelas']);
+                $iduka = $this->Admin_model->getIdukaById($d['nama_instansi']);
+                $spreadsheet
+                    ->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $n)
+                    ->setCellValue('B' . $i, $d['nis'])
+                    ->setCellValue('C' . $i, $d['name'])
+                    ->setCellValue('D' . $i, $kls['kelas'])
+                    ->setCellValue('E' . $i, $iduka['iduka'])
+                    ->setCellValue('F' . $i, $iduka['alamat'])
+                    ->setCellValue('G' . $i, $d['nilai_1'])
+                    ->setCellValue('H' . $i, $d['nilai_2'])
+                    ->setCellValue('I' . $i, $d['nilai_3'])
+                    ->setCellValue('J' . $i, $d['nilai_4'])
+                    ->setCellValue('K' . $i, $d['nilai_5'])
+                    ->setCellValue('L' . $i, $d['nilai_6'])
+                    ->setCellValue('M' . $i, $d['nilai_7'])
+                    ->setCellValue('N' . $i, $d['nilai_8'])
+                    ->setCellValue('O' . $i, $d['nilai_9'])
+                    ->setCellValue('p' . $i, $d['nilai_10'])
+                    ->setCellValue('Q' . $i, $d['nilai_11']);
+                $i++;
+                $n++;
+            }
+        }
+
+
+        // Rename worksheet
+        $spreadsheet
+            ->getActiveSheet()
+            ->setTitle('Rekap Nilai' . date('d-m-Y H'));
+
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $spreadsheet->setActiveSheetIndex(0);
+
+        // Redirect output to a client’s web browser (Xlsx)
+        header(
+            'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        );
+        header(
+            'Content-Disposition: attachment;filename="Rekap Siswa Nilai.xlsx"'
+        );
+        header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+        // If you're serving to IE over SSL, then the following may be needed
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+        header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header('Pragma: public'); // HTTP/1.0
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+        exit();
     }
 }

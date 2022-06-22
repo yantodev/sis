@@ -8,6 +8,17 @@ class Admin_model extends CI_Model
         $this->db->order_by('nama_instansi', 'ASC');
         return $this->db->get_where('master', ['jurusan' => $jurusan, 'tp' => $tp])->result_array();
     }
+
+    public function getNilai($kelas, $tp)
+    {
+        $this->db->order_by('nis', 'ASC');
+        return $this->db->get_where('master', ['kelas' => $kelas, 'tp' => $tp])->result_array();
+    }
+
+    public function getDataNilai($jurusan)
+    {
+        return $this->db->get_where('tbl_nilai', ['jurusan' => $jurusan])->result_array();
+    }
     public function Rekap($tp)
     {
         $this->db->order_by('jurusan', 'ASC');
@@ -82,8 +93,8 @@ class Admin_model extends CI_Model
     public function Jurusan()
     {
         $query = "SELECT `master`.*,`tbl_jurusan`.`jurusan`
-                   FROM `master` JOIN `tbl_jurusan`
-                     ON `master`.`jurusan` = `tbl_jurusan`.`id_jurusan` 
+                    FROM `master` JOIN `tbl_jurusan`
+                    ON `master`.`jurusan` = `tbl_jurusan`.`id_jurusan` 
         ";
         return $this->db->query($query)->result_array();
     }
@@ -128,6 +139,12 @@ class Admin_model extends CI_Model
     {
         return $this->db->get_where('tbl_kelas')->result_array();
     }
+
+    public function getKelasByID($id)
+    {
+        return $this->db->get_where('tbl_kelas', ['id' => $id])->row_array();
+    }
+
     public function getJR($jurusan)
     {
         return $this->db->get_where('tbl_jurusan', ['singkatan_jurusan' => $jurusan])->row_array();
