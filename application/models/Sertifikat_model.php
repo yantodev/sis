@@ -85,7 +85,7 @@ class Sertifikat_model extends CI_Model
     public function getNilai($kelas)
     {
         $this->db->where('kelas', $kelas);
-        $result = $this->db->get('master_nilai')->result_array();
+        $result = $this->db->get('master_sertifikat')->result_array();
         return $result;
     }
 }
