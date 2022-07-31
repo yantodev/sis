@@ -27,7 +27,7 @@
 
 <body>
     <div class="logo">
-        <img src="<?= base_url('assets/img/logo/bas.png'); ?>" height="80px">
+        <img src="<?= base_url('assets/img/logo/' . $kelas . '.png'); ?>" height="80px">
         <img src="<?= base_url('assets/img/logo/logo.png'); ?>" height="80px">
     </div>
     <div style="text-align: center;">
